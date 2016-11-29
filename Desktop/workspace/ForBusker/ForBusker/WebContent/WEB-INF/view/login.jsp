@@ -20,8 +20,7 @@
 </head>
 <body id="top">
 
-<jsp:include page="<%=projectName %>/WEB-INF/view/includeFile/header.jsp" />
-
+<jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 
 </body>
 </html>

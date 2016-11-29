@@ -12,4 +12,6 @@
 <!-- 리소스 등록 -->
 <mvc:resources location="/resources/"  mapping="/resources/**"/>
 
+<mvc:annotation-driven />
+
 </beans>

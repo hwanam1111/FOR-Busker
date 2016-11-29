@@ -8,7 +8,9 @@ public class MainController {
 
 	@RequestMapping("login")
 	public String login(){
-		System.out.println("ㅎㅇ");
+		
+		System.out.println("Login.jsp로 이동");
+		
 		return "login";
 	}
 }

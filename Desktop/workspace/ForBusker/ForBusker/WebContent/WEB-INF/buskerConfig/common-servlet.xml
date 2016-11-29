@@ -5,9 +5,9 @@
 
 
 
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="suffix" value=".jsp" /> <!-- 뒤에 붙음 -->
-		<property name="prefix" value="/WEB-INF/view/" /> <!-- 앞에 붙음 -->
-	</bean>
+	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" /> 
+		<property name="prefix" value="/WEB-INF/view/" /> 
+	</bean> 
+	
 </beans>
