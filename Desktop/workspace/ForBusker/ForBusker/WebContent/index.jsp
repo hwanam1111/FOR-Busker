@@ -7,23 +7,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FOR-Busker</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+
+<!-- ################################################################ -->
+<!-- ################################################################ -->
+<!-- Main css -->
+<link href="<%=projectName %>/resources/css/index_css/layout.css" rel="stylesheet" type="text/css" media="all">
+
+<!-- ################################################################ -->
+<!-- ################################################################ -->
+<!-- jQuery lib CDN URL -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
 </head>
 <body id="top">
 	<!-- Top Background Image Wrapper -->
-	<div class="bgded overlay"
-		style="background-image: url('images/demo/backgrounds/01.jpg');">
+	<div class="bgded overlay" style="background-image: url('<%=projectName %>/resources/images/index_img/headerBg.jpg');">
 		<div class="wrapper row1">
 			<header id="header" class="hoc clear">
 			<div id="logo" class="fl_left">
 				<h1>
-					<a href="index.html">For Busker</a>
+					<a href="#">For Busker</a>
 				</h1>
 			</div>
 			<nav id="mainav" class="fl_right">
 			<ul class="clear">
-				<li><a href="#">로그인</a></li>
-				<li><a class="drop" href="#">회원가입</a></li>
+				<li><a href="login.do">로그인</a></li>
+				<li><a href="#">회원가입</a></li>
 				<li><a href="#">Notice</a></li>
 			</ul>
 			</nav> <!-- ################################################################################################ -->
@@ -56,19 +66,19 @@
 		</div>
 		<ul class="nospace group center">
 			<li class="one_quarter first"><article>
-				<a href="#"><img src="images/demo/1.jpg" class="cate_img"></a>
+				<a href="#"><img src="<%=projectName %>/resources/images/index_img/categori_1.jpg" class="cate_img"></a>
 				<h6 class="heading font-x1">Find a show</h6>
 				</article></li>
 			<li class="one_quarter"><article>
-				<a href="#"><img src="images/demo/2.jpg" class="cate_img"></a>
+				<a href="#"><img src="<%=projectName %>/resources/images/index_img/categori_2.jpg" class="cate_img"></a>
 				<h6 class="heading font-x1">Show Registration</h6>
 				</article></li>
 			<li class="one_quarter"><article>
-				<a href="#"><img src="images/demo/3.jpg" class="cate_img"></a>
+				<a href="#"><img src="<%=projectName %>/resources/images/index_img/categori_3.jpg" class="cate_img"></a>
 				<h6 class="heading font-x1">Video Collection</h6>
 				</article></li>
 			<li class="one_quarter"><article>
-				<a href="#"><img src="images/demo/4.jpg" class="cate_img"></a>
+				<a href="#"><img src="<%=projectName %>/resources/images/index_img/categori_4.jpg" class="cate_img"></a>
 				<h6 class="heading font-x1">Join Us</h6>
 				</article></li>
 		</ul>
@@ -83,8 +93,7 @@
 	<div class="wrapper bgded"
 		style="background-color: rgba(49, 255, 255, .49); border-top: 1px solid rgba(49, 101, 115, .75); border-bottom: 1px solid rgba(49, 101, 115, .75); width: 100%">
 		<div class="split clear">
-			<img src="images/demo/backgrounds/map.jpg"
-				style="float: left; width: 60%; height: 600px;">
+			<img src="<%=projectName %>/resources/images/index_img/map.jpg" style="float: left; width: 60%; height: 600px;">
 			<section id="split-right"> <!-- ################################################################################################ -->
 			<h6 class="heading">리스트 ㅇㅇ</h6>
 			<p class="btmspace-30">리스트 ㅇㅇ</p>
@@ -172,8 +181,7 @@
 	<!-- ################################################################################################ -->
 	<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 	<!-- JAVASCRIPTS -->
-	<script src="layout/scripts/jquery.min.js"></script>
-	<script src="layout/scripts/jquery.backtotop.js"></script>
-	<script src="layout/scripts/jquery.mobilemenu.js"></script>
+	<script src="<%=projectName %>/resources/js/index_js/jquery.backtotop.js"></script>
+	<script src="<%=projectName %>/resources/js/index_js/jquery.mobilemenu.js"></script>
 </body>
 </html>

@@ -14,8 +14,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- include header -->
+<link href="<%=projectName %>/resources/css/index_css/layout.css" rel="stylesheet" type="text/css" media="all">
+<script src="<%=projectName %>/resources/js/index_js/jquery.mobilemenu.js"></script>
 </head>
-<body>
+<body id="top">
+
+<jsp:include page="<%=projectName %>/WEB-INF/view/includeFile/header.jsp" />
+
 
 </body>
 </html>
