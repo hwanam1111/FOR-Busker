@@ -53,20 +53,20 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 
 /* Copyright
 --------------------------------------------------------------------------------------------------------------- */
-#copyright{padding:20px 0; margin-top:10px; margin-bottom:10px;}
+#copyright{padding:20px 0;}
 #copyright *{margin:0; padding:0;}
 
 /* Colours
 --------------------------------------------------------------------------------------------------------------- */
-body{color:#7F7F7F; background-color:#141414;}
+body{color:#7F7F7F;}
 a{color:#6AAEBF;}
 a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
 
 
 /* Rows */
-.row1{color:#FFFFFF; border-color:rgba(255,255,255,.3);}
-.row5, .row5 a{color:#CBCBCB; background-color:#141414;}
+.row1{color:#FFFFFF; border-color:rgba(255,255,255,.3); background-color: #ffc19e; margin-bottom:40px;}
+.row5, .row5 a{color:#FFFFFF; background-color:#ffc19e; margin-top:40px;}
 
 /* Header */
 #header #logo a{color:inherit;}

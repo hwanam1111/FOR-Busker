@@ -3,13 +3,15 @@ package busker.scan.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+// 메인페이지 컨트롤러
+
 @Controller
 public class MainController {
 	
 //	로그인 페이지로 이동
 	@RequestMapping(value="main")
 	public String main(){
-		System.out.println("login.jsp로 이동");
+		System.out.println("main.jsp로 이동");
 		return "mainView/main";
 	}
 	
@@ -30,7 +32,7 @@ public class MainController {
 //	공지사항 페이지로 이동
 	@RequestMapping(value="notice")
 	public String notice(){
-		System.out.println("join.jsp로 이동");
+		System.out.println("notice.jsp로 이동");
 		return "mainView/notice";
 	}
 	
