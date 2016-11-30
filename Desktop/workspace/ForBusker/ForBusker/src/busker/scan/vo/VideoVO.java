@@ -11,7 +11,7 @@ public class VideoVO {
 		return reNo;
 	}
 	public void setReNo(int reNo) {
-		this.reNo = reNo;
+		this.reNo = reNo; 
 	}
 	public int getvNo() {
 		return vNo;
