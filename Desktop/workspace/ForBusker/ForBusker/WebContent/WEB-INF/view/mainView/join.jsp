@@ -16,6 +16,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
+<link href="<%=projectName %>/resources/css/join_css/join.css?<?=filemtime('<%=projectName %>/resources/css/join_css/join.css)?>" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body id="top">
@@ -27,71 +28,29 @@
 <!-- 이부분 부터 코딩 시작 -->
 
 <div class="hoc">
-	<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+	<!-- ################################################### -->
+	<!-- ################################################### -->
+	<div id="join_temp">
+		<!-- Join Template text-->
+		<b>FOR_Busker</b> 페이지에 오신것을 환영합니다. <br/>
+		원하시는 회원 유형에 선택하여 회원가입 하시길 바랍니다. <br/>
+		회원유형(일반 회원가입, 공연자 회원가입)에 따라 가입절차가 차이가 있으니, <br/>
+		이점 확인하여 주시길 바랍니다. <br/>
+	 	공연자 회원가입시에 일반 회원가입도 동시에 진행됩니다. <br/>
+		<hr/><br/>
+		<!-- ################################################### -->
+		<!-- ################################################### -->
+		<!-- Join Template image-->
+		<a href="simpleJoin.do"><img src="<%=projectName %>/resources/images/join_img/join_people2.png" class="join_img"></a>
+		<a href="buskerJoin.do"><img src="<%=projectName %>/resources/images/join_img/join_people1.png" class="join_img"></a>
+		<p>
+			<span id="temp_span">일반 회원가입</span>
+			<span>공연자 회원가입</span>
+		</p>
+	</div>
+	<!-- ################################################### -->
+	<!-- ################################################### -->
 </div>
-
 
 <!-- 코딩 종료 -->
 

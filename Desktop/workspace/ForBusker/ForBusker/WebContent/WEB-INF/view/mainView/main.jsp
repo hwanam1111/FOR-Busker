@@ -18,7 +18,7 @@
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-
+ 
 </head>
 <body id="top">
 	<!-- Top Background Image Wrapper -->

@@ -29,6 +29,20 @@ public class MainController {
 		return "mainView/join";
 	}
 	
+//	일반 회원가입 페이지로 이동
+	@RequestMapping(value="simpleJoin")
+	public String simpleJoin(){
+		System.out.println("simpleJoin.jsp로 이동");
+		return "mainView/simpleJoin";
+	}
+	
+//	공연자 회원가입 페이지로 이동
+	@RequestMapping(value="buskerJoin")
+	public String buskerJoin(){
+		System.out.println("buskerJoin.jsp로 이동");
+		return "mainView/buskerJoin";
+	}
+	
 //	공지사항 페이지로 이동
 	@RequestMapping(value="notice")
 	public String notice(){
