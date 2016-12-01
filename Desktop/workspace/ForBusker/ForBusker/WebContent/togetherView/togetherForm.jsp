@@ -3,7 +3,7 @@
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
-<head>  
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FOR-Busker</title>
 <!-- Bootstrap CSS -->
@@ -109,7 +109,7 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">연락처</label>
   <div class="col-xs-8">
-     <input class="form-control" type="tel" placeholder="ex)010-0000-0000" id="example-tel-input">
+     <input class="form-control" type="tel" placeholder="-를 빼고 입력해주세요" id="example-tel-input">
   </div>
 </div>
 </tr>
