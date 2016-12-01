@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 	
-//	로그인 페이지로 이동
+//	메인 페이지로 이동
 	@RequestMapping(value="main")
 	public String main(){
 		System.out.println("main.jsp로 이동");
@@ -41,6 +41,34 @@ public class MainController {
 	public String buskerJoin(){
 		System.out.println("buskerJoin.jsp로 이동");
 		return "mainView/buskerJoin";
+	}
+	
+//	ID / PW 찾기 페이지로 이동
+	@RequestMapping(value="loginSearch")
+	public String loginSearch(){
+		System.out.println("loginSearch.jsp로 이동");
+		return "mainView/loginSearch";
+	}
+	
+//	일반 ID 찾기 페이지로 이동
+	@RequestMapping(value="simpleIdSearch")
+	public String simpleIdSearch(){
+		System.out.println("simpleIdSearch.jsp로 이동");
+		return "mainView/simpleIdSearch";
+	}
+	
+//	공연자 ID 찾기 페이지로 이동
+	@RequestMapping(value="buskerIdSearch")
+	public String buskerIdSearch(){
+		System.out.println("buskerIdSearch.jsp로 이동");
+		return "mainView/buskerIdSearch";
+	}
+	
+//	PW 찾기 페이지로 이동
+	@RequestMapping(value="pwSearch")
+	public String pwSearch(){
+		System.out.println("pwSearch.jsp로 이동");
+		return "mainView/pwSearch";
 	}
 	
 //	공지사항 페이지로 이동

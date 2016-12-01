@@ -1,0 +1,10 @@
+#log_form{width:380px; margin-left:300px;}
+#log_main{text-align: center; margin-top:50px; width:300px;}
+#log_title{font-weight: bolder; text-align: left; margin-left:300px; font-family: inherit;}
+.log_label{float: left; margin-top: 10px;}
+.form-group>input{height: 55px;}
+#log_btn{width:100%; margin-top:40px; height:45px; background-color: #f3865b; color: white; border: none; border-radius: 5px;}
+#log_btn:hover{opacity: 0.6; filter: alpha(opacity=60);}
+#search_idpw{float: left; font-size: 12px; margin-top: 20px; color:#f3865b; cursor: pointer;}
+#sign_up{float: right; font-size: 12px; margin-top: 20px; color:#f3865b; cursor: pointer;}
+#copyrightC{font-size: 12px; font-weight: lighter; margin-top: 25px; margin-left:35px;}
