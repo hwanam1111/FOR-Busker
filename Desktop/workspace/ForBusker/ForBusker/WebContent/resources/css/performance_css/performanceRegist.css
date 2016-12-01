@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+
+
+#addressSearch {
+	float: right;
+	position: relative;
+	bottom: 36px;
+	height:35px;
+	width: 110px;
+	font: 15px;
+	text-align: center;
+}
+#sample5_address{
+	width: 80%;
+}
