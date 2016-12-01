@@ -26,11 +26,8 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 
-
-
-
+</div>
 <!-- 코딩 종료 -->
-
 
 <!-- ##############  footer 부분 include  ############## -->
 <jsp:include page="/WEB-INF/view/includeFile/footer.jsp" />
