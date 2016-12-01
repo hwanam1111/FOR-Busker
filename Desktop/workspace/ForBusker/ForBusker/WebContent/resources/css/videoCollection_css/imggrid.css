@@ -1,0 +1,65 @@
+@CHARSET "UTF-8";
+
+.videothumb{
+
+}
+
+.toptablemenu{
+	font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+.toptablemenu td, tr{
+    text-align: left;
+    padding: 8px;
+}
+
+.sidenav {
+	height: 100%;
+    width: 0;
+    position: fixed;
+     top: 0;
+    right: 0; 
+/*     z-index: 1; */
+   
+    background-color: #ffc19e;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 80px;
+    padding-bottom:80px;
+    float:right;
+    
+}
+.videoContent{
+	float:left;
+}
+#mySidenav{
+	float:right;
+}
+.sidenav a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 17px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 80;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
