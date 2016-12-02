@@ -12,7 +12,7 @@
       <ul class="clear">
         <li><a href="login.do">로그인</a></li>
         <li><a href="join.do">회원가입</a></li>
-        <li><a href="notice.do">Notice</a></li>
+        <li><a href="noticeList.do">Notice</a></li>
       </ul>
       </nav>
       </header>
