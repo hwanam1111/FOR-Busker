@@ -35,6 +35,10 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav li li a{display:block; margin:0; padding:10px 15px;}
 #mainav ul ul{visibility:hidden; opacity:0;}
 #mainav ul li:hover > ul{visibility:visible; opacity:1; text-decoration: none;}
+#mainav #liLogout{cursor: pointer;}
+#mainav #liMyPage:hover{color:#000; background-color:inherit; text-decoration: none; cursor: pointer;}
+#mainav .ul_li_List{color:#ff0000; line-height: 30px;}
+#mainav .ul_li_List:first-child{margin-top:30px;}
 
 #mainav form{display:none; margin:0; padding:0;}
 #mainav form select, #mainav form select option{display:block; cursor:pointer; outline:none;}
@@ -42,9 +46,9 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav form select option{margin:5px; padding:0; border:none;}
 
 #mainav li a{color:inherit;}
-#mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#6AAEBF; background-color:inherit; text-decoration: none;}
-#mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:rgba(0,0,0,.6); border-color:rgba(0,0,0,.6);}
-#mainav li li:hover > a, #mainav .active .active > a{color:#FFFFFF; background-color:#6AAEBF;}
+#mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#000; background-color:inherit; text-decoration: none;}
+#mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:#ffc19e; border-color:rgba(0,0,0,.6);}
+#mainav li li:hover > a, #mainav .active .active > a{color:#000; background-color:#B8F3B8;}
 #mainav form select{color:#FFFFFF; background-color:#000000; border-color:rgba(255,255,255,.3);}
 
 

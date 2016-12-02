@@ -21,7 +21,8 @@
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
-<jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
+<%-- <jsp:include page="/WEB-INF/view/includeFile/header.jsp" /> --%>
+<jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <!-- ################################################### -->
 
 

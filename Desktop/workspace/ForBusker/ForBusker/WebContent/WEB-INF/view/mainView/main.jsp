@@ -66,7 +66,7 @@
 		</div>
 		<ul class="nospace group center">
 			<li class="one_quarter first"><article>
-				<a href="#"><img src="<%=projectName %>/resources/images/index_img/categori_1.jpg" class="cate_img"></a>
+				<a href="showList.do"><img src="<%=projectName %>/resources/images/index_img/categori_1.jpg" class="cate_img"></a>
 				<h6 class="heading font-x1">Find a show</h6>
 				</article></li>
 			<li class="one_quarter"><article>
