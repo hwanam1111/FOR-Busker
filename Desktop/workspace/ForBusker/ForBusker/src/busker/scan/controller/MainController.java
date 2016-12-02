@@ -32,6 +32,7 @@ public class MainController {
 		System.out.println("login.jsp로 이동");
 		return "mainView/login";
 	}
+
 //	로그인확인 페이지로 이동
 	@RequestMapping(value="loginOK")
 	public String loginOK(MemberVO memberVO, Model m, HttpSession session) throws Exception{

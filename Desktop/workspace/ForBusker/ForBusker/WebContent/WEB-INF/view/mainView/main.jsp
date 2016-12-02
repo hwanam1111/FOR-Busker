@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,8 @@
 function logout(){
 	 var con = confirm("로그아웃을 하시겠습니까?");
 	 if(con == true){
-	  location.href="logout.do";
+		 <c:remove var="test" scope="session" />
+		 location.href="main.do";
 	  //logout을 위해 세션을 제거하는 페이지 호출
 	 }else{}
 	}
@@ -76,7 +78,7 @@ function logout(){
 					</li>
 					<li><a href="message.do">쪽지함</a></li>
 					<li><a href="noticeList.do">Notice</a></li>
-					<li id="liMyPage" style="cursor: pointer"> ${sessionScope.login.memEmail}
+					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
 							<li class="ul_li_List"><a href="mypageUpdate.do">내 정보 수정</a></li>
 							<li class="ul_li_List"><a href="showRegist.do">공연 등록하기</a></li>
