@@ -135,6 +135,7 @@ $(function(){
 				                        map.setCenter(coords);
 				                        // 마커를 결과값으로 받은 위치로 옮긴다.
 				                        marker.setPosition(coords)
+				                        alert(coords);
 				                    }
 				                });
 				            }
@@ -142,7 +143,6 @@ $(function(){
 				        }
 				   </script>
 					
-				
 					</div>
 				</div>
 				</tr>

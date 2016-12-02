@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+/* ######################################################## */
+/* ######################## 팝업창부분 ########################*/
+/* ######################################################## */
+#popup{border: 2px solid #ffc19e; background: #fff; border-radius: 15px;}
+
+#close{margin-left:780px; cursor: pointer;}
+.content{
+	 border-radius:30px;  	 
+}
+#background{
+	position:relative;
+	border : 2px solid #92858C;
+	width: 600px;
+	height: 400px;
+	border-radius: 30px;
+}
+.join_img{width:140px; height: 140px; margin-left:90px;}
+.join_img:hover{opacity: 0.6; filter: alpha(opacity=60);}
+#temp_spanPop{margin-left:117px; margin-right: 135px; margin-bottom:20px;}
+
+.b-ajax-wrapper{
+}
+
+#inputText{
+	width:600px;
+}
