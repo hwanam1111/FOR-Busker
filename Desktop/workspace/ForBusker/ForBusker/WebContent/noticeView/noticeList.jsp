@@ -16,63 +16,35 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
-<link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
+<link href="<%=projectName %>/resources/css/notice_css/noticeList.css?<?=filemtime('<%=projectName %>/resources/css/notice_css/noticeList.css')?>" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <!-- ################################################### -->
-
-
 <!-- 이부분 부터 코딩 시작 -->
-<div class="hoc">
-<table>
-	<tr> <!-- 어떤 view인지 들어가는 부분 -->
-	<h1>TogetherList</h1>
-	</tr>
-	<tr> <!-- 검색창 들어갈 부분 -->
-	<div class="row marginTop50 marginLeft">
-	<div class="col-xs-4">
-		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
-				id="example-text-input"/>
+<div class="hoc">  <!-- NoticeList -->
+	<ul>
+	<li><h1><img src="<%=projectName %>/resources/images/notice_img/notepad.png">NOTICE</h1></li>
+	<li>
+	<div class="floatRight marginBottom">
+		<button type="button" class="btn btn-secondary"><img src="<%=projectName %>/resources/images/notice_img/trash.png"></button>
 	</div>
-	<div class="col-xs-2">
-		<button type="button" class="btn btn-outline-info">검색</button>
+	<hr/>
+	</li>
+	<%for(int i=0;i<8;i++){ %> <!-- 이부분 db에서 공지사항 가져와서 반복문으로 넣을 꺼임 -->
+	<li> 
+	<div class="row">
+	<div class="col-xs-1"><input type="checkbox" name="chk_info" value="HTML"></div>
+	<div class="col-xs-9">제목이 들어가는 부분입니다 제목을 넣으세요.빨리 넣으세요.당장이요</div>
+	<div class="col-xs-2">2016-12-02</div>
 	</div>
-	
-	<div class="col-xs-6 ">
-		<button type="button" class="btn btn-outline-secondary marginRight" id="moveToFormBtn">등록하기</button>
-	</div>
-	</div>
-	
-	</tr>
-	
-
-	<%for(int j=0;j<3;j++){ %>
-	<tr>
-	<%for(int i=0;i<3;i++){ %>
-		<div class="col-xs-4 marginTop50">
-			<div> <!-- 이미지들어가는부분 -->
-			<a href="#"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
-				<img src="<%=projectName %>/resources/images/together_img/music.jpg">
-			</a>		
-			</div>
-		
-			<div class="detail">
-			<div><strong>팀명 들어가는 부분입니다.</strong></div> <!-- 팀명 들어가는 부분 -->
-			
-			<div><strong>찾는 역할 들어가는 부분입니다.</strong></div><!-- 찾는 역할 들어가는 부분 -->
-			</div>
-			
-		</div>
-	<%} %> <!-- end inner forloop -->
-	</tr>
-
-	<%} %> <!-- end outer forloop -->
-		
-	<tr> <!-- 페이징 할 부분(paging master) -->
-	<nav aria-label="..."  align="center">
+	<hr/>
+	</li>
+	<%} %>
+	<li> <!-- 페이징 할 부분 -->
+		<nav aria-label="..."  align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
 	      <a class="page-link" href="#" aria-label="Previous">
@@ -93,15 +65,10 @@
 	    </li>
 	  </ul>
 	</nav>
-	</tr>	
-</table>
+	</li>
+	</ul>
 </div>
-
-
-
 <!-- 코딩 종료 -->
-
-
 <!-- ##############  footer 부분 include  ############## -->
 <jsp:include page="/WEB-INF/view/includeFile/footer.jsp" />
 <!-- ################################################## -->
@@ -110,4 +77,3 @@
 <!-- ################################################### -->
 </body>
 </html>
-
