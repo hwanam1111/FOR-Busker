@@ -30,6 +30,8 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				/WEB-INF/buskerConfig/main-servlet.xml
+				/WEB-INF/buskerConfig/trans-servlet.xml
+				/WEB-INF/buskerConfig/videolist-servlet.xml
 			</param-value>
 		</init-param>
 	</servlet>

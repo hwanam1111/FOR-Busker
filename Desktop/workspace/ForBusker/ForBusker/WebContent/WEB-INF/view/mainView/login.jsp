@@ -33,16 +33,16 @@
 		<!-- loginForm -->
 		<!-- ################################################### -->
 		<!-- ################################################### -->
-		<form role="form" id="log_form">
+		<form role="form" id="log_form" action="loginOK.do">
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="log_label">Email address</label>
-				<input type="email" class="form-control" id="exampleInputEmail1" name="mEmail" placeholder="이메일을 입력하세요">
+				<input type="email" class="form-control" id="exampleInputEmail1" name="memEmail" placeholder="이메일을 입력하세요">
 			</div>
 			<!-- ################################################### -->
 			<!-- ################################################### -->
 			<div class="form-group">
 				<label for="exampleInputPassword1" class="log_label">Password</label>
-				<input type="password" class="form-control" id="exampleInputPassword1" name="mPassword" placeholder="비밀번호를 입력하세요">
+				<input type="password" class="form-control" id="exampleInputPassword1" name="memPw" placeholder="비밀번호를 입력하세요">
 			</div>
 			<!-- ################################################### -->
 			<!-- ################################################### -->

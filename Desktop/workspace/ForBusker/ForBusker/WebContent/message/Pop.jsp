@@ -18,7 +18,7 @@
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/message_css/message.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="<%=projectName %>/resources/js/message_js/message.js"></script>
-<</head>
+</head>
 
 <body id="top">
 

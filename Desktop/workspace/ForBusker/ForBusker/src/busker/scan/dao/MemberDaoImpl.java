@@ -20,12 +20,7 @@ public class MemberDaoImpl implements MemberDao {
 		
 		MemberVO ok = null;
 		ok = ss.selectOne("main.idCheck", vo);
-		System.out.println("됏니");
 		
-	
-		System.out.println("ok 다음 vo값" + vo.getMemEmail());
-		
-		System.out.println("값 :" + ok.getMemEmail());
 		return ok;
 	}
 

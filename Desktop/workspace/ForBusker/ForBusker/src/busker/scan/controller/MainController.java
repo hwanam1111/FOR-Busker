@@ -42,7 +42,6 @@ public class MainController {
 		ok= service.selectMember(memberVO);
 		String result="";	
 		String message="";
-		System.out.println("ok안에 있는 값 : " + ok.getMemEmail());
 	
 		if(ok!=null){
 			result="mainView/loginOK";
