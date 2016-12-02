@@ -48,9 +48,9 @@ function logout(){
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> 닉네임
 						<ul> 
-							<li class="ul_li_List"><a href="#">내 정보 수정</a></li>
+							<li class="ul_li_List"><a href="mypageUpdate.do">내 정보 수정</a></li>
 							<li class="ul_li_List"><a href="showRegist.do">공연 등록하기</a></li>
-							<li class="ul_li_List"><a href="#">회원 탈퇴하기</a></li>
+							<li class="ul_li_List"><a href="mypageLeave.do">회원 탈퇴하기</a></li>
 						</ul>
 					</li>
 				</ul>
