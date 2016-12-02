@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<typeAliases>
+ 		<typeAlias type="busker.scan.vo.BackedVO" alias="backvo"/>
+ 		<typeAlias type="busker.scan.vo.MemberVO" alias="memvo"/>
+ 		<typeAlias type="busker.scan.vo.ShowVO" alias="showvo"/>
+ 		<typeAlias type="busker.scan.vo.SmsVO" alias="smsvo"/>
+ 		<typeAlias type="busker.scan.vo.SponserVO" alias="sponvo"/>
+ 		<typeAlias type="busker.scan.vo.TogetherVO" alias="tovo"/>
+ 		<typeAlias type="busker.scan.vo.VideoReplyVO" alias="videoreplyvo"/>
+ 		<typeAlias type="busker.scan.vo.VideoVO" alias="Videovo"/>
+ 	</typeAliases>
+ </configuration>
+ 
+ <!--  Mapper설정과 DB연결 설정부분이 빠져있음 => 스프링에서 지원 => 스프링설정파일에서 해줌 trans-servlet.xml에서 해줌 -->
