@@ -29,6 +29,8 @@
 
 이메일: ${vo.memEmail} / 이름: ${vo.memName} / 비번: ${vo.memPw}
 
+<%response.sendRedirect("main.do"); %>
+
 
 <!-- 코딩 종료 -->
 

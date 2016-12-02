@@ -23,7 +23,7 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav, #breadcrumb, .sidebar nav{line-height:normal;}
 
 /* Top Navigation */
-#mainav{}
+#mainav{z-index: 9999}
 #mainav ul{text-transform:uppercase;}
 #mainav ul ul{z-index:9999; position:absolute; width:180px; text-transform:none;}
 #mainav ul ul ul{left:180px; top:0;}

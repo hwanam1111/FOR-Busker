@@ -17,12 +17,25 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/login_css/login.css?<?=filemtime('<%=projectName %>/resources/css/login_css/login.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- login enter -->
+<script type="text/javascript">
+function onKeyDown()
+{
+     if(event.keyCode == 13)
+     {
+          document.getElementById("log_form").submit();
+     }
+}
+</script>
 </head>
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
-<%-- <jsp:include page="/WEB-INF/view/includeFile/header.jsp" /> --%>
+<%if(session.getAttribute("login") == null) { %>
+<jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
+<% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<% } %>
 <!-- ################################################### -->
 
 
@@ -42,7 +55,7 @@
 			<!-- ################################################### -->
 			<div class="form-group">
 				<label for="exampleInputPassword1" class="log_label">Password</label>
-				<input type="password" class="form-control" id="exampleInputPassword1" name="memPw" placeholder="비밀번호를 입력하세요">
+				<input type="password" class="form-control" id="exampleInputPassword1" name="memPw" placeholder="비밀번호를 입력하세요" onKeyDown="onKeyDown();">
 			</div>
 			<!-- ################################################### -->
 			<!-- ################################################### -->
