@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+
+#busker_title{font-weight: bold; font-family: inherit; margin-left:100px; margin-bottom:50px;}
+#buskerIdSearchForm{width:680px; margin-left:150px;}
+#buskerIdSearchForm input{height: 43px;}
+#telForm{margin-top:50px;}
+#submitBtn{width:90px; margin-left:590px; margin-top:30px; text-align: center}

@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+#pwSearch_title{font-weight: bold; font-family: inherit; margin-left:100px; margin-bottom:30px;}
+#pwSearchForm{width:680px; margin-left:150px;}
+#pwSearchForm input{height: 43px;}
+#buskerEmail{width:580px;}
+#telForm{margin-top:50px;}
+#emailCheckBtn{float: right; position: relative; bottom:43px; height: 43px;}
+#submitBtn{width:105px; margin-left:575px; margin-top:30px; text-align: center}
+#confirm{margin-top:50px;}

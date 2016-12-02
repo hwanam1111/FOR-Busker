@@ -70,6 +70,10 @@
  		    <label for="buskerTel">전화번호</label>
     		<input type="tel" class="form-control" id="buskerTel"name="buskerTel" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
+  		<div class="form-group">
+ 		    <label for="buskerTeamName">팀 이름</label>
+    		<input type="text" class="form-control" id="buskerTeamName"name="buskerTeamName" placeholder="팀명을 입력하세요" maxlength="13">
+  		</div>
   		<!-- ################################################### -->
   		<!-- ##################### CheckBox #################### -->
 		<!-- ################################################### -->
@@ -105,7 +109,7 @@
 		<!-- ################################################### -->
   		<div class="form-group">
  		    <br/><label for="buskerVideo">팀 홍보 영상</label>
-    		<input type="tel" class="form-control" id="buskerVideo"name="buskerVideo" placeholder="영상URL을 입력하세요" maxlength="13">
+    		<input type="text" class="form-control" id="buskerVideo"name="buskerVideo" placeholder="영상URL을 입력하세요" maxlength="13">
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->

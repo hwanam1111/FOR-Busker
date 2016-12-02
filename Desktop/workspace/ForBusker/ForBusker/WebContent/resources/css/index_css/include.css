@@ -65,8 +65,8 @@ hr, .borderedbox{border-color:#D7D7D7;}
 
 
 /* Rows */
-.row1{color:#FFFFFF; border-color:rgba(255,255,255,.3); background-color: #ffc19e; margin-bottom:40px;}
-.row5, .row5 a{color:#FFFFFF; background-color:#ffc19e; margin-top:40px;}
+.row1{color:#FFFFFF; border-color:rgba(255,255,255,.3); background-color: #ffc19e; margin-bottom:60px;}
+.row5, .row5 a{color:#FFFFFF; background-color:#ffc19e; margin-top:70px;}
 
 /* Header */
 #header #logo a{color:inherit;}

@@ -70,8 +70,12 @@
  		   <label for="simpleNickname">닉네임</label>
     		<input type="text" class="form-control" id="simpleNickname"name="simpleNickname" placeholder="닉네임을 입력하세요" maxlength="12">
   		</div>
-  		<!-- ################################################### -->
-		<!-- ################################################### -->
+  		<!-- #################################################### -->
+  		<!-- #################################################### -->
+  		<div class="form-group">
+ 		    <label for="simpleTel">전화번호</label>
+    		<input type="tel" class="form-control" id="simpleTel"name="simpleTel" placeholder="전화번호를 입력하세요" maxlength="13">
+  		</div>
 		<!-- submit button -->
   			<button type="submit" class="btn btn-success" id="submitBtn">회원가입</button>
   			<button type="reset" class="btn btn-success" id="resetBtn">다시작성</button>
