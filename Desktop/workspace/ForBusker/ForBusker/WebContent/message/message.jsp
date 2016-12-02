@@ -12,13 +12,13 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!-- jQuery lib CDN URL -->`
+<!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include header -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/popup_js/jquery.bpopup.js"></script>
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
-<link href="<%=projectName %>/resources/css/message_css/message.css?<?=filemtime('<%=projectName %>/resources/css/message_css/message')?>" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="<%=projectName %>/resources/js/message_js/message.js?<?=filemtime('<%=projectName %>/resources/js/message_js/message')?>"></script>
+<link href="<%=projectName %>/resources/css/message_css/message.css?<?=filemtime('<%=projectName %>/resources/css/message_css/message.css')?>" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="<%=projectName %>/resources/js/message_js/message.js?<?=filemtime('<%=projectName %>/resources/js/message_js/message.js')?>"></script>
 </head>
 
 <body id="top">
@@ -28,9 +28,10 @@
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc" align="center">
 
-
+<!-- ################################################### -->
+<!-- ################################################### -->
 <!--  테이블 시작  -->
-<div  style="width:100%; border: 2px solid #92858C;  border-radius: 15px"  class="table-responsive">
+<div id="messageTable" class="table-responsive">
 <table class="table">
 <tr align="center">
 <td>번호</td>
@@ -40,6 +41,8 @@
 <td>구분</td>
 </tr>
 
+<!-- ################################################### -->
+<!-- ################################################### -->
 <!--  테이블 반복문 돌릴 위치  -->
 <tr align="center">
 <td align="center">1</td>
@@ -47,17 +50,7 @@
 <td></td>
 <td></td>
 <td>
-<a href="javascript:popupOpen();">열려라 팝업창!</a>
-
-<script type="text/javascript">
-function popupOpen(){
-	var popUrl = "Pop.jsp";	//팝업창에 출력될 페이지 URL
-	var popOption = "width=500, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-	window.open(popUrl,"",popOption);
-	}
-</script>
-
-<a href="javascript:popupOpen();"><button type="button" class="btn btn-info messageView" >보기</button></a>
+<button type="button" class="btn btn-info messageView" >보기</button>
 <button type="button" class="btn btn-info" href="#">삭제</button>
 </td>
 </tr>
@@ -110,31 +103,28 @@ function popupOpen(){
 
 </table>
 </div>
+<!-- ################################################### -->
+<!-- ################################################### -->
+<!-- ################################################### -->
 
-<!--  popup -->
+<!-- 팝업 -->
 	<div id="popup" class="popup-div popup-style">
 		<div class="content">
-			<div class="b-ajax-wrapper" style="height: 600px; width: 800px;">
-    		<span class="button b-close" id="close"><span>X</span></span><br/>
-			<img src="messageView.png" id="background"/>
-			<form class="form-inline"> 
-			<div class="form-group" align="center" >
-			<table style="width:600px" border="1">
-				<tr align="left">
-					<td>수신자 </br> 내용</td>
-				</tr>
-				<tr align="right">
-					<td>내용</td>
-				</tr>
-			</table>
-    		<input type="text" id="inputText" class="form-control"/>
-			<button type="button"  class="btn btn-info form-control">전송</button>
-			</div>
-			</form>
+			<div class="b-ajax-wrapper" style="height: 550px; width: 400px; background: #f1f1f1; border-radius: 15px;">
+    			<span class="button b-close" id="close"><span>X</span></span><br/>
+				<div class="form-group" align="center" >
+					<div id="chatDiv"></div>
+					<div id="insertDiv">
+		   				<input type="text" id="inputText" class="form-control" />
+						<button type="button"  class="btn btn-info form-control" id="chatSubmit">전송</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div> 
-	
+	<!-- ################################################### -->
+	<!-- ################################################### -->
+	<!-- ################################################### -->
 
 
 
