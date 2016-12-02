@@ -1,0 +1,50 @@
+ul.tabs {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 32px;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    width: 100%;
+    font-family:"dotum";
+    font-size:12px;
+}
+ul.tabs li {
+    float: left;
+    text-align:center;
+    cursor: pointer;
+    width:100px;
+    height: 31px;
+    line-height: 31px;
+    border: 1px solid #eee;
+    border-radius:5px;
+    border-left: none;
+    font-weight: bold;
+    background: #fafafa;
+    overflow: hidden;
+    position: relative;
+  
+}
+ul.tabs li.active2 {
+    background: #FFC19E;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.tab_content {
+    padding: 5px;
+    font-size: 12px;
+    display: none;
+}
+ #container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/* 후원하기 후원받기 버튼 위치 */
+#moveToBackedBtn{
+	margin-left: 340px;
+}
+#moveToSponBtn{
+	margin-left: 340px;
+}

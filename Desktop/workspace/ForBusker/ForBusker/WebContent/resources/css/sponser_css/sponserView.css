@@ -1,0 +1,24 @@
+
+/* 제목 css */
+.sponimg p{
+	padding: 20px;
+	font-size: 25px;
+	font-color : #000000;
+	font-weight: bold;
+}
+
+/* img css */
+.sponimg{
+
+	width:640px;
+	height:200px;
+	background-color: #F6F6F6;
+}
+
+/* 내용, 조건, 전화번호 css */
+.sponContent {
+	position: relative;
+	top:-170px;
+	left:680px;
+	width:300px;
+}
