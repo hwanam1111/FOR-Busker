@@ -74,7 +74,7 @@
 				<h6 class="heading font-x1">Show Registration</h6>
 				</article></li>
 			<li class="one_quarter"><article>
-				<a href="#"><img src="<%=projectName %>/resources/images/index_img/categori_3.jpg" class="cate_img"></a>
+				<a href="videoMain.do"><img src="<%=projectName %>/resources/images/index_img/categori_3.jpg" class="cate_img"></a>
 				<h6 class="heading font-x1">Video Collection</h6>
 				</article></li>
 			<li class="one_quarter"><article>

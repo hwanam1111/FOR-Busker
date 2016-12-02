@@ -2,7 +2,7 @@ package busker.scan.vo;
 
 public class SponserVO {
 	private int spNo;
-	private String tEmail;
+	private String memEmail;
 	private String spName;
 	private String spPhoto;
 	private String spContent;
@@ -15,11 +15,11 @@ public class SponserVO {
 	public void setSpNo(int spNo) {
 		this.spNo = spNo;
 	}
-	public String gettEmail() {
-		return tEmail;
+	public String getmemEmail() {
+		return memEmail;
 	}
-	public void settEmail(String tEmail) {
-		this.tEmail = tEmail;
+	public void setmemEmail(String memEmail) {
+		this.memEmail = memEmail;
 	}
 	public String getSpName() {
 		return spName;

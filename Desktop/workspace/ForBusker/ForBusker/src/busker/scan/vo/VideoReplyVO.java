@@ -2,54 +2,34 @@ package busker.scan.vo;
 
 public class VideoReplyVO {
 
-	private int vNo;
-	private String pEmail;
-	private String vUrl; 
-	private String vName; 
-	private String vDetail; 
-	private String vCount; 
-	private String vLike;
+	private int reNo;
+	private int videoNo;
+	private String memEmail;
+	private String reContent;
 	
-	public int getvNo() {
-		return vNo;
+	public int getReNo() {
+		return reNo;
 	}
-	public void setvNo(int vNo) {
-		this.vNo = vNo;
+	public void setReNo(int reNo) {
+		this.reNo = reNo;
 	}
-	public String getpEmail() {
-		return pEmail;
+	public int getVideoNo() {
+		return videoNo;
 	}
-	public void setpEmail(String pEmail) {
-		this.pEmail = pEmail;
+	public void setVideoNo(int videoNo) {
+		this.videoNo = videoNo;
 	}
-	public String getvUrl() {
-		return vUrl;
+	public String getMemEmail() {
+		return memEmail;
 	}
-	public void setvUrl(String vUrl) {
-		this.vUrl = vUrl;
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
 	}
-	public String getvName() {
-		return vName;
+	public String getReContent() {
+		return reContent;
 	}
-	public void setvName(String vName) {
-		this.vName = vName;
+	public void setReContent(String reContent) {
+		this.reContent = reContent;
 	}
-	public String getvDetail() {
-		return vDetail;
-	}
-	public void setvDetail(String vDetail) {
-		this.vDetail = vDetail;
-	}
-	public String getvCount() {
-		return vCount;
-	}
-	public void setvCount(String vCount) {
-		this.vCount = vCount;
-	}
-	public String getvLike() {
-		return vLike;
-	}
-	public void setvLike(String vLike) {
-		this.vLike = vLike;
-	} 
+	
 }

@@ -4,7 +4,7 @@ public class BackedVO {
 	
 
 	private int backNo;
-	private String tEmail;
+	private String memEmail;
 	private String backName;
 	private String backVideo;
 	private String backContent;
@@ -18,11 +18,12 @@ public class BackedVO {
 	public void setBackNo(int backNo) {
 		this.backNo = backNo;
 	}
-	public String gettEmail() {
-		return tEmail;
+	
+	public String getMemEmail() {
+		return memEmail;
 	}
-	public void settEmail(String tEmail) {
-		this.tEmail = tEmail;
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
 	}
 	public String getBackName() {
 		return backName;

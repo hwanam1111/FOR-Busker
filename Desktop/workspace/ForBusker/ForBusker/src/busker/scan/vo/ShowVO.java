@@ -3,12 +3,19 @@ package busker.scan.vo;
 public class ShowVO {
 
 	private int shNo;
-	private String pEmail;
+	private String memEmail;
 	private String shTeamName;
 	private String shVideo;
 	private String shName;
 	private String shMapLati;
 	private String shMapLongi;
+	private String shMapCoords;
+	private String shMapAddr;
+	private String shMapDetail;
+	private String shDate;
+	private String shTime;
+	private String shType;
+	private String shDetail;
 	
 	public int getShNo() {
 		return shNo;
@@ -16,11 +23,11 @@ public class ShowVO {
 	public void setShNo(int shNo) {
 		this.shNo = shNo;
 	}
-	public String getpEmail() {
-		return pEmail;
+	public String getMemEmail() {
+		return memEmail;
 	}
-	public void setpEmail(String pEmail) {
-		this.pEmail = pEmail;
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
 	}
 	public String getShTeamName() {
 		return shTeamName;
@@ -94,12 +101,6 @@ public class ShowVO {
 	public void setShDetail(String shDetail) {
 		this.shDetail = shDetail;
 	}
-	private String shMapCoords;
-	private String shMapAddr;
-	private String shMapDetail;
-	private String shDate;
-	private String shTime;
-	private String shType;
-	private String shDetail;
+
 	
 }
