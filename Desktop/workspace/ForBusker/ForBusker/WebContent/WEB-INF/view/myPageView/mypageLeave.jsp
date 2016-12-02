@@ -16,7 +16,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
-<link href="<%=projectName %>/resources/css/join_css/join.css?<?=filemtime('<%=projectName %>/resources/css/join_css/join.css)?>" rel="stylesheet" type="text/css" media="all">
+<link href="<%=projectName %>/resources/css/mypage_css/mypageLeave.css?<?=filemtime('<%=projectName %>/resources/css/mypage_css/mypageLeave.css)?>" rel="stylesheet" type="text/css" media="all">
 </head>
 
 <body id="top">
@@ -30,7 +30,28 @@
 <div class="hoc">
 	<!-- ################################################### -->
 	<!-- ################################################### -->
-	
+	<h1 id="leave_title">회원탈퇴</h1>
+	<!-- simpleJoin Form -->
+	<form id="leaveForm">
+		<!-- #################################################### -->
+		<!-- #################################################### -->
+		<div class="form-group">
+   			<label for="leaveEmail">이메일 주소</label>
+    		<div>
+	    		<input type="email" class="form-control" id="leaveEmail" name="leaveEmail" placeholder="이메일을 입력하세요" maxlength="50">
+    		</div>
+    	</div>
+    	<!-- #################################################### -->
+    	<!-- #################################################### -->
+  		<div class="form-group">
+    		<label for="leavePassword">비밀번호</label>
+    		<input type="password" class="form-control" id="leavePassword" name="leavePassword" placeholder="암호를 입력하세요" maxlength="20">
+  		</div>
+  		<!-- #################################################### -->
+  		<!-- #################################################### -->
+  		<!-- submit button -->
+  			<button type="submit" class="btn btn-success" id="submitBtn">탈퇴하기</button>
+  	</form>
 </div>
 
 <!-- 코딩 종료 -->
