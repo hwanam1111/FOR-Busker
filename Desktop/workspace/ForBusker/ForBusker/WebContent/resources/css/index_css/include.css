@@ -1,6 +1,8 @@
 @charset "utf-8";
 
-@import url("fontawesome-4.6.3.min.css");
+/* @import url("fontawesome-4.6.3.min.css"); */
+@import url(https://fonts.googleapis.com/css?family=Bungee);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url("framework.css");
 
 *{text-decoration: none; list-style: none;}
@@ -65,8 +67,8 @@ hr, .borderedbox{border-color:#D7D7D7;}
 
 
 /* Rows */
-.row1{color:#FFFFFF; border-color:rgba(255,255,255,.3); background-color: #ffc19e; margin-bottom:60px;}
-.row5, .row5 a{color:#FFFFFF; background-color:#ffc19e; margin-top:70px;}
+.row1{color:#FFFFFF; border-color:rgba(255,255,255,.3); background-color: #ffc19e; margin-bottom:40px;}
+.row5, .row5 a{color:#FFFFFF; background-color:#ffc19e; margin-top:40px;}
 
 /* Header */
 #header #logo a{color:inherit;}
