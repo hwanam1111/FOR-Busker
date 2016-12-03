@@ -34,6 +34,11 @@ function logout(){
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 	body, input, textarea, select{font-family: 'Hanna', serif;}
 	h1, h2, h3, h4, h5, h6, .heading{font-family: 'Hanna', serif;}
+
+/* 네비게이션 메뉴 */
+#mainav #liMyPage:hover{color:#000; background-color:inherit; text-decoration: none; cursor: pointer;}
+#mainav .ul_li_List{color:#ff0000; line-height: 30px;}
+#mainav .ul_li_List:first-child{margin-top:30px;}
 </style>
 
  
