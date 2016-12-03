@@ -87,7 +87,7 @@ var picker = $input.pickadate('picker')
 </div>
 <% } %>
 </td>
-<td style="width:50%;"><div id="map" style="width:100%; height:500px;"></div></td>
+<td style="width:50%;"><div id="map" style="width:100%; height:500px; z-index: -1"></div></td>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  

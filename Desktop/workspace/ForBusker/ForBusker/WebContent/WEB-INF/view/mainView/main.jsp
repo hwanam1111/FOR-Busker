@@ -23,8 +23,7 @@
 function logout(){
 	 var con = confirm("로그아웃을 하시겠습니까?");
 	 if(con == true){
-		 <c:remove var="test" scope="session" />
-		 location.href="main.do";
+		 location.href="logout.do";
 	  //logout을 위해 세션을 제거하는 페이지 호출
 	 }else{}
 	}

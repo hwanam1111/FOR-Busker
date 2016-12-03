@@ -14,7 +14,7 @@ import busker.scan.vo.MemberVO;
 
 @Controller
 public class MainController {
-	
+	 
 
 	@Autowired
 	private MemberService service;
@@ -31,6 +31,13 @@ public class MainController {
 	public String login(){
 		System.out.println("login.jsp로 이동");
 		return "mainView/login";
+	}
+	
+//	로그아웃 페이지로 이동
+	@RequestMapping(value="logout")
+	public String logout(){
+		System.out.println("logout.jsp로 이동");
+		return "mainView/logout";
 	}
 
 //	로그인확인 페이지로 이동
