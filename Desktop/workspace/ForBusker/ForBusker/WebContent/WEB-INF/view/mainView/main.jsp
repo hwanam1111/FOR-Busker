@@ -29,15 +29,14 @@ function logout(){
 	}
 </script>	
 <!-- ################################################# -->
-<!-- 폰트 부분 -->
 <style type="text/css" rel="stylesheet">
 @import url(https://fonts.googleapis.com/css?family=Bungee);
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 	body, input, textarea, select{font-family: 'Hanna', serif;}
 	h1, h2, h3, h4, h5, h6, .heading{font-family: 'Hanna', serif;}
 </style>
-<!-- ################################################# -->
- <!-- ################################################# -->
+
+ 
 </head>
 <body id="top">
 	<!-- Top Background Image Wrapper -->

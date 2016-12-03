@@ -33,12 +33,10 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<h1> Example </h1>
-	<h1> Example </h1>
+	<h1> Video Collections </h1>
 	<div class="container-fluid">
-  <h1>Hello World!</h1>
-  <p>Resize the browser window to see the effect.</p>
-  <div class="row">
+  <p>Resize the browser window to see the Video.</p>
+  <div class="row" style="margin-top:40px;">
     <div class="col-xs-4"><a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg" ><br/>
     	영상제목 팀명 올린날짜</a>
     </div>

@@ -30,6 +30,10 @@
     float:right;
     
 }
+#p_font{
+	margin-bottom:20px;
+}
+
 .videoContent{
 	float:left;
 }

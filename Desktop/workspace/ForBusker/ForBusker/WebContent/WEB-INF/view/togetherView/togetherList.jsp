@@ -36,13 +36,13 @@
 	<h1>TogetherList</h1>
 	</tr>
 	<tr> <!-- 검색창 들어갈 부분 -->
-	<div class="row marginTop50 marginLeft">
+	<div class="row marginTop50" style="margin-left:1px;">
 	<div class="col-xs-4">
 		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
 				id="example-text-input"/>
 	</div>
 	<div class="col-xs-2">
-		<button type="button" class="btn btn-outline-info">검색</button>
+		<button type="button" class="btn btn-outline-info" style="position: relative; right:20px;">검색</button>
 	</div>
 	
 	<div class="col-xs-6 ">

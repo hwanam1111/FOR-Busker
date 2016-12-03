@@ -33,6 +33,7 @@
 	<li><h1><img src="<%=projectName %>/resources/images/notice_img/notepad.png">NOTICE</h1></li>
 	<li>
 	<div class="floatRight marginBottom">
+	<button type="button" class="btn btn-info" style="height:38px;"><a href="noticeForm.do" style="color:white">글쓰기</a></button>
 		<button type="button" class="btn btn-secondary"><img src="<%=projectName %>/resources/images/notice_img/trash.png"></button>
 	</div>
 	<hr/>
@@ -41,7 +42,7 @@
 	<li> 
 	<div class="row">
 	<div class="col-xs-1"><input type="checkbox" name="chk_info" value="HTML"></div>
-	<div class="col-xs-9">제목이 들어가는 부분입니다 제목을 넣으세요.빨리 넣으세요.당장이요</div>
+	<div class="col-xs-9"><a href="noticeView.do">제목이 들어가는 부분입니다 제목을 넣으세요.빨리 넣으세요.당장이요</a></div>
 	<div class="col-xs-2">2016-12-02</div>
 	</div>
 	<hr/>

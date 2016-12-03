@@ -30,7 +30,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<form>
+<form style="margin-left:140px;">
 <table>
 <!-- 어떤 입력폼인가 -->
 <tr>

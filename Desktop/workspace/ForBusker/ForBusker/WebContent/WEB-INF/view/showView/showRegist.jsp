@@ -48,7 +48,7 @@ $(function(){
 
 	<!-- 이부분 부터 코딩 시작 -->
 	<div class="hoc">
-		<form id="form1" runat="server">
+		<form id="form1" runat="server" style="margin-left:140px;">
 			<table>
 				<!-- 어떤 입력폼인가 -->
 				<tr>
@@ -81,7 +81,7 @@ $(function(){
 						<label for="example-text-input" class="col-xs-2 col-form-label">지도</label>
 					<div class="col-xs-8">
 						<input class="form-control" type="text" id="sample5_address" placeholder="주소검색을 눌러주세요."/>
-						<button type="button" id="addressSearch" class="btn btn-info" onclick="sample5_execDaumPostcode()">주소 검색</button>
+						<button type="button" id="addressSearch" class="btn btn-info" onclick="sample5_execDaumPostcode()" style="width:100px;">주소 검색</button>
 					<div id="map"style="width: 100%; height: 300px; margin-top: 10px; float:right; display: none"></div>
 					
 					<!--  주소 검색시 div(map)에 지도 생성  -->
