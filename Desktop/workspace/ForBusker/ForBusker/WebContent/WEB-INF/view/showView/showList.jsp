@@ -57,16 +57,16 @@ var picker = $input.pickadate('picker')
 <table style="width:100%;">
 <tr>
 	<td colspan="2">   	
-	<form class="form-inline"> 
+	<form class="form-inline" style="margin-left:50px; margin-bottom:20px;"> 
 	 <div class="form-group">
-		<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" />
-		<select class="form-control" id="exampleSelect1" style="width:200px;">
+		<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style=" position: relative; right:20px;"/>
+		<select class="form-control" id="exampleSelect1" style="width:200px;  position: relative; right:5px;">
 			<option>팀명</option>
 			<option>카테고리</option>
 		</select>
-		<input class="form-control" type="text" placeholder="" id="example-text-input" style="width:300px;" />
-		<button type="button" class="btn btn-outline-info form-control" style="width:100px;">검색</button>
-		<button type="button" class="btn btn-outline-secondary marginRight form-control" id="moveToFormBtn" style="width:100px;">등록하기</button>
+		<input class="form-control" type="text" placeholder="" id="example-text-input" style="width:280px; margin-left:25px;" />
+		<button type="button" class="btn btn-outline-info " style="width:100px; color:white">검색</button>
+		<button type="button" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:100px; color:white">등록하기</button>
 	</div>
 	</form>
 	</td>
@@ -77,17 +77,17 @@ var picker = $input.pickadate('picker')
 <div style="width:100%;">
 <div>
 <!-- 이미지들어가는부분 -->
-<iframe src="https://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" allowfullscreen style="width:95%; height:200px;"></iframe>
+<iframe src="https://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" allowfullscreen style="width:95%; height:300px;"></iframe>
 <form class="form-inline"> 
 	 <div class="form-group" align="center" style="margin-left: 130px">
-		<label class="form-control"><a>팀명</a></label>						
-		<label class="form-control"><a>상세보기</a></label>
+		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>팀명</a></label>						
+		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>상세보기</a></label>
 	</div>
 </form>
 </div>
 <% } %>
 </td>
-<td style="width:50%;"><div id="map" style="width:100%; height:500px; z-index: -1"></div></td>
+<td style="width:50%;"><div id="map" style="width:100%; height:770px; z-index: -1; "></div></td>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
