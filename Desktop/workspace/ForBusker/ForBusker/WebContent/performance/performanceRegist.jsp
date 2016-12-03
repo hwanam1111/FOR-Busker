@@ -23,16 +23,10 @@
 <!--  performanceRegist.css 끌어오기 -->
 <link rel="stylesheet" href="<%=projectName%>/resources/css/performance_css/performanceRegist.css"/>
 <script src="<%=projectName%>/resources/js/performance_js/jquery.datetimepicker.full.js"></script>
+<script src="<%=projectName%>/resources/js/performance_js/performanceRegist.js?<?=filemtime('<%=projectName %>/performance_js/performanceRegist.js')?>"></script>
 <!--  Daum Map api 가져오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script	src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e&libraries=services"></script>
-
- <script type="text/javascript">
-$(function(){
-	$('.some_class').datetimepicker(	
-	);
-});
-</script>
  
 </head>
 
@@ -46,14 +40,14 @@ $(function(){
 	<div class="hoc">
 		<form id="form1" runat="server">
 			<table>
-				<!-- 어떤 입력폼인가 -->
+				<!-- ############## 어떤 입력폼인가 ############## -->
 				<tr>
 					<h1>performanceRegist Form</h1>
 					<br />
 					<br />
 				</tr>
 
-				<!-- 제목 -->
+				<!-- ############## 제목 ############## -->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
@@ -62,7 +56,7 @@ $(function(){
 						</div>
 					</div>
 				</tr>
-				<!-- 영상URL -->
+				<!-- ############## 영상URL ############## -->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">영상 URL</label>
@@ -71,7 +65,7 @@ $(function(){
 						</div>
 					</div>
 				</tr>
-				<!-- 지도 -->
+				<!-- ############## 지도 ############## -->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">지도</label>
@@ -147,7 +141,7 @@ $(function(){
 				</div>
 				</tr>
 			
-				<!-- 위치설명 -->
+				<!--############## 위치설명 ############## -->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">위치설명</label>
@@ -155,7 +149,7 @@ $(function(){
 					   <textarea class="form-control" id="exampleTextarea" rows="2" placeholder="위치에 대한 설명을 해주세요."></textarea>
 					</div>
 				</tr>
-				<!-- 시간선정 -->
+				<!--############## 시간선정 ############## -->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">시간선정</label>
@@ -165,7 +159,7 @@ $(function(){
 
 					</div>
 				</tr>
-				<!-- 담당자명 -->
+				<!-- ############## 담당자명 ############## -->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">공연자</label>
@@ -190,7 +184,7 @@ $(function(){
 						</div>
 					</div>
 				</tr>
-				<!-- 상세설명-->
+				<!-- ##############상세설명 ##############-->
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
