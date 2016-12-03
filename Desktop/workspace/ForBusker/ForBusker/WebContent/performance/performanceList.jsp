@@ -13,6 +13,8 @@
 <!-- include header -->
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="<%=projectName %>/resources/css/performance_css/default.css?<?=filemtime('<%=projectName %>/resources/css/performance_css/default')?>">
+<!--지도 -->
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=bf714e7c229c1628818ddd8ed8bc7533"></script>
 
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -21,25 +23,10 @@
 <script src="<%=projectName %>/resources/js/performance_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
 <script src="<%=projectName %>/resources/js/performance_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
 <script src="<%=projectName %>/resources/js/performance_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/legacy')?>"></script>
+<script src="<%=projectName %>/resources/js/performance_js/performanceList.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/performanceList.js')?>"></script>
+<!-- css -->
 
-
-<script type="text/javascript">
-$(function(){
-	
-var $input = $( '.datepicker' ).pickadate({
-    formatSubmit: 'yyyy/mm/dd',
-    // min: [2015, 7, 14],
-    container: '#container',
-    // editable: true,
-    closeOnSelect: true,
-    closeOnClear: true,    
-})
-
-
-var picker = $input.pickadate('picker')
-
-});
-</script>
+<link rel="stylesheet" href="<%=projectName %>/resources/css/performance_css/performanceList.css?<?=filemtime('<%=projectName %>/resources/css/performance_css/performanceList.css')?>">
 </head>
 
 <body id="top">
@@ -48,116 +35,63 @@ var picker = $input.pickadate('picker')
 <!-- ################################################### -->
 <!-- 이부분 부터 코딩 시작 -->
 
-<div class="hoc" align="center">
+<div class="mapHoc" align="center">
 
 <table style="width:100%;">
-<tr>
+<!-- ****************************************    달력과 검색기능   ***************************************************-->
+<tr> 
 	<td colspan="2">   	
 	<form class="form-inline"> 
-	 <div class="form-group">
-		<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" />
-		<select class="form-control" id="exampleSelect1" style="width:200px;">
+	 <div class="form-group marginLeft"> <!-- 바깥 div -->
+		<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style="width:100px;"/>
+		<select class="form-control" id="exampleSelect1" style="width:70px;">
 			<option>팀명</option>
 			<option>카테고리</option>
 		</select>
 		<input class="form-control" type="text" placeholder="" id="example-text-input" style="width:300px;" />
-		<button type="button" class="btn btn-outline-info form-control" style="width:100px;">검색</button>
-		<button type="button" class="btn btn-outline-secondary marginRight form-control" id="moveToFormBtn" style="width:100px;">등록하기</button>
+		<button type="button" class="btn btn-outline-info form-control" style="width:50px;">검색</button>
+		<button type="button" class="btn btn-outline-secondary marginRight form-control" id="moveToFormBtn" style="width:70px;">등록하기</button>
 	</div>
 	</form>
 	</td>
 </tr>
+<!-- ****************************************    영상과 지도   ***************************************************-->
+
 <tr>
-<td style="padding-top: 10px; padding-left:30px; padding-bottom: 10px; padding-right: 10px;">
+<td class="col-xs-6">
+<ul>
 <% for (int i =0; i<2; i++){ %>
-<div style="width:100%;">
-<div>
-<!-- 이미지들어가는부분 -->
-<iframe src="https://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" allowfullscreen style="width:95%; height:200px;"></iframe>
+<!-- 동영상 -->
+<li>
+<iframe src="https://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" class="performVieo"></iframe>
+</li>
+<!-- 상세보기 -->
+<li>
 <form class="form-inline"> 
-	 <div class="form-group" align="center" style="margin-left: 130px">
+	 <div class="form-group" align="center" style="margin-left:130px">
 		<label class="form-control"><a>팀명</a></label>						
 		<label class="form-control"><a>상세보기</a></label>
 	</div>
 </form>
-</div>
+</li>
 <% } %>
+</ul>
 </td>
-<td style="width:50%;"><div id="map" style="width:100%; height:500px;"></div></td>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-    mapOption = { 
-        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
 
-var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
- 
-// 마커를 표시할 위치와 title 객체 배열입니다 
-var positions = [
-    {
-        title: '카카오', 
-        latlng: new daum.maps.LatLng(33.450705, 126.570677)
-    },
-    {
-        title: '생태연못', 
-        latlng: new daum.maps.LatLng(33.450936, 126.569477)
-    }
-];
-
-// ###############마커 이미지의 이미지 주소넣기입니다#####################
-var imageSrc = "../pin.png"; 
-    
-for (var i = 0; i < positions.length; i ++) {
-    
-    // 마커 이미지의 이미지 크기 입니다
-    var imageSize = new daum.maps.Size(30, 35); 
-    
-    // 마커 이미지를 생성합니다    
-    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-    
-    // 마커를 생성합니다
-    var marker = new daum.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng, // 마커를 표시할 위치
-        image : markerImage // 마커 이미지 
-    });
-    
-    var infowindow = new daum.maps.InfoWindow({
-        content: positions[i].title //############ 인포윈도우에 표시할 내용#########
-    });
-
-    daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-    // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-}
-
-//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-function makeOverListener(map, marker, infowindow) {
-    return function() {
-        infowindow.open(map, marker);
-    };
-}
-
-// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-function makeOutListener(infowindow) {
-    return function() {
-        infowindow.close();
-    };
-}
-
-</script>
+<!-- *************************************** 지도 ************************************************ -->
+<td class="col-xs-6">
+<div id="map" class="mapSize"></div>
+</td>
 </tr>
 </table>
 	
-</div>
+</div> <!-- hoc 끝 -->
 
 <!-- 달력 보여주는 div -->
 <div id="container"></div>
+
+
 <!-- 코딩 종료 -->
-
-
 <!-- ##############  footer 부분 include  ############## -->
 <jsp:include page="/WEB-INF/view/includeFile/footer.jsp" />
 <!-- ################################################## -->

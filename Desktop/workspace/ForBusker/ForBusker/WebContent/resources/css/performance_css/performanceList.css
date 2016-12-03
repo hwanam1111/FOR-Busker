@@ -1,0 +1,22 @@
+.performVieo{
+	width:600px;
+	height:400px;
+}
+.mapSize{
+	width:600px;
+	height:800px;
+	vertical-align:top;
+}
+.marginTop{
+	margin-top:100px;
+}
+.floatLeft{
+	float:left;
+}
+.marginLeft{
+	margin-left:50px;
+	margin-bottom:50px;
+}
+.form-inline{
+	height:100px;
+}
