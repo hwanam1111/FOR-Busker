@@ -17,6 +17,7 @@
 <!-- ################################################################ -->
 <!-- ################################################################ -->
 <!-- jQuery lib CDN URL -->
+<script src="/ForBusker/resources/js/index_js/mapper.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- 로그아웃 부분 -->
 <script type="text/javascript">
@@ -157,8 +158,43 @@ function logout(){
 	<div class="wrapper bgded"
 		style="background-color: rgba(49, 255, 255, .49); border-top: 1px solid rgba(49, 101, 115, .75); border-bottom: 1px solid rgba(49, 101, 115, .75); width: 100%">
 		<div class="split clear">
-			<img src="<%=projectName %>/resources/images/index_img/map.jpg" style="float: left; width: 60%; height: 600px;">
-			<section id="split-right"> <!-- ################################################################################################ -->
+			<img src="/ForBusker/resources/images/index_img/map2.jpg" usemap="#maptag" class="mapper noborder iradius16 iopacity50 icolor00ff00">
+			<map name="maptag" id="maptag" >
+ 			<!-- 강북 -->
+ 			<area shape="poly"  coords="347,210,493,225,494,294,332,299" href="#" target="_blank" title="광화문">
+ 			<area shape="poly"  coords="281,43,350,46,330,196,232,186" href="#" target="_blank" title="은평/서대문">
+			<area shape="poly" id="blue" rel="green,red" coords="223,204,327,214,315,301,207,261" href="#" target="_blank" title="신촌">
+			<area shape="poly" coords="164,256,285,306,232,375,128,293" href="#" target="_blank" title="마포">
+			<area shape="poly" coords="297,321,354,326,338,462,247,387" href="#" target="_blank" title="홍대">
+			<area shape="poly" coords="365,79,443,84,435,204,350,199" href="#" target="_blank" title="종로">
+			<area shape="poly" coords="381,314,490,311,490,380,381,397" href="#" target="_blank" title="명동">
+			<area shape="poly" coords="355,423,441,406,458,493,424,505,353,472" href="#" target="_blank" title="이태원">
+			<area shape="poly" coords="460,28,551,29,561,130,457,121" href="#" target="_blank" title="대학로">
+			<area shape="poly" coords="455,140,553,148,558,219,452,205" href="#" target="_blank" title="삼청동">
+			<area shape="poly" coords="508,229,572,233,586,358,502,374" href="#" target="_blank" title="중구">
+			<area shape="poly" coords="462,402,576,381,579,434,475,487" href="#" target="_blank" title="용산">
+			<area shape="poly" coords="573,60,660,52,672,151,583,163" href="#" target="_blank" title="강북/성북">
+			<area shape="poly" coords="580,179,672,170,684,253,593,271" href="#" target="_blank" title="동대문/성동">
+			<area shape="poly" coords="596,285,685,273,699,342,604,385" href="#" target="_blank" title="건대">
+			<area shape="poly" coords="676,34,724,26,764,56,771,163,694,175" href="#" target="_blank" title="노원/도봉">
+			<area shape="poly" coords="695,193,784,180,770,294,710,311" href="#" target="_blank" title="중랑/광진">
+			<!-- 강남 -->
+			<area shape="poly" coords="101,386,178,407,215,457,190,515,101,535" href="#" target="_blank" title="강서/양천">
+<area shape="poly" coords="226,470,339,554,269,593,203,518" href="#" target="_blank" title="영등포">
+<area shape="poly" coords="123,543,189,528,252,602,159,653,121,633" href="#" target="_blank" title="구로/금천">
+<area shape="poly" coords="238,625,305,589,299,699,250,699" href="#" target="_blank" title="동작">
+<area shape="poly" coords="329,581,381,560,398,699,322,699" href="#" target="_blank" title="관악">
+
+<area shape="poly" coords="410,562,464,549,496,685,423,692" href="#" target="_blank" title="서초">
+<area shape="poly" coords="477,502,562,494,583,575,492,600" href="#" target="_blank" title="압구정/청담">
+<area shape="poly" coords="496,615,587,590,614,680,510,685" href="#" target="_blank" title="서래마을">
+<area shape="poly" coords="575,491,652,452,695,526,598,570" href="#" target="_blank" title="가로수길">
+<area shape="poly" coords="602,585,702,540,731,598,624,656" href="#" target="_blank" title="강남">
+
+<area shape="poly" coords="723,372,792,354,793,442,697,436" href="#" target="_blank" title="강동">
+<area shape="poly" coords="682,454,797,460,796,577,747,580" href="#" target="_blank" title="송파">
+			
+			<section id="split-right" style="position:absolute; right:-350px"> <!-- ################################################################################################ -->
 			<h6 class="heading">리스트 ㅇㅇ</h6>
 			<p class="btmspace-30">리스트 ㅇㅇ</p>
 			<ul class="fa-ul">
