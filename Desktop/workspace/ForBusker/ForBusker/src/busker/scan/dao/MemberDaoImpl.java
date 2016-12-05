@@ -12,7 +12,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Autowired
 	private SqlSessionTemplate ss;
 	
-	
+//	로그인
 	@Override
 	public MemberVO idCheck(MemberVO vo) {
 		
@@ -23,5 +23,19 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return ok;
 	}
+
+	
+//	회원가입
+	@Override
+	public int insertMember(MemberVO vo) {
+		
+		System.out.println("insertMember쪽 vo값" + vo.getMemEmail());
+		
+		MemberVO ok = null;
+		ok = ss.selectOne("main.insertMember", vo);
+		
+		return 1;
+	}
+
 
 }

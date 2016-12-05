@@ -1,5 +1,9 @@
 package busker.scan.controller;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger; 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import busker.scan.vo.MemberVO;
 @Controller
 public class MemberController {
 
+	private final Logger logger = LogManager.getLogger(this.getClass());
 	
 	@Autowired
 	private MemberService service;
@@ -42,6 +47,30 @@ public class MemberController {
 		m.addAttribute("message",message);
 		
 		return result;
+	}
+	
+	
+//	회원가입 확인 페이지로 이동
+	@RequestMapping(value = "joinOk")
+	public String insertMember(MemberVO vo, Model m, HttpServletRequest req) throws Exception{
+		
+		logger.info("MemberVO.mememail : " + vo.getMemEmail());
+		logger.info("MemberVO.mempw : " + vo.getMemPw());
+		logger.info("MemberVO.memnick : " + vo.getMemNick());
+		logger.info("MemberVO.memphone : " + vo.getMemPhone());
+		
+		int resultCnt = service.insertMember(vo);
+		String result = "";
+		  if ( resultCnt == 0 ){
+		   result = "실패당";
+		  } else {
+		   result = "성공이당";
+		  }
+		  
+		  m.addAttribute("result", result);
+		  m.addAttribute("vo", vo);
+		
+		return "mainView/joinOk";
 	}
 	
 }

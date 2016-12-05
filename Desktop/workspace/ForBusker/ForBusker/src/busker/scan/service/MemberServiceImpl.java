@@ -12,8 +12,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDao memberDao; 
-	
-	
+	 
+//	로그인
 	@Override
 	public MemberVO selectMember(MemberVO memvo) throws Exception {
 		
@@ -22,6 +22,16 @@ public class MemberServiceImpl implements MemberService {
 		MemberVO result = memberDao.idCheck(memvo);
 
 		return result;
+	}
+	
+// 회원가입
+	
+	@Override
+	public int insertMember(MemberVO memvo) throws Exception {
+		
+		System.out.println("selectMember쪽 vo값" + memvo.getMemEmail());
+		
+		 return memberDao.insertMember(memvo);
 	}
 	
 }

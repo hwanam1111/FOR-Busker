@@ -38,13 +38,13 @@
 	<!-- ################################################### -->
 	<h1 id="simple_title">일반 회원가입</h1>
 	<!-- simpleJoin Form -->
-	<form id="simpleJoinForm">
+	<form id="simpleJoinForm" action="joinOk.do">
 		<!-- #################################################### -->
 		<!-- #################################################### -->
 		<div class="form-group">
    			<label for="simpleEmail">이메일 주소</label>
     		<div>
-	    		<input type="email" class="form-control" id="simpleEmail" name="simpleEmail" placeholder="이메일을 입력하세요" maxlength="50">
+	    		<input type="email" class="form-control" id="simpleEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
 	    		<button type="button" id="emailCheckBtn" class="btn btn-info">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
@@ -59,7 +59,7 @@
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="simplePassword">비밀번호</label>
-    		<input type="password" class="form-control" id="simplePassword" name="simplePassword" placeholder="암호를 입력하세요" maxlength="20">
+    		<input type="password" class="form-control" id="simplePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
@@ -72,13 +72,13 @@
   		<!-- #################################################### -->
   		<div class="form-group">
  		   <label for="simpleNickname">닉네임</label>
-    		<input type="text" class="form-control" id="simpleNickname"name="simpleNickname" placeholder="닉네임을 입력하세요" maxlength="12">
+    		<input type="text" class="form-control" id="simpleNickname"name="memNick" placeholder="닉네임을 입력하세요" maxlength="12">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
  		    <label for="simpleTel">전화번호</label>
-    		<input type="tel" class="form-control" id="simpleTel"name="simpleTel" placeholder="전화번호를 입력하세요" maxlength="13">
+    		<input type="tel" class="form-control" id="simpleTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
 		<!-- submit button -->
   			<button type="submit" class="btn btn-success" id="submitBtn">회원가입</button>
