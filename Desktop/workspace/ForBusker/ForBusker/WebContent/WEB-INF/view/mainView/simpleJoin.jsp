@@ -48,6 +48,7 @@
 	    		<button type="button" id="emailCheckBtn" class="btn btn-info">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
+    		<div id="emailCheck1" style="display: none;"></div>
     	</div>
     	<!-- #################################################### -->
     	<!-- #################################################### -->

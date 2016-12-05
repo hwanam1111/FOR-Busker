@@ -1,5 +1,6 @@
 package busker.scan.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,17 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
+//	중복체크
+	@Override
+	public MemberVO selectEmail(MemberVO memvo) throws Exception {
+		
+		System.out.println("selectEmail쪽 vo값" + memvo.getMemEmail());
+		
+		MemberVO result = memberDao.idchecked(memvo);
+
+		return result;
+	}
+	
 // 회원가입
 	
 	@Override
@@ -33,5 +45,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		 return memberDao.insertMember(memvo);
 	}
+
+
 	
 }

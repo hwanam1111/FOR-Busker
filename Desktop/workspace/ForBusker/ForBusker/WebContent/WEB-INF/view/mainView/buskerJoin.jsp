@@ -19,6 +19,7 @@
 <link href="<%=projectName %>/resources/css/join_css/buskerJoin.css?<?=filemtime('<%=projectName %>/resources/css/join_css/buskerJoin.css)?>" rel="stylesheet" type="text/css" media="all">
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/join_js/buskerJoin.js?<?=filemtime('<%=projectName %>/resources/js/join_js/buskerJoin.js')?>"></script>
+<script type="text/javascript" src="<%=projectName %>/resources/js/join_js/idCheckOk.js?<?=filemtime('<%=projectName %>/resources/js/join_js/idCheckOk.js')?>"></script>
 </head>
 
 <body id="top">
@@ -44,10 +45,11 @@
 		<div class="form-group">
    			<label for="buskerEmail">이메일 주소</label>
     		<div>
-	    		<input type="email" class="form-control" id="buskerEmail" name="buskerEmail" placeholder="이메일을 입력하세요" maxlength="50">
+	    		<input type="email" class="form-control" id="buskerEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
 	    		<button type="button" id="emailCheckBtn" class="btn btn-info">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
+    		<div id="emailCheck1" style="display: none;"></div>
     	</div>
     	<!-- #################################################### -->
     	<!-- #################################################### -->
@@ -59,7 +61,7 @@
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="buskerPassword">비밀번호</label>
-    		<input type="password" class="form-control" id="buskerPassword" name="buskerPassword" placeholder="암호를 입력하세요" maxlength="20">
+    		<input type="password" class="form-control" id="buskerPassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
@@ -72,57 +74,59 @@
   		<!-- #################################################### -->
   		<div class="form-group">
  		    <label for="buskerTel">전화번호</label>
-    		<input type="tel" class="form-control" id="buskerTel"name="buskerTel" placeholder="전화번호를 입력하세요" maxlength="13">
+    		<input type="tel" class="form-control" id="buskerTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
   		<div class="form-group">
  		    <label for="buskerTeamName">팀 이름</label>
-    		<input type="text" class="form-control" id="buskerTeamName"name="buskerTeamName" placeholder="팀명을 입력하세요" maxlength="13">
+    		<input type="text" class="form-control" id="buskerTeamName"name="memTeamName" placeholder="팀명을 입력하세요" maxlength="13">
   		</div>
   		<!-- ################################################### -->
   		<!-- ##################### CheckBox #################### -->
 		<!-- ################################################### -->
 		<label>공연장르</label>
   		<label class="checkbox-inline">
-  			<input type="checkbox" id="check_sing" value="check_sing"> 노래
+  			<input type="checkbox" id="check_sing" value="노래" name="memTeamType"> 노래
 		</label>
 		<label class="checkbox-inline">
-  			<input type="checkbox" id="check_dance" value="check_dance"> 댄스
+  			<input type="checkbox" id="check_dance" value="댄스" name="memTeamType"> 댄스
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_band" value="check_band"> 밴드
+ 			<input type="checkbox" id="check_band" value="밴드" name="memTeamType"> 밴드
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_guitar" value="check_guitar"> 기타
+ 			<input type="checkbox" id="check_guitar" value="기타" name="memTeamType"> 기타
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_piano" value="check_piano"> 피아노
+ 			<input type="checkbox" id="check_piano" value="피아노" name="memTeamType"> 피아노
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_magic" value="check_magic"> 마술
+ 			<input type="checkbox" id="check_magic" value="마술" name="memTeamType"> 마술
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_other" value="check_other"> 그외..
+ 			<input type="checkbox" id="check_other" value="그외" name="memTeamType"> 그외..
 		</label>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
 		<div class="InputFile">
     		<br><label for="InputFile">팀 프로필 사진</label>
-    		<input type="file" id="InputFile"> 
+    		<input type="file" id="InputFile" name="memTeamPhoto"> 
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
   		<div class="form-group">
  		    <br/><label for="buskerVideo">팀 홍보 영상</label>
-    		<input type="text" class="form-control" id="buskerVideo"name="buskerVideo" placeholder="영상URL을 입력하세요" maxlength="13">
+    		<input type="text" class="form-control" id="buskerVideo" name="memVideo" placeholder="영상URL을 입력하세요" maxlength="120">
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
 		<label>팀 설명</label>
-		<textarea class="form-control" rows="5"></textarea>
+		<textarea class="form-control" rows="5" name="memDetail" id="buskerDetail"></textarea>
 		<!-- ################################################### -->
 		<!-- ################################################### -->
+		<input type="hidden" name="memStatus" value="1">
+		<input type="hidden" name="memType" value="1">
 		<!-- submit button -->
-  			<button type="submit" class="btn btn-success" id="submitBtn">회원가입</button>
+  			<button type="button" class="btn btn-success" id="submitBtn">회원가입</button>
   			<button type="reset" class="btn btn-success" id="resetBtn">다시작성</button>
 	</form>
 	

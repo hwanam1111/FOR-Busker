@@ -1,5 +1,6 @@
 package busker.scan.service;
 
+
 import busker.scan.vo.MemberVO;
 
 public interface MemberService {
@@ -8,4 +9,8 @@ public interface MemberService {
 
 	//회원가입
 	public int insertMember(MemberVO memvo) throws Exception;
+
+	//중복체크
+	public MemberVO selectEmail(MemberVO memvo) throws Exception;
+
 }

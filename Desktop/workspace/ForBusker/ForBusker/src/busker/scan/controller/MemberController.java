@@ -1,15 +1,13 @@
 package busker.scan.controller;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger; 
+import org.apache.log4j.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
+import org.springframework.web.bind.annotation.*;
 
 import busker.scan.service.MemberService;
 import busker.scan.vo.MemberVO;
@@ -54,10 +52,12 @@ public class MemberController {
 	@RequestMapping(value = "joinOk")
 	public String insertMember(MemberVO vo, Model m, HttpServletRequest req) throws Exception{
 		
+		
 		logger.info("MemberVO.mememail : " + vo.getMemEmail());
 		logger.info("MemberVO.mempw : " + vo.getMemPw());
 		logger.info("MemberVO.memnick : " + vo.getMemNick());
 		logger.info("MemberVO.memphone : " + vo.getMemPhone());
+		logger.info("memberVO.memteamphoto" + vo.getMemTeamPhoto());
 		logger.info("MemberVO.memteamtype : " + vo.getMemTeamType());
 		logger.info("MemberVO.memteamname : " + vo.getMemTeamName());
 		logger.info("MemberVO.memvideo : " + vo.getMemVideo());
@@ -78,5 +78,28 @@ public class MemberController {
 		
 		return "mainView/joinOk";
 	}
+	
+//	아이디 중복체크
+	@RequestMapping(value="idchecked.do")
+	public String idchecked(String userid, Model m, HttpSession session) throws Exception{
+		System.out.println("idchecked.jsp로 이동");
+		System.out.println(userid);
+		MemberVO ok = null;
+		MemberVO memberVO = new MemberVO();
+		memberVO.setMemEmail(userid);
+		ok= service.selectEmail(memberVO);
+		String result="";	
+	
+		if(ok!=null){
+			result="mainView/idchecked";
+			m.addAttribute("vo",ok);
+		}else{
+			result="mainView/idchecked";
+		}
+		
+		return result;
+	}
+	
+	
 	
 }

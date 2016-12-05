@@ -8,4 +8,7 @@ public interface MemberDao {
 	
 	//회원가입
 	public int insertMember(MemberVO vo);
+
+	//중복체크
+	MemberVO idchecked(MemberVO vo);
 }

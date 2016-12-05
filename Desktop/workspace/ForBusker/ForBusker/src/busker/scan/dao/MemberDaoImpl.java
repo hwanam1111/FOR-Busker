@@ -23,6 +23,15 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return ok;
 	}
+	
+//	중복체크
+	@Override
+	public MemberVO idchecked(MemberVO vo) {
+		
+		System.out.println("idchecked쪽 vo값" + vo.getMemEmail());
+		
+		return ss.selectOne("main.idchecked", vo);
+	}
 
 	
 //	회원가입
