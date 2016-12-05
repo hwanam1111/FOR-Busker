@@ -12,15 +12,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- include header -->
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
-<link rel="stylesheet" href="<%=projectName %>/resources/css/performance_css/default.css?<?=filemtime('<%=projectName %>/resources/css/performance_css/default')?>">
+<link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/default.css?<?=filemtime('<%=projectName %>/resources/css/show_css/default')?>">
 
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="<%=projectName %>/resources/js/performance_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
-<script src="<%=projectName %>/resources/js/performance_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
-<script src="<%=projectName %>/resources/js/performance_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/legacy')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/show_js/picker')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/show_js/picker.date')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/show_js/legacy')?>"></script>
 
 
 <script type="text/javascript">

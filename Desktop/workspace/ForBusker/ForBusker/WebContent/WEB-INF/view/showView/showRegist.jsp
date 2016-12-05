@@ -19,10 +19,10 @@
 <!-- include header -->
 <link href="<%=projectName%>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
 <!--  달력,시간 api 가져오기 -->
-<link rel="stylesheet" type="text/css" href="<%=projectName%>/resources/css/performance_css/jquery.datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="<%=projectName%>/resources/css/show_css/jquery.datetimepicker.css" />
 <!--  performanceRegist.css 끌어오기 -->
-<link rel="stylesheet" href="<%=projectName%>/resources/css/performance_css/performanceRegist.css"/>
-<script src="<%=projectName%>/resources/js/performance_js/jquery.datetimepicker.full.js"></script>
+<link rel="stylesheet" href="<%=projectName%>/resources/css/show_css/performanceRegist.css"/>
+<script src="<%=projectName%>/resources/js/show_js/jquery.datetimepicker.full.js"></script>
 <!--  Daum Map api 가져오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script	src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e&libraries=services"></script>
