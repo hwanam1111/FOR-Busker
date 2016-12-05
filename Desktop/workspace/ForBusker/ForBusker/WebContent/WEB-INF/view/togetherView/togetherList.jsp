@@ -17,6 +17,9 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- rightBanner css -->
+<link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
+
 </head>
 
 <body id="top">
@@ -26,6 +29,10 @@
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
+<!-- ################################################### -->
+
+<!-- ############   rightBanner include  ###############-->
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
 <!-- ################################################### -->
 
 

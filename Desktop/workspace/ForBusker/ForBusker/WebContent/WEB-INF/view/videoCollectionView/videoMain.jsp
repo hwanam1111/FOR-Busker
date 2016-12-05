@@ -15,9 +15,14 @@
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
-
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/videoCollection_css/imggrid.css?<?=filemtime('<%=projectName %>/resources/css/videoCollection_css/imggrid.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- rightBanner css -->
+<link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- sponser js -->
+<script type="text/javascript" src="<%=projectName %>/resources/js/sponser_js/sponser.js?<?=filemtime('<%=projectName %>/resources/sponser_js/sponser.js')?>" type="text/css"></script>
+
+
 <body id="top">
 </head>
 
@@ -30,6 +35,10 @@
 <% } %>
 <!-- ################################################### -->
 
+<!-- ############   rightBanner include  ###############-->
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
+<!-- ################################################### -->
+
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
@@ -37,12 +46,12 @@
 	<div class="container-fluid">
   <p>Resize the browser window to see the Video.</p>
   <div class="row" style="margin-top:40px;">
-    <div class="col-xs-4"><a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg" ><br/>
+    <div class="col-xs-4"><a href="videoView.do?imgpath=https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg"><img class='videothumb' src="https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg" ><br/>
     	영상제목 팀명 올린날짜</a>
     </div>
-    <div class="col-xs-4"><a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/MmA4TlBiVRs/hqdefault.jpg" ><br/>
+    <div class="col-xs-4"><a href="videoView.do?imgpath=https://img.youtube.com/vi/MmA4TlBiVRs/hqdefault.jpg"><img class='videothumb' src="https://img.youtube.com/vi/MmA4TlBiVRs/hqdefault.jpg" ><br/>
     	영상제목 팀명 올린날짜</a></div>
-    <div class="col-xs-4"><a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg" ><br/>
+    <div class="col-xs-4"><a href="videoView.do?imgpath=https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg"><img class='videothumb' src="https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg" ><br/>
     	영상제목 팀명 올린날짜</a></div>
    <!--  <div class="col-xs-4" style="background-color:lavender;">4번동영상</div>
     <div class="col-xs-4" style="background-color:lavenderblush;">5번동영상</div>

@@ -17,6 +17,8 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/sponser_css/sponserTab.css?<?=filemtime('<%=projectName %>/resources/css/sponser_css/sponserTab.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- rightBanner css -->
+<link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
 <script type="text/javascript" src="<%=projectName %>/resources/js/sponser_js/sponser.js?<?=filemtime('<%=projectName %>/resources/sponser_js/sponser.js')?>" type="text/css"></script>
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
 </head>
@@ -28,6 +30,10 @@
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
+<!-- ################################################### -->
+
+<!-- ############   rightBanner include  ###############-->
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
 <!-- ################################################### -->
 
 <!-- 이부분 부터 코딩 시작 -->

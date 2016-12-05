@@ -13,6 +13,8 @@
 <!-- include header -->
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/default.css?<?=filemtime('<%=projectName %>/resources/css/show_css/default')?>">
+<!-- rightBanner css -->
+<link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
 
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -50,6 +52,11 @@ var picker = $input.pickadate('picker')
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
 <!-- ################################################### -->
+
+<!-- ############   rightBanner include  ###############-->
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
+<!-- ################################################### -->
+
 <!-- 이부분 부터 코딩 시작 -->
 
 <div class="hoc" align="center">

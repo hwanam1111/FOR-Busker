@@ -1,0 +1,21 @@
+#floatdiv{
+	position:fixed; _position:absolute; _z-index:0;
+	border: 1px solid gold;
+	width:140px;
+/* 	height:180px; */
+	overflow:hidden;
+	/* left:600px; */
+	right:90px;
+	top:100px;
+	background:url(img/1_menu_quick.png) repeat-x ;
+	margin:0;
+	padding:10px;
+	
+
+}
+#floatdiv ul{list-style:none; padding:0;}
+#floatdiv li  { margin-top:5px;margin-bottom: 2px; text-align: center; }
+#floatdiv a   { color: #5D5D5D; border: 0; text-decoration: none; display: block; }
+#floatdiv a:hover, #floatdiv .menu  { background-color: #D4F4FA; color: #fff; }
+#floatdiv .menu, #floatdiv .last    { margin-bottom: 0px; }
+#floatdiv img{width:130px;}
