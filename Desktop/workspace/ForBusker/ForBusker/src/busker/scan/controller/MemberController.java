@@ -58,6 +58,12 @@ public class MemberController {
 		logger.info("MemberVO.mempw : " + vo.getMemPw());
 		logger.info("MemberVO.memnick : " + vo.getMemNick());
 		logger.info("MemberVO.memphone : " + vo.getMemPhone());
+		logger.info("MemberVO.memteamtype : " + vo.getMemTeamType());
+		logger.info("MemberVO.memteamname : " + vo.getMemTeamName());
+		logger.info("MemberVO.memvideo : " + vo.getMemVideo());
+		logger.info("MemberVO.memdetail : " + vo.getMemDetail());
+		logger.info("MemberVO.memstatus : " + vo.getMemStatus());
+		logger.info("MemberVO.memtype : " + vo.getMemType());
 		
 		int resultCnt = service.insertMember(vo);
 		String result = "";

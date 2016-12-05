@@ -1,5 +1,7 @@
 package busker.scan.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVO {
 
 	private String memEmail;
@@ -8,14 +10,20 @@ public class MemberVO {
 	private String memNick;
 	private String memPhone;
 	private String memTeamType;
-	private String memTeamPhoto;
 	private String memTeamName;
 	private String memLeader;
 	private String memVideo;
 	private String memDetail;
 	private String memStatus;
 	private String memType;
+	private MultipartFile memTeamPhoto;
 	
+	public MultipartFile getFile() {
+		return memTeamPhoto;
+	}
+	public void setFile(MultipartFile file) {
+		this.memTeamPhoto = file;
+	}
 	public String getMemEmail() {
 		return memEmail;
 	}
@@ -51,12 +59,6 @@ public class MemberVO {
 	}
 	public void setMemTeamType(String memTeamType) {
 		this.memTeamType = memTeamType;
-	}
-	public String getMemTeamPhoto() {
-		return memTeamPhoto;
-	}
-	public void setMemTeamPhoto(String memTeamPhoto) {
-		this.memTeamPhoto = memTeamPhoto;
 	}
 	public String getMemTeamName() {
 		return memTeamName;
@@ -94,6 +96,7 @@ public class MemberVO {
 	public void setMemType(String memType) {
 		this.memType = memType;
 	}
+	
 	
 	
 }
