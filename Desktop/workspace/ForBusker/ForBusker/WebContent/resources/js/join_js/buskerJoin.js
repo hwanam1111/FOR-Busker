@@ -171,7 +171,7 @@ $(function() {
 		}
 		
 
-		if($('#confirm').val() != authRandomNum){
+		if($('#buskerConfirm').val() != authRandomNum){
 			alert('이메일 인증을 해주세요');
 			return false;
 		}

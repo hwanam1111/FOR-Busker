@@ -158,7 +158,7 @@ $('#submitBtn').click(function(){
 
 		
 
-		if($('#confirm').val() != authRandomNum){
+		if($('#simpleConfirm').val() != authRandomNum){
 			alert('이메일 인증을 해주세요');
 			return false;
 		}
