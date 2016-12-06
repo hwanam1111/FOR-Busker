@@ -45,7 +45,7 @@
    			<label for="simpleEmail">이메일 주소</label>
     		<div>
 	    		<input type="email" class="form-control" id="simpleEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
-	    		<button type="button" id="emailCheckBtn" class="btn btn-info">이메일인증</button>
+	    		<button type="button" id="emailCheckBtn" class="btn btn-info" disabled="disabled">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
     		<div id="emailCheck1" style="display: none;"></div>
@@ -56,6 +56,7 @@
  		   <label for="simpleConfirm">이메일 인증</label>
     		<input type="text" class="form-control" id="simpleConfirm" name="simpleConfirm" placeholder="입력한 이메일로 인증번호가 전송되었습니다. 인증번호를 입력해주십시오." maxlength="12">
   		</div>
+  		<div id="emailmessage" style="display:none"></div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">

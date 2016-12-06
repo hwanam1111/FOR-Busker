@@ -33,6 +33,7 @@ $(function() {
 								$('#emailCheck1').css('margin-top','5px');
 								$('#emailCheck1').css('margin-left','3px');
 								$('#emailCheck1').show();
+								$('#emailCheckBtn').attr('disabled', false);
 							}
 						}else{
 							$('#idmessage').css('display','none');
@@ -65,12 +66,49 @@ $(function() {
 	// ##################################################
 	// ##################################################
 	
-	// 이메일 인증
+// 이메일 인증
+	
+	var authRandomNum;
+
 	$('#emailCheckBtn').click(function() {
 		$('#confirm').show();
+		var email = $('#simpleEmail').val();
+//		location.href='Gmail.jsp?mEmail='+email;
+//		$('#email_ok').attr('disabled', true);
+		$.ajax({
+//			url : 'Gmail.jsp?mEmail='+email ,
+//			url : '/test/polarBView/p_main/Gmail.jsp',
+			url : 'gmail.do',
+			type : 'get',
+			data : ({memEmail : email}),
+			dataType : "text", // html / xml / json / jsonp / text
+			success : function (data) {
+				authRandomNum = data.trim();	
+				alert('인증번호가 전송되었습니다');
+			}
+		});
+
+		$('#simpleEmail').attr('readonly', true);
 		
 	});
 	
+	$('#simpleConfirm').blur(function() {
+		if($('#simpleConfirm').val() == authRandomNum){
+			$('#simpleConfirm').attr('readonly', true);
+			$('#emailmessage').css('display','none');
+			$('#emailCheckBtn').attr('disabled', true);
+		}else{
+			if($('#simpleConfirm').val().length>0){
+				$('#emailmessage').css('display', 'block')
+				$('#emailmessage').text('인증번호가 틀렸습니다');
+				$('#emailmessage').css('color','red');
+				$('#emailmessage').css('margin-top','5px');
+				$('#emailmessage').css('margin-left','3px');
+			}
+		}
+
+
+	}); //blur end
 	
 	
 $('#submitBtn').click(function(){
@@ -87,10 +125,10 @@ $('#submitBtn').click(function(){
 			return false;
 		}
 		
-//		if($('#emailCheck').css('color')=='rgb(255, 0, 0)'){
-//			alert('중복된 이메일 입니다');
-//			return false;
-//		}
+		if($('#emailCheck1').css('color')=='rgb(255, 0, 0)'){
+			alert('중복된 이메일 입니다');
+			return false;
+		}
 		
 		if($('#simplePassword').val().length<1){
 			alert('비밀번호를 입력하세요');
@@ -113,17 +151,17 @@ $('#submitBtn').click(function(){
 			return false;
 		}
 		if($('#simpleNickname').val().length<1){
-			alert('핸드폰 번호를 입력하세요');
+			alert('닉네임을 입력하세요');
 			return false;
 		}
 		
 
 		
 
-//		if($('#confirm').val() != authRandomNum){
-//			alert('이메일 인증을 해주세요');
-//			return false;
-//		}
+		if($('#confirm').val() != authRandomNum){
+			alert('이메일 인증을 해주세요');
+			return false;
+		}
 
 
 

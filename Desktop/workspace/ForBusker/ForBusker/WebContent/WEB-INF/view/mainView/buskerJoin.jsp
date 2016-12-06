@@ -19,7 +19,6 @@
 <link href="<%=projectName %>/resources/css/join_css/buskerJoin.css?<?=filemtime('<%=projectName %>/resources/css/join_css/buskerJoin.css)?>" rel="stylesheet" type="text/css" media="all">
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/join_js/buskerJoin.js?<?=filemtime('<%=projectName %>/resources/js/join_js/buskerJoin.js')?>"></script>
-<script type="text/javascript" src="<%=projectName %>/resources/js/join_js/idCheckOk.js?<?=filemtime('<%=projectName %>/resources/js/join_js/idCheckOk.js')?>"></script>
 </head>
 
 <body id="top">
@@ -46,7 +45,7 @@
    			<label for="buskerEmail">이메일 주소</label>
     		<div>
 	    		<input type="email" class="form-control" id="buskerEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
-	    		<button type="button" id="emailCheckBtn" class="btn btn-info">이메일인증</button>
+	    		<button type="button" id="emailCheckBtn" class="btn btn-info" disabled="disabled">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
     		<div id="emailCheck1" style="display: none;"></div>
@@ -56,6 +55,7 @@
     	<div class="form-group" id="confirm" style="display:none">
  		   <label for="buskerConfirm">이메일 인증</label>
     		<input type="text" class="form-control" id="buskerConfirm" name="buskerConfirm" placeholder="입력한 이메일로 인증번호가 전송되었습니다. 인증번호를 입력해주십시오." maxlength="12">
+    		<div id="emailmessage" style="display:none"></div>
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
