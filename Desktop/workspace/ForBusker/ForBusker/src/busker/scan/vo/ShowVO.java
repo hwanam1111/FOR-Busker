@@ -12,8 +12,9 @@ public class ShowVO {
 	private String shMapCoords;
 	private String shMapAddr;
 	private String shMapDetail;
-	private String shDate;
+	private String shDateTime;
 	private String shTime;
+	private String shDate;
 	private String shType;
 	private String shDetail;
 	
@@ -102,5 +103,15 @@ public class ShowVO {
 		this.shDetail = shDetail;
 	}
 
-	
+	public String getShDateTime() {
+		return shDateTime;
+	}
+	public void setShDateTime(String shDateTime) {
+		this.shDateTime = shDateTime;
+		String[] array;
+		array = (this.shDateTime).split(" ");
+		
+		this.setShDate(array[0]);
+		this.setShTime(array[1]);
+	}
 }

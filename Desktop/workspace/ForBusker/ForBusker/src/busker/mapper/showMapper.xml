@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="show">
+
+<insert id="insertShow" parameterType="busker.scan.vo.ShowVO">
+	INSERT INTO show(shno,mememail,shteamname,shvideo,shname,shmapcoords,shmapaddr,shmapdetail,shdate,shtime,shtype,shdetail)
+	VALUES(seq_show.nextval,#{memEmail},#{shTeamName},#{shVideo},#{shName},#{shMapCoords},#{shMapAddr},#{shMapDetail},#{shDate},#{shTime},#{shType},#{shDetail})
+</insert>
+</mapper>

@@ -1,0 +1,24 @@
+package busker.scan.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import busker.scan.dao.ShowDao;
+import busker.scan.vo.ShowVO;
+
+@Service
+public class ShowServiceImpl implements ShowService {
+	
+	@Autowired
+	private ShowDao dao;
+	
+	@Override
+	public int insertShow(ShowVO shvo) throws Exception{
+		System.out.println("showService쪽 vo값" + shvo.getMemEmail());
+		
+		int result;
+		result = dao.insertShow(shvo);
+		return result;
+	}
+
+}
