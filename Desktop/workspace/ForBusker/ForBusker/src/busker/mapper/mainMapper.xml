@@ -6,7 +6,7 @@
 <select id="idCheck" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO"> 
 	select * from member where memEmail=#{memEmail} AND memPw= #{memPw}
 </select>
- 
+
 <select id="idchecked" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO"> 
 	select * from member where memEmail=#{memEmail}
 </select>
@@ -17,10 +17,14 @@
 	<if test="memTeamName eq null">
 		INSERT INTO member(mememail, mempw, memnick, memphone) VALUES(#{memEmail}, #{memPw}, #{memNick},#{memPhone})
 	</if>
+	
+	
+	
+	<!-- 파일업로드 회원가입 -->
 	<if test="memTeamName neq null">
 		INSERT INTO member(mememail, mempw, memphone, memteamtype, memteamname, memvideo, memdetail, memstatus, memtype, memteamphoto) 
-		VALUES(#{memEmail}, #{memPw}, #{memPhone}, #{memTeamType}, #{memTeamName}, #{memVideo}, #{memDetail}, #{memStatus}, #{memType}, #{memTeamPhoto})
-	</if>
+		VALUES(#{memEmail}, #{memPw}, #{memPhone},'#{memTeamType}', #{memTeamName}, #{memVideo}, #{memDetail}, #{memStatus}, #{memType}, #{memTeamPhoto})
+		</if>
 
 </insert>
 

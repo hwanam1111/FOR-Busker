@@ -1,8 +1,11 @@
 package busker.scan.vo;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,14 +23,7 @@ public class MemberVO {
 	private String memDetail;
 	private String memStatus;
 	private String memType;
-	private List<MultipartFile> memTeamPhoto;
 	
-	public List<MultipartFile> getMemTeamPhoto() {
-		return memTeamPhoto;
-	}
-	public void setMemTeamPhoto(List<MultipartFile> memTeamPhoto) {
-		this.memTeamPhoto = memTeamPhoto;
-	}
 	public String getMemEmail() {
 		return memEmail;
 	}
@@ -101,6 +97,68 @@ public class MemberVO {
 		this.memType = memType;
 	}
 	
+	private String memTeamPhoto;
+	
+	MultipartFile file;
+
+	public String getMemTeamPhoto() {
+		return memTeamPhoto;
+	}
+	public void setMemTeamPhoto(String memTeamPhoto) {
+		this.memTeamPhoto = memTeamPhoto;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+		
+		if(! file.isEmpty()){
+			
+			try {
+			System.out.println("sadfadsfs");
+				this.memTeamPhoto =  save("\\Users\\leejunkim\\Desktop\\fileupload\\",
+						 file.getInputStream());
+			} catch (IllegalStateException e) {				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}else{
+		this.memTeamPhoto = "null";
+		}
+	}	
+	
+	private static Random random = new Random();
+//들어오는 파일의 이름을 숫자로 바꿔주는 메소드 
+	public static String save(String directory, InputStream is)
+			throws IOException {
+		
+		long currentTime = System.currentTimeMillis();
+		int randomValue = random.nextInt(50);
+		String fileName = Long.toString(currentTime) + "_"
+				+ Integer.toString(randomValue);
+
+		File file = new File(directory, fileName);
+		FileOutputStream os = null;
+		try {
+			os = new FileOutputStream(file);
+			byte[] data = new byte[8096];
+			int len = -1;
+			while ((len = is.read(data)) != -1) {
+				os.write(data, 0, len);
+			}
+		} finally {
+			if (os != null)
+				try {
+					os.close();
+				} catch (IOException e) {
+				}
+		}
+		return file.getName();	//file.getAbsolutePath();
+	}
 	
 	
 }

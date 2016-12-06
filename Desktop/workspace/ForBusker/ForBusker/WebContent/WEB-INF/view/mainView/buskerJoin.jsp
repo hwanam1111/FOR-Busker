@@ -109,7 +109,7 @@
 		<!-- ################################################### -->
 		<div class="InputFile">
     		<br><label for="InputFile">팀 프로필 사진</label>
-    		<input type="file" id="InputFile" name="memTeamPhoto"> 
+    		<input type="file" id="InputFile" name="file"> 
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
