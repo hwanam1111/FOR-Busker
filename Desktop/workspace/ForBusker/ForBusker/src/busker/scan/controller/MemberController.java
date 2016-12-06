@@ -64,7 +64,7 @@ public class MemberController {
 		logger.info("MemberVO.memdetail : " + vo.getMemDetail());
 		logger.info("MemberVO.memstatus : " + vo.getMemStatus());
 		logger.info("MemberVO.memtype : " + vo.getMemType());
-		
+		System.out.println("팀 사진 : " + vo.getMemTeamPhoto());
 		int resultCnt = service.insertMember(vo);
 		String result = "";
 		  if ( resultCnt == 0 ){

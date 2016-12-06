@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVO {
 
+	private static Random random = new Random();
+
 	private String memEmail;
 	private String memName;
 	private String memPw;
@@ -23,6 +25,9 @@ public class MemberVO {
 	private String memDetail;
 	private String memStatus;
 	private String memType;
+	private String memTeamPhoto;
+	
+	MultipartFile file;
 	
 	public String getMemEmail() {
 		return memEmail;
@@ -96,11 +101,6 @@ public class MemberVO {
 	public void setMemType(String memType) {
 		this.memType = memType;
 	}
-	
-	private String memTeamPhoto;
-	
-	MultipartFile file;
-
 	public String getMemTeamPhoto() {
 		return memTeamPhoto;
 	}
@@ -117,8 +117,8 @@ public class MemberVO {
 		if(! file.isEmpty()){
 			
 			try {
-			System.out.println("sadfadsfs");
-				this.memTeamPhoto =  save("\\Users\\leejunkim\\Desktop\\fileupload\\",
+				System.out.println(file.getOriginalFilename());
+				this.memTeamPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker1\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
 						 file.getInputStream());
 			} catch (IllegalStateException e) {				
 				e.printStackTrace();
@@ -131,7 +131,7 @@ public class MemberVO {
 		}
 	}	
 	
-	private static Random random = new Random();
+
 //들어오는 파일의 이름을 숫자로 바꿔주는 메소드 
 	public static String save(String directory, InputStream is)
 			throws IOException {
@@ -144,6 +144,7 @@ public class MemberVO {
 		File file = new File(directory, fileName);
 		FileOutputStream os = null;
 		try {
+			System.out.println(file.getName());
 			os = new FileOutputStream(file);
 			byte[] data = new byte[8096];
 			int len = -1;
@@ -157,6 +158,7 @@ public class MemberVO {
 				} catch (IOException e) {
 				}
 		}
+		System.out.println(file.getName());
 		return file.getName();	//file.getAbsolutePath();
 	}
 	
