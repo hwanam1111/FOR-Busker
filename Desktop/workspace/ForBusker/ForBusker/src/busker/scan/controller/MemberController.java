@@ -64,7 +64,7 @@ public class MemberController {
 		logger.info("MemberVO.memdetail : " + vo.getMemDetail());
 		logger.info("MemberVO.memstatus : " + vo.getMemStatus());
 		logger.info("MemberVO.memtype : " + vo.getMemType());
-		System.out.println("팀 사진 : " + vo.getMemTeamPhoto());
+		
 		int resultCnt = service.insertMember(vo);
 		String result = "";
 		  if ( resultCnt == 0 ){
@@ -100,13 +100,13 @@ public class MemberController {
 		return result;
 	}
 	
+	
 //	이메일 인증
 	@RequestMapping(value="gmail.do")
 	public String gmail(){
 		System.out.println("Gmail.jsp로 이동");
 		return "mainView/Gmail";
 	}
-	
 	
 	
 }
