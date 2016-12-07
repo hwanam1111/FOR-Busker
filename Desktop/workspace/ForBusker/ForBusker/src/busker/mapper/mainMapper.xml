@@ -15,7 +15,7 @@
 
 <!-- simplejoin -->
 	<if test="memTeamName eq null">
-		INSERT INTO member(mememail, mempw, memnick, memphone) VALUES(#{memEmail}, #{memPw}, #{memNick},#{memPhone})
+		INSERT INTO member(mememail, mempw, memnick, memphone, memstatus, memtype) VALUES(#{memEmail}, #{memPw}, #{memNick}, #{memPhone}, #{memStatus}, #{memType})
 	</if>
 	<!-- 파일업로드 회원가입 -->
 	<if test="memTeamName neq null">

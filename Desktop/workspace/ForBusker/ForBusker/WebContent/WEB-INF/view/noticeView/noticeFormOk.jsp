@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
-<html> 
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FOR-Busker</title>
@@ -20,57 +20,14 @@
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
-<%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
-<% } else { %>
-<jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
-<% } %>
 <!-- ################################################### -->
 
+
 <!-- 이부분 부터 코딩 시작 -->
-<div class="hoc">
-<form style="margin-left:140px;" action="noticeFormOk.do">
-<table>
-<!-- 어떤 입력폼인가 -->
-<tr>
-<h1><img src="<%=projectName %>/resources/images/notice_img/notepad.png"> Notice Form</h1>
-<br/>
-<br/>
+글쓰기 성공 실패 : ${result}
 
-</tr>
-
-<!-- 제목 -->
-<tr>
-<div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
-  <div class="col-xs-8">
-    <input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input" name="noticeTitle">
-  </div>
-</div>
-</tr>
-
-<!-- 상세설명 -->
-<tr>
-<div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
-  <div class="col-xs-8">
-    <textarea class="form-control" id="exampleTextarea" rows="10" placeholder="공지사항을 입력하세요" name="noticeContent"></textarea>
-  </div>
-<!-- <input type="hidden" name="noticeNo">
-<input type="hidden" name="noticeDate"> -->
-</div>
-</tr>
-<tr>
-	<div align="center">
-		<button type="submit" class="btn btn-info">등록하기</button>
-	</div>
-</tr>
-
-</table>
-</form>
-</div>
-
-
+<%response.sendRedirect("noticeList.do"); %>
 
 <!-- 코딩 종료 -->
 

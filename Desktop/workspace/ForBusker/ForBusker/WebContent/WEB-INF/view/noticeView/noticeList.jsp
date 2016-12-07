@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="busker.scan.vo.*" %>
+    
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html> 
@@ -25,7 +27,24 @@
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
-<% } %>
+
+	<!-- ################################################### -->
+	<!-- 관리자 계정으로 로그인 했는지 확인 -->
+	
+	<%Object obj = session.getAttribute("login"); 
+		MemberVO vo = null;
+		if(obj!=null)vo = (MemberVO)obj;
+		%>
+		<%if(vo.getMemEmail().equals("help@busker.com")) { %>
+		<script type="text/javascript">
+		$(function() {
+			$('#noticebtn').css('display', 'block');
+		})
+		</script>
+		<% } %>
+	<!-- ################################################### -->
+	<!-- ################################################### -->
+	<% } %>
 <!-- ################################################### -->
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">  <!-- NoticeList -->
@@ -33,21 +52,27 @@
 	<li><h1><img src="<%=projectName %>/resources/images/notice_img/notepad.png">NOTICE</h1></li>
 	<li>
 	<div class="floatRight marginBottom">
-	<button type="button" class="btn btn-info" style="height:38px;"><a href="noticeForm.do" style="color:white">글쓰기</a></button>
-		<button type="button" class="btn btn-secondary"><img src="<%=projectName %>/resources/images/notice_img/trash.png"></button>
+	<a href="noticeForm.do" style="color:white; display: none;" id="noticebtn"><button type="button" class="btn btn-info" style="height:38px;">글쓰기</button></a>
 	</div>
 	<hr/>
-	</li>
-	<%for(int i=0;i<8;i++){ %> <!-- 이부분 db에서 공지사항 가져와서 반복문으로 넣을 꺼임 -->
-	<li> 
 	<div class="row">
-	<div class="col-xs-1"><input type="checkbox" name="chk_info" value="HTML"></div>
-	<div class="col-xs-9"><a href="noticeView.do">제목이 들어가는 부분입니다 제목을 넣으세요.빨리 넣으세요.당장이요</a></div>
-	<div class="col-xs-2">2016-12-02</div>
+	<div class="col-xs-1">No.</div>
+	<div class="col-xs-9">글 제목</div>
+	<div class="col-xs-2" style="text-align: center">작성 시간</div>
 	</div>
 	<hr/>
 	</li>
-	<%} %>
+	
+	<c:forEach var="notice" items="${list}">
+	<li>
+	<div class="row">
+	<div class="col-xs-1">${notice.noticeNo}</div>
+	<div class="col-xs-9"><a href="noticeView.do?noticeNo=${notice.noticeNo}">${notice.noticeTitle}</a></div>
+	<div class="col-xs-2">${notice.noticeDate}</div>
+	</div>
+	<hr/>
+	</li>
+	</c:forEach>
 	<li> <!-- 페이징 할 부분 -->
 		<nav aria-label="..."  align="center">
 	  <ul class="pagination pagination-lg">

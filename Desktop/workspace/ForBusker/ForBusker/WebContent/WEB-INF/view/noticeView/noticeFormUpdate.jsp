@@ -29,7 +29,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<form style="margin-left:140px;" action="noticeFormOk.do">
+<form style="margin-left:140px;" action="noticeFormUpdateOk.do">
 <table>
 <!-- 어떤 입력폼인가 -->
 <tr>
@@ -44,7 +44,7 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input" name="noticeTitle">
+    <input class="form-control" type="text" id="example-text-input" name="noticeTitle" value="${noticeViewSelect.noticeTitle}">
   </div>
 </div>
 </tr>
@@ -54,10 +54,9 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
   <div class="col-xs-8">
-    <textarea class="form-control" id="exampleTextarea" rows="10" placeholder="공지사항을 입력하세요" name="noticeContent"></textarea>
+    <textarea class="form-control" id="exampleTextarea" rows="10" name="noticeContent">${noticeViewSelect.noticeContent}</textarea>
+    <input type="hidden" value="${noticeViewSelect.noticeNo}" name="noticeNo">
   </div>
-<!-- <input type="hidden" name="noticeNo">
-<input type="hidden" name="noticeDate"> -->
 </div>
 </tr>
 <tr>

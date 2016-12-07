@@ -82,6 +82,9 @@
  		    <label for="simpleTel">전화번호</label>
     		<input type="tel" class="form-control" id="simpleTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
+  		
+  		<input type="hidden" name="memStatus" value="1">
+		<input type="hidden" name="memType" value="1">
 		<!-- submit button -->
   			<button type="submit" class="btn btn-success" id="submitBtn">회원가입</button>
   			<button type="reset" class="btn btn-success" id="resetBtn">다시작성</button>

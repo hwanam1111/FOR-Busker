@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+
+<!-- 리스트 띄우기 -->
+<select id="noticeList" parameterType="busker.scan.vo.NoticeVO" resultType="busker.scan.vo.NoticeVO"> 
+	select * from notice order by noticedate desc
+</select>
+
+<!-- 글 등록 -->
+<insert id="noticeInsert" parameterType="busker.scan.vo.NoticeVO">
+	INSERT INTO notice(noticeno, noticetitle, noticecontent, noticedate)
+	values(seq_notice.nextVal, #{noticeTitle}, #{noticeContent}, sysdate)
+</insert>
+
+<!-- 글 보기 -->
+<select id="noticeView" parameterType="hashmap" resultType="busker.scan.vo.NoticeVO"> 
+	select * from notice where noticeno=#{noticeNo}
+</select>
+
+<!-- 글 삭제 -->
+<delete id="noticeDelete" parameterType="hashmap">
+	DELETE FROM notice where noticeno=#{noticeNo}
+</delete>
+
+<!-- 글 수정 -->
+<update id="noticeUpdate" parameterType="busker.scan.vo.NoticeVO">
+	UPDATE notice SET noticetitle=#{noticeTitle}, noticecontent=#{noticeContent} WHERE noticeno=#{noticeNo}
+</update>
+
+<!-- 글 수정 폼 셀렉트 -->
+<select id="noticeViewSelect" parameterType="busker.scan.vo.NoticeVO" resultType="busker.scan.vo.NoticeVO">
+	select * from notice where noticeno=#{noticeNo}
+</select>
+</mapper>

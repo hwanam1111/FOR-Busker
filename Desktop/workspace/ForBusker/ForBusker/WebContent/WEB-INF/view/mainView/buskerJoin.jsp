@@ -123,7 +123,7 @@
 		<textarea class="form-control" rows="5" name="memDetail" id="buskerDetail"></textarea>
 		<!-- ################################################### -->
 		<!-- ################################################### -->
-		<input type="hidden" name="memStatus" value="1">
+		<input type="hidden" name="memStatus" value="2">
 		<input type="hidden" name="memType" value="1">
 		<!-- submit button -->
   			<button type="button" class="btn btn-success" id="submitBtn">회원가입</button>
