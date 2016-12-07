@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import= "java.util.*" %>
+ <%@ page import ="busker.scan.vo.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% String projectName = "/ForBusker"; %>
+<% List<SponserVO> list = (List)request.getAttribute("sponList"); 
+	int length = list.size();
+	if(length%3==0){
+		length=length/3;
+	}else{
+		length=(length/3)+1;
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +38,9 @@
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
+
 <%if(session.getAttribute("login") == null) { %>
+
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
@@ -65,28 +80,40 @@
 	</div>
 	
 	</tr>
-    	
-	<%for(int j=0;j<3;j++){ %>
-	<tr >
-	<%for(int i=0;i<3;i++){ %>
-		<div class="col-xs-4 marginTop50">
+    <% for(SponserVO svo:list){ %>	
+    <div class="col-xs-4 marginTop50">
 			<div> <!-- 이미지들어가는부분 -->
-			<a href="sponserView.do"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
-				<img src="<%=projectName %>/resources/images/together_img/music.jpg">
-			</a>		
+			<a href="sponserView.do?num=<%=svo.getSpNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
+				<!-- 임시경로 -->
+<!-- 				<img src="C:\\upload\\Image\\${list.spPhoto }"> -->
+				<img src="<%=projectName %>/upload/<%=svo.getSpPhoto()%>">
+			</a>
 			</div>
 		
 			<div class="detail">
-			<div><strong>팀명 들어가는 부분입니다.</strong></div> <!-- 팀명 들어가는 부분 -->
-			
-			<div><strong>찾는 역할 들어가는 부분입니다.</strong></div><!-- 찾는 역할 들어가는 부분 -->
+			<div><strong><%=svo.getSpName() %></strong></div> <!-- 제목 들어가는 부분 -->
+			<div><strong><%=svo.getSpCond() %></strong></div> <!-- 조건 들어가는 부분 -->
 			</div>
 			
 		</div>
-	<%} %> <!-- end inner forloop -->
-	</tr>
+    <%} %>
+    <!-- 틀 맞춰주는 부분 -->
+    <%if(list.size()%3 == 2){ %>
+    <div class="col-xs-4 marginTop50">
+   		<div class="col-xs-4 marginTop50" >
+			    <div style="height:250px; width:300px;">
+				</div>
+	    </div>
+    </div>
+    <%} else if(list.size()%3 == 1){%>
+    	<%for(int i=0;i<2;i++){ %>
+	     <div class="col-xs-4 marginTop50" >
+			    <div style="height:250px; width:300px;">
+				</div>
+	    </div>
+    	<%} %>
+    <%} %>	
 
-	<%} %> <!-- end outer forloop -->
 		
 	<tr> <!-- 페이징 할 부분(paging master) -->
 	<nav aria-label="..."  align="center">
@@ -117,8 +144,8 @@
         <!-- 후원해주세요 TAB-->
         <div id="tab2" class="tab_content">
         
-        <table> 
-    		<tr> <!-- 검색창 들어갈 부분 -->
+<table> 
+    <tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" id="searchForm1">
 	<div class="col-xs-4">
 		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
@@ -200,5 +227,6 @@
 <!-- #############  반응형 모바일 js  ############# -->
 <script src="<%=projectName %>/resources/js/index_js/jquery.mobilemenu.js"></script>
 <!-- ################################################### -->
+
 </body>
 </html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="support">
+
+<insert id="insertSpon" parameterType="busker.scan.vo.SponserVO">
+INSERT INTO sponser(spNo,memEmail,spName,spPhoto,spContent,spCond,spTel) 
+VALUES (seq_sponser.nextVal, #{memEmail}, #{spName}, #{spPhoto}, 
+		#{spContent}, #{spCond}, #{spTel})
+</insert>
+
+<select id="sponList" resultType="busker.scan.vo.SponserVO">
+SELECT spNo, spName, spPhoto, spCond FROM sponser
+</select>
+
+<select id="selectSpon" parameterType="int" resultType="busker.scan.vo.SponserVO">
+SELECT spName, spPhoto, spContent, spCond, spTel 
+FROM sponser 
+WHERE spNo=#{num}
+</select>
+</mapper>
