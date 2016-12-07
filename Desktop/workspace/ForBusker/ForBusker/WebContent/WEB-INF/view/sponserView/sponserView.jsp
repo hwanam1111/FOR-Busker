@@ -41,7 +41,7 @@
 	
 		<!-- 제목,이미지  -->
 		<div class="sponimg">
-			<p>${selectSpon.spName }</p>
+			<h2>${selectSpon.spName }</h2>
 			<!-- 이부분은 다름 -->
 			<img  src="<%=projectName %>/upload/${selectSpon.spPhoto }">
 		</div>
