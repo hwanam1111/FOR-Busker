@@ -3,9 +3,6 @@
 <% String projectName = "/ForBusker"; %>
 
 <% response.sendRedirect("main.do");%>
-<<<<<<< HEAD
 
-=======
- 
->>>>>>> branch 'master' of https://github.com/hwanam1111/FOR-Busker.git
+
  
