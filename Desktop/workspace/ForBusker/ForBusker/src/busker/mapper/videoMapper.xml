@@ -5,8 +5,8 @@
 
 <!-- 글 등록 -->
 <insert id="videoInsert" parameterType="busker.scan.vo.VideoVO">
-	INSERT INTO Video(videono, videoname, videodetail, videourl, videoDate, memEmail, memteamname)
-	values(seq_video.nextVal, #{videoName}, #{videoDetail}, #{videoUrl}, sysdate, #{memEmail}, #{memTeamName})
+	INSERT INTO Video(videono, videoname, videodetail, videourl, videoDate, memEmail, memteamname, videocount, videolike)
+	values(seq_video.nextVal, #{videoName}, #{videoDetail}, #{videoUrl}, sysdate, #{memEmail}, #{memTeamName}, '0', '0')
 </insert>
 
 <!-- 리스트 띄우기 -->
