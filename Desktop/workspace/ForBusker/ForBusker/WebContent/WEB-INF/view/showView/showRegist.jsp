@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="busker.scan.vo.MemberVO"%>
 <%
 	String projectName = "/ForBusker";
 %>
@@ -31,6 +32,22 @@
 $(function(){
 	$('.some_class').datetimepicker(	
 	);
+	
+	 $('#ShowRegistGenreEtcInput').hide();
+	$("#ShowRegistGenreInput").change(function(){
+		if($("#ShowRegistGenreInput option:selected").val() == "5"){
+			$('#ShowRegistGenreEtcInput').show();
+			$('#ShowRegistGenreInput').attr("name","");
+			$('#ShowRegistGenreEtcInput').attr("name","shType");
+		}else{
+			$('#ShowRegistGenreEtcInput').hide();
+			$('#ShowRegistGenreEtcInput').attr("name","");
+			$('#ShowRegistGenreInput').attr("name","shType");
+		}
+	}); 
+	<% MemberVO ok=(MemberVO)session.getAttribute("login");%>
+	$("#ShowRegistMemEmail").val("<%=ok.getMemEmail()%>");
+	
 });
 </script>
  
@@ -48,7 +65,7 @@ $(function(){
 
 	<!-- 이부분 부터 코딩 시작 -->
 	<div class="hoc">
-		<form id="form1" runat="server" style="margin-left:140px;">
+		<form id="form1" runat="server" method='post' style="margin-left:140px;" action="ShowRegistCompleteForm.do">
 			<table>
 				<!-- 어떤 입력폼인가 -->
 				<tr>
@@ -62,7 +79,7 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
 						<div class="col-xs-8">
-							<input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input">
+							<input class="form-control" type="text" placeholder="제목을 입력하세요" id="ShowRegistTitleInput" name="shName">
 						</div>
 					</div>
 				</tr>
@@ -71,7 +88,7 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">영상 URL</label>
 						<div class="col-xs-8">
-							<input class="form-control" type="text" placeholder="홍보 영상을 업로드하세요" id="example-text-input">
+							<input class="form-control" type="text" placeholder="홍보 영상을 업로드하세요" id="ShowRegistVideoInput" name="shVideo">
 						</div>
 					</div>
 				</tr>
@@ -80,12 +97,12 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">지도</label>
 					<div class="col-xs-8">
-						<input class="form-control" type="text" id="sample5_address" placeholder="주소검색을 눌러주세요."/>
+						<input class="form-control" type="text" id="ShowRegistAddrInput" name="shMapAddr" placeholder="주소검색을 눌러주세요." style="background-color: #fff;" readonly/>
 						<button type="button" id="addressSearch" class="btn btn-info" onclick="sample5_execDaumPostcode()" style="width:100px;">주소 검색</button>
 					<div id="map"style="width: 100%; height: 300px; margin-top: 10px; float:right; display: none"></div>
 					
 					<!--  주소 검색시 div(map)에 지도 생성  -->
-					<script type="text/javascript">
+								<script type="text/javascript">
 				  
 				    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 				        mapOption = {
@@ -125,7 +142,7 @@ $(function(){
 				                }
 				
 				                // 주소 정보를 해당 필드에 넣는다.
-				                document.getElementById("sample5_address").value = fullAddr;
+				                document.getElementById("ShowRegistAddrInput").value = fullAddr;
 				                // 주소로 좌표를 검색
 				                geocoder.addr2coord(data.address, function(status, result) {
 				                    // 정상적으로 검색이 완료됐으면
@@ -133,6 +150,7 @@ $(function(){
 				                        // 해당 주소에 대한 좌표를 받아서
 				                        var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 				                        // 지도를 보여준다.
+				                        document.getElementById("ShowRegistAddrCoords").value= coords;
 				                        mapContainer.style.display = "block";
 				                        map.relayout();
 				                        // 지도 중심을 변경한다.
@@ -156,7 +174,7 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">위치설명</label>
 						<div class="col-xs-8">
-					   <textarea class="form-control" id="exampleTextarea" rows="2" placeholder="위치에 대한 설명을 해주세요."></textarea>
+					   <textarea class="form-control" id="ShowRegistLocDetailInput" name="shMapDetail" rows="2" placeholder="위치에 대한 설명을 해주세요."></textarea>
 					</div>
 				</tr>
 				<!-- 시간선정 -->
@@ -164,7 +182,8 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">시간선정</label>
 						<div class="col-xs-4">
-							<input type="text" class="some_class form-control" placeholder="시간을 정해주세요 " id="example-text-input" />
+							<input type="text" class="some_class form-control" placeholder="시간을 정해주세요 " id="ShowRegistTimeInput" name="shDateTime" />
+							
 						</div>
 
 					</div>
@@ -172,9 +191,9 @@ $(function(){
 				<!-- 담당자명 -->
 				<tr>
 					<div class="form-group row">
-						<label for="example-text-input" class="col-xs-2 col-form-label">공연자</label>
+						<label for="example-text-input" class="col-xs-2 col-form-label">공연자(팀 이름)</label>
 						<div class="col-xs-8">
-							<input class="form-control" type="text" placeholder="공연자 이름을 입력하세요" id="example-text-input">
+							<input class="form-control" type="text" placeholder="공연자 이름(팀 이름)을 입력하세요" id="ShowRegistPerformerInput" name="shTeamName">
 						</div>
 					</div>
 				</tr>
@@ -183,15 +202,17 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">공연분류</label>
 						<div class="col-xs-8">
-							<select class="form-control" id="exampleSelect1">
-								<option value="">선택하세요</option>
-								<option value="0">노래</option>
-								<option value="1">춤</option>
-								<option value="2">연주</option>
-								<option value="3">마술</option>
-								<option value="4">기타</option>
+							<select class="form-control" id="ShowRegistGenreInput" name="shType">
+								<option value=''>선택하세요</option>
+								<option value='0'>노래</option>
+								<option value='1'>댄스</option>
+								<option value='2'>연주</option>
+								<option value='3'>마술</option>
+								<option value='4'>퍼포먼스</option>
+								<option value='5'>기타</option>
 							</select>
-						</div>
+							<input class="form-control" type="text" placeholder="공연분류(기타)를 입력하세요" id="ShowRegistGenreEtcInput" name="shType" style="margin-top:15px;">
+							</div>
 					</div>
 				</tr>
 				<!-- 상세설명-->
@@ -199,7 +220,7 @@ $(function(){
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
 						<div class="col-xs-8">
-					   <textarea class="form-control" id="exampleTextarea" rows="5" 
+					   <textarea class="form-control" id="ShowRegistShowDetail" rows="5" name="shDetail"
     					placeholder="공연에 대한 설명을 해주세요."></textarea>
 						</div>
 					</div>
@@ -209,8 +230,9 @@ $(function(){
 						<button type="submit" class="btn btn-info">등록하기</button>
 					</div>
 				</tr>
-
 			</table>
+				<input type="hidden" id="ShowRegistAddrCoords" name="shMapCoords" value="" />
+				<input type="hidden" id="ShowRegistMemEmail" name="memEmail" value=""/>
 		</form>
 	</div>
 

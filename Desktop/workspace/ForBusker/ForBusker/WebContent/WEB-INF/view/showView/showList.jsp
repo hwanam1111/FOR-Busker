@@ -1,6 +1,17 @@
+<%@page import="busker.scan.vo.ShowVO"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
+<% Object obj = request.getAttribute("volist");
+	List<ShowVO> showVoList = null;
+	if(obj!=null){
+		showVoList=(List)obj;
+	}else{
+		System.out.println("에러발생");
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>	 
@@ -12,17 +23,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- include header -->
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
-<link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/default.css?<?=filemtime('<%=projectName %>/resources/css/show_css/default')?>">
-<!-- rightBanner css -->
-<link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/default.css?<?=filemtime('<%=projectName %>/resources/css/show_css/default.css')?>">
 
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/show_js/picker')?>"></script>
-<script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/show_js/picker.date')?>"></script>
-<script src="<%=projectName %>/resources/js/show_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/show_js/legacy')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/legacy')?>"></script>
 
 
 <script type="text/javascript">
@@ -37,6 +46,7 @@ var $input = $( '.datepicker' ).pickadate({
     closeOnClear: true,    
 })
 
+<%-- alert("<%=showVoList.get(1).getShName()%>"); --%>
 
 var picker = $input.pickadate('picker')
 
@@ -52,11 +62,6 @@ var picker = $input.pickadate('picker')
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
 <!-- ################################################### -->
-
-<!-- ############   rightBanner include  ###############-->
-<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
-<!-- ################################################### -->
-
 <!-- 이부분 부터 코딩 시작 -->
 
 <div class="hoc" align="center">
@@ -80,14 +85,14 @@ var picker = $input.pickadate('picker')
 </tr>
 <tr>
 <td style="padding-top: 10px; padding-left:30px; padding-bottom: 10px; padding-right: 10px;">
-<% for (int i =0; i<2; i++){ %>
+<% for (int i =0; i<showVoList.size(); i++){ %>
 <div style="width:100%;">
 <div>
 <!-- 이미지들어가는부분 -->
-<iframe src="https://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" allowfullscreen style="width:95%; height:300px;"></iframe>
+<iframe src="https://www.youtube.com/embed/<%=showVoList.get(i).getShVideo().substring(showVoList.get(i).getShVideo().length()-11,showVoList.get(i).getShVideo().length())%>" frameborder="0" allowfullscreen style="width:95%; height:300px;"></iframe>
 <form class="form-inline"> 
 	 <div class="form-group" align="center" style="margin-left: 130px">
-		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>팀명</a></label>						
+		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a><%=showVoList.get(i).getShTeamName() %></a></label>						
 		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>상세보기</a></label>
 	</div>
 </form>
@@ -99,7 +104,7 @@ var picker = $input.pickadate('picker')
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
-        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new daum.maps.LatLng<%=showVoList.get(0).getShMapCoords()%>, // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
@@ -107,18 +112,19 @@ var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니�
  
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
+	<% for(int i =0;i<showVoList.size();i++){%>
     {
-        title: '카카오', 
-        latlng: new daum.maps.LatLng(33.450705, 126.570677)
-    },
-    {
-        title: '생태연못', 
-        latlng: new daum.maps.LatLng(33.450936, 126.569477)
+        title: "<%=showVoList.get(i).getShName()%>" , 
+        latlng: new daum.maps.LatLng<%=showVoList.get(i).getShMapCoords()%>
     }
+    <%if(i!=showVoList.size()-1){%>
+    ,
+	<%}%>
+	<%}%>
 ];
 
 // ###############마커 이미지의 이미지 주소넣기입니다#####################
-var imageSrc = "../pin.png"; 
+var imageSrc = "<%=projectName %>/resources/images/show_img/pin.png"; 
     
 for (var i = 0; i < positions.length; i ++) {
     

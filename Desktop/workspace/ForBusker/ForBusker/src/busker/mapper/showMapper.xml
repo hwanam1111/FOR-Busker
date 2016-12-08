@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="show">
+
+<insert id="insertShow" parameterType="busker.scan.vo.ShowVO">
+	INSERT INTO show(shno,mememail,shteamname,shvideo,shname,shmapcoords,shmapaddr,shmapdetail,shdate,shtime,shtype,shdetail)
+	VALUES(seq_show.nextval,#{memEmail},#{shTeamName},#{shVideo},#{shName},#{shMapCoords},#{shMapAddr},#{shMapDetail},#{shDate},#{shTime},#{shType},#{shDetail})
+</insert>
+
+<select id="selectShow" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+	select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) and shmapaddr LIKE '%' || #{first} || '%'
+	<if test="second neq null">
+	or shmapaddr LIKE '%' || #{second} || '%'
+	</if>
+</select>
+
+<select id="selectShow2" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+	select * from show where shmapaddr LIKE '%' || #{first} || '%'
+</select>
+
+<select id="selectShow3" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+	select * from show where shno=#{first}
+</select>
+</mapper>

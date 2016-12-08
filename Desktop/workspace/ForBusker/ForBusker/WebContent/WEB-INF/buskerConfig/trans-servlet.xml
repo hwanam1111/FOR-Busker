@@ -25,7 +25,11 @@
 <bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
    <property name="dataSource" ref="dataSource"/>
    <property name="configLocation" value="classpath:busker/config/config.xml"/>
+<<<<<<< HEAD
    <property name="mapperLocations" value="classpath*:busker/mapper/*.xml"/>      
+=======
+   <property name="mapperLocations" value="classpath*:busker/mapper/*.xml"/>   
+>>>>>>> branch 'master' of https://github.com/hwanam1111/FOR-Busker.git
 </bean>
 
 <!-- SqlSession(연결객체) 빈 설정 -->

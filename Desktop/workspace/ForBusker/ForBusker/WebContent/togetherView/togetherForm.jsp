@@ -16,6 +16,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="<%=projectName %>/resources/js/together_js/togetherForm.js?<?=filemtime('<%=projectName %>/resources/js/together_js/togetherForm.js')?>"></script>
 </head>
 
 <body id="top">
@@ -45,21 +46,13 @@
   </div>
 </div>
 </tr>
-<!-- pr영상 -->
-<tr>
-<div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 col-form-label">PR영상</label>
-  <div class="col-xs-8">
-    <input class="form-control" type="text" placeholder="홍보 영상을 업로드하세요" id="example-text-input">
-  </div>
-</div>
-</tr>
+
 <!-- 분류 -->
 <tr>
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">공연 분류</label>
   <div class="col-xs-8">
-    <select class="form-control" id="exampleSelect1">
+    <select class="form-control" id="selectperForm" name="shType">
       <option value="">선택하세요</option>
       <option value="0">노래</option>
       <option value="1">춤</option>
@@ -67,6 +60,7 @@
       <option value="3">마술</option>
       <option value="4">기타</option>
     </select>
+     <input class="form-control" type="text" placeholder="공연분류(기타)를 입력하세요" id="togetherRegistEtc" name="shType" style="margin-top:15px;">
   </div>
 </div>
 </tr>
