@@ -1,5 +1,7 @@
 package busker.scan.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,7 @@ import busker.scan.vo.ShowVO;
 public class ShowServiceImpl implements ShowService {
 	
 	@Autowired
-	private ShowDao dao;
+	private ShowDao dao; 
 	
 	@Override
 	public int insertShow(ShowVO shvo) throws Exception{
@@ -20,5 +22,26 @@ public class ShowServiceImpl implements ShowService {
 		result = dao.insertShow(shvo);
 		return result;
 	}
+
+	@Override
+	public List<ShowVO> selectList(List sendList) throws Exception {
+		System.out.println("showService_selectList내부진입");
+		return dao.selectShow(sendList);
+	}
+
+	@Override
+	public List selectList(String loc) throws Exception {
+		System.out.println("showService_selectList내부진입(string버전)");
+		return dao.selectShow(loc);
+	}
+
+	@Override
+	public List selectList(int shno) throws Exception {
+		System.out.println("showService_selectList내부진입(int버전)");
+		return dao.selectShow(shno);
+	}
+ 
+	
+
 
 }
