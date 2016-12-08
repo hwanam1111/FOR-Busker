@@ -3,7 +3,7 @@
 	<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FOR-Busker</title>

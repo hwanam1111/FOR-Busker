@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
-<% Object obj = request.getAttribute("volist");
+<% Object obj = request.getAttribute("volist");//넘어온 공연정보를 담은 vo
 	List<ShowVO> showVoList = null;
 	if(obj!=null){
 		showVoList=(List)obj;
@@ -111,7 +111,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
  
 // 마커를 표시할 위치와 title 객체 배열입니다 
-var positions = [
+var positions = [ //VO List의 값을 넣어줌
 	<% for(int i =0;i<showVoList.size();i++){%>
     {
         title: "<%=showVoList.get(i).getShName()%>" , 

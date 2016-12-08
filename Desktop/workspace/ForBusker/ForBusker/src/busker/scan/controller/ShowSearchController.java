@@ -20,9 +20,9 @@ public class ShowSearchController {
 		System.out.println("showList.jsp로 이동");
 		System.out.println("loc는"+loc);
 		System.out.println("shno는"+shno);
-		if(loc==null){//링크클릭했을때
+		if(loc==null){//Main에서 지도의 링크클릭했을때
 			m.addAttribute("volist",service.selectList(shno));
-		}else{
+		}else{//Main에서 공연찾기 링크 눌렀을때
 			m.addAttribute("volist",service.selectList(loc));
 		}
 		
