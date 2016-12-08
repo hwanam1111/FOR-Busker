@@ -1,5 +1,7 @@
+<%@page import="org.springframework.web.context.request.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -32,11 +34,16 @@
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<script type="text/javascript">
+$(function() {
+	$("#movieBtn").css("display", "block");
+});
+</script>
 <% } %>
 <!-- ################################################### -->
 
 <!-- ############   rightBanner include  ###############-->
-<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
+<%-- <jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" /> --%>
 <!-- ################################################### -->
 
 
@@ -44,19 +51,56 @@
 <div class="hoc">
 	<h1> Video Collections </h1>
 	<div class="container-fluid">
+	<div id="movieBtn" style="display:none;">
+		<a href="videoUpload.do">영상등록하는방법확인</a> &nbsp;&nbsp;
+		<a href="videoForm.do"><button type="button" class="btn btn-default">영상등록</button></a>
+	</div>
   <p>Resize the browser window to see the Video.</p>
   <div class="row" style="margin-top:40px;">
-    <div class="col-xs-4"><a href="videoView.do?imgpath=https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg"><img class='videothumb' src="https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg" ><br/>
-    	영상제목 팀명 올린날짜</a>
+  
+ <!-- ################################################ --> 
+ <!-- 리스트 forEach -->
+ <!-- ################################################ -->
+  <c:forEach var="video" items="${list}">
+  	<div class="col-xs-4" style="margin-bottom:60px;">
+  		<a href="videoView.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}">
+  		<img class='videothumb' src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg" ><br/><br/>
+    	<p style="height: 40px;">Title : ${video.videoName}</p></a>
+    	<p>TeamName : ${video.memTeamName}</p>
+    	<p>Date : ${video.videoDate}</p>
+    	<input type="hidden" value="${video.memEmail}" name="memEmail">
     </div>
-    <div class="col-xs-4"><a href="videoView.do?imgpath=https://img.youtube.com/vi/MmA4TlBiVRs/hqdefault.jpg"><img class='videothumb' src="https://img.youtube.com/vi/MmA4TlBiVRs/hqdefault.jpg" ><br/>
-    	영상제목 팀명 올린날짜</a></div>
-    <div class="col-xs-4"><a href="videoView.do?imgpath=https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg"><img class='videothumb' src="https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg" ><br/>
-    	영상제목 팀명 올린날짜</a></div>
-   <!--  <div class="col-xs-4" style="background-color:lavender;">4번동영상</div>
-    <div class="col-xs-4" style="background-color:lavenderblush;">5번동영상</div>
-    <div class="col-xs-4" style="background-color:lavender;">6번동영상</div>
-    <div class="col-xs-4" style="background-color:lavender;">7번동영상</div> -->
+  </c:forEach>
+  <!-- ################################################ -->
+  <!-- ################################################ -->
+ 
+  
+  <ul>
+<!--   <li> 페이징 할 부분
+		<nav aria-label="..."  align="center"  style="position: relative; right:20px;">
+	  <ul class="pagination pagination-lg">
+	    <li class="page-item">
+	      <a class="page-link" href="#" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	        <span class="sr-only">Previous</span>
+	      </a>
+	    </li>
+	    <li class="page-item"><a class="page-link" href="#">1</a></li>
+	    <li class="page-item"><a class="page-link" href="#">2</a></li>
+	    <li class="page-item"><a class="page-link" href="#">3</a></li>
+	    <li class="page-item"><a class="page-link" href="#">4</a></li>
+	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <li class="page-item">
+	      <a class="page-link" href="#" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	        <span class="sr-only">Next</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+	</li> -->
+	</ul>
+    
   </div>
   
 </div>

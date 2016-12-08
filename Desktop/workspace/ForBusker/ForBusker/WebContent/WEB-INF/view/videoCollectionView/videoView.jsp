@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="busker.scan.vo.*" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -38,18 +39,36 @@ function clickLike(){
 }
 </script>
 </head>
-
 <!-- #############  header nav부분 include  ############# -->
 <%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<%
+	Object obj = session.getAttribute("login");
+	VideoVO vvo = (VideoVO)request.getAttribute("map");
+		MemberVO nvo = new MemberVO();
+		if(obj!=null)nvo = (MemberVO)obj;
+		%>
+		<%System.out.println("세션 이메일 : " + nvo.getMemEmail()); /* 세션에 들어온 이메일 */ %>
+		<%System.out.println("VideoVO 이메일 : " + vvo.getMemEmail()); /* VideoVO 안에 있는 이메일 */%>
+		<%if(nvo.getMemEmail().equals(vvo.getMemEmail())) { %>
+		<script type="text/javascript">
+		$(function() {
+			$('#footBtn').css('display', 'block');
+		})
+		</script>
+		<% } %>
 <% } %>
 <!-- ################################################### -->
 
+<input type="hidden" value="${map.memEmail}" name="memEmail">
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
+
+<!-- ################################################### -->
+<!-- 오른쪽 메뉴 -->
 <div id="mySidenav" class="sidenav">
 <!-- 	 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
 	<div class="row-xs-4">
@@ -63,29 +82,46 @@ function clickLike(){
     <a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg" ><br/>
     	영상제목 팀명 올린날짜</a></div>
 </div>
+<!-- ################################################### -->
+<!-- ################################################### -->
+
+<!-- 뷰 시작 -->
+<!-- ################################################### -->
 <div class='row'>
 
 <div class='col-xs-12' style="width: 640px; margin: 0px auto;">
 
-<iframe width="640" height="360" src="http://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" allowfullscreen></iframe>
+<iframe width="640" height="360" src="${map.videoUrl}" frameborder="0" allowfullscreen></iframe>
 <div class='videoContent'>
+
+<!-- ################################################### -->
+<!-- 컨텐트 메뉴 테이블 -->
 <table class='toptablemenu'>
 	<tr>
-		<td colspan='2'><h2>공연제목</h2></td>			
+		<td colspan='2'><h2>${map.videoName}</h2></td>			
 	</tr>
 	<tr>
-		<td>공연자</td>
-		<td style="text-align: right;">조회수</td>
+		<td>TeamName : ${map.memTeamName }</td>
+		<td style="text-align: right;">조회수 : ${map.videoCount }</td>
 	</tr>
 </table>
-공연내용 :<br/>
-아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>아아아<br/>
-<img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" onclick="clickLike()"/>좋아요수
+${map.videoDetail} <br/><br/>
+<!-- ################################################### -->
+<!-- ################################################### -->
+
+<!-- 좋아요 밑 수정 삭제 버튼 -->
+<!-- ################################################### -->
+<img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" onclick="clickLike()"/>좋아요수 : ${map.videoLike }
 </div>
 </div>
 <div class='col-xs-2'><span id='openBtn'  style="font-size:30px;cursor:pointer;display:block" onclick="openNav()">&#9776; open</span>
 <span id='closeBtn' style="font-size:30px;cursor:pointer;display:none" onclick="closeNav()">&times; close</span></div>
 </div>
+<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
+	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
+	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
+</div>
+<!-- ################################################### -->
 </div>
 
 

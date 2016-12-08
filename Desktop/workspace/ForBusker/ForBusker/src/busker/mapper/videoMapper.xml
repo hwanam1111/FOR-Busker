@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="video">
+
+<!-- 글 등록 -->
+<insert id="videoInsert" parameterType="busker.scan.vo.VideoVO">
+	INSERT INTO Video(videono, videoname, videodetail, videourl, videoDate, memEmail, memteamname)
+	values(seq_video.nextVal, #{videoName}, #{videoDetail}, #{videoUrl}, sysdate, #{memEmail}, #{memTeamName})
+</insert>
+
+<!-- 리스트 띄우기 -->
+<select id="videoList" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoVO"> 
+SELECT video.memEmail, video.videono, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as videosomenale, video.videoDate, member.memEmail, member.memteamname
+FROM video 
+INNER JOIN member          
+ON video.mememail = member.mememail
+order by videoDate desc
+</select>
+
+<!-- 글 보기 -->
+<select id="videoView" parameterType="hashmap" resultType="busker.scan.vo.VideoVO"> 
+SELECT video.videono, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as urlsomenale, video.videoDate, video.videolike, video.videoCount, member.memEmail, member.memteamname
+FROM video 
+INNER JOIN member          
+ON video.mememail = member.mememail
+where video.videono=#{videoNo}
+order by videoDate desc
+</select>
+
+<!-- 글 삭제 -->
+<delete id="videoDelete" parameterType="hashmap">
+	DELETE FROM video where videono=#{videoNo}
+</delete>
+
+<!-- 글 수정 폼 셀렉트 -->
+<select id="videoViewSelect" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoVO">
+	select * from video where videono=#{videoNo}
+</select>
+
+<!-- 글 수정 -->
+<update id="videoUpdate" parameterType="busker.scan.vo.VideoVO">
+	UPDATE video SET videoname=#{videoName}, videourl=#{videoUrl},videodetail=#{videoDetail} WHERE videono=#{videoNo}
+</update>
+
+</mapper>
