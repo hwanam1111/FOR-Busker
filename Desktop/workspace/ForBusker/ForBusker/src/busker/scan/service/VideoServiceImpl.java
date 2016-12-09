@@ -63,4 +63,18 @@ public class VideoServiceImpl implements VideoService {
 		return videoDao.videoViewSelect(vvo);
 		
 	}
+
+//	조회수
+	@Override
+	public void videoCount(VideoVO vvo) throws Exception {
+		
+		videoDao.videoCount(vvo);
+		
+	}
+
+	@Override
+	public List<VideoVO> videoNewList() throws Exception {
+		
+		return videoDao.videoNewList();
+	}
 }

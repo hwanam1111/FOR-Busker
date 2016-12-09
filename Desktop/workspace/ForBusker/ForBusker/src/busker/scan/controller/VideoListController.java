@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -71,13 +73,21 @@ public class VideoListController {
 	
 //	글보기 뷰
 	@RequestMapping(value="videoView")
-	public String videoView(String videoNo, Model m) throws Exception{
+	public String videoView(VideoVO vvo, String videoNo, Model m) throws Exception{
 		System.out.println("비디오 번호 : " + videoNo);
+		// 해시맵으로 글 넘버
 		HashMap hashmap = new HashMap();
 		hashmap.put("videoNo", videoNo);
 		
 		VideoVO videoView = service.videoView(hashmap);
+		// 조회수
+		service.videoCount(vvo);
 		
+		// 실시간 새로운 동영상 리스트
+		List<VideoVO> videoList = service.videoNewList();
+		System.out.println(videoList);
+		m.addAttribute("list", videoList);
+
 		if(videoView!=null){
 			m.addAttribute("map", videoView);
 		}else{
@@ -140,4 +150,5 @@ public class VideoListController {
 		
 		return "videoCollectionView/videoFormUpdateOk";
 	}
+	
 }

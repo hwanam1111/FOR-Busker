@@ -25,4 +25,10 @@ public interface VideoService {
 	// 비디오 수정 폼
 	public VideoVO videoViewSelect(VideoVO vvo) throws Exception;
 
+	//	조회수
+	public void videoCount(VideoVO vvo) throws Exception;
+	
+	// 비디오 new 리스트
+	public List<VideoVO> videoNewList() throws Exception;
+	
 }

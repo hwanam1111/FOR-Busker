@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <%@ page import="busker.scan.vo.*" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
@@ -19,25 +20,9 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/videoCollection_css/imggrid.css?<?=filemtime('<%=projectName %>/resources/css/videoCollection_css/imggrid.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- include js -->
+<script type="text/javascript" src="<%=projectName %>/resources/js/video_js/videoView.js?<?=filemtime('<%=projectName %>/resources/js/video_js/videoView.js')?>"></script>
 
-<script type="text/javascript">
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "350px";
-    document.getElementById("openBtn").style.display="none";
-    document.getElementById("closeBtn").style.display="block";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("closeBtn").style.display="none";
-    document.getElementById("openBtn").style.display="block";
-}
-function clickLike(){
-	alert("좋아요!");
-	
-}
-</script>
 </head>
 <!-- #############  header nav부분 include  ############# -->
 <%if(session.getAttribute("login") == null) { %>
@@ -70,17 +55,15 @@ function clickLike(){
 <!-- ################################################### -->
 <!-- 오른쪽 메뉴 -->
 <div id="mySidenav" class="sidenav">
-<!-- 	 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+<c:forEach var="newList" items="${list}">
 	<div class="row-xs-4">
-	<a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg" ><br/>
-    	영상제목 팀명 올린날짜</a>
+	<a href="videoView.do?videoNo=${newList.videoNo}&memEmail=${newList.memEmail}"><img class='videothumb' src="https://img.youtube.com/vi/${newList.videoSomenale}/hqdefault.jpg"  ><br/>
+    	Title : ${newList.videoName} <br/>
+    	TeamName : ${newList.memTeamName} <br/>
+    	Date : ${newList.videoDate}
+    	</a>
     </div>
-    <div class="row-xs-4">
-    <a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/MmA4TlBiVRs/hqdefault.jpg" ><br/>
-    	영상제목 팀명 올린날짜</a></div>
-    <div class="row-xs-4">
-    <a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/cPruvJFnI48/hqdefault.jpg" ><br/>
-    	영상제목 팀명 올린날짜</a></div>
+</c:forEach>
 </div>
 <!-- ################################################### -->
 <!-- ################################################### -->
@@ -105,17 +88,18 @@ function clickLike(){
 		<td style="text-align: right;">조회수 : ${map.videoCount }</td>
 	</tr>
 </table>
-${map.videoDetail} <br/><br/>
+<input type="hidden" value="${map.memEmail}" name="memEmail">
+<pre>${map.videoDetail} </pre><br/><br/>
 <!-- ################################################### -->
 <!-- ################################################### -->
 
 <!-- 좋아요 밑 수정 삭제 버튼 -->
 <!-- ################################################### -->
-<img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" onclick="clickLike()"/>좋아요수 : ${map.videoLike }
+<img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" onclick="clickLike()" id="videoLike" name="videoLike"/>좋아요수 : ${map.videoLike }
 </div>
 </div>
-<div class='col-xs-2'><span id='openBtn'  style="font-size:30px;cursor:pointer;display:block" onclick="openNav()">&#9776; open</span>
-<span id='closeBtn' style="font-size:30px;cursor:pointer;display:none" onclick="closeNav()">&times; close</span></div>
+<div class='col-xs-2'><span id='openBtn'  style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">&#9776; NewVideo</span>
+<span id='closeBtn' style="font-size:23px;cursor:pointer;display:none" onclick="closeNav()">&times; NewVideo</span></div>
 </div>
 <div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
 	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>

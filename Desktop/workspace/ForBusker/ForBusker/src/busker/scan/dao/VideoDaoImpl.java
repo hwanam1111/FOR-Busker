@@ -6,7 +6,8 @@ import java.util.HashMap;
 
 import java.util.List;
 
-
+import org.apache.catalina.mapper.Mapper;
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,21 @@ public class VideoDaoImpl implements VideoDao {
 		return ss.update("video.videoUpdate", nvo);
 		
 	}
+	
+	//	조회수
+	@Override
+	public void videoCount(VideoVO vvo) {
+		
+		ss.update("video.videoCount", vvo);
+		
+	}
+
+//	new 영상
+	@Override
+	public List<VideoVO> videoNewList() {
+		return ss.selectList("video.videoNewList");
+		
+	}
+	
 	
 }

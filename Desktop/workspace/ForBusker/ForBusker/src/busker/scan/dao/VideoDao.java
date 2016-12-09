@@ -25,4 +25,10 @@ public interface VideoDao {
 	// 비디오 수정 폼
 	public VideoVO videoViewSelect(VideoVO vvo);
 
+	//	조회수
+	public void videoCount(VideoVO vvo);
+	
+	// 비디오 new 리스트
+	public List<VideoVO> videoNewList();
+	
 }
