@@ -5,13 +5,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% String projectName = "/ForBusker"; %>
-<% List<SponserVO> list = (List)request.getAttribute("sponList"); 
-	int length = list.size();
-	if(length%3==0){
-		length=length/3;
-	}else{
-		length=(length/3)+1;
-	}
+
+<% 
+
+ 	String cate = request.getParameter("cate");
+	if( cate == null) cate = "spon";
+//후원하기, 후원해주세요 리스트 받기
+   List<SponserVO> sponList = null;
+   List<BackedVO> backedList = null;
+
+   if( cate.equals("spon")) sponList = (List)request.getAttribute("sponList");
+   else if ( cate.equals("backed")){
+	   backedList = (List)request.getAttribute("backedList");
+	   
+   }
+   //페이징 클래스 받아오기
+   PageVO pVO = (PageVO)request.getAttribute("page");
 %>
 
 <!DOCTYPE html>
@@ -19,14 +28,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FOR-Busker</title>
+<!-- jQuery lib CDN URL -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- Bootstrap 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!-- jQuery lib CDN URL -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/sponser_css/sponserTab.css?<?=filemtime('<%=projectName %>/resources/css/sponser_css/sponserTab.css')?>" rel="stylesheet" type="text/css" media="all">
@@ -34,6 +44,22 @@
 <link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
 <script type="text/javascript" src="<%=projectName %>/resources/js/sponser_js/sponser.js?<?=filemtime('<%=projectName %>/resources/sponser_js/sponser.js')?>" type="text/css"></script>
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript">
+
+$(function(){
+	if( '<%=cate%>' == 'spon'  ){
+    
+    	$("ul.tabs li:first").addClass("kkk").css("color", "darkred");
+        //$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"});
+        $("ul.tabs li:last").removeClass("kkk").css("color", "#333");
+    }else if('<%=cate%>' == 'backed' ){
+    	
+    	$("ul.tabs li:last").addClass("kkk").css("color", "darkred");
+        //$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"});
+        $("ul.tabs li:first").removeClass("kkk").css("color", "#333");
+    }
+});
+</script>
 </head>
 
 <body id="top">
@@ -55,13 +81,14 @@
 <div class="hoc">
 <div id="container">
     <ul class="tabs">
-        <li class="active2" rel="tab1">후원합니다</li>
+        <li class="kkk" rel="tab1" >후원하기</li>
         <li rel="tab2">후원해주세요</li>
     </ul>
     <div class="tab_container">
-        <div id="tab1" class="tab_content">
-            
+      
+     <% if( cate != null && cate.equals("spon")) { %>       
 <table> <!-- 후원합니다 TAB-->
+	
    	<tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" id="searchForm">
 	<div class="col-xs-4">
@@ -80,13 +107,14 @@
 	</div>
 	
 	</tr>
-    <% for(SponserVO svo:list){ %>	
+	
+    <% for(SponserVO svo:sponList){ %>	
     <div class="col-xs-4 marginTop50">
 			<div> <!-- 이미지들어가는부분 -->
 			<a href="sponserView.do?num=<%=svo.getSpNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
 				<!-- 임시경로 -->
 <!-- 				<img src="C:\\upload\\Image\\${list.spPhoto }"> -->
-				<img src="<%=projectName %>/upload/<%=svo.getSpPhoto()%>">
+				<img src="<%=projectName %>/upload/<%=svo.getSpPhoto()%>" style="width:300px; height:200px;">
 			</a>
 			</div>
 		
@@ -98,51 +126,51 @@
 		</div>
     <%} %>
     <!-- 틀 맞춰주는 부분 -->
-    <%if(list.size()%3 == 2){ %>
+    <!-- 마지막이 두개인 경우 -->
+    <%if(sponList.size()%3 == 2){ %>
     <div class="col-xs-4 marginTop50">
-   		<div class="col-xs-4 marginTop50" >
-			    <div style="height:250px; width:300px;">
-				</div>
-	    </div>
+   		<div style="height:250px; width:300px;"></div>
+	</div>
+	<!-- 마지막이 한개인 경우 -->  
     </div>
-    <%} else if(list.size()%3 == 1){%>
+    <%} else if(sponList.size()%3 == 1){%>
     	<%for(int i=0;i<2;i++){ %>
-	     <div class="col-xs-4 marginTop50" >
-			    <div style="height:250px; width:300px;">
-				</div>
-	    </div>
+		    <div class="col-xs-4 marginTop50">
+	   			<div style="height:250px; width:300px;"></div>
+			</div>
+		    
     	<%} %>
     <%} %>	
 
 		
 	<tr> <!-- 페이징 할 부분(paging master) -->
-	<nav aria-label="..."  align="center">
+	<nav align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=i%>"><%=i %></a></li>
+	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=pVO.getNextPage()%>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </li>
 	  </ul>
 	</nav>
-	</tr>	
-</table>      
-        </div>
+	</tr>
+	
+</table> 
+<%} %>	     
+       
         
-        <!-- 후원해주세요 TAB-->
-        <div id="tab2" class="tab_content">
+       
+    <% if( cate != null && cate.equals("backed")) {%>
         
 <table> 
     <tr> <!-- 검색창 들어갈 부분 -->
@@ -159,56 +187,68 @@
 		<button type="button" class="btn btn-info marginRight" id="moveToBackedBtn">후원받기</button>
 	</div>
 	</div>
-	
 	</tr>
-	<%for(int j=0;j<3;j++){ %>
-	<tr >
-	<%for(int i=0;i<3;i++){ %>
-		<div class="col-xs-4 marginTop50">
+	
+	
+    <% for(BackedVO bvo:backedList){ %>	
+    <div class="col-xs-4 marginTop50">
 			<div> <!-- 이미지들어가는부분 -->
-			<a href="backedView.do"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
-				<img src="./music.jpg">
-			</a>		
+			<a href="backedView.do?num=<%=bvo.getBackNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
+				<!-- 일단 걍 사진으로 -->
+				<img src="https://img.youtube.com/vi/<%=bvo.getBackVideo() %>/hqdefault.jpg" style="width:300px; height:200px;">
+			</a>
 			</div>
 		
 			<div class="detail">
-			<div><strong>팀명 들어가는 부분입니다.</strong></div> <!-- 팀명 들어가는 부분 -->
-			
-			<div><strong>찾는 역할 들어가는 부분입니다.</strong></div><!-- 찾는 역할 들어가는 부분 -->
+			<div><strong><%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
+			<div><strong><%=bvo.getBackContent() %></strong></div> <!-- 조건 들어가는 부분 -->
 			</div>
 			
 		</div>
-	<%} %> <!-- end inner forloop -->
-	</tr>
-
-	<%} %> <!-- end outer forloop -->
-		
+    <%} %>
+    <!-- 틀 맞춰주는 부분 -->
+    <%if(backedList.size()%3 == 2){ %>
+    <div class="col-xs-4 marginTop50">
+   		 <div style="height:250px; width:300px;">
+		 </div>
+	   
+    </div>
+    <%} else if(backedList.size()%3 == 1){%>
+    	<%for(int i=0;i<2;i++){ %>
+	     <div class="col-xs-4 marginTop50" >
+			    <div style="height:250px; width:300px;">
+				</div>
+	    </div>
+    	<%} %>
+    <%} %>	
+	
+	
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@  이부분 고쳐야댐 !!!!!!!!!!!!!!!!!!  @@@@@@@@@@@@@@@@@@@@@@-->	
 	<tr> <!-- 페이징 할 부분(paging master) -->
-	<nav aria-label="..."  align="center">
+	<nav align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="backedList.do?cate=backed&page=<%=i%>"><%=i %></a></li>
+	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getNextPage()%>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </li>
 	  </ul>
 	</nav>
-	</tr>	
-</table>         
-        </div>
-        <!-- #tab2 -->
+	</tr>
+	
+</table>      
+<% } %> <!-- end if -->	   
+       
        
     </div>
     <!-- .tab_container -->

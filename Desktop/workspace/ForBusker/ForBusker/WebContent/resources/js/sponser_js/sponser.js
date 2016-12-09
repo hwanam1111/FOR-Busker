@@ -1,19 +1,22 @@
 
 
 $(function () {
-//	탭 바뀔시 코딩
-    $(".tab_content").hide();
-    $(".tab_content:first").show();
 
-    $("ul.tabs li").click(function () {
-        $("ul.tabs li").removeClass("active2").css("color", "#333");
-        //$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"});
-        $(this).addClass("active2").css("color", "darkred");
-        $(".tab_content").hide()
-        var activeTab = $(this).attr("rel");
-        $("#" + activeTab).fadeIn()
-    });
+
     
+
+	
+    $("ul.tabs li").each(function(){
+      	$(this).click(function (evt) {
+
+            var activeTab = $(this).attr("rel");
+            
+            if( activeTab == 'tab1') window.location.href="sponAndBacked.do?cate=spon&page=1";
+            else window.location.href="backedList.do?cate=backed&page=1";
+        });
+    })
+    
+
     
 //    버튼 form페이지 연결
     $("#moveToSponBtn").click(function(){

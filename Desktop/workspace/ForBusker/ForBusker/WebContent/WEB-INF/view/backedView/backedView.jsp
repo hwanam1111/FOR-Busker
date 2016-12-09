@@ -29,34 +29,43 @@
 <% } %>
 <!-- ################################################### -->
 
-
 <!-- 이부분 부터 코딩 시작 -->
-<div class='hoc'>
-	<h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Backed View</h1>
-	<!-- 제목,이미지  -->
-	<div class="sponimg">
-		<p>제목입니다제목이에요</p>
-		<iframe width="640" height="500" src="http://www.youtube.com/embed/ePpPVE-GGJw" frameborder="0" allowfullscreen></iframe>
-
-		
-	</div>
+<div class='hoc' >
+<h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Backed View</h1>
+<table class="sponTable">
+	<td class="backedLeft">
+	<div>
 	
+		<!-- 제목,이미지  -->
+		<div class="backedimg">
+			<p>${selectBacked.backName }</p>
+			<!-- 이부분은 다름 -->
+			<iframe width="600" height="430" src="${ selectBacked.backVideo}" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
+	</td>
+	
+	<td class="sponRight" style="word-wrap:break-word" >
 	<!-- 내용, 조건, 전화번호 -->
-	<div class="sponContent">
+	<div>
 		<h2>Content</h2>
-		<p> 아침에 약속있었는데 많이 늦었어요 웬만해서 뛰지 않는데 그냥 오늘은 한번 달리고 싶었어요 
-		집 앞에 공원이 있는데 거기 비둘기 까치 참새가 많거든요 신호등앞에 비둘기 옹기종기 모여져있는데
-		 신호등이 파란불로 변해서 전속력으로 뛰었어요  모르겠다 뛰면 비둘기들이 놀래서 날아가겠지. 
-		 그건 오산 제가 비둘기 발로 까서 날라갔어요 진짜 식겁 그 발에 촉감 지금도 생생해요  발로 까고 뒤 돌아보니까 
-		 비둘기 쓰러져 있고 옆에 어떤 유치원생은 울고 있고 비둘기 밥주는데 발로 깟다고 엄마가 괜찮다고 달래는데 뻘쭘</p>
-		<h2>Condition</h2>
-		<p>여긴 조건조건조건조건조건조건조건조건조건조건조건조건 </p>
+		<div id="rightContent">
+		${selectBacked.backContent}
+		</div>
+		
+		<h2></h2>
 		<h2>Tel</h2>
 		<p>
-		010-2058-7155 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		${selectBacked.backTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 		<button type="button" class="btn btn-primary">문의하기</button>
 		</p>
 	</div>
+	
+	</td>
+	
+	</table>
+	
+	
 	
 </div>
 

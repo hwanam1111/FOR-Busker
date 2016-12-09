@@ -3,19 +3,57 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="support">
 
+<!-- 후원하기 입력 -->
 <insert id="insertSpon" parameterType="busker.scan.vo.SponserVO">
 INSERT INTO sponser(spNo,memEmail,spName,spPhoto,spContent,spCond,spTel) 
 VALUES (seq_sponser.nextVal, #{memEmail}, #{spName}, #{spPhoto}, 
 		#{spContent}, #{spCond}, #{spTel})
 </insert>
 
-<select id="sponList" resultType="busker.scan.vo.SponserVO">
-SELECT spNo, spName, spPhoto, spCond FROM sponser
+<!-- 후원하기 테이블 총 갯수 구하기 -->
+<select id="sponListCount" resultType="int">
+SELECT count(spNo)
+FROM sponser
 </select>
 
+<!-- 후원하기 리스트 -->
+<select id="sponList"  parameterType="busker.scan.vo.PageVO"   resultType="busker.scan.vo.SponserVO">
+SELECT spNo, spName,spCond,spPhoto,spTel
+FROM (select  rownum as rnum , spNo, spName,spCond,spPhoto,spTel FROM sponser ORDER BY spNO DESC) 
+WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
+</select>
+
+<!-- 후원하기 View -->
 <select id="selectSpon" parameterType="int" resultType="busker.scan.vo.SponserVO">
 SELECT spName, spPhoto, spContent, spCond, spTel 
 FROM sponser 
 WHERE spNo=#{num}
 </select>
+
+<!-- 후원해주세요 입력 -->
+<insert id="insertBacked" parameterType="backvo">
+INSERT INTO backed(backNO, memEmail, backName, backVideo, backContent, backTel) 
+VALUES (seq_backed.nextval, #{memEmail}, #{backName}, #{backVideo}, 
+		#{backContent}, #{backTel})
+</insert>
+
+<!-- Backed 테이블 총 갯수 구하기 -->
+<select id="backedListCount" resultType="int">
+SELECT count(backNo)
+FROM backed
+</select>
+
+<!-- 후원해주세요 리스트 -->
+<select id="backedList" resultType="backvo">
+SELECT backNO, backName, substr(backvideo, -11) as backVideo, backContent FROM backed
+</select>
+
+<!-- 후원해주세요 View -->
+<select id="selectBacked" parameterType="int" resultType="backvo">
+SELECT backName, backVideo, backContent, backTel
+FROM backed
+WHERE backNO=#{num}
+</select>
+
+
 </mapper>

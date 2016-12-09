@@ -19,8 +19,10 @@
 </head>
 
 <body id="top">
+<!-- 세션값에 login이 없으면 loginView로 보내버리기 -->
 <%if(session.getAttribute("login") == null) { %>
-<jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
+<% response.sendRedirect("login.do");%>
+<%-- <jsp:include page="/WEB-INF/view/includeFile/header.jsp" /> --%>
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
@@ -29,7 +31,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<form style="margin-left:140px;">
+	<form style="margin-left:140px;" action="backedInsert.do">
 		<table>
 		<!-- 어떤 입력폼인가 -->
 		<tr>
@@ -45,7 +47,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
 			  <div class="col-xs-8">
-			    <input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input">
+			    <input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input" name="backName">
 			  </div>
 		  </div>
 		</tr>
@@ -55,7 +57,7 @@
 		   <div class="form-group row">
 		     <label for="example-text-input" class="col-xs-2 col-form-label">PR영상</label>
 		     <div class="col-xs-8">
-			   <input class="form-control" type="text" placeholder="영상 URL을 입력하세요">
+			   <input class="form-control" type="text" placeholder="영상 URL을 입력하세요"  name="backVideo">
 			 </div>
 		   </div>
 		</tr>
@@ -66,7 +68,7 @@
 			<label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
 			<div class="col-xs-8">
 			  <textarea class="form-control" id="exampleTextarea" rows="5" 
-			    		placeholder="후원 받고자 하는 이유를 적어주세요"></textarea>
+			    		placeholder="후원 받고자 하는 이유를 적어주세요"  name="backContent"></textarea>
 			</div>
 		  </div>
 		</tr>
@@ -76,7 +78,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">연락처</label>
 			  <div class="col-xs-8">
-			    <input class="form-control" type="text" placeholder="-빼고 입력해주세요">
+			    <input class="form-control" type="text" placeholder="-빼고 입력해주세요"  name="backTel">
 			  </div>
 		  </div>
 		</tr>
@@ -84,6 +86,7 @@
 		<!-- 등록, 취소 버튼 -->
 		<tr>
 			<div align="center">
+			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
 				<button type="submit" class="btn btn-info">등록하기</button>
 				<button type="button" class="btn btn-info">취소</button>
 			</div>
