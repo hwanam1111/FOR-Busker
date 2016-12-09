@@ -17,7 +17,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
-<script type="text/javascript" src="<%=projectName %>/resources/js/together_js/togetherForm.js?<?=filemtime('<%=projectName %>/resources/js/together_js/togetherForm.js')?>"></script>
+<script type="text/javascript" src="<%=projectName %>/resources/js/together_js/togetherModForm.js?<?=filemtime('<%=projectName %>/resources/js/together_js/togetherModForm.js')?>"></script>
 </head>
 
 <body id="top">
@@ -28,12 +28,12 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<form method="post" action="togetherRegist.do">
-<input type="hidden" name="toId" value="${sessionScope.login.memEmail}">
+<form method="post" action="togetherModCofig.do?toNo=${tovo.toNo}">
+<%-- <input type="hidden" name="toId" value="${sessionScope.login.memEmail}"> --%>
 <table>
 <!-- 어떤 입력폼인가 -->
 <tr>
-<h1>Together Form</h1>
+<h1>Together Mod Form</h1>
 <br/>
 <br/>
 
@@ -44,7 +44,7 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input" name="toName">
+    <input class="form-control" type="text" value="${tovo.toName}" id="example-text-input" name="toName">
   </div>
 </div>
 </tr>
@@ -62,7 +62,7 @@
       <option value="마술">마술</option>
       <option value="기타">기타</option>
     </select>
-     <input class="form-control" type="text" placeholder="공연분류(기타)를 입력하세요" id="togetherRegistEtc" name="toNeed" style="margin-top:15px;">
+     <input class="form-control" type="text" value="${tovo.toNeed}" id="togetherRegistEtc" name="toNeed" style="margin-top:15px;">
   </div>
 </div>
 </tr>
@@ -72,7 +72,7 @@
   <label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
   <div class="col-xs-8">
     <textarea class="form-control" id="exampleTextarea" rows="5" 
-    		placeholder="그룹소개와 필요한 역할에 대해 자세히 적어주세요" name="toDetail"></textarea>
+    		value="" name="toDetail">${tovo.toDetail}</textarea>
   </div>
 </div>
 </tr>
@@ -81,13 +81,13 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">모집기간</label>
   <div class="col-xs-3">
-    <input class="form-control" type="date" value="2016-01-01" id="startDate" name="toStartDate">
+    <input class="form-control" type="date" value="${tovo.toStartDate}" id="startDate" name="toStartDate">
   </div>
  <div class="col-xs-1">
    <p align="center">~</p>
   </div>
    <div class="col-xs-3">
-    <input class="form-control" type="date" value="2016-12-31" id="endDate" name="toEndDate">
+    <input class="form-control" type="date" value="${tovo.toEndDate}" id="endDate" name="toEndDate">
   </div>
 </div>
 </tr>
@@ -96,7 +96,7 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">담당자명</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" placeholder="담당자명을 입력하세요" id="example-text-input" name="toTeamLeader">
+    <input class="form-control" type="text" value="${tovo.toTeamLeader}" id="example-text-input" name="toTeamLeader">
   </div>
 </div>
 </tr>
@@ -105,13 +105,13 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">연락처</label>
   <div class="col-xs-8">
-     <input class="form-control" type="tel" placeholder="-를 빼고 입력해주세요" id="example-tel-input" name="toTel">
+     <input class="form-control" type="tel" value="${tovo.toTel}" id="example-tel-input" name="toTel">
   </div>
 </div>
 </tr>
 <tr>
 	<div align="center">
-		<button type="submit" class="btn btn-info">등록하기</button>
+		<button type="submit" class="btn btn-info">수정하기</button>
 	</div>
 </tr>
 

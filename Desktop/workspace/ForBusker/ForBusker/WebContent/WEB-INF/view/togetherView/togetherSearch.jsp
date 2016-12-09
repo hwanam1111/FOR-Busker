@@ -4,7 +4,7 @@
 <%@page import="java.util.*"%>
 <% String projectName = "/ForBusker"; %>
 <%
-	List<TogetherVO>list=(List<TogetherVO>)request.getAttribute("list"); 
+	List<TogetherVO>list=(List<TogetherVO>)request.getAttribute("voList"); 
 
 %>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 </head>
 
 <body id="top">
-<input type="hidden" class="result" value="${result2}">
+
 <!-- #############  header nav부분 include  ############# -->
 <%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
@@ -52,7 +52,7 @@
 	<tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" style="margin-left:1px;">
 	<div class="col-xs-4">
-		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
+		<input class="form-control" type="text" value="${searchVal}"
 				id="toSearch"/>
 	</div>
 	<div class="col-xs-2">
