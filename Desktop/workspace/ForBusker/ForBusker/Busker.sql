@@ -42,7 +42,9 @@ videoName varchar2(255),
 videoDetail varchar2(255),
 videoCount varchar2(255),
 videoLike varchar2(255),
-CONSTRAINT FK_vidoe_memEmail FOREIGN KEY (memEmail) references Member (memEmail) -- video 영상 ,공연자회원 외래키
+videoDate varchar2(255),
+memTeamName varchar2(255)
+CONSTRAINT FK_video_memEmail FOREIGN KEY (memEmail) references Member (memEmail) -- video 영상 ,공연자회원 외래키
 );
 
 CREATE TABLE VideoReply(
@@ -53,7 +55,6 @@ reContent varchar2(2000),
 CONSTRAINT FK_VideoReply_videoNo FOREIGN KEY (videoNo) references video (videoNo), -- 비디오영상번호 외래키
 CONSTRAINT FK_VideoReply_memEmail FOREIGN KEY (memEmail) references member (memEmail) --  전체회원 외래키
 );
-
 
 
 
@@ -79,7 +80,12 @@ backTel varchar2(255),
 CONSTRAINT FK_backed_memEmail FOREIGN KEY (memEmail) references Member (memEmail) -- 전체회원 외래키
 );
 
-
+CREATE TABLE videoLike(
+likeNo number PRIMARY KEY,
+memEmail varchar2(255),
+videoNo number,
+CONSTRAINT FK_videoLike_videoNo FOREIGN KEY (videoNo) references video (videoNo) -- 전체회원 외래키
+);
 
 --테이블 별 시퀀스 생성 --
 CREATE SEQUENCE seq_backed;
@@ -89,3 +95,4 @@ CREATE SEQUENCE seq_sponser;
 CREATE SEQUENCE seq_video;
 CREATE SEQUENCE seq_together;
 CREATE SEQUENCE seq_videoreply;
+CREATE SEQUENCE seq_videoLike;
