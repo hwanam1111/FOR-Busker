@@ -28,10 +28,10 @@ public class SponserVO {
 	public void setSpNo(int spNo) {
 		this.spNo = spNo;
 	}
-	public String getmemEmail() {
+	public String getMemEmail() {
 		return memEmail;
 	}
-	public void setmemEmail(String memEmail) {
+	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
 	public String getSpName() {

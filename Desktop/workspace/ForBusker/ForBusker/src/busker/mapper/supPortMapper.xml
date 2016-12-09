@@ -25,7 +25,7 @@ WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 
 <!-- 후원하기 View -->
 <select id="selectSpon" parameterType="int" resultType="busker.scan.vo.SponserVO">
-SELECT spName, spPhoto, spContent, spCond, spTel 
+SELECT spName, spPhoto, spContent, spCond, spTel, memEmail  
 FROM sponser 
 WHERE spNo=#{num}
 </select>
@@ -50,7 +50,7 @@ SELECT backNO, backName, substr(backvideo, -11) as backVideo, backContent FROM b
 
 <!-- 후원해주세요 View -->
 <select id="selectBacked" parameterType="int" resultType="backvo">
-SELECT backName, backVideo, backContent, backTel
+SELECT backName, backVideo, backContent, backTel, memEmail
 FROM backed
 WHERE backNO=#{num}
 </select>

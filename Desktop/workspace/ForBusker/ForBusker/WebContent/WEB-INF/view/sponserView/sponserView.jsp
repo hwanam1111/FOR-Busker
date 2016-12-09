@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="busker.scan.vo.*" %> 
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -29,6 +30,22 @@
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<!-- 세션값의 email값이랑 입력한 놈의 email 값이 같다면 수정,삭제버튼 보여주기 -->
+<%
+	Object obj = session.getAttribute("login");
+	SponserVO sVO = (SponserVO)request.getAttribute("selectSpon");
+	
+	MemberVO mVO = new MemberVO();
+	if(obj!=null) mVO = (MemberVO)obj;
+%>
+
+<%if(mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
+<script type="text/javascript">
+	$(function() {
+		$('#footBtn').css('display', 'block');
+	})
+</script>
+		<% } %>
 <% } %>
 <!-- ################################################### -->
 <!-- 이부분 부터 코딩 시작 -->
@@ -44,6 +61,10 @@
 			<!-- 이부분은 다름 -->
 			<img  src="<%=projectName %>/upload/${selectSpon.spPhoto }">
 		</div>
+	</div>
+	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
+		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
+		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	

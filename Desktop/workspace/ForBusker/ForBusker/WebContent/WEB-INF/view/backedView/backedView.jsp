@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="busker.scan.vo.*" %> 
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,23 @@
 <%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
+<!-- 세션값의 email값이랑 입력한 놈의 email 값이 같다면 수정,삭제버튼 보여주기 -->
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<%
+	Object obj = session.getAttribute("login");
+	BackedVO bVO = (BackedVO)request.getAttribute("selectBacked");
+	System.out.println("후원해주세요 이메일은?"+bVO.getMemEmail());
+	MemberVO mVO = new MemberVO();
+	if(obj!=null) mVO = (MemberVO)obj;
+%>
+
+<%if(mVO.getMemEmail().equals(bVO.getMemEmail())) { %>
+<script type="text/javascript">
+	$(function() {
+		$('#footBtn').css('display', 'block');
+	})
+</script>
+		<% } %>
 <% } %>
 <!-- ################################################### -->
 
@@ -42,6 +58,10 @@
 			<!-- 이부분은 다름 -->
 			<iframe width="600" height="430" src="${ selectBacked.backVideo}" frameborder="0" allowfullscreen></iframe>
 		</div>
+	</div>
+	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
+		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
+		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	
