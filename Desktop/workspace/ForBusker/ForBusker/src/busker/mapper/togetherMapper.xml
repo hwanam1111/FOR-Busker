@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="together">
+
+<insert id="insertTogether" parameterType="busker.scan.vo.TogetherVO">
+INSERT INTO together VALUES(seq_together.nextval,#{toId},#{toVideo},#{toPhoto},#{toName},#{toNeed},#{toDetail},
+						#{toStartDate},#{toEndDate},#{toTel},#{toTeamLeader})
+</insert>
+
+<select id="selectAllTogether" resultType="busker.scan.vo.TogetherVO">
+SELECT * FROM together
+</select>
+
+<select id="selectTogetherByNum" resultType="busker.scan.vo.TogetherVO" parameterType="busker.scan.vo.TogetherVO">
+SELECT* FROM together WHERE toNo=#{toNo}
+</select>
+
+<delete id="deleteTogether" parameterType="busker.scan.vo.TogetherVO">
+DELETE FROM together WHERE toNo=#{toNo}
+</delete>
+<update id="modifyTogether" parameterType="busker.scan.vo.TogetherVO">
+UPDATE together SET toName=#{toName},toNeed=#{toNeed},toDetail=#{toDetail},
+					toStartDate=#{toStartDate},toEndDate=#{toEndDate},
+					toTel=#{toTel},toTeamLeader=#{toTeamLeader} WHERE toNo=#{toNo}
+</update>
+
+<select id="selectBySearchVal" parameterType="hashmap" resultType="busker.scan.vo.TogetherVO">
+SELECT * FROM together 
+WHERE 
+<if test="searchVal neq null">
+toNeed LIKE '%' || #{searchVal} || '%' 
+</if>
+<if test="searchVal neq null">
+OR toName LIKE '%' || #{searchVal} || '%'
+</if>
+</select>
+
+</mapper>
