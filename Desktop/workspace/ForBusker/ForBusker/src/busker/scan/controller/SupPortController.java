@@ -124,10 +124,8 @@ public class SupPortController {
 	public String sponUpdate(String spNo, SponserVO sponserVO,Model m) throws Exception{
 		
 		int num=Integer.parseInt(spNo);
-		System.out.println("넘넘넘"+num);
 		sponserVO.setSpNo(num);
 		SponserVO sVO = service.sponUpdateForm(sponserVO);
-		System.out.println("확인해보쟈 : "+sVO.getSpContent());
 		m.addAttribute("sponserVO",sVO);
 		return "sponserView/sponserUpdate";
 	}
@@ -203,7 +201,6 @@ public class SupPortController {
 		
 		backedVO.setBackNo(num);
 		BackedVO bVO = service.backedUpdateForm(backedVO);
-//		System.out.println("확인해보쟈 : "+bVO.getSpContent());
 		m.addAttribute("backedVO",bVO);
 		
 		return "backedView/backedUpdate";
