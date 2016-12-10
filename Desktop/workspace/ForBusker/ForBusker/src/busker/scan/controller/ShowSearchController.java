@@ -35,5 +35,10 @@ public class ShowSearchController {
 		System.out.println("showRegist.jsp로 이동");
 		return "showView/showRegist";
 	}
-	
+	@RequestMapping(value="showListSearch")
+	public String showList2(String date, String select, String val, Model m) throws Exception{
+		System.out.println("으아아아아"+service.selectList(date,select,val).size());
+		m.addAttribute("volist",service.selectList(date,select,val));
+		return "showView/showList";
+	}
 }

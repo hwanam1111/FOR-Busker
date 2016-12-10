@@ -11,5 +11,6 @@ public interface ShowDao {
 	public List selectShow(List list) throws Exception;
 	public List selectShow(String loc) throws Exception;
 	public List selectShow(int shno) throws Exception;
+	public List selectShow(String date, String select, String val) throws Exception;
 
 }

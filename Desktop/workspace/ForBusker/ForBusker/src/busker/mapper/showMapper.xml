@@ -22,4 +22,24 @@
 <select id="selectShow3" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
 	select * from show where shno=#{first}
 </select>
+<select id="selectShowSearch" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+	select * from show where shdate=#{date} 
+	<choose>
+	<when test="val neq null and select eq 0">
+	and shTeamName LIKE '%'|| #{val} ||'%'
+	</when> 
+	<when test="val neq null and select eq 2">
+	and shmapaddr LIKE '%' || #{val} || '%'
+	</when>
+ 	<when test='val neq "0" and select eq 1'>
+ 	and shType = #{val}
+	</when>
+	<when test='val eq "0" and select eq 1'>
+	and shType not in ('노래','마술','댄스','연주','마술','퍼포먼스')
+	</when>
+	<otherwise>
+
+	</otherwise>
+	</choose>
+</select>
 </mapper>

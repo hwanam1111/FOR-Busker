@@ -3,10 +3,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
-<% Object obj = request.getAttribute("volist");//넘어온 공연정보를 담은 vo
+<%
+Object logincheck=session.getAttribute("login");
+Object obj = request.getAttribute("volist");
+
 	List<ShowVO> showVoList = null;
+	String loc = "(37.555448809581634, 126.92352876576223)";
 	if(obj!=null){
 		showVoList=(List)obj;
+		if(showVoList.size()==0){
+			System.out.println("하하하핳"+showVoList.size());
+			
+		}else{
+			loc=showVoList.get(0).getShMapCoords();
+		}
+		
 	}else{
 		System.out.println("에러발생");
 	}
@@ -24,7 +35,7 @@
 <!-- include header -->
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/default.css?<?=filemtime('<%=projectName %>/resources/css/show_css/default.css')?>">
-
+<link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/performanceList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/performanceList.css')?>">
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
@@ -36,7 +47,7 @@
 
 <script type="text/javascript">
 $(function(){
-	
+	$('#exampleSelect2').hide();
 var $input = $( '.datepicker' ).pickadate({
     formatSubmit: 'yyyy/mm/dd',
     // min: [2015, 7, 14],
@@ -44,12 +55,73 @@ var $input = $( '.datepicker' ).pickadate({
     // editable: true,
     closeOnSelect: true,
     closeOnClear: true,    
-})
+});
 
+$("#searchBtn").click(function(){
+	
+// 	$("input[name=date_submit]").attr("name",$("input[name=date_submit]").val());
+// 	$("#searchGo").attr("action","showList.do");
+// 	$("#searchGo").submit();
+	var now = new Date();
+	  var year  = now.getFullYear();
+      var month = now.getMonth() + 1; // 0부터 시작하므로 1더함 더함
+      var day   = now.getDate();
+      if (("" + month).length == 1) { month = "0" + month; }
+      if (("" + day).length   == 1) { day   = "0" + day;   }
+
+	var date = $("input[name=date_submit]").val(); //날짜값 저장
+	if(date==''){
+		date=(year+'/'+month+'/'+day); //날짜값을 안넣고 그냥 submit할때 오늘날짜 넣어줌(placeholder에 오늘의 날짜라고 되어있기때문)
+	}
+	alert(date);
+    var select = $("#exampleSelect1 option:selected").val();
+    var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
+    window.location.href="showListSearch.do?date="
+                            + date
+                            + "&select="
+                            + select
+                            + "&val="
+                            + inputvalue;
+                   
+	
+});
+
+/* Set the width of the side navigation to 250px */
+$("#clickopen").click(function(){
+	document.getElementById("mySidenav").style.width = "250px";
+}); 
+
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
 <%-- alert("<%=showVoList.get(1).getShName()%>"); --%>
 
-var picker = $input.pickadate('picker')
+var picker = $input.pickadate('picker');
 
+$("#exampleSelect1").change(function(){//카테고리로 검색할경우 input을 text->select로 바꿔줌
+	if($("#exampleSelect1 option:selected").val() == "1"){
+		$("#example-text-input").hide();
+		$('#exampleSelect2').show();
+		$('#example-text-input').attr("name","");
+		$('#exampleSelect2').attr("name","val");
+	}else {
+		$("#example-text-input").show();
+		$('#exampleSelect2').hide();
+		$('#exampleSelect2').attr("name","");
+		$('#example-text-input').attr("name","val");
+	}
+});
+$("#registBtn").click(function(){
+	var kk="<%=logincheck%>";
+	alert(kk);
+	if(kk='null') {
+		window.location.href="login.do";
+	}else{
+		window.location.href="showRegist.do"
+	}
+});
 });
 </script>
 </head>
@@ -66,25 +138,63 @@ var picker = $input.pickadate('picker')
 
 <div class="hoc" align="center">
 
+<div id="mySidenav" class="sidenav">
+<!-- 	 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+	<div class="row-xs-4">
+	누구야
+    </div>
+    <div class="row-xs-4">누구야야야야야</div>
+    <div class="row-xs-4">배고파
+	</div>
+</div>
+
+
+<!-- Use any element to open the sidenav -->
+<span id="clickopen">open</span>
+
 <table style="width:100%;">
 <tr>
 	<td colspan="2">   	
-	<form class="form-inline" style="margin-left:50px; margin-bottom:20px;"> 
+	<form class="form-inline" id="searchGo" style="margin-left:50px; margin-bottom:20px;"> 
 	 <div class="form-group">
 		<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style=" position: relative; right:20px;"/>
 		<select class="form-control" id="exampleSelect1" style="width:200px;  position: relative; right:5px;">
-			<option>팀명</option>
-			<option>카테고리</option>
+			<option value="0">팀명</option>
+			<option value="1">카테고리</option>
+			<option value="2">지역</option>
 		</select>
-		<input class="form-control" type="text" placeholder="" id="example-text-input" style="width:280px; margin-left:25px;" />
-		<button type="button" class="btn btn-outline-info " style="width:100px; color:white">검색</button>
-		<button type="button" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:100px; color:white">등록하기</button>
+		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" />
+		<select class='form-control' name="cate" id="exampleSelect2" style="width:280px; margin-left:25px;">
+			<option value=''>선택하세요</option>
+			<option value='노래'>노래</option>
+			<option value='댄스'>댄스</option>
+			<option value='연주'>연주</option>
+			<option value='마술'>마술</option>
+			<option value='퍼포먼스'>퍼포먼스</option>
+			<option value='기타'>기타</option>
+		</select>
+		<button type="button" id="searchBtn" class="btn btn-outline-info" style="width:100px; color:white">검색</button>
+		<button type="button" id="registBtn" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:100px; color:white">등록하기</button>
 	</div>
 	</form>
 	</td>
 </tr>
 <tr>
 <td style="padding-top: 10px; padding-left:30px; padding-bottom: 10px; padding-right: 10px;">
+<% if(showVoList.size()==0){%>
+<div style="width:100%;">
+<div>
+<!-- 이미지들어가는부분 -->
+<form class="form-inline"> 
+	 <div class="form-group" align="center" style="margin-left: 130px">
+		오늘은 공연이 없습니다. <br/>
+		다른 지역을 검색해보세요.						
+		
+	</div>
+</form>
+</div>
+
+<% } %>
 <% for (int i =0; i<showVoList.size(); i++){ %>
 <div style="width:100%;">
 <div>
@@ -100,18 +210,25 @@ var picker = $input.pickadate('picker')
 <% } %>
 </td>
 <td style="width:50%;"><div id="map" style="width:100%; height:770px; z-index: -1; "></div></td>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
 <script>
+var showlistsize = <%=showVoList.size()%>;
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
-        center: new daum.maps.LatLng<%=showVoList.get(0).getShMapCoords()%>, // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+			center: new daum.maps.LatLng<%=loc%>, // 지도의 중심좌표
+        	level: 4 // 지도의 확대 레벨
+        
     };
 
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
- 
+function setZoomable(zoomable) {
+    // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+    map.setZoomable(zoomable);
+
+}
 // 마커를 표시할 위치와 title 객체 배열입니다 
-var positions = [ //VO List의 값을 넣어줌
+var positions = [
 	<% for(int i =0;i<showVoList.size();i++){%>
     {
         title: "<%=showVoList.get(i).getShName()%>" , 

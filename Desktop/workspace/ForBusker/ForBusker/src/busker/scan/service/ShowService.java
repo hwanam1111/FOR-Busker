@@ -9,5 +9,7 @@ public interface ShowService {
 	public int insertShow(ShowVO shvo) throws Exception;
 	public List selectList(List sendList) throws Exception;
 	public List selectList(String loc)throws Exception; 
-	public List selectList(int shno)throws Exception; 
+	public List selectList(int shno)throws Exception;
+	public List selectList(String date, String select, String val) throws Exception;
+
 }

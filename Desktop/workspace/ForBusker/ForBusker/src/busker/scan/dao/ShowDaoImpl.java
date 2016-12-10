@@ -53,5 +53,22 @@ public class ShowDaoImpl implements ShowDao {
 		map.put("first", shno);
 		return ss.selectList("show.selectShow3",shno);
 	}
+	
+	public List selectShow(String date, String select, String val) throws Exception {
+		System.out.println("showDao쪽 selectShow진입(검색버전) 데이트는 :"+date+"/셀렉트는"+select+"발은"+val);
+		HashMap map = new HashMap();
+	
+		map.put("date", date);
+		map.put("select", select);
+		if(val!=null){
+			if(val.equals("기타"))
+			{
+			map.put("val", 0);	
+			}else{
+			map.put("val", val);
+			}
+		}
+		return ss.selectList("show.selectShowSearch",map);
+	}
 
 }

@@ -40,6 +40,11 @@ public class ShowServiceImpl implements ShowService {
 		System.out.println("showService_selectList내부진입(int버전)");
 		return dao.selectShow(shno);
 	}
+	
+	public List selectList(String date, String select, String val) throws Exception {
+		System.out.println("showService_selectList내부진입(검색버전)  데이트는 :"+date+"/셀렉트는"+select+"발은"+val);
+		return dao.selectShow(date,select,val); 
+	}
  
 	
 
