@@ -19,24 +19,27 @@ public class SupPortServiceImpl implements SupPortService {
 	//후원하기 입력
 	@Override
 	public int insertSpon(SponserVO sponserVO) throws Exception {
-		System.out.println("servie부분");
+		
 		int result = supportDao.insertSpon(sponserVO);
 		return result;
 	}
 
 	//후원하기 List 페이지
 	@Override
-	public List<SponserVO> sponList(PageVO pageVO) throws Exception {
+	public List<SponserVO> sponList(PageVO pageVO, String search) throws Exception {
 		
+
 		//###################페이징
-		int sponCount = sponPageCount();		//테이블의 row카운트
+		int sponCount = sponPageCount(search);		//테이블의 row카운트
 		
 		pageVO.setCount(sponCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
 		PageVO pVO = pagingMaster(pageVO);
-		
-		List<SponserVO> sponList = supportDao.sponList(pVO);
+		int curPage = pVO.getCurPage();
+		List<SponserVO> sponList = supportDao.sponList(curPage,search);
 		return sponList;
 	}
+	
+
 
 	//후원하기 View
 	@Override
@@ -78,14 +81,18 @@ public class SupPortServiceImpl implements SupPortService {
 
 	//후원해주세요 리스트
 	@Override
-	public List<BackedVO> backedList(PageVO pageVO) throws Exception {
+	public List<BackedVO> backedList(PageVO pageVO,String search) throws Exception {
 		
 		//###################페이징
-		int backedCount = backedPageCount();		//테이블의 row카운트
+		int backedCount = backedPageCount(search);		//테이블의 row카운트
 		pageVO.setCount(backedCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
-		PageVO pVO = pagingMaster(pageVO);
 		
-		List<BackedVO> backedList = supportDao.backedList(pVO);
+		PageVO pVO = pagingMaster(pageVO);
+		int curPage = pVO.getCurPage();
+		
+		List<BackedVO> backedList = supportDao.backedList(curPage,search);
+		
+		
 		return backedList;
 	}
 
@@ -122,14 +129,16 @@ public class SupPortServiceImpl implements SupPortService {
 //############################################################	
 	
 	//sponser 테이블 카운트 해오기
-	public int sponPageCount(){
-		int sponCount=supportDao.sponListCount();;
+	public int sponPageCount(String search){
+		
+		int sponCount=supportDao.sponListCount(search);
 		return sponCount;
 	}
 	
+	
 	//backed 테이블 카운트 해오기
-	public int backedPageCount(){
-		int backedCount=supportDao.backedListCount();;
+	public int backedPageCount(String search){
+		int backedCount=supportDao.backedListCount(search);
 		return backedCount;
 	}
 	
@@ -173,6 +182,8 @@ public class SupPortServiceImpl implements SupPortService {
 	    return pageVO;
 	
 	}
+
+
 
 
 	

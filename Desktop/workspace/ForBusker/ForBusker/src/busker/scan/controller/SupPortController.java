@@ -1,11 +1,14 @@
 package busker.scan.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import busker.scan.service.SupPortService;
 import busker.scan.vo.BackedVO;
@@ -22,8 +25,10 @@ public class SupPortController {
 	
 	//후원하기 List 이동
 	@RequestMapping(value="sponAndBacked.do")
-	public String sponAndBacked(Model m,String page,String cate, PageVO pageVO)  throws Exception {
-		System.out.println("sponList로 이동 : ");
+	public String sponAndBacked(Model m,String page, PageVO pageVO , String search)  throws Exception {
+		System.out.println("sponList로 이동 ");
+//		System.out.println("스폰리스트 search : "+search);
+		
 		
 		//################페이징
 		if(page == null){
@@ -33,40 +38,13 @@ public class SupPortController {
 			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
 		}
 		
-		System.out.println("현제페이지번호 : "+pageVO.getCurPage() );
-		//#####################
-	    
 		//후원하기 리스트
-		List<SponserVO> sponList = service.sponList(pageVO);
-		//후원해주세요 리스트
-		
+		List<SponserVO> sponList = service.sponList(pageVO,search);
 		
 		m.addAttribute("sponList",sponList);
 		m.addAttribute("page",pageVO);
+		m.addAttribute("search",search);
 		
-		return "sponserView/sponAndBacked";
-	}
-	
-	//후원해주세요 List
-	@RequestMapping(value="backedList.do")
-	public String backedList(Model m,String page, PageVO pageVO) throws Exception{
-		System.out.println("BackedList로 이동 : ");
-		
-		//################페이징
-		if(page == null){
-			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
-		}else{
-			int curPage = Integer.parseInt(page); //형변환
-			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
-		}		
-		System.out.println("현제페이지번호 : "+pageVO.getCurPage() );
-		//후원해주세요 리스트
-		List<BackedVO> backedList = service.backedList(pageVO);
-		//후원하기 리스트
-		
-		m.addAttribute("backedList",backedList);
-		
-		m.addAttribute("page",pageVO);
 		return "sponserView/sponAndBacked";
 	}
 	
@@ -124,8 +102,10 @@ public class SupPortController {
 	public String sponUpdate(String spNo, SponserVO sponserVO,Model m) throws Exception{
 		
 		int num=Integer.parseInt(spNo);
+		//System.out.println("넘넘넘"+num);
 		sponserVO.setSpNo(num);
 		SponserVO sVO = service.sponUpdateForm(sponserVO);
+		System.out.println("확인해보쟈 : "+sVO.getSpContent());
 		m.addAttribute("sponserVO",sVO);
 		return "sponserView/sponserUpdate";
 	}
@@ -144,8 +124,39 @@ public class SupPortController {
 		return "sponserView/sponserUpdateOk";
 	}
 	
+	//후원하기 검색
+	@RequestMapping(value="sponSearch.do")
+	public String sponSearch(String search, RedirectAttributes redirectAttributes) throws Exception{
+		System.out.println("스폰서치.do : " + search);      
+		redirectAttributes.addAttribute("search",search);   //search를 받아와서 search로 지정 
+		return "redirect:sponAndBacked.do";
+	}
+	
 	
 //후원해주세요 ###################################################
+	//후원해주세요 List
+	@RequestMapping(value="backedList.do")
+	public String backedList(Model m,String page, PageVO pageVO, String search) throws Exception{
+		System.out.println("BackedList로 이동 : ");
+		
+		//################페이징
+		if(page == null){
+			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
+		}else{
+			int curPage = Integer.parseInt(page); //형변환
+			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
+		}		
+		System.out.println("현제페이지번호 : "+pageVO.getCurPage() );
+		//후원해주세요 리스트
+		List<BackedVO> backedList = service.backedList(pageVO,search);
+		
+		m.addAttribute("backedList",backedList);
+		m.addAttribute("page",pageVO);
+		m.addAttribute("search",search);
+		
+		return "sponserView/sponAndBacked";
+	}
+	
 	//후원받기View로 이동
 	@RequestMapping(value="backedView.do")
 	public String backedView(int num, Model m) throws Exception{
@@ -201,6 +212,7 @@ public class SupPortController {
 		
 		backedVO.setBackNo(num);
 		BackedVO bVO = service.backedUpdateForm(backedVO);
+//		System.out.println("확인해보쟈 : "+bVO.getSpContent());
 		m.addAttribute("backedVO",bVO);
 		
 		return "backedView/backedUpdate";
@@ -219,6 +231,14 @@ public class SupPortController {
 		m.addAttribute("num",backedVO.getBackNo());
 		
 		return "backedView/backedUpdateOk";
+	}
+	
+	//후원하기 검색
+	@RequestMapping(value="backedSearch.do")
+	public String backedSearch(String search, RedirectAttributes redirectAttributes) throws Exception{
+		System.out.println("backedSearch.do : " + search);      
+		redirectAttributes.addAttribute("search",search);   //search를 받아와서 search로 지정 
+		return "redirect:backedList.do?cate=backed";
 	}
 
 		

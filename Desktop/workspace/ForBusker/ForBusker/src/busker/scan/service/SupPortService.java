@@ -12,7 +12,8 @@ public interface SupPortService {
 	public int insertSpon(SponserVO sponserVO) throws Exception;
 	
 	//후원하기 리스트 
-	public List<SponserVO> sponList(PageVO pageVO) throws Exception;
+	public List<SponserVO> sponList(PageVO pageVO, String search) throws Exception;
+	
 	
 	//후원하기View
 	public SponserVO selectSpon(int num) throws Exception;
@@ -32,7 +33,7 @@ public interface SupPortService {
 	public int insertBacked(BackedVO backedVO) throws Exception;
 	
 	//후원해주세요 리스트
-	public List<BackedVO> backedList(PageVO pageVO) throws Exception;
+	public List<BackedVO> backedList(PageVO pageVO,String search) throws Exception;
 	
 	//후원해주세요View
 	public BackedVO selectBacked(int num) throws Exception;

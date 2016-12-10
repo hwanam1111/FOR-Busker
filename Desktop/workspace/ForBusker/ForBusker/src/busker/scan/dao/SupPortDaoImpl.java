@@ -1,5 +1,6 @@
 package busker.scan.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,8 +29,12 @@ public class SupPortDaoImpl implements SupPortDao {
 
 	//후원하기 리스트
 	@Override
-	public List<SponserVO> sponList(PageVO pageVO) {
-		List<SponserVO> sponList= ss.selectList("support.sponList",pageVO);
+	public List<SponserVO> sponList(int curPage, String search) {
+		
+		HashMap<String, Object>hash=new HashMap<>();
+		hash.put("curPage", curPage);
+		hash.put("search", search);
+		List<SponserVO> sponList= ss.selectList("support.sponList",hash);
 		return sponList;
 	}
 
@@ -74,9 +79,13 @@ public class SupPortDaoImpl implements SupPortDao {
 
 	//후원해주세요 리스트
 	@Override
-	public List<BackedVO> backedList(PageVO pageVO) {
+	public List<BackedVO> backedList(int curPage, String search) {
 
-		List<BackedVO> backedList = ss.selectList("support.backedList",pageVO);
+		HashMap<String, Object>hash=new HashMap<>();
+		hash.put("curPage", curPage);
+		hash.put("search", search);
+		
+		List<BackedVO> backedList = ss.selectList("support.backedList",hash);
 		return backedList;
 	}
 
@@ -113,31 +122,22 @@ public class SupPortDaoImpl implements SupPortDao {
 //######################################################################	
 	//sponser테이블 총 갯수 구하기 
 	@Override
-	public int sponListCount() {
-		int sponCount = ss.selectOne("support.sponListCount");
+	public int sponListCount(String search) {
+		HashMap<String, String> hash = new HashMap<>();
+		hash.put("search", search);
+		
+		int sponCount = ss.selectOne("support.sponListCount",hash);
 		return sponCount;
 	}
 
 	//backed테이블 총 갯수 구하기 
 	@Override
-	public int backedListCount() {
-		int backedCount = ss.selectOne("support.backedListCount");
+	public int backedListCount(String search) {
+		HashMap<String, String> hash = new HashMap<>();
+		hash.put("search", search);
+		int backedCount = ss.selectOne("support.backedListCount",hash);
 		return backedCount;
 	}
-
-
-
-
-
-	
-
-
-	
-
-	
-
-
-	
 
 
 

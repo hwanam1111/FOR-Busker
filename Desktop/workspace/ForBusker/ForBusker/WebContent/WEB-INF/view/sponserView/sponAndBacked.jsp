@@ -10,10 +10,12 @@
 
  	String cate = request.getParameter("cate");
 	if( cate == null) cate = "spon";
-//후원하기, 후원해주세요 리스트 받기
+   //후원하기, 후원해주세요 리스트 받기
    List<SponserVO> sponList = null;
    List<BackedVO> backedList = null;
 
+   //search값 받아오기
+   String search = (String)request.getAttribute("search");
    if( cate.equals("spon")) sponList = (List)request.getAttribute("sponList");
    else if ( cate.equals("backed")){
 	   backedList = (List)request.getAttribute("backedList");
@@ -92,12 +94,16 @@ $(function(){
    	<tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" id="searchForm">
 	<div class="col-xs-4">
-		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
-				id="example-text-input"/>
+		<%if(search !=null){ %>
+		<input class="form-control" type="text" id="example-text-input1" value=<%=search %> >
+				
+		<%} else{%>		
+		<input class="form-control" type="text" id="example-text-input1" placeholder="제목으로 검색어를 입력하세요" >
+		<%} %>				
 	</div>
 	<div class="col-xs-2">
 		
-		<button type="button" class="btn btn-info" id="searchBtn">검색</button>
+		<button type="button" class="btn btn-info" id="sponSearchBtn">검색</button>
 		
 	</div>
 	
@@ -147,16 +153,16 @@ $(function(){
 	<nav align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
-	      <a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+	      <a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=pVO.getPreviPage()%>&search=<%=search%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
 	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-	   	 	<li class="page-item"><a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=i%>"><%=i %></a></li>
+	   	 	<li class="page-item"><a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=i%>&search=<%=search%>"><%=i %></a></li>
 	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=pVO.getNextPage()%>" aria-label="Next">
+	      <a class="page-link" href="sponAndBacked.do?cate=spon&page=<%=pVO.getNextPage()%>&search=<%=search%>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
@@ -176,11 +182,14 @@ $(function(){
     <tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" id="searchForm1">
 	<div class="col-xs-4">
-		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
-				id="example-text-input"/>
+		<%if(search !=null){ %>
+		<input class="form-control" type="text" id="example-text-input2" value=<%=search %>>
+		<%} else{%>		
+		<input class="form-control" type="text" id="example-text-input2" placeholder="제목으로 검색어를 입력하세요" />
+		<%} %>
 	</div>
 	<div class="col-xs-2">
-		<button type="button" class="btn btn-info" id="searchBtn1">검색</button>
+		<button type="button" class="btn btn-info" id="backedSearchBtn">검색</button>
 	</div>
 	
 	<div class="col-xs-6">
@@ -228,16 +237,16 @@ $(function(){
 	<nav align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
-	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getPreviPage()%>&search=<%=search %>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
 	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-	   	 	<li class="page-item"><a class="page-link" href="backedList.do?cate=backed&page=<%=i%>"><%=i %></a></li>
+	   	 	<li class="page-item"><a class="page-link" href="backedList.do?cate=backed&page=<%=i%>&search=<%=search %>"><%=i %></a></li>
 	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getNextPage()%>" aria-label="Next">
+	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getNextPage()%>&search=<%=search %>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
@@ -252,9 +261,9 @@ $(function(){
        
     </div>
     <!-- .tab_container -->
+</div><!-- #container -->
+
 </div>
-</div>
-<!-- #container -->
 
 
 

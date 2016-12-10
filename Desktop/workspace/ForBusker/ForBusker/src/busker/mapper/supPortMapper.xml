@@ -11,15 +11,22 @@ VALUES (seq_sponser.nextVal, #{memEmail}, #{spName}, #{spPhoto},
 </insert>
 
 <!-- 후원하기 테이블 총 갯수 구하기 -->
-<select id="sponListCount" resultType="int">
+<select id="sponListCount" parameterType="hashmap"   resultType="int">
 SELECT count(spNo)
 FROM sponser
+<if test="search neq null">
+	WHERE  spName LIKE '%' || #{search} || '%' 
+</if>
 </select>
 
 <!-- 후원하기 리스트 -->
-<select id="sponList"  parameterType="busker.scan.vo.PageVO"   resultType="busker.scan.vo.SponserVO">
+<select id="sponList"  parameterType="hashmap"   resultType="busker.scan.vo.SponserVO">
 SELECT spNo, spName,spCond,spPhoto,spTel
-FROM (select  rownum as rnum , spNo, spName,spCond,spPhoto,spTel FROM sponser ORDER BY spNO DESC) 
+FROM (select  rownum as rnum , spNo, spName,spCond,spPhoto,spTel FROM sponser 
+																		<if test="search neq null">
+																			WHERE  spName LIKE '%' || #{search} || '%' 
+																		</if>ORDER BY 
+																		spNO DESC) 
 WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
 
@@ -57,15 +64,22 @@ VALUES (seq_backed.nextval, #{memEmail}, #{backName}, #{backVideo},
 </insert>
 
 <!-- Backed 테이블 총 갯수 구하기 -->
-<select id="backedListCount" resultType="int">
+<select id="backedListCount" parameterType="hashmap" resultType="int">
 SELECT count(backNo)
 FROM backed
+<if test="search neq null">
+	WHERE  backName LIKE '%' || #{search} || '%' 
+</if>
 </select>
 
 <!-- 후원해주세요 리스트 -->
-<select id="backedList" parameterType="busker.scan.vo.PageVO" resultType="backvo">
+<select id="backedList" parameterType="hashMap" resultType="backvo">
 SELECT backNO, backName, substr(backvideo, -11) as backVideo, backContent 
-FROM (select  rownum as rnum , backNo, backName,backContent,backVideo,backTel FROM backed ORDER BY backNo DESC)
+FROM (select  rownum as rnum , backNo, backName,backContent,backVideo,backTel FROM backed 
+																<if test="search neq null">
+																	WHERE  backName LIKE '%' || #{search} || '%' 
+																</if>	
+																ORDER BY backNo DESC)
 WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
 

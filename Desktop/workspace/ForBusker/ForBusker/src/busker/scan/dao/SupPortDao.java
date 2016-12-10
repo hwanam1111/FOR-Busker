@@ -10,7 +10,7 @@ public interface SupPortDao {
 
 	public int insertSpon(SponserVO sponserVO);
 	
-	public List<SponserVO> sponList(PageVO pageVO);
+	public List<SponserVO> sponList(int curPage, String search);
 	
 	public SponserVO selectSpon(int num);
 	
@@ -29,7 +29,7 @@ public interface SupPortDao {
 	public int insertBacked(BackedVO backedVO);
 	
 	//후원해주세요 리스트
-	public List<BackedVO> backedList(PageVO pageVO);
+	public List<BackedVO> backedList(int curPage,String search);
 	
 	//후원해주세요 View 뽑기
 	public BackedVO selectBacked(int num);
@@ -38,10 +38,10 @@ public interface SupPortDao {
 	public int deleteBacked(int backedNo);
 	
 	//sponser 테이블 카운트
-	public int sponListCount();
+	public int sponListCount(String search);
 	
 	//backed 테이블 카운트
-	public int backedListCount();
+	public int backedListCount(String search);
 	
 	//후원해주세요 수정폼
 	public BackedVO backedUpdateForm(BackedVO backedVO);
