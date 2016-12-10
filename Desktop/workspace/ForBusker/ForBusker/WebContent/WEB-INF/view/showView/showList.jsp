@@ -114,13 +114,12 @@ $("#exampleSelect1").change(function(){//카테고리로 검색할경우 input�
 	}
 });
 $("#registBtn").click(function(){
-	var kk="<%=logincheck%>";
-	alert(kk);
-	if(kk='null') {
-		window.location.href="login.do";
-	}else{
-		window.location.href="showRegist.do"
-	}
+	
+	<%if(session.getAttribute("login") == null) { %>
+    window.location.href="login.do";
+ <%}else{%>
+    window.location.href="showRegist.do";
+ <%}%>
 });
 });
 </script>
