@@ -25,11 +25,9 @@
 
 
 <!-- 이부분 부터 코딩 시작 -->
-<script type="text/javascript">
-alert("${message}");
-location.href="sponAndBacked.do"
-</script>
-
+<div id="hoc">
+	${message }
+</div>
 
 
 

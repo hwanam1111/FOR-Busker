@@ -32,11 +32,11 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<form style="margin-left:140px;" action="sponInsert.do" enctype="multipart/form-data" method="post">
+	<form style="margin-left:140px;" action="sponUpdate.do" enctype="multipart/form-data" method="post">
 		<table>
 		<!-- 어떤 입력폼인가 -->
 		<tr>
-			<h1> Sponser Form</h1> 
+			<h1> Sponser UpdateForm</h1> 
 		
 		</tr>
 		<tr>
@@ -48,7 +48,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label" >제목</label>
 			  <div class="col-xs-8">
-			    <input class="form-control" type="text" placeholder="제목을 입력하세요" id="example-text-input" name="spName">
+			    <input class="form-control" type="text" value="${sponserVO.spName }" id="example-text-input" name="spName">
 			  </div>
 		  </div>
 		</tr>
@@ -68,8 +68,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">상세설명</label>
 			<div class="col-xs-8">
-			  <textarea class="form-control" id="exampleTextarea" name="spContent" rows="5" 
-			    		placeholder="후원내용에 대해 자세히 적어주세요"></textarea>
+			  <textarea class="form-control" id="exampleTextarea" name="spContent" rows="5">${sponserVO.spContent }</textarea>
 			</div>
 		  </div>
 		</tr>
@@ -79,8 +78,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">조건</label>
 			<div class="col-xs-8">
-			  <textarea class="form-control" id="exampleTextarea" rows="4" name="spCond"
-			    		placeholder="조건에 대해 입력하세요"></textarea>
+			  <textarea class="form-control" id="exampleTextarea" rows="4" name="spCond">${sponserVO.spCond }</textarea>
 			</div>
 		  </div>
 		</tr>
@@ -90,7 +88,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">연락처</label>
 			  <div class="col-xs-8">
-			    <input class="form-control" type="text" name="spTel" placeholder="-빼고 입력해주세요">
+			    <input class="form-control" type="text" name="spTel" value="${sponserVO.spTel }">
 			  </div>
 		  </div>
 		</tr>
@@ -98,7 +96,7 @@
 		<!-- 등록, 취소 버튼 -->
 		<tr>
 			<div align="center">
-				
+				<input type='hidden' name="spNo" value='${sponserVO.spNo }'>
 			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
 				<button type="submit" class="btn btn-info">등록하기</button>
 				<button type="button" class="btn btn-info">취소</button>

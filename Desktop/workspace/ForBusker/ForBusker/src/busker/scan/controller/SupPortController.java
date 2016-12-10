@@ -20,7 +20,7 @@ public class SupPortController {
 	@Autowired
 	private SupPortService service;
 	
-	//후원리스트로 이동
+	//후원하기 List 이동
 	@RequestMapping(value="sponAndBacked.do")
 	public String sponAndBacked(Model m,String page,String cate, PageVO pageVO)  throws Exception {
 		System.out.println("sponList로 이동 : ");
@@ -75,7 +75,9 @@ public class SupPortController {
 	public String sponserView(int num,Model m) throws Exception {
 		
 		SponserVO sVO = service.selectSpon(num);
+		
 		System.out.println("ponserView로 이동 : "+num);
+		
 		m.addAttribute("selectSpon",sVO);
 		return "sponserView/sponserView";
 	}
@@ -87,6 +89,65 @@ public class SupPortController {
 		return "sponserView/sponserForm";
 	}
 	
+	//후원하기 insert페이지
+	@RequestMapping(value="sponInsert.do")
+	public String sponInsert(SponserVO sponserVO,Model m ) throws Exception {
+		
+		
+		int result=0;
+		result = service.insertSpon(sponserVO);
+		if(result==1){
+			m.addAttribute("message","입력성공@.@");
+			
+		}else{
+			m.addAttribute("message","입력실패-.-");
+		}
+		return "sponserView/sponInsertOk";
+	}
+	
+	//후원하기 삭제
+	@RequestMapping(value="sponDelete.do")
+	public String sponDelete(String num,Model m) throws Exception{
+		int sponNo = Integer.parseInt(num);
+		int result = service.deleteSpon(sponNo);
+		String message="삭제성공";
+		if(result != 1){
+			message="삭제 실패 ㅡㅡ";
+		}
+		m.addAttribute("message",message);
+		
+		return "sponserView/sponserDeleteOk";
+	}
+	
+	//후원하기 수정폼
+	@RequestMapping(value="sponUpdateForm.do")
+	public String sponUpdate(String spNo, SponserVO sponserVO,Model m) throws Exception{
+		
+		int num=Integer.parseInt(spNo);
+		System.out.println("넘넘넘"+num);
+		sponserVO.setSpNo(num);
+		SponserVO sVO = service.sponUpdateForm(sponserVO);
+		System.out.println("확인해보쟈 : "+sVO.getSpContent());
+		m.addAttribute("sponserVO",sVO);
+		return "sponserView/sponserUpdate";
+	}
+	
+	//후원하기 수정
+	@RequestMapping(value="sponUpdate.do")
+	public String sponUpdateOk(SponserVO sponserVO, Model m) throws Exception{
+		
+		int result = service.sponUpdate(sponserVO);
+		String message="수정 성공!!!";
+		if(result!=1){
+			message = "수정 실패!!!";
+		}
+		m.addAttribute("message",message);
+		m.addAttribute("num",sponserVO.getSpNo());
+		return "sponserView/sponserUpdateOk";
+	}
+	
+	
+//후원해주세요 ###################################################
 	//후원받기View로 이동
 	@RequestMapping(value="backedView.do")
 	public String backedView(int num, Model m) throws Exception{
@@ -97,25 +158,11 @@ public class SupPortController {
 		return "backedView/backedView";
 	}
 	
-	//후원받기 페이지로 이동
+	//후원받기 입력페이지로 이동
 	@RequestMapping(value="backedForm.do")
 	public String backedForm(){
 		System.out.println("backedForm로 이동");
 		return "backedView/backedForm";
-	}
-	
-	//후원하기 insert페이지
-	@RequestMapping(value="sponInsert.do")
-	public String sponInsert(SponserVO sponserVO,Model m ) throws Exception {
-		System.out.println("insert콘트롤확인 : "+sponserVO.getSpName());
-		int result=0;
-		result = service.insertSpon(sponserVO);
-		if(result==1){
-			m.addAttribute("message","입력성공@.@");
-		}else{
-			m.addAttribute("message","입력실패-.-");
-		}
-		return "sponserView/sponInsertOk";
 	}
 	
 	//후원받기 insert페이지
@@ -130,10 +177,52 @@ public class SupPortController {
 			m.addAttribute("message","입력실패-.-");
 		}
 		
-		
 		return "backedView/backedInsertOk";
 	}
 	
+	//후원해주세요 삭제
+	@RequestMapping(value="backedDelete.do")
+	public String backedDelete(String num,Model m) throws Exception{
+		int backedNo = Integer.parseInt(num);
+		int result = service.deleteBacked(backedNo);
+		String message="삭제성공";
+		if(result != 1){
+			message="삭제 실패 ㅡㅡ";
+		}
+		m.addAttribute("message",message);
+		
+		return "sponserView/sponserDeleteOk";
+	}
 	
+	//후원해주세요 수정폼
+	@RequestMapping(value="backedUpdateForm.do")
+	public String backedUpdateForm(String backNo, BackedVO backedVO ,Model m) throws Exception{
+		
+		
+		int num=Integer.parseInt(backNo);
+		
+		backedVO.setBackNo(num);
+		BackedVO bVO = service.backedUpdateForm(backedVO);
+//		System.out.println("확인해보쟈 : "+bVO.getSpContent());
+		m.addAttribute("backedVO",bVO);
+		
+		return "backedView/backedUpdate";
+	}
+	
+	//후원해주세요 수정
+	@RequestMapping(value="backedUpdate.do")
+	public String backedUpdateOk(BackedVO backedVO, Model m) throws Exception{
+		
+		int result = service.backedUpdate(backedVO);
+		String message="수정 성공!!!";
+		if(result!=1){
+			message = "수정 실패!!!";
+		}
+		m.addAttribute("message",message);
+		m.addAttribute("num",backedVO.getBackNo());
+		
+		return "backedView/backedUpdateOk";
+	}
+
 		
 }

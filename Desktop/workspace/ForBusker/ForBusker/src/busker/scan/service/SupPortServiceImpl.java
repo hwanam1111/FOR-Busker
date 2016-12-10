@@ -16,6 +16,7 @@ public class SupPortServiceImpl implements SupPortService {
 	@Autowired
 	private SupPortDao supportDao;
 	
+	//후원하기 입력
 	@Override
 	public int insertSpon(SponserVO sponserVO) throws Exception {
 		System.out.println("servie부분");
@@ -37,19 +38,45 @@ public class SupPortServiceImpl implements SupPortService {
 		return sponList;
 	}
 
+	//후원하기 View
 	@Override
 	public SponserVO selectSpon(int num) throws Exception {
 		
 		SponserVO sVO = supportDao.selectSpon(num);
 		return sVO;
 	}
+	
+	//후원하기 삭제
+	@Override
+	public int deleteSpon(int sponNo) throws Exception {
 
+		int result = supportDao.deleteSpon(sponNo);
+		return result;
+	}
+	
+	//후원하기 수정폼
+	@Override
+	public SponserVO sponUpdateForm(SponserVO sponserVO) throws Exception {
+		SponserVO sVO = supportDao.sponUpdateForm(sponserVO);
+		return sVO;
+	}
+	
+	//후원하기 수정
+	@Override
+	public int sponUpdate(SponserVO sponserVO) throws Exception {
+		int result = supportDao.sponUpdate(sponserVO);
+		return result;
+	}
+	
+//후원해주세요 ###############################################################	
+	//후원해주세요 입력
 	@Override
 	public int insertBacked(BackedVO backedVO) throws Exception {
 		int result = supportDao.insertBacked(backedVO);
 		return result;
 	}
 
+	//후원해주세요 리스트
 	@Override
 	public List<BackedVO> backedList(PageVO pageVO) throws Exception {
 		
@@ -58,10 +85,11 @@ public class SupPortServiceImpl implements SupPortService {
 		pageVO.setCount(backedCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
 		PageVO pVO = pagingMaster(pageVO);
 		
-		List<BackedVO> backedList = supportDao.backedList();
+		List<BackedVO> backedList = supportDao.backedList(pVO);
 		return backedList;
 	}
 
+	//후원해주세요 View
 	@Override
 	public BackedVO selectBacked(int num) throws Exception {
 		
@@ -69,6 +97,29 @@ public class SupPortServiceImpl implements SupPortService {
 		return bVO;
 		
 	}
+	
+	//후원해주세요 삭제
+	@Override
+	public int deleteBacked(int backedNo) throws Exception {
+		int result = supportDao.deleteBacked(backedNo);
+		return result;
+	}
+	
+	//후원해주세요 수정폼
+	@Override
+	public BackedVO backedUpdateForm(BackedVO backedVO) throws Exception {
+		BackedVO bVO = supportDao.backedUpdateForm(backedVO);
+		return bVO;
+	}
+	
+	//후원해주세요 수정
+	@Override
+	public int backedUpdate(BackedVO backedVO) throws Exception {
+		int result = supportDao.backedUpdate(backedVO);
+		return result;
+	}
+
+//############################################################	
 	
 	//sponser 테이블 카운트 해오기
 	public int sponPageCount(){
@@ -122,6 +173,17 @@ public class SupPortServiceImpl implements SupPortService {
 	    return pageVO;
 	
 	}
+
+
+	
+
+	
+
+
+
+	
+
+
 	
 	
 

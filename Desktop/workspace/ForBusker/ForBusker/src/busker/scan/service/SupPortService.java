@@ -17,6 +17,17 @@ public interface SupPortService {
 	//후원하기View
 	public SponserVO selectSpon(int num) throws Exception;
 	
+	//후원하기 삭제
+	public int deleteSpon(int sponNo) throws Exception;
+	
+	//후원하기 수정폼
+	public SponserVO sponUpdateForm(SponserVO sponserVO) throws Exception;
+	
+	//후원하기 수정
+	public int sponUpdate(SponserVO sponserVO)throws Exception;
+	
+//후원해주세요#########################################################
+	
 	//후원해주세요 등록
 	public int insertBacked(BackedVO backedVO) throws Exception;
 	
@@ -25,4 +36,14 @@ public interface SupPortService {
 	
 	//후원해주세요View
 	public BackedVO selectBacked(int num) throws Exception;
+	
+	//후원해주세요 삭제
+	public int deleteBacked(int backedNo) throws Exception;
+	
+	//후원해주세요 수정폼
+	public BackedVO backedUpdateForm(BackedVO backedVO) throws Exception;
+	
+	//후원해주세요 수정
+	public int backedUpdate(BackedVO backedVO) throws Exception;
+
 }

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="busker.scan.vo.*" %> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="busker.scan.vo.*" %>    
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -34,7 +35,7 @@
 <%
 	Object obj = session.getAttribute("login");
 	SponserVO sVO = (SponserVO)request.getAttribute("selectSpon");
-	
+	System.out.println("이메일은:: " +sVO.getMemEmail());
 	MemberVO mVO = new MemberVO();
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
@@ -48,6 +49,8 @@
 		<% } %>
 <% } %>
 <!-- ################################################### -->
+
+
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
 <h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Sponser View</h1>
@@ -57,14 +60,15 @@
 	
 		<!-- 제목,이미지  -->
 		<div class="sponimg">
-			<h2>${selectSpon.spName }</h2>
+			<p>${selectSpon.spName }</p>
 			<!-- 이부분은 다름 -->
 			<img  src="<%=projectName %>/upload/${selectSpon.spPhoto }">
 		</div>
 	</div>
 	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
-		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
+<%-- 		<input type="hidden" value="${selectSpon.memEmail}" name="memEmail"> --%>
+		<a href="sponUpdateForm.do?spNo=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
+		<a href="sponDelete.do?num=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	
@@ -83,7 +87,9 @@
 		<button type="button" class="btn btn-primary">문의하기</button>
 		</p>
 	</div>
+	
 	</td>
+	
 	</table>
 	
 	

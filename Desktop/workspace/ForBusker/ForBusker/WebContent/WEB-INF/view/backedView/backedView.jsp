@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="busker.scan.vo.*" %> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="busker.scan.vo.*" %>     
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -25,8 +26,8 @@
 <%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
-<!-- 세션값의 email값이랑 입력한 놈의 email 값이 같다면 수정,삭제버튼 보여주기 -->
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<!-- 세션값의 email값이랑 입력한 놈의 email 값이 같다면 수정,삭제버튼 보여주기 -->
 <%
 	Object obj = session.getAttribute("login");
 	BackedVO bVO = (BackedVO)request.getAttribute("selectBacked");
@@ -60,8 +61,8 @@
 		</div>
 	</div>
 	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
-		<a href="#"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
+		<a href="backedUpdateForm.do?backNo=${selectBacked.backNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
+		<a href="backedDelete.do?num=${selectBacked.backNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	
