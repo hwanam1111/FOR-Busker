@@ -62,5 +62,6 @@ public static String RandomNum(){
 			Transport.send(msg);
 			System.out.println("Gmail SMTP서버를 이용한 메일보내기 성공");
 			/* request.setAttribute("authNum",authNum ); */
+			System.out.println("authNum :" +authNum);
 			out.write(authNum);
 %>

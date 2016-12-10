@@ -38,25 +38,26 @@
 	<!-- ################################################### -->
 	<!-- ################################################### -->
 	<!-- buskerIdSearchForm -->
-	<form id="pwSearchForm">
+	<form>
 		<p>FOR_Busker를 이용하실 때 사용하시던 이메일을 입력해주십시오.</p>
 		<div>
-	    	<input type="email" class="form-control" id="buskerEmail" name="buskerEmail" placeholder="이메일을 입력하세요" maxlength="50">
+	    	<input type="email" class="form-control" id="buskerEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
 	    	<button type="button" id="emailCheckBtn" class="btn btn-info">이메일인증</button>
     	</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
-    	<div class="form-group" id="confirm" style="display:none">
+    	<div class="form-group" id="confirm1" style="display:none">
  		   <p>이메일 인증번호를 입력해주세요.</p>
     		<input type="text" class="form-control" id="emailConfirm" name="emailConfirm" placeholder="입력한 이메일로 인증번호가 전송되었습니다. 인증번호를 입력해주십시오." maxlength="12">
+  			<div id="emailmessage" style="display:none"></div>
   		</div>
   		<div class="form-group" id="telForm">
- 		    <p>FOR_Busker에 회원가입 하실 때 작성하셨던 전화번호를 입력해주십시오.</p>
-    		<input type="tel" class="form-control" id="buskerTel"name="buskerTel" placeholder="전화번호를 입력하세요" maxlength="13">
+ 		    <p id="telTitle">FOR_Busker에 회원가입 하실 때 작성하셨던 전화번호를 입력해주십시오.</p>
+    		<input type="tel" class="form-control" id="buskerTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
-		<button type="submit" class="btn btn-success" id="submitBtn">비밀번호 찾기</button>
+		<button type="button" class="btn btn-success" id="searchPwBtn">비밀번호 찾기</button>
 	</form>
 </div>
 

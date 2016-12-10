@@ -11,4 +11,12 @@ public interface MemberDao {
 
 	//중복체크
 	MemberVO idchecked(MemberVO vo);
+
+	int deleteMember(MemberVO memvo);
+
+	MemberVO simpleIdSearch(MemberVO memvo);
+
+	MemberVO buskerIdSearch(MemberVO memvo);
+
+	MemberVO searchPw(MemberVO memvo);
 }

@@ -25,17 +25,8 @@
 
 
 <!-- 이부분 부터 코딩 시작 -->
-<div class="hoc">
-<input type="hidden" value="회원 가입 성공 실패 : ${result}">
-<div style="width:400px; margin-left:315px;">
-		<h1 style="margin-bottom:50px; margin-top:125px;">FOR Busker의 회원이 되신 것을 축하드립니다.</h1>
-		<a href="login.do" style="text-decoration: none;">
-			<button type="button" style="background-color: #ffc19e; color:#f1f1f1; text-decoration: none;
-			border-radius: 5px; width:350px; height: 60px; font-size:20px; margin-bottom:125px; margin-left:25px;
-			border:none;">로그인 하러 가기</button>
-		</a>
-	</div>
-</div>
+회원 가입 성공 실패 : ${result}
+
 
 <!-- 코딩 종료 -->
 

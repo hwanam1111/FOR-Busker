@@ -36,20 +36,20 @@
 	<!-- ################################################### -->
 	<h1 id="leave_title">회원탈퇴</h1>
 	<!-- simpleJoin Form -->
-	<form id="leaveForm">
+	<form id="leaveForm" action="myPageLeaveConfig.do" method="post">
 		<!-- #################################################### -->
 		<!-- #################################################### -->
 		<div class="form-group">
    			<label for="leaveEmail">이메일 주소</label>
     		<div>
-	    		<input type="email" class="form-control" id="leaveEmail" name="leaveEmail" placeholder="이메일을 입력하세요" maxlength="50">
+	    		<input type="email" class="form-control" id="leaveEmail" name="memEmail" value="${memvo}" maxlength="50">
     		</div>
     	</div>
     	<!-- #################################################### -->
     	<!-- #################################################### -->
   		<div class="form-group">
     		<label for="leavePassword">비밀번호</label>
-    		<input type="password" class="form-control" id="leavePassword" name="leavePassword" placeholder="암호를 입력하세요" maxlength="20">
+    		<input type="password" class="form-control" id="leavePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
