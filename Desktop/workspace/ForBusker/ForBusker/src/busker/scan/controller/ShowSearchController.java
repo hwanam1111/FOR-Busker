@@ -38,7 +38,7 @@ public class ShowSearchController {
 	@RequestMapping(value="showListSearch")
 	public String showList2(String date, String select, String val, Model m) throws Exception{
 		System.out.println("으아아아아"+service.selectList(date,select,val).size());
-		m.addAttribute("volist",service.selectList(date,select,val));
+		m.addAttribute("volist",service.selectList(date,select,val)); //뷰에서 받아온 날짜값과 셀렉트박스값, 텍스트필드or셀렉트값(카테고리로검색일경우) 서비스로넘겨줌
 		return "showView/showList";
 	}
 }
