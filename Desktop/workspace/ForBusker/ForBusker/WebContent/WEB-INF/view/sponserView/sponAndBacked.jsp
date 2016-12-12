@@ -16,6 +16,8 @@
 
    //search값 받아오기
    String search = (String)request.getAttribute("search");
+   if( (search !=null && search.equals("null") )|| search == null ) search="";
+  
    if( cate.equals("spon")) sponList = (List)request.getAttribute("sponList");
    else if ( cate.equals("backed")){
 	   backedList = (List)request.getAttribute("backedList");

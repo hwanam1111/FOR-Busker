@@ -28,7 +28,8 @@ public class SupPortController {
 	public String sponAndBacked(Model m,String page, PageVO pageVO , String search)  throws Exception {
 		System.out.println("sponList로 이동 ");
 //		System.out.println("스폰리스트 search : "+search);
-		
+		//검색어 null들어오면 공백으로 처리
+		if( search !=null && search.equals("null")) search = "";
 		
 		//################페이징
 		if(page == null){
@@ -145,8 +146,10 @@ public class SupPortController {
 		}else{
 			int curPage = Integer.parseInt(page); //형변환
 			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
-		}		
-		System.out.println("현제페이지번호 : "+pageVO.getCurPage() );
+		}
+		
+		//검색어 null들어오면 공백으로 처리
+		if( search !=null && search.equals("null")) search = "";
 		//후원해주세요 리스트
 		List<BackedVO> backedList = service.backedList(pageVO,search);
 		
