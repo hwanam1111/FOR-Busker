@@ -204,7 +204,7 @@ $("#registBtn").click(function(){
 		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a><%=showVoList.get(i).getShTeamName() %></a></label>						
 		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>상세보기</a></label>
 	</div>
-</form>
+</form> 
 </div>
 <% } %>
 </td> 
