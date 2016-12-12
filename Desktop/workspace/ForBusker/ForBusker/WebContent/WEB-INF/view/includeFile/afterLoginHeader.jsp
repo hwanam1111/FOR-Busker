@@ -44,7 +44,7 @@ function logout(){
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
-					<li><a href="message.do">쪽지함</a></li>
+					<li><a href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 

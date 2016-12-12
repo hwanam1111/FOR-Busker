@@ -2,18 +2,22 @@ package busker.scan.vo;
 
 public class SmsVO {
 
-	private int smsNO;
-	private String smsSendEmail;
-	private String smsContent;
-	private String smsReceiveEmail;
-	private String smsSendTime;
-	private String smsStatus;
+	private String smsNo;
+	private String smsSendEmail;		
+	private String smsContent;			
+	private String smsReceiveEmail;		
+	private String smsSendTime;			
+	private String smsStatus;			
+	private String smsType;		// Sponser , Backed , together
+	private String smsTo;
+	private String smsFrom;
+	private String smsDeleteStatus;
 	
-	public int getSmsNO() {
-		return smsNO;
+	public String getSmsNo() {
+		return smsNo;
 	}
-	public void setSmsNO(int smsNO) {
-		this.smsNO = smsNO;
+	public void setSmsNo(String smsNo) {
+		this.smsNo = smsNo;
 	}
 	public String getSmsSendEmail() {
 		return smsSendEmail;
@@ -45,5 +49,30 @@ public class SmsVO {
 	public void setSmsStatus(String smsStatus) {
 		this.smsStatus = smsStatus;
 	}
-			
+	public String getSmsType() {
+		return smsType;
+	}
+	public void setSmsType(String smsType) {
+		this.smsType = smsType;
+	}
+	public String getSmsTo() {
+		return smsTo;
+	}
+	public void setSmsTo(String smsTo) {
+		this.smsTo = smsTo;
+	}
+	public String getSmsFrom() {
+		return smsFrom;
+	}
+	public void setSmsFrom(String smsFrom) {
+		this.smsFrom = smsFrom;
+	}
+	public String getSmsDeleteStatus() {
+		return smsDeleteStatus;
+	}
+	public void setSmsDeleteStatus(String smsDeleteStatus) {
+		this.smsDeleteStatus = smsDeleteStatus;
+	}  
+
+	
 }
