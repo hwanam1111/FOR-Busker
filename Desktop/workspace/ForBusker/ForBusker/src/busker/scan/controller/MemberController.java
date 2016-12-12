@@ -100,13 +100,45 @@ public class MemberController {
 		return result;
 	}
 	
-	
 //	이메일 인증
 	@RequestMapping(value="gmail.do")
 	public String gmail(){
 		System.out.println("Gmail.jsp로 이동");
 		return "mainView/Gmail";
 	}
+	//일반 사용자용 아이디 찾기(ajax)
+	@RequestMapping(value="simpleIdSearchByPhoneNum.do")
+	@ResponseBody
+	public String simpleIdSearch(String memPhone){
+		MemberVO vo=new MemberVO();
+		vo.setMemPhone(memPhone);
+		MemberVO memvo=service.simpleIdSearch(vo);
+		System.out.println("memvo.getMemEmail() :"+memvo.getMemEmail());
+		return memvo.getMemEmail();
+	}
 	
+	//공연자용 아이디 찾기(ajax)
+		@RequestMapping(value="buskerIdSearchByPhoneNum.do")
+		@ResponseBody
+		public String buskerIdSearch(String memPhone,String memTeamName){
+			System.out.println("controller tel and name: "+memPhone+"/ "+memTeamName);
+			MemberVO vo=new MemberVO();
+			vo.setMemPhone(memPhone); 
+			vo.setMemTeamName(memTeamName);
+			MemberVO memvo=service.buskerIdSearch(vo);
+			System.out.println("memvo.getMemEmail() :"+memvo.getMemEmail());
+			return memvo.getMemEmail();
+		}
+		//회원 비밀번호 찾기
+		@RequestMapping(value="searchPwConfig.do")
+		@ResponseBody
+		public String searchPw(String memPhone,String memEmail){
+			MemberVO vo=new MemberVO();
+			vo.setMemEmail(memEmail);
+			vo.setMemPhone(memPhone);
+			MemberVO memvo=service.searchPw(vo);
+			System.out.println("비밀번호 찾음: "+memvo.getMemPw());
+			return memvo.getMemPw();
+		}
 	
 }

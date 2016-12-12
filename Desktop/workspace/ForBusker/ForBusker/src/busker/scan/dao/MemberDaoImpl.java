@@ -45,6 +45,26 @@ public class MemberDaoImpl implements MemberDao {
 		
 		return 1;
 	}
+	public int deleteMember(MemberVO vo) {
+		return ss.update("main.deleteMember",vo);
+	}
+	//일반인 아이디 찾기
+	public MemberVO simpleIdSearch(MemberVO memvo){
+	
+			MemberVO result = ss.selectOne("main.simpleIdSearch",memvo);
+			return result;
+		}
+	//공연자 아이디 찾기
+		public MemberVO buskerIdSearch(MemberVO memvo){
+			System.out.println("dao tel and name: "+memvo.getMemPhone()+"/"+memvo.getMemTeamName());
+				MemberVO result = ss.selectOne("main.buskerIdSearch",memvo);
+				return result;
+			}
+		//비번 찾기
+		public MemberVO searchPw(MemberVO memvo){
+			MemberVO result=ss.selectOne("main.searchPw", memvo);
+			return result;
+		}	
 
 
 }

@@ -13,4 +13,12 @@ public interface MemberService {
 	//중복체크
 	public MemberVO selectEmail(MemberVO memvo) throws Exception;
 
+	public MemberVO simpleIdSearch(MemberVO vo);
+
+	public MemberVO buskerIdSearch(MemberVO vo);
+
+	public MemberVO searchPw(MemberVO vo);
+
+
+
 }

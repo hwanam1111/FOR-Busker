@@ -99,7 +99,7 @@ function closeNav() {
 <%-- alert("<%=showVoList.get(1).getShName()%>"); --%>
 
 var picker = $input.pickadate('picker');
-
+ 
 $("#exampleSelect1").change(function(){//카테고리로 검색할경우 input을 text->select로 바꿔줌
 	if($("#exampleSelect1 option:selected").val() == "1"){
 		$("#example-text-input").hide();
@@ -114,13 +114,12 @@ $("#exampleSelect1").change(function(){//카테고리로 검색할경우 input�
 	}
 });
 $("#registBtn").click(function(){
-	var kk="<%=logincheck%>";
-	alert(kk);
-	if(kk='null') {
-		window.location.href="login.do";
-	}else{
-		window.location.href="showRegist.do"
-	}
+	
+	<%if(session.getAttribute("login") == null) { %>
+    window.location.href="login.do";
+ <%}else{%>
+    window.location.href="showRegist.do";
+ <%}%>
 });
 });
 </script>

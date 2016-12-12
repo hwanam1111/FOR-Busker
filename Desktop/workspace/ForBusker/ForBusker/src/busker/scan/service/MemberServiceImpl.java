@@ -45,7 +45,26 @@ public class MemberServiceImpl implements MemberService {
 		
 		 return memberDao.insertMember(memvo);
 	}
-
-
+//탈퇴
+	public int deleteMember(MemberVO memvo) throws Exception {
+		 return memberDao.deleteMember(memvo);
+	}
+	//일반 사용자용 이메일 찾기
+	public MemberVO simpleIdSearch(MemberVO memvo) {
+		
+		MemberVO result = memberDao.simpleIdSearch(memvo);
+		return result;
+	}
+	//공연자용 이메일 찾기
+	public MemberVO buskerIdSearch(MemberVO memvo) {
+		System.out.println("sevice tel and name: "+memvo.getMemPhone()+"/"+memvo.getMemTeamName());
+		MemberVO result = memberDao.buskerIdSearch(memvo);
+		return result;
+	} 
+	//비번 찾기
+	public MemberVO searchPw(MemberVO memvo){
+		MemberVO result=memberDao.searchPw(memvo);
+		return result;
+	}
 	
 }
