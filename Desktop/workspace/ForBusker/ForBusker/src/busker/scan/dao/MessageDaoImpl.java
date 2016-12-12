@@ -17,16 +17,16 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 import busker.scan.vo.SmsVO;
-
+ 
 @Repository
 public class MessageDaoImpl implements MessageDao {
 
 	private static final String memberCollectionName = "Message";
 
 	@Override
-	public void Insert(SmsVO sms) throws Exception {
+	public void Insert(SmsVO sms) throws Exception {   
 
-		DB db = MongoClientFactory.getDB(); // DB 연결
+		DB db = MongoClientFactory.getDB(); // DB 연결  
 
 		DBCollection collection = db.getCollection(memberCollectionName); // collectionName
 
@@ -37,7 +37,7 @@ public class MessageDaoImpl implements MessageDao {
 		if (docu == null) {
 			System.out.println(("여긴 들어왔니"));
 			BasicDBObject findTo = new BasicDBObject();
-			findTo.put("smsNo", "");
+			findTo.put("smsNo", ""); 
 			findTo.put("smsSendEmail", "");
 			findTo.put("smsContent", "");
 			findTo.put("smsReceiveEmail", "");
