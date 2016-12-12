@@ -4,18 +4,18 @@
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
 <%
-Object logincheck=session.getAttribute("login");
-Object obj = request.getAttribute("volist");
+Object logincheck=session.getAttribute("login");//로그인세션값 받아옴
+Object obj = request.getAttribute("volist");//volist로 컨트롤에서 넘어온 값 받아옴
 
 	List<ShowVO> showVoList = null;
-	String loc = "(37.555448809581634, 126.92352876576223)";
+	String loc = "(37.555448809581634, 126.92352876576223)"; //default coords값(홍대)->넘어온값이 하나도 없을경우 이 coords로 중심좌표 정해줌
 	if(obj!=null){
 		showVoList=(List)obj;
 		if(showVoList.size()==0){
 			System.out.println("하하하핳"+showVoList.size());
 			
 		}else{
-			loc=showVoList.get(0).getShMapCoords();
+			loc=showVoList.get(0).getShMapCoords();//showVoList.size()가 0이란건 넘어온값이 없다는 것, 값이 있다면 0번방(제일첫번째방)의 coords값으로 중심좌표 정해줌
 		}
 		
 	}else{
@@ -213,7 +213,7 @@ $("#registBtn").click(function(){
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
 <script>
-var showlistsize = <%=showVoList.size()%>;
+var showlistsize = <%=showVoList.size()%>; //리스트의 size값저장
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
 			center: new daum.maps.LatLng<%=loc%>, // 지도의 중심좌표
