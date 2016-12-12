@@ -61,11 +61,11 @@ public class ShowDaoImpl implements ShowDao {
 		map.put("date", date);
 		map.put("select", select);
 		if(val!=null){
-			if(val.equals("기타"))
+			if(val.equals("기타"))//카테고리가 기타일 경우 val에 0 넣어줌
 			{
 			map.put("val", 0);	
 			}else{
-			map.put("val", val);
+			map.put("val", val); //기타가 아닐경우 넘어온 val을 넣어줌(select태그로 선택된값)
 			}
 		}
 		return ss.selectList("show.selectShowSearch",map);
