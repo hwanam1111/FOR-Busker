@@ -9,12 +9,16 @@
 </insert>
 
 <select id="selectShow" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
-	select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) and shmapaddr LIKE '%' || #{first} || '%'
-	<if test="second neq null">
-	or shmapaddr LIKE '%' || #{second} || '%'
-	</if>
+	select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) 
+	<choose>
+		<when test="second neq null">
+			and shmapaddr LIKE '%' || #{second} || '%'
+		</when>
+		<otherwise>
+			and shmapaddr LIKE '%' || #{first} || '%'
+		</otherwise>
+	</choose>
 </select>
-
 <select id="selectShow2" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
 	select * from show where shmapaddr LIKE '%' || #{first} || '%'
 </select>
