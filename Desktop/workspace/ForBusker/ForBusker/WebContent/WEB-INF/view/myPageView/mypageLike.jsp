@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,46 +32,23 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<table>
-	<tr> <!-- 어떤 view인지 들어가는 부분 -->
+
 	<h1>Like ListPage♥</h1>
-	</tr>
-	<tr> <!-- 검색창 들어갈 부분 -->
-	<div class="row marginTop50" style="margin-left:1px;">
-	<div class="col-xs-4">
-		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
-				id="example-text-input"/>
+<div class="row" style="margin-top:50px;">
+<c:forEach var="likeList" items="${likeList}" >
+	<div style="margin-bottom:60px; " class="col-xs-4">
+		<div >
+  			<a href="videoLikeSearch.do?videoNo=${likeList.videoNo}&memEmail=${likeList.memEmail}&myId=${sessionScope.login.memEmail}">
+  			<img class='videothumb' src="https://img.youtube.com/vi/${likeList.videoSomenale}/hqdefault.jpg" ><br/><br/>
+    		<p style="height: 40px;">Title : ${likeList.videoName}</p></a>
+    		<p>TeamName : ${likeList.memTeamName}</p>
+    		<p>Date : ${likeList.videoDate}</p>
+    		<input type="hidden" value="${likeList.memEmail}" name="memEmail">
+    	</div>
 	</div>
-	<div class="col-xs-2">
-		<button type="button" class="btn btn-outline-info" style="position: relative; right:20px;">검색</button>
-	</div>
-	</div>
-	
-	</tr>
-	
-
-	<%for(int j=0;j<3;j++){ %>
-	<tr>
-	<%for(int i=0;i<3;i++){ %>
-		<div class="col-xs-4 marginTop50">
-			<div> <!-- 이미지들어가는부분 -->
-				<a href="videoView.do"><img class='videothumb' src="https://img.youtube.com/vi/ePpPVE-GGJw/hqdefault.jpg" ></a>	
-			</div>
-		
-			<div class="detail">
-			<div><strong>팀명 들어가는 부분입니다.</strong></div> <!-- 팀명 들어가는 부분 -->
-			
-			<div><strong>찾는 역할 들어가는 부분입니다.</strong></div><!-- 찾는 역할 들어가는 부분 -->
-			</div>
-			
-		</div>
-	<%} %> <!-- end inner forloop -->
-	</tr>
-
-	<%} %> <!-- end outer forloop -->
-		
-	<tr> <!-- 페이징 할 부분(paging master) -->
-	<nav aria-label="..."  align="center">
+	</c:forEach>
+</div>
+	<!-- <nav aria-label="..."  align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
 	      <a class="page-link" href="#" aria-label="Previous">
@@ -90,9 +68,7 @@
 	      </a>
 	    </li>
 	  </ul>
-	</nav>
-	</tr>	
-</table>
+	</nav> -->
 </div>
 
 <!-- 코딩 종료 -->

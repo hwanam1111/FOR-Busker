@@ -3,6 +3,3 @@
 <% String projectName = "/ForBusker"; %>
 
 <% response.sendRedirect("main.do");%>
- 
-
- 

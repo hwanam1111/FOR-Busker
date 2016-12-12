@@ -63,7 +63,7 @@ $(function() {
  <!-- ################################################ -->
   <c:forEach var="video" items="${list}">
   	<div class="col-xs-4" style="margin-bottom:60px;">
-  		<a href="videoView.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}">
+  		<a href="videoLikeSearch.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}&myId=${sessionScope.login.memEmail}">
   		<img class='videothumb' src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg" ><br/><br/>
     	<p style="height: 40px;">Title : ${video.videoName}</p></a>
     	<p>TeamName : ${video.memTeamName}</p>
@@ -71,6 +71,7 @@ $(function() {
     	<input type="hidden" value="${video.memEmail}" name="memEmail">
     </div>
   </c:forEach>
+
   <!-- ################################################ -->
   <!-- ################################################ -->
  

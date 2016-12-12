@@ -17,12 +17,6 @@ public class MyPageController {
 
 	@Autowired
 	private MemberServiceImpl service;
-//	좋아요 페이지로 이동
-	@RequestMapping(value="mypageLike")
-	public String mypageLike(){
-		System.out.println("mypageLike.jsp로 이동");
-		return "myPageView/mypageLike";
-	}
 	
 //	정보수정 페이지로 이동
 	@RequestMapping(value="mypageUpdate")

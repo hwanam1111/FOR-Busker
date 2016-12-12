@@ -60,4 +60,42 @@ order by videono desc
 ]]>
 </select>
 
+<!-- 좋아요 Insert -->
+<insert id="videoLikeInsert" parameterType="busker.scan.vo.VideoLikeVO">
+INSERT INTO VideoLike(likeNo, memLoginEmail, videoNo) VALUES(seq_videolike.nextval, #{memLoginEmail}, #{videoNo})
+</insert>
+
+<!-- 좋아요 Update -->
+<update id="videoLikeUpdate" parameterType="busker.scan.vo.VideoVO">
+update video set videoLike= videoLike+1 where videoNo =#{videoNo}
+</update>
+
+<!-- 좋아요 확인 -->
+<select id="videoLikeList" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoLikeVO"> 
+select * from videoLike where videoNo =#{videoNo}
+</select>
+
+<!-- 좋아요 Delete -->
+<delete id="videoLikeDelete" parameterType="busker.scan.vo.VideoLikeVO">
+delete from VideoLike where videoNo =#{videoNo}
+</delete>
+
+<!-- 좋아요 UpdateMinus -->
+<update id="videoLikeUpdateMinus" parameterType="busker.scan.vo.VideoVO">
+update video set videoLike= videoLike-1 where videoNo =#{videoNo}
+</update>
+
+
+<!-- 좋아요 리스트 띄우기 -->
+<select id="videoMypageLikeList" parameterType="hashmap" resultType="busker.scan.vo.VideoVO"> 
+SELECT member.memEmail, member.memTeamName, videoLike.memloginemail, videoLike.LikeNo, video.videoNo, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as videosomenale, video.videoDate, videoLike.videoNo
+FROM video 
+INNER JOIN videoLike
+ON video.videoNo = videoLike.videoNo
+INNER JOIN member
+ON videoLike.memloginemail = member.mememail
+WHERE member.memEmail = #{memEmail}
+order by likeno desc
+</select>
+
 </mapper>

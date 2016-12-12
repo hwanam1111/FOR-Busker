@@ -36,10 +36,11 @@
 .sidenav a {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 13px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
+    height:100%;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
@@ -72,3 +73,5 @@
 pre{
 	margin-top:20px; margin-left:10px; font-family: arial, sans-serif; width:627px; white-space: pre-line;
 }
+
+.newlabel{margin-left:8px;}

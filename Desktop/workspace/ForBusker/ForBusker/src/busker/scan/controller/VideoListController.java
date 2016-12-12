@@ -8,14 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Result;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import busker.scan.service.VideoService;
+import busker.scan.vo.MemberVO;
+import busker.scan.vo.VideoLikeVO;
 import busker.scan.vo.VideoVO;
 
 
@@ -73,13 +78,17 @@ public class VideoListController {
 	
 //	글보기 뷰
 	@RequestMapping(value="videoView")
-	public String videoView(VideoVO vvo, String videoNo, Model m) throws Exception{
+	public String videoView(VideoVO vvo, VideoLikeVO vlo , String videoNo, Model m,  String myId, String result) throws Exception{
 		System.out.println("비디오 번호 : " + videoNo);
+		System.out.println("result  : " + result);
+		System.out.println("my id : " + myId);
 		// 해시맵으로 글 넘버
 		HashMap hashmap = new HashMap();
 		hashmap.put("videoNo", videoNo);
 		
+		// 화면 뷰
 		VideoVO videoView = service.videoView(hashmap);
+		
 		// 조회수
 		service.videoCount(vvo);
 		
@@ -91,10 +100,101 @@ public class VideoListController {
 		if(videoView!=null){
 			m.addAttribute("map", videoView);
 		}else{
-			m.addAttribute("map", "null");
+			m.addAttribute("map", "");
 		}
-		
+		m.addAttribute("result", result);
 		return "videoCollectionView/videoView";
+	}
+	
+	// 좋아요 누른 리스트
+	@RequestMapping(value="videoLikeSearch")
+	public String videoLikeSearch(Model m, String videoNo,  String myId, RedirectAttributes rttr) throws Exception{
+		VideoVO vvo=new VideoVO();
+		vvo.setVideoNo(Integer.parseInt(videoNo));
+		System.out.println("videoNo : " + videoNo);
+		// 좋아요 됬는지 확인
+		ArrayList<VideoLikeVO> likeList = (ArrayList<VideoLikeVO>) service.videoLikeList(vvo);
+		System.out.println("likeList : " + likeList.size());
+		String result= "";
+		// 로그인이 됬을때만 확인
+		if(myId!=""){
+			System.out.println("myid : " + myId);
+			for(VideoLikeVO temp:likeList){
+				System.out.println("temp.getMemLoginEmail : " + temp.getMemLoginEmail());
+				if(temp.getMemLoginEmail().equals(myId)) {
+				result="OK";
+				}
+			}
+		}
+		rttr.addAttribute("result", result);
+		rttr.addAttribute("myId", myId);
+		rttr.addAttribute("videoNo", videoNo);
+		
+		
+		
+		return "redirect:videoView.do";
+	}
+	 
+	
+//	좋아요 추가
+	@RequestMapping(value="videoLikeInsert")
+	@ResponseBody
+	public String videoLike(VideoVO vvo ,VideoLikeVO vlo, String videoNo, String memLoginEmail) throws Exception{
+		
+		System.out.println("Controller : " + vlo.getMemLoginEmail());
+		System.out.println("Controller String : " + videoNo);
+		System.out.println("Controller String : " + memLoginEmail);
+		
+		 
+			// 좋아요 테이블에 insert
+			int resultInsertCnt = service.videoLikeInsert(vlo);
+			// 비디오 테이블에 update +1
+			int resultUpdateCnt = service.videoLikeUpdate(vvo);
+			
+			String result = "";
+			if(resultInsertCnt == 1 && resultUpdateCnt == 1) {
+				result ="성공!!";
+			}else{
+				result="실패 ㅜ";
+			}
+			
+		JSONObject json = new JSONObject();	
+		json.put("videoLikeCnt", vlo.getLikeNo());
+		json.put("videoMemEmail", vvo.getMemEmail());
+		json.put("videoNo", vvo.getVideoNo());
+		json.put("videoLike", vvo.getVideoLike());
+		
+		return json.toString();
+	}
+	
+	
+//	좋아요 삭제
+	@RequestMapping(value="videoLikeDelete")
+	@ResponseBody
+	public String videoLikeDel(VideoVO vvo ,VideoLikeVO vlo, Model m, String videoNo) throws Exception{
+		
+		System.out.println("Controller : " + vlo.getMemLoginEmail());
+		
+		
+			// 좋아요 테이블에 delete
+			int resultDeleteCnt = service.videoLikeDelete(vlo);
+			// 비디오 테이블에 update -1
+			int resultUpdateMinusCnt = service.videoLikeMinusUpdate(vvo);
+			
+			String resultDel = "";
+			if(resultDeleteCnt == 1 && resultUpdateMinusCnt == 1){
+				resultDel = "성공";
+			}else{
+				resultDel = "실패";
+			}
+			
+			m.addAttribute("resultDel", resultDel);
+		
+		
+		m.addAttribute("vlo", vlo);
+		m.addAttribute("vvo", vvo);
+		
+		return resultDel;
 	}
 	
 //	글삭제
@@ -149,6 +249,17 @@ public class VideoListController {
 		
 		
 		return "videoCollectionView/videoFormUpdateOk";
+	}
+	
+//	좋아요한 페이지로 이동
+	@RequestMapping(value="mypageLike")
+	public String mypageLike(VideoVO vvo, Model m, String memEmail) throws Exception{
+		System.out.println("mypageLike.jsp로 이동");
+		List<VideoLikeVO> likeList = service.videoMypageLikeList(memEmail);
+		System.out.println("likelist : " + likeList);
+		m.addAttribute("likeList", likeList); 
+		
+		return "myPageView/mypageLike";
 	}
 	
 }

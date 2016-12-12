@@ -23,7 +23,91 @@
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/video_js/videoView.js?<?=filemtime('<%=projectName %>/resources/js/video_js/videoView.js')?>"></script>
 
+<script type="text/javascript">
+//########################################################
+//좋아요 버튼
+//########################################################
+//########################################################
+$(function() {
+	$('#videoLike').click(function(event) {
+		// 로그인 체크
+		alert($('#likeImg').attr( 'src'))
+		if("${sessionScope.login.memEmail}" == ""){
+			alert("로그인 후 이용해 주세요");
+			location.href="login.do";
+			event.preventDefault();
+			event.stopPropagation();
+			event.stopImmediatePropagation();
+			
+		// 좋아요 insert
+		}else if($('#likeImg').attr('src') == '/ForBusker/resources/images/video_img/thumbs-up32.png'){
+			$.ajax({
+				url : 'videoLikeInsert.do',
+				type : 'get',
+				data : ({ memLoginEmail : "${sessionScope.login.memEmail}",
+						  videoNo : "${map.videoNo}"
+					    }), 
+				success : function (data) {
+					// 이미지를 바꿔주고 카운트 +1
+						$('#likeImg').attr( 'src', '/ForBusker/resources/images/video_img/thumbs-up32-rollover.png' )
+						var sum = parseInt($('#videoCount').val()) + parseInt($('#hiddenCount').val());
+						$('#videoCount').val(sum);
+				},
+				error : function(request,status,error) {
+					// 에러 확인
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				} // error end
+			}); // ajax	
+		} // ajax if
+		// 좋아요 delete
+		else if($('#likeImg').attr( 'src', '/ForBusker/resources/images/video_img/thumbs-up32-rollover.png' )){
+			$.ajax({
+				url : 'videoLikeDelete.do',
+				type : 'get',
+				data : ({ memLoginEmail : "${sessionScope.login.memEmail}",
+						  videoNo : "${map.videoNo}"
+					    }), 
+				success : function (data) {
+					// 이미지를 바꿔주고 카운트 -1
+						$('#likeImg').attr( 'src', '/ForBusker/resources/images/video_img/thumbs-up32.png' );
+						var sum = parseInt($('#videoCount').val()) - parseInt($('#hiddenCount').val());
+						$('#videoCount').val(sum);
+						
+				},
+				// 에러확인
+				error : function(request,status,error) {
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				} // error end
+			}); // ajax	
+		} // ajax if 
+		
+	});
+});
+//########################################################
+//########################################################
+//########################################################
+//########################################################
+// 뷰 들어왔을 때 좋아요 확인
+window.onload = function() {
+	if("${result}" == "OK"){ 
+		$('#likeImg').attr( 'src', '/ForBusker/resources/images/video_img/thumbs-up32-rollover.png' );
+	}
+	
+	if("${resultDel}" == "OK"){ 
+		$('#likeImg').attr( 'src', '/ForBusker/resources/images/video_img/thumbs-up32.png' );
+	}
+}
+
+//########################################################
+//########################################################
+
+</script>
 </head>
+
+
+
+
+
 <!-- #############  header nav부분 include  ############# -->
 <%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
@@ -47,7 +131,21 @@
 <% } %>
 <!-- ################################################### -->
 
+
+
+
+<!-- input type hidden 부분 -->
+
+<!-- 글등록 -->
+<!-- ################################################### -->
 <input type="hidden" value="${map.memEmail}" name="memEmail">
+
+<!-- 좋아요 -->
+<!-- ################################################### -->
+<input type="hidden" value="${sessionScope.login.memEmail}" name="memLoginEmail">
+<input type="hidden" value="${map.videoNo}" name="videoNo">
+
+
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
@@ -57,11 +155,10 @@
 <div id="mySidenav" class="sidenav">
 <c:forEach var="newList" items="${list}">
 	<div class="row-xs-4">
-	<a href="videoView.do?videoNo=${newList.videoNo}&memEmail=${newList.memEmail}"><img class='videothumb' src="https://img.youtube.com/vi/${newList.videoSomenale}/hqdefault.jpg"  ><br/>
-    	Title : ${newList.videoName} <br/>
-    	TeamName : ${newList.memTeamName} <br/>
-    	Date : ${newList.videoDate}
-    	</a>
+	<a href="videoLikeSearch.do?videoNo=${newList.videoNo}&memEmail=${newList.memEmail}&myId=${sessionScope.login.memEmail}"><img class='videothumb' src="https://img.youtube.com/vi/${newList.videoSomenale}/hqdefault.jpg"  id="newImg"><br/></a>
+    	<label class="newlabel">Title : ${newList.videoName} </label>
+    	<label class="newlabel">TeamName : ${newList.memTeamName}</label> 
+    	<label class="newlabel">Date : ${newList.videoDate}</label>
     </div>
 </c:forEach>
 </div>
@@ -85,20 +182,35 @@
 	</tr>
 	<tr>
 		<td>TeamName : ${map.memTeamName }</td>
-		<td style="text-align: right;">조회수 : ${map.videoCount }</td>
+		<td style="text-align: right; float: right;">조회수 : ${map.videoCount }</td>
 	</tr>
 </table>
+<div style="float: right;">
+<button id ="videoLike" style="background: none; border:none; float: left; margin-bottom:20px;">
+<img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" id="likeImg" name="videoLike"/>
+</button>
+<div  style="float: right; margin-top:10px; ">
+	좋아요수 : &nbsp; <input type="text"  id="videoCount" value="${map.videoLike }" style="width:20px; float: right; margin-bottom:20px; border:none;">
+	<input type="hidden" value="1" id="hiddenCount">
+</div>
+</div>
 <input type="hidden" value="${map.memEmail}" name="memEmail">
-<pre>${map.videoDetail} </pre><br/><br/>
+<pre>-------------------------------------------------------------------------------------------------------------------------------------------
+동영상 설명 부분입니다.
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+불법 사이트 홍보시 글이 삭제될 수 있습니다.
+Copyright &copy; 2016 - All Rights Reserved - ForBusker
+-------------------------------------------------------------------------------------------------------------------------------------------
+${map.videoDetail} </pre><br/><br/>
 <!-- ################################################### -->
 <!-- ################################################### -->
 
-<!-- 좋아요 밑 수정 삭제 버튼 -->
+<!-- 수정 삭제 버튼 -->
 <!-- ################################################### -->
-<img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" onclick="clickLike()" id="videoLike" name="videoLike"/>좋아요수 : ${map.videoLike }
 </div>
 </div>
-<div class='col-xs-2'><span id='openBtn'  style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">&#9776; NewVideo</span>
+<div class='col-xs-2'><span id='openBtn' style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">&#9776; NewVideo</span>
 <span id='closeBtn' style="font-size:23px;cursor:pointer;display:none" onclick="closeNav()">&times; NewVideo</span></div>
 </div>
 <div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
