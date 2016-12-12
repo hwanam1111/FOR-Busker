@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="busker.scan.vo.TogetherVO"%>
+<%@page import="busker.scan.vo.*"%>
 <%@page import="java.util.*"%>
 <% String projectName = "/ForBusker"; %>
 <%
 	List<TogetherVO>list=(List<TogetherVO>)request.getAttribute("list"); 
-
+	//페이징 클래스 받아오기
+	PageVO pVO = (PageVO)request.getAttribute("page");
 %>
 <!DOCTYPE html>
 <html> 
@@ -129,28 +130,26 @@
 		
 <!-- ########################################################################## -->		
 	<tr> <!-- 페이징 할 부분(paging master) -->
-	<nav aria-label="..."  align="center">
+	<nav align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="togetherList.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="togetherList.do?page=<%=i %>"><%=i %></a></li>
+	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="togetherList.do?page=<%=pVO.getNextPage()%>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </li>
 	  </ul>
 	</nav>
-	</tr>	
+	</tr>
 </table>
 </div>
 

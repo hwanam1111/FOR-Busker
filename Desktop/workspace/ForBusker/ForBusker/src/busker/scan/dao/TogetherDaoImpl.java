@@ -20,10 +20,18 @@ public class TogetherDaoImpl {
 		result=ss.insert("together.insertTogether",tovo);
 		return result;
 	}
-	public List<TogetherVO> selectAllTogether(){
+	public List<TogetherVO> selectAllTogether(int curPage){
 		List<TogetherVO> list=null;
-		list=ss.selectList("together.selectAllTogether");
+		list=ss.selectList("together.selectAllTogether",curPage);
 		return list;
+	}
+	
+	//전체 로우 갯수 가져오기 (count)
+	public int togeListCount(){
+		
+		int result=ss.selectOne("together.togeListCount");
+		return result;
+		
 	}
 	public TogetherVO selectTogetherByNum(TogetherVO tovo){
 		TogetherVO vo=ss.selectOne("together.selectTogetherByNum",tovo);
@@ -35,10 +43,18 @@ public class TogetherDaoImpl {
 	public int modifyTogether(TogetherVO tovo){
 		return ss.update("together.modifyTogether",tovo);
 	}
-	public List<TogetherVO> selectBySearchVal(String searchVal){
+	public List<TogetherVO> selectBySearchVal(String searchVal,int curPage){
+		HashMap<String, Object>hash=new HashMap<>();
+		hash.put("searchVal", searchVal);
+		hash.put("curPage", curPage);
+		System.out.println("dao search"+searchVal+":"+curPage);
+		return ss.selectList("together.selectBySearchVal", hash);
+	}
+	
+	public int toSearchCount(String searchVal){
 		HashMap<String, String>hash=new HashMap<>();
 		hash.put("searchVal", searchVal);
-		System.out.println("dao search"+searchVal);
-		return ss.selectList("together.selectBySearchVal", hash);
+		int result = ss.selectOne("together.searchCount",hash);
+		return result ;
 	}
 }

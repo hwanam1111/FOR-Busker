@@ -8,9 +8,17 @@ INSERT INTO together VALUES(seq_together.nextval,#{toId},#{toVideo},#{toPhoto},#
 						#{toStartDate},#{toEndDate},#{toTel},#{toTeamLeader})
 </insert>
 
-<select id="selectAllTogether" resultType="busker.scan.vo.TogetherVO">
-SELECT * FROM together
+<select id="selectAllTogether" parameterType="int" resultType="busker.scan.vo.TogetherVO">
+SELECT * 
+FROM (select  rownum as rnum , toNo, toId, toVideo ,toPhoto ,toName toNeed, toDetail, toStartDate, toTel, toTeamLeader 
+	  FROM together ORDER BY toNO DESC)  
+WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
+
+<select id="togeListCount" resultType="int">
+SELECT count(toNo) 
+FROM together
+</select> 
 
 <select id="selectTogetherByNum" resultType="busker.scan.vo.TogetherVO" parameterType="busker.scan.vo.TogetherVO">
 SELECT* FROM together WHERE toNo=#{toNo}
@@ -26,7 +34,22 @@ UPDATE together SET toName=#{toName},toNeed=#{toNeed},toDetail=#{toDetail},
 </update>
 
 <select id="selectBySearchVal" parameterType="hashmap" resultType="busker.scan.vo.TogetherVO">
-SELECT * FROM together 
+SELECT * 
+FROM (select  rownum as rnum , toNo, toId, toVideo ,toPhoto ,toName toNeed, toDetail, toStartDate, toTel, toTeamLeader 
+	  FROM together WHERE <if test="searchVal neq null">
+									toNeed LIKE '%' || #{searchVal} || '%' 
+									</if>
+									<if test="searchVal neq null">
+									OR toName LIKE '%' || #{searchVal} || '%'
+									</if>
+									ORDER BY toNO DESC) 
+WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9 
+
+</select>
+
+<select id="searchCount" parameterType="hashmap" resultType="int">
+SELECT count(toNo)
+FROM together
 WHERE 
 <if test="searchVal neq null">
 toNeed LIKE '%' || #{searchVal} || '%' 
