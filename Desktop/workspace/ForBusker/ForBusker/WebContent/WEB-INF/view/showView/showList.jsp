@@ -99,7 +99,7 @@ function closeNav() {
 <%-- alert("<%=showVoList.get(1).getShName()%>"); --%>
 
 var picker = $input.pickadate('picker');
-
+ 
 $("#exampleSelect1").change(function(){//카테고리로 검색할경우 input을 text->select로 바꿔줌
 	if($("#exampleSelect1 option:selected").val() == "1"){
 		$("#example-text-input").hide();
