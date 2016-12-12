@@ -207,7 +207,7 @@ $("#registBtn").click(function(){
 </form>
 </div>
 <% } %>
-</td>
+</td> 
 <td style="width:50%;"><div id="map" style="width:100%; height:770px; z-index: -1; "></div></td>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
