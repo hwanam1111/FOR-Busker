@@ -20,7 +20,7 @@
 	</choose>
 </select>
 <select id="selectShow2" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
-	select * from show where shmapaddr LIKE '%' || #{first} || '%'
+	select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) and shmapaddr LIKE '%' || #{first} || '%'
 </select>
 
 <select id="selectShow3" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">

@@ -180,7 +180,7 @@ function logout(){
 <!-- 			<area shape="poly" coords="460,28,551,29,561,130,457,121" href="#" target="_blank" title="대학로"> -->
 <!-- 			<area shape="poly" coords="455,140,553,148,558,219,452,205" href="#" target="_blank" title="삼청동"> -->
 			
-			<area shape="poly" coords="379,312,505,306,508,226,571,233,581,360,369,403" id="중구" name="1" target="_blank" title="중구/명동">
+			<area shape="poly" coords="379,312,505,306,508,226,571,233,581,360,369,403" id="중" name="1" target="_blank" title="중구/명동">
 <!-- 			<area shape="poly" coords="381,314,490,311,490,380,381,397" href="#" target="_blank" title="명동"> -->
 
 			<area shape="poly" coords="355,423,572,378,584,438,476,488,459,494,425,507,353,477" id="용산" name="1" target="_blank" title="용산/이태원">
