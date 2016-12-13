@@ -268,11 +268,22 @@ public class VideoListController {
 	
 //	좋아요한 페이지로 이동
 	@RequestMapping(value="mypageLike")
-	public String mypageLike(VideoVO vvo, Model m, String memEmail) throws Exception{
+	public String mypageLike(VideoVO vvo, Model m, String memEmail,String page) throws Exception{
 		System.out.println("mypageLike.jsp로 이동");
-		List<VideoLikeVO> likeList = service.videoMypageLikeList(memEmail);
+		
+		//페이징 부분 
+		PageVO pageVO = new PageVO();
+		if(page == null){
+			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
+		}else{
+			int curPage = Integer.parseInt(page); //형변환
+			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
+		}
+						
+		List<VideoLikeVO> likeList = service.videoMypageLikeList(memEmail,pageVO);
 		System.out.println("likelist : " + likeList);
 		m.addAttribute("likeList", likeList); 
+		m.addAttribute("page",pageVO);
 		
 		return "myPageView/mypageLike";
 	}

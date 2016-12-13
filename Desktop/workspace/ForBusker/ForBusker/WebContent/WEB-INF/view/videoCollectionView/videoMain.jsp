@@ -81,45 +81,46 @@ $(function() {
     	<input type="hidden" value="${video.memEmail}" name="memEmail">
     </div>
   </c:forEach>
-  	 <%if(list.size()%3 == 2){ %>
-	
+	<%if(list.size()%3 == 2){ %>
+	 
      <div class="col-xs-4 marginTop50">
    		<div class="col-xs-4 marginTop50" >
-			    <div style="height:360px; width:300px;">
+			    <div style="height:350px; width:300px;">
 				</div>
 	    </div>
     </div>
-    
+   
     <%} else if(list.size()%3 == 1){%>
     	<%for(int i=0;i<2;i++){ %>
     	
 	     <div class="col-xs-4 marginTop50" >
-			    <div style="height:360px; width:300px;">
+			    <div style="height:350px; width:300px;">
 				</div>
 	    </div>
 	    
     	<%} %>
     <%} %>	
+  	 	
 
   <!-- ################################################ -->
   <!-- ################################################ -->
  
-  
-  <ul>
+  <nav aria-label="..."  align="center">
+   <ul>
    <li> 
 	<nav aria-label="..."  align="center">
 	  <ul class="pagination pagination-lg" >
 	    <li class="page-item">
-	      <a class="page-link" href="videoMain.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+	      <a class="page-link" href=" videoMain.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
 	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-	   	 	<li class="page-item"><a class="page-link" href="videoMain.do?page=<%=i%>"><%=i %></a></li>
+	   	 	<li class="page-item"><a class="page-link" href=" videoMain.do?page=<%=i%>"><%=i %></a></li>
 	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="videoMain.do?page=<%=pVO.getNextPage()%>" aria-label="Next">
+	      <a class="page-link" href=" videoMain.do?page=<%=pVO.getNextPage()%> " aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
@@ -128,9 +129,9 @@ $(function() {
 	</nav>
    </li> 
   </ul>
-     
+  </nav>
   </div>
-  
+
 </div>
 </div>
 
