@@ -178,24 +178,24 @@ window.onload = function() {
 <!-- 컨텐트 메뉴 테이블 -->
 <table class='toptablemenu'>
 	<tr>
-		<td colspan='2'><h2>${map.videoName}</h2></td>			
+		<td colspan='2' style="width:640px;"><h2>${map.videoName}</h2></td>			
 	</tr>
 	<tr>
 		<td>TeamName : ${map.memTeamName }</td>
 		<td style="text-align: right; float: right;">조회수 : ${map.videoCount }</td>
 	</tr>
 </table>
-<div style="float: right;">
+<div style="float: right; position:relative; left:5px;">
 <button id ="videoLike" style="background: none; border:none; float: left; margin-bottom:20px;">
 <img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" id="likeImg" name="videoLike"/>
 </button>
-<div  style="float: right; margin-top:10px; ">
+<div  style="float: right; margin-top:10px;">
 	좋아요수 : &nbsp; <input type="text"  id="videoCount" value="${map.videoLike }" style="width:20px; float: right; margin-bottom:20px; border:none;">
 	<input type="hidden" value="1" id="hiddenCount">
 </div>
 </div>
 <input type="hidden" value="${map.memEmail}" name="memEmail">
-<pre>-------------------------------------------------------------------------------------------------------------------------------------------
+<pre style="position: relative; right:5px;">-------------------------------------------------------------------------------------------------------------------------------------------
 동영상 설명 부분입니다.
 -------------------------------------------------------------------------------------------------------------------------------------------
 
