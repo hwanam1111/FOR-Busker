@@ -35,22 +35,42 @@ $(function () {
     	window.location.href="backedForm.do";
     })
     
-    //버튼: sponSearch페이지 연결
+  //버튼: sponSearch페이지 연결
     $("#sponSearchBtn").click(function(){
-    	
-    	var search = $("#example-text-input1").val();
-    	
-        window.location.href="sponSearch.do?search="+search;
+    	sponSearch();
     }) 
     
     
     //버튼 : backedSearch페이지로 연결
     $("#backedSearchBtn").click(function(){
     	
-    	var search = $("#example-text-input2").val();
+    	backedSearch();
+    })
+   
+    //enter 눌렀을 때
+    $("#example-text-input1").keypress(function(event){
+        if(event.which == 13){
+        	sponSearch();
+        }
+    });
+    //enter 눌렀을 때
+    $("#example-text-input2").keypress(function(event){
+        if(event.which == 13){
+        	backedSearch();
+        }
+    });
+    
+    var sponSearch = function(){
     	
+    	var search = $("#example-text-input1").val();
+        window.location.href="sponSearch.do?search="+search;
+    };
+    
+    var backedSearch = function(){
+    	
+    	var search = $("#example-text-input2").val();
         window.location.href="backedSearch.do?search="+search;
-    })    	
+    }
     
     
     $("#popup").hide();
