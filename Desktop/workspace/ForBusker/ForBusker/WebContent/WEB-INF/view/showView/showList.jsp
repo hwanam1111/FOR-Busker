@@ -158,7 +158,7 @@ $("#registBtn").click(function(){
 	$("#exampleSelect2").val('<%=value%>'); //두번째 셀렉트 option 선택
 	<%}%><%-- 	$("#exampleSelect1").val(<%=select%>); --%>
 
-
+ 
 <%}%>
 $("input[name=date_submit]").val('<%=date%>');
 });
