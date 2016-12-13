@@ -37,7 +37,8 @@ Object obj = request.getAttribute("volist");
 	
 	//날짜 받아오기
 	String date =(String)request.getAttribute("date");
-	 
+	
+	System.out.println("데이트 : " + date);
 	//select 받아오기
 	String select =(String)request.getAttribute("select");
 %>
@@ -191,7 +192,7 @@ $("input[name=date_submit]").val('<%=date%>');
 	<td colspan="2">   	
 	<form class="form-inline" id="searchGo" style="margin-left:50px; margin-bottom:20px;"> 
 	 <div class="form-group">
-	 <%if(date!=null) {%>
+	 <%if(date!=null && !date.equals("null")) {%>
 			<input id="input_01" type="text" class="datepicker form-control" name="date" style=" position: relative; right:20px;" value=<%=date %>>
 	 <%}else{ %>	
 			<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style=" position: relative; right:20px;">
