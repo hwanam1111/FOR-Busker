@@ -51,5 +51,46 @@ $(function () {
     	
         window.location.href="backedSearch.do?search="+search;
     })    	
+    
+       $("#popup").hide();
+    
+    
+    	// 메시지 보내기 눌렀을때 Submit
+	$("#chatSubmit").click(function() {
+		$.ajax({
+			url : 'sponserMessage.do',
+			type : 'post',
+			data : ({
+				smsContent : $('[name="smsContent"]').val(),	//글 내용
+				smsType : $("#smsType").val(),					//글 타입
+				smsNo : $("#smsNo").val(),						//글 번호
+				smsSendEmail : $("#smsSendEmail").val(),		//보내는 이메일
+				smsReceiveEmail : $("#smsReceiveEmail").val(),	//받는 이메일
+				smsTo : $("#smsTo").val(),						//보내는 이메일 -고정-
+				smsFrom : $("#smsFrom").val()					//받는 이메일 -고정-
+			}),
+			dataType : "text", // html / xml / json / jsonp / text
+			success : function(data) {
+				$("#popup").bPopup().close();
+			},
+			error : function(data) {
+				alert("에러발생");
+			}
+		});
+	});
+
+	$('#insertMessage').click(function() {
+		event.preventDefault();
+		$("#popup").bPopup();
+	});
+
+	
+	function popupOpen() {
+		var popUrl = "Pop.jsp"; // 팝업창에 출력될 페이지 URL
+		var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;"; // 팝업창
+																							// 옵션(optoin)
+		window.open(popUrl, "", popOption);
+	}
+    
 });
 

@@ -15,10 +15,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- bPopup -->
+<script type="text/javascript" src="<%=projectName %>/resources/js/popup_js/jquery.bpopup.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- backed css -->
 <link href="<%=projectName %>/resources/css/sponser_css/sponserView.css?<?=filemtime('<%=projectName %>/resources/css/sponser_css/sponserView.css')?>" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="<%=projectName%>/resources/js/sponser_js/sponser.js"></script>
 
 </head>
 
@@ -40,6 +43,11 @@
 <script type="text/javascript">
 	$(function() {
 		$('#footBtn').css('display', 'block');
+		
+	<%if(bVO.getMemEmail().equals(mVO.getMemEmail())){%>
+		$("#insertMessage").attr("disabled","disabled");
+	<% } %>
+	
 	})
 </script>
 		<% } %>
@@ -78,7 +86,7 @@
 		<h2>Tel</h2>
 		<p>
 		${selectBacked.backTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-		<button type="button" class="btn btn-primary">문의하기</button>
+		<button type="button" class="btn btn-primary" id="insertMessage">문의하기</button>
 		</p>
 	</div>
 	
@@ -86,7 +94,29 @@
 	
 	</table>
 	
-	
+	<div id="popup" class="popup-div popup-style">
+		<div class="content">
+		<form id="pform" action="sponserMessage.do" method="post">
+			<div class="b-ajax-wrapper" style="height: 200px; width: 400px; background: #f1f1f1; border-radius: 15px;">
+    			<span class="button b-close" id="close"><span>X</span></span><br/>
+				<div class="form-group" align="center" > 
+					<div id="insertDiv">
+						<label id="receivelabel">받는 이  :  ${selectBacked.memEmail }</label>		<!-- 문의 내용  -->
+		   				<textarea rows="4" id="inputText" class="form-control" name="smsContent"></textarea>
+					</div>
+						<button type="button"  class="btn btn-info form-control" id="chatSubmit">전송</button>
+				</div>
+			</div>	
+				<input type="hidden" id="smsType" name="smsType" value="후원받기"/>                  <!-- 후원받기 -->
+				<input type="hidden" id="smsNo" name="smsNo" value="${selectBacked.backNo}" />  		 <!-- 글 번호 -->
+				<input type="hidden" id="smsSendEmail" name="smsSendEmail" value="${sessionScope.login.memEmail}" /> <!-- 로그인한 사람  -->
+				<input type="hidden" id="smsReceiveEmail" name="smsReceiveEmail" value="${selectBacked.memEmail }" />  <!-- 받는 사람의 이메일 즉 글쓴 사람   -->
+				<input type="hidden" id="smsTo" name="smsTo" value="${selectBacked.memEmail}" />                 <!-- 받는 사람의 이메일 즉 글쓴 사람  -->
+				<input type="hidden" id="smsFrom" name="smsFrom" value="${sessionScope.login.memEmail}" />     <!-- 로그인한 사람   -->
+				<input type="text" style="display: none">
+			</form>
+		</div>
+	</div>
 	
 </div>
 

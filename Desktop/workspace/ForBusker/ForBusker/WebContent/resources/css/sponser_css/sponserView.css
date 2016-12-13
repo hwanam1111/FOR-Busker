@@ -49,4 +49,28 @@
 
 
 
+#popup{border: 2px solid #ffc19e; background: #fff; border-radius: 15px; margin-top:40px;}
+
+/* 닫는창 */
+#close{margin-left:380px; cursor: pointer;}
+
+/* 메세지 테이블 */
+#messageTable{width:100%; border: 2px solid #92858C;  border-radius: 15px;}
+
+/* 채팅창 전송버튼 div */
+#insertDiv{ margin-top:5px;}
+
+/* 채팅창 인풋 */
+#inputText{width:370px; float: left; margin-left:15px; margin-right:5px; margin-bottom:10px;}
+
+/* 전송버튼 */
+#chatSubmit{width:70px; }
+
+#receivelabel{	
+	text-align: left; 
+	padding-left: 17px; 
+	font-size: 17px;
+}
+
+
 

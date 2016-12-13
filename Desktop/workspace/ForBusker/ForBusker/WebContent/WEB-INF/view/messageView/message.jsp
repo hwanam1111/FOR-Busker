@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="busker.scan.vo.*" %>
+<%@ page import="java.util.List" %>
 <% String projectName = "/ForBusker"; %>
+<% Object obj = request.getAttribute("mlist"); 
+List<SmsVO> list = null;
+
+Object sess = session.getAttribute("login");
+MemberVO mem = null;
+if(sess !=null){
+	mem = (MemberVO)sess;
+}
+
+if(obj!=null) list = (List<SmsVO>)obj;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +51,7 @@
 <div id="messageTable" class="table-responsive">
 <table class="table">
 <tr align="center">
-<td>번호</td>
+<td>구분</td>
 <td>이름</td>
 <td>내용</td>
 <td>날짜</td>
@@ -48,63 +61,42 @@
 <!-- ################################################### -->
 <!-- ################################################### -->
 <!--  테이블 반복문 돌릴 위치  -->
+<% if(list.size()==0){ %>
+	<tr> <td colspan="5"> 쪽지함이 비어있습니다.</td><tr>
+<% }else{ %>
+<%for (SmsVO s : list){ 
+if((!(s.getSmsSendEmail().equals(""))&&s.getSmsDeleteStatus().equals("1"))){ %>
 <tr align="center">
-<td align="center">1</td>
-<td></td>
-<td></td>
-<td></td>
-<td>
-<button type="button" class="btn btn-info messageView" >보기</button>
-<button type="button" class="btn btn-info" href="#">삭제</button>
+<td align="center"><%=s.getSmsType() %></td>
+
+<td><% if(s.getSmsReceiveEmail().equals(mem.getMemEmail())){	//받는 사람이 나일때 
+		out.write(s.getSmsSendEmail());
+}else{  													//아니면
+		out.write(s.getSmsReceiveEmail());
+}%></td>
+
+<td><%= s.getSmsContent() %></td>
+
+<td><%= s.getSmsSendTime() %><%if(s.getSmsStatus().equals("1")){ 
+		out.write("   읽지 않음");
+}else{
+		out.write("   읽음");
+} %>
+</td>
+<td class="tdname">	
+<a href="#">
+<button type="button" class="btn btn-info messageView" name="<%= s.getSmsNo() %>" >보기</button>		<!-- 글번호  -->
+<input type="hidden" name="<%= s.getSmsType() %>" value="<%= s.getSmsType() %>" />		<!-- 글 타입  -->
+<input type="hidden" value="${sessionScope.login.memEmail}"/>							<!-- 로그인 아이디 -->
+<input type="hidden" value="<%= s.getSmsSendEmail() %>" />								<!-- 보내는 사람  -->
+<input type="hidden" value="<%=s.getSmsReceiveEmail() %>" />							<!-- 받는 사람 -->
+<button type="button" class="btn btn-info deleteMessage" value="del">삭제</button>
+</a>
 </td>
 </tr>
-
-
-<tr align="center">
-<td align="center">2</td>
-<td>김이준</td>
-<td>디자인이 맘에 안드는데요?</td>
-<td>2016-12-02[11:39]</td>
-<td>
-<button type="button"  class="btn btn-info messageView" href="#">보기</button>
-<button type="button" class="btn btn-info" href="#" >삭제</button>
-</td>
-</tr>
-
-<tr align="center">
-<td align="center">3</td>
-<td>이강문</td>
-<td>뭐라구요??</td>
-<td>2016-12-02[11:36]</td>
-<td>
-<button type="button"  class="btn btn-info messageView" href="#">보기</button>
-<button type="button" class="btn btn-info" href="#">삭제</button>
-</td>
-</tr>
-
-<tr align="center">
-<td align="center">4</td>
-<td>김경림</td>
-<td>누구야!? 누구야!?</td>
-<td>2016-12-02[11:52]</td>
-<td> 
-<button type="button"   class="btn btn-info messageView" href="#">보기</button>
-<button type="button" class="btn btn-info" href="#">삭제</button>
-</td>
-</tr>
-
-<tr align="center">
-<td align="center">5</td>
-<td>이진욱</td>
-<td>아니~왜 안되는거야아~ㅠㅠ</td>
-<td>2016-12-02[11:58]</td>
-<td>
-<button type="button"  class="btn btn-info messageView" href="#">보기</button>
-<button type="button" class="btn btn-info" href="#">삭제</button>
-</td>
-</tr>
-
-
+<%		}
+	}
+} %>
 </table>
 </div>
 <!-- ################################################### -->
@@ -116,21 +108,34 @@
 		<div class="content">
 			<div class="b-ajax-wrapper" style="height: 550px; width: 400px; background: #f1f1f1; border-radius: 15px;">
     			<span class="button b-close" id="close"><span>X</span></span><br/>
+				<form id="pform" action="sponserMessage.do" method="post">
 				<div class="form-group" align="center" >
-					<div id="chatDiv"></div>
+					<div id="chatDiv"  style="overflow:scroll;">
+					<table style="width:300px;">
+					<tbody id="chatLog">
+					</tbody>
+					</table>
+					</div>
 					<div id="insertDiv">
-		   				<input type="text" id="inputText" class="form-control" />
+		   				<textarea rows="2" id="inputText" class="form-control" name="smsContent"></textarea>
 						<button type="button"  class="btn btn-info form-control" id="chatSubmit">전송</button>
 					</div>
 				</div>
-			</div>
+			</div>	
+				<input type="hidden" id="smsType" name="smsType" value=""/>
+				<input type="hidden" id="smsNo" name="smsNo" value="" />  
+				<input type="hidden" id="smsSendEmail" name="smsSendEmail" value="" />
+				<input type="hidden" id="smsReceiveEmail" name="smsReceiveEmail" value="" />
+				<input type="hidden" id="smsTo" name="smsTo" value="" />
+				<input type="hidden" style="display: none">
+			</form>
 		</div>
 	</div> 
 	<!-- ################################################### -->
 	<!-- ################################################### -->
 	<!-- ################################################### -->
 
-
+<input type="hidden" id="loginsess" value="<%=mem.getMemEmail()%>"/>
 
 </div>
 
