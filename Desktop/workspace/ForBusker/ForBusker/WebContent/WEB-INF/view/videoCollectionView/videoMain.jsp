@@ -1,8 +1,16 @@
 <%@page import="org.springframework.web.context.request.SessionScope"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="busker.scan.vo.*"%>    
+<%@page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% String projectName = "/ForBusker"; %>
+<%	
+	List<VideoVO>list=(List<VideoVO>)request.getAttribute("list"); 
+	//페이징 클래스 받아오기
+	PageVO pVO = (PageVO)request.getAttribute("page"); 
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +29,8 @@
 <link href="<%=projectName %>/resources/css/videoCollection_css/imggrid.css?<?=filemtime('<%=projectName %>/resources/css/videoCollection_css/imggrid.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- rightBanner css -->
 <link href="<%=projectName %>/resources/css/rightBanner_css/rightBanner.css?<?=filemtime('<%=projectName %>/resources/css/rightBanner_css/trightBanner.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- together css -->
+<link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- sponser js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/sponser_js/sponser.js?<?=filemtime('<%=projectName %>/resources/sponser_js/sponser.js')?>" type="text/css"></script>
  
@@ -71,37 +81,54 @@ $(function() {
     	<input type="hidden" value="${video.memEmail}" name="memEmail">
     </div>
   </c:forEach>
+  	 <%if(list.size()%3 == 2){ %>
+	
+     <div class="col-xs-4 marginTop50">
+   		<div class="col-xs-4 marginTop50" >
+			    <div style="height:360px; width:300px;">
+				</div>
+	    </div>
+    </div>
+    
+    <%} else if(list.size()%3 == 1){%>
+    	<%for(int i=0;i<2;i++){ %>
+    	
+	     <div class="col-xs-4 marginTop50" >
+			    <div style="height:360px; width:300px;">
+				</div>
+	    </div>
+	    
+    	<%} %>
+    <%} %>	
 
   <!-- ################################################ -->
   <!-- ################################################ -->
  
   
   <ul>
-<!--   <li> 페이징 할 부분
-		<nav aria-label="..."  align="center"  style="position: relative; right:20px;">
-	  <ul class="pagination pagination-lg">
+   <li> 
+	<nav aria-label="..."  align="center">
+	  <ul class="pagination pagination-lg" >
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="videoMain.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="videoMain.do?page=<%=i%>"><%=i %></a></li>
+	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="videoMain.do?page=<%=pVO.getNextPage()%>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </li>
 	  </ul>
 	</nav>
-	</li> -->
-	</ul>
-    
+   </li> 
+  </ul>
+     
   </div>
   
 </div>

@@ -19,9 +19,16 @@ public class VideoDaoImpl implements VideoDao {
 	
 //	비디오 리스트
 	@Override
-	public List<VideoVO> videoList() {
-		return ss.selectList("video.videoList");
+	public List<VideoVO> videoList(int curPage) {
+		return ss.selectList("video.videoList",curPage);
 	}
+	
+// 비디오 테이블 전체 row 갯수 가져오기
+	@Override
+	public int videoPageCount() {
+		
+		return ss.selectOne("video.videoPageCount");
+	}	
 	
 //	비디오 글쓰기
 	@Override
@@ -131,6 +138,8 @@ public class VideoDaoImpl implements VideoDao {
 	public VideoLikeVO videoLikeParentDelete(HashMap hashmap) {
 		return ss.selectOne("video.videoLikeParentDelete", hashmap);
 	}
+
+
 
 
 

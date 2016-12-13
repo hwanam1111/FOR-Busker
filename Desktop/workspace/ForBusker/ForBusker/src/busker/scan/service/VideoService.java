@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import busker.scan.vo.MemberVO;
+import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
 import busker.scan.vo.VideoVO;
 
@@ -13,7 +14,7 @@ public interface VideoService {
 	public int videoInsert(VideoVO vvo) throws Exception;
 
 	// 비디오 리스트
-	public List<VideoVO> videoList() throws Exception;
+	public List<VideoVO> videoList(PageVO pageVO) throws Exception;
 
 	// 비디오 뷰
 	public VideoVO videoView(HashMap map) throws Exception;
