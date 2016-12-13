@@ -153,6 +153,9 @@ $("#registBtn").click(function(){
 <%-- 	$("#exampleSelect1").val(<%=select%>); --%>
 <%}%>
 
+
+
+
 $("input[name=date_submit]").val('<%=date%>');
 });
 
