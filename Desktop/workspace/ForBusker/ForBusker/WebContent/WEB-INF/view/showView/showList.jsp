@@ -64,7 +64,7 @@ Object obj = request.getAttribute("volist");
 <script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/legacy')?>"></script>
-
+<script src="<%=projectName %>/resources/js/show_js/showList.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showList.js')?>"></script>
 
 <script type="text/javascript">
 $(function(){
@@ -101,7 +101,6 @@ $("#searchBtn").click(function(){
     var select = $("#exampleSelect1 option:selected").val();
    
     var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
-    alert(date);
     window.location.href="showListSearch.do?date="
                             + date
                             + "&select="
@@ -150,14 +149,18 @@ $("#registBtn").click(function(){
 <%if(select != null){%>
 
 	$("#exampleSelect1 option:eq(<%=select%>)").prop("selected", "selected"); //첫번째 option 선택
-<%-- 	$("#exampleSelect1").val(<%=select%>); --%>
+	<%-- 	$("#exampleSelect1").val(<%=select%>); --%>
+	<%if(select.equals("1")){%>
+	$("#example-text-input").hide();
+	$('#exampleSelect2').show();
+	$('#example-text-input').attr("name","");
+	$('#exampleSelect2').attr("name","val");
+	$("#exampleSelect2").val('<%=value%>'); //두번째 셀렉트 option 선택
+	<%}%><%-- 	$("#exampleSelect1").val(<%=select%>); --%>
+
+
+  
 <%}%>
-
-
-
-
-$("input[name=date_submit]").val('<%=date%>');
-});
 
 </script>
 
@@ -205,11 +208,7 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value="1">카테고리</option>
 			<option value="2">지역</option>
 		</select>
-		<%if(value != null){ %>
-		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" value=<%=value %> >
-		<%} else{%>
 		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" />
-		<%} %>
 		<select class='form-control' name="cate" id="exampleSelect2" style="width:280px; margin-left:25px;">
 			<option value=''>선택하세요</option>
 			<option value='노래'>노래</option>
