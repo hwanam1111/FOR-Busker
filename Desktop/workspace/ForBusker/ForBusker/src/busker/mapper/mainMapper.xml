@@ -39,5 +39,15 @@ SELECT *FROM member WHERE memPhone=#{memPhone} AND memTeamName=#{memTeamName} AN
 <select id="searchPw" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO">
 SELECT *FROM member WHERE memPhone=#{memPhone} AND memEmail=#{memEmail}
 </select>
+<update id="updateSimple" parameterType="busker.scan.vo.MemberVO">
+UPDATE member SET mempw=#{pw}, memphone=#{tel} WHERE memEmail=#{Email}
+</update>
 
+<update id="updateBusker" parameterType="busker.scan.vo.MemberVO">
+UPDATE member SET mempw=#{memPw}, memphone=#{memPhone}, memTeamName=#{memTeamName}, memTeamType=#{memTeamType}, memVideo=#{memVideo}, memDetail=#{memDetail}, memTeamPhoto=#{memTeamPhoto} where memEmail=#{memEmail}
+</update>
+
+<update id="updateSimpleToBusker" parameterType="busker.scan.vo.MemberVO">
+UPDATE member SET memTeamName=#{memTeamName}, memTeamType=#{memTeamType}, memVideo=#{memVideo}, memDetail=#{memDetail}, memTeamPhoto=#{memTeamPhoto}, memtype='2' where memEmail=#{memEmail}
+</update>
 </mapper>

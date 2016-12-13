@@ -20,9 +20,14 @@ public class MyPageController {
 	
 //	정보수정 페이지로 이동
 	@RequestMapping(value="mypageUpdate")
-	public String mypageUpdate(){
+	public String mypageUpdate(String memType){
 		System.out.println("mypageUpdate.jsp로 이동");
-		return "myPageView/mypageUpdate";
+		if(memType.equals("1")){
+			return "myPageView/mypageUpdateSimple";
+		}else{
+			return "myPageView/mypageUpdate";
+		}
+		
 	}
 	
 //	회원탈퇴 페이지로 이동
@@ -47,5 +52,39 @@ public class MyPageController {
 		}
 		//System.out.println("탈퇴실패");
 		return "mainView/logout";
+	}
+	@RequestMapping(value="updateSimple")
+	public String myPageSimpleUpdate(String updateEmail, String updateSimplePassword,String updateTel){
+		System.out.println("으아:"+updateEmail);
+		int result = service.updateSimple(updateEmail,updateSimplePassword,updateTel);
+		System.out.println("됏니:"+result);
+		return "myPageView/mypageUpdateComplete";
+	}
+	
+	@RequestMapping(value="updateBusker")
+	public String myPageBuskerUpdate(MemberVO memberVO){
+		System.out.println("으아:"+memberVO.getMemEmail());
+		int result = service.updateBusker(memberVO);
+		System.out.println("됏니:"+result);
+		return "myPageView/mypageUpdateComplete";
+	}
+	
+	@RequestMapping(value="updateSimpleToBuskerForm")
+	public String mypageSimpleToBuskerForm(){
+		System.out.println("mypageSimpleToBusker.jsp로 이동");
+		return "myPageView/mypageSimpleToBusker";
+	}
+	
+	
+	@RequestMapping(value="updateSimpleToBusker")
+	public String mypageSimpleToBusker(MemberVO memberVO){
+		System.out.println("컨트롤러쪽 멤버비오 : "+memberVO.getMemDetail());
+		service.updateSimpleToBusker(memberVO);
+		return "myPageView/mypageUpdateComplete";
+	}
+	
+	@RequestMapping(value="gomain")
+	public String mypageSimpleToBusker(){
+		return "myPageView/goMain";
 	}
 }

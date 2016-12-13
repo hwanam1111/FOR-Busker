@@ -66,5 +66,22 @@ public class MemberServiceImpl implements MemberService {
 		MemberVO result=memberDao.searchPw(memvo);
 		return result;
 	}
+	public int updateSimple(String updateEmail, String updateSimplePassword,String updateTel) {
+		System.out.println("memberService pw:"+updateSimplePassword+"/memberService email"+updateEmail+"memberService tel:"+updateTel);
+			
+		int result = memberDao.updateSimple(updateEmail, updateSimplePassword, updateTel);
+		return result;
+	} 
+	
+	public int updateBusker(MemberVO memberVO){
+		int result = memberDao.updateBusker(memberVO);
+		return result;
+	}
+	
+	public int updateSimpleToBusker(MemberVO memberVO){
+		System.out.println(" / 멤버서비스쪽 : "+memberVO.getMemDetail());
+		int result =memberDao.updateSimpleToBusker(memberVO);
+		return result;
+	}
 	
 }
