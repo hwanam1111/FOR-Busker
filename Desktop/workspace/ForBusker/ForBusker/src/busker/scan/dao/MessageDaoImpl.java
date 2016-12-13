@@ -333,4 +333,3 @@ public class MessageDaoImpl implements MessageDao {
 /*
  * map.put("smsSendEmail", Email); map.put("smsReceiveEmail", Email);
  */
- 
