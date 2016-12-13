@@ -2,7 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-<% String projectName = "/ForBusker"; %>
+<% String projectName = "/ForBusker"; 
+Object obj = session.getAttribute("login");
+	MemberVO mvo = (MemberVO)obj;
+%>
 
 <!DOCTYPE html>
 <html> 
@@ -98,8 +101,9 @@ function logout(){
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
-							<li class="ul_li_List"><a href="mypageUpdate.do">내 정보 수정</a></li>
+							<li class="ul_li_List"><a href="mypageUpdate.do?memType=${sessionScope.login.memType}">내 정보 수정</a></li>							<%if(mvo.getMemType().equals("2")){ %>
 							<li class="ul_li_List"><a href="showRegist.do">공연 등록하기</a></li>
+							<%}%>
 							<li class="ul_li_List"><a href="mypageLike.do?memEmail=${sessionScope.login.memEmail}">좋아요 페이지</a></li>
 							<li class="ul_li_List"><a href="mypageLeave.do?mem=${sessionScope.login.memEmail}">회원 탈퇴하기</a></li>
 						</ul>

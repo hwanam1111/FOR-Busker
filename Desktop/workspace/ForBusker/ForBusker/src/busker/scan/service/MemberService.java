@@ -18,6 +18,13 @@ public interface MemberService {
 	public MemberVO buskerIdSearch(MemberVO vo);
 
 	public MemberVO searchPw(MemberVO vo);
+	
+	public int updateSimple(String updateEmail, String updateSimplePassword,String updateTel);
+
+	public int updateBusker(MemberVO memberVO);
+	
+	public int updateSimpleToBusker(MemberVO memberVO);
+
 
 
 

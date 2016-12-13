@@ -83,7 +83,7 @@
   		<!-- ################################################### -->
   		<!-- ##################### CheckBox #################### -->
 		<!-- ################################################### -->
-		<label>공연장르</label>
+	<label>공연장르</label>
   		<label class="checkbox-inline">
   			<input type="checkbox" id="check_sing" value="노래" name="memTeamType"> 노래
 		</label>
@@ -91,19 +91,17 @@
   			<input type="checkbox" id="check_dance" value="댄스" name="memTeamType"> 댄스
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_band" value="밴드" name="memTeamType"> 밴드
+ 			<input type="checkbox" id="check_band" value="연주" name="memTeamType"> 연주
 		</label>
-		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_guitar" value="기타" name="memTeamType"> 기타
-		</label>
-		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_piano" value="피아노" name="memTeamType"> 피아노
-		</label>
-		<label class="checkbox-inline">
+			<label class="checkbox-inline">
  			<input type="checkbox" id="check_magic" value="마술" name="memTeamType"> 마술
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_other" value="그외" name="memTeamType"> 그외..
+ 			<input type="checkbox" id="check_piano" value="퍼포먼스" name="memTeamType"> 퍼포먼스
+		</label>
+
+		<label class="checkbox-inline">
+ 			<input type="checkbox" id="check_other" value="기타" name="memTeamType"> 기타
 		</label>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
