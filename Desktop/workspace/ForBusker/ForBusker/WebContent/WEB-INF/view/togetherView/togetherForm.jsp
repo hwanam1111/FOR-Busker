@@ -22,13 +22,7 @@
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
-
-<%if(session.getAttribute("login") == null) { %>
-
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
-<% } else { %>
-<jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
-<% } %>
 <!-- ################################################### -->
 
 

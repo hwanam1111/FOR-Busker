@@ -22,17 +22,13 @@
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
-<%if(session.getAttribute("login") == null) { %>
-
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
-<% } else { %>
-<jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
-<% } %>
 <!-- ################################################### -->
 
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
+<input type="hidden" id="need" value="${tovo.toNeed}">
 <form method="post" action="togetherModCofig.do?toNo=${tovo.toNo}">
 <%-- <input type="hidden" name="toId" value="${sessionScope.login.memEmail}"> --%>
 <table>
@@ -60,14 +56,14 @@
   <label for="example-text-input" class="col-xs-2 col-form-label">구하는 포지션</label>
   <div class="col-xs-8">
     <select class="form-control" id="selectperForm" name="toNeed">
-      <option value="">선택하세요</option>
-      <option value="노래">노래</option>
-      <option value="춤">춤</option>
-      <option value="연주">연주</option>
-      <option value="마술">마술</option>
-      <option value="기타">기타</option>
+      <option value="" >선택하세요</option>
+      <option value="노래" id="">노래</option>
+      <option value="춤" id="춤">춤</option>
+      <option value="연주" id="연주">연주</option>
+      <option value="마술" id="마술">마술</option>
+      <option value="기타" id="기타">기타</option>
     </select>
-     <input class="form-control" type="text" value="${tovo.toNeed}" id="togetherRegistEtc" name="toNeed" style="margin-top:15px;">
+     <input class="form-control" type="text" id="togetherRegistEtc" name="toNeed" style="margin-top:15px;">
   </div>
 </div>
 </tr>

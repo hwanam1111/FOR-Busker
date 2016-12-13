@@ -1,4 +1,8 @@
 $(function(){
+	//option selected
+	var needs=$('#need').val();
+	document.getElementById(needs).selected = true;
+
 	//공연 분류 기타를 눌렀을때
 	$('#togetherRegistEtc').hide();
 	$("#selectperForm").change(function(){
@@ -11,6 +15,10 @@ $(function(){
 			$('#togetherRegistEtc').attr("name","");
 			$('#selectperForm').attr("name","toNeed");
 		}
-	}); 
+	});
+	
+	    
+	
+	
 	
 });
