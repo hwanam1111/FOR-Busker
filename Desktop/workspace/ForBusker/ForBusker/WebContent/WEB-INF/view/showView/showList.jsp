@@ -60,10 +60,16 @@ Object obj = request.getAttribute("volist");
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Bootstrap 자바스크립트 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/legacy')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/showList.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showList.js')?>"></script>
+<link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/showList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/showList.css">
+<script src="<%=projectName %>/resources/js/show_js/showList.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showList.js')?>"></script>
+<link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/showList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/showList.css">
 
 
 <script type="text/javascript">
@@ -172,21 +178,6 @@ $("input[name=date_submit]").val('<%=date%>');
 <!-- 이부분 부터 코딩 시작 -->
 
 <div class="hoc" align="center">
-
-<div id="mySidenav" class="sidenav">
-<!-- 	 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-	<div class="row-xs-4">
-	누구야
-    </div>
-    <div class="row-xs-4">누구야야야야야</div>
-    <div class="row-xs-4">배고파
-	</div>
-</div>
-
-
-<!-- Use any element to open the sidenav -->
-<span id="clickopen">open</span>
-
 <table style="width:100%;">
 <tr>
 	<td colspan="2">   	
@@ -296,24 +287,32 @@ $("input[name=date_submit]").val('<%=date%>');
 	<%} %>
 </div>
 </td>
-<td style="width:50%;"><div id="map" style="width:100%; height:770px; z-index: -1; "></div></td>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
+<td style="width:50%;">
+<div class="map_wrap">
+
+    <div id="map" style="width:100%; height:770px; z-index: -1; "></div>
+    <!-- ################################확대 축소 컨트롤러 들어가는 부분############################### -->
+    <div class="custom_zoomcontrol radius_border"> 
+        <div id="plus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"></div>  
+        <div id="minus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"></div>
+    </div>
+</div>    
+</td>
 <script>
 var showlistsize = <%=showVoList.size()%>;
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
 			center: new daum.maps.LatLng<%=loc%>, // 지도의 중심좌표
-        	level: 4 // 지도의 확대 레벨
+        	level:5// 지도의 확대 레벨
         
     };
 
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-function setZoomable(zoomable) {
+/* function setZoomable(zoomable) {
     // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
     map.setZoomable(zoomable);
 
-}
+} */
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
 	<% for(int i =0;i<showVoList.size();i++){%>
