@@ -13,8 +13,11 @@ public interface VideoDao {
 	public int videoInsert(VideoVO vvo);
 
 	// 비디오 리스트
-	public List<VideoVO> videoList();
-
+	public List<VideoVO> videoList(int curPage);
+	
+	// 비디오 테이블 전체 row 갯수 가져오기
+	public int videoPageCount();
+	
 	// 비디오 뷰
 	public VideoVO videoView(HashMap map);
 

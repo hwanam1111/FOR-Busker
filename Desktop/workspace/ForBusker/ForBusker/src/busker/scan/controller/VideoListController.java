@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import busker.scan.service.VideoService;
 import busker.scan.vo.MemberVO;
+import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
 import busker.scan.vo.VideoVO;
 
@@ -41,11 +42,20 @@ public class VideoListController {
 	
 //	영상 리스트
 	@RequestMapping(value="videoMain")
-	public String main(VideoVO vvo, Model m) throws Exception{
+	public String main(VideoVO vvo, String page, Model m) throws Exception{
 		System.out.println("videoMain.jsp로 이동");
-		List<VideoVO> list = service.videoList();
+		//페이징 부분 
+		PageVO pageVO = new PageVO();
+		if(page == null){
+			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
+		}else{
+			int curPage = Integer.parseInt(page); //형변환
+			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
+		}
+		List<VideoVO> list = service.videoList(pageVO);
 		System.out.println(list);
 		m.addAttribute("list", list);
+		m.addAttribute("page",pageVO);
 		
 		return "videoCollectionView/videoMain";
 	}

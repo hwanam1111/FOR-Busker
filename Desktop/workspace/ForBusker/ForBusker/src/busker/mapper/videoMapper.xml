@@ -9,13 +9,22 @@
 	values(seq_video.nextVal, #{videoName}, #{videoDetail}, #{videoUrl}, sysdate, #{memEmail}, #{memTeamName}, '0', '0')
 </insert>
 
+<!-- 비디오 테이블 전체 로우 갯수 가져오기 -->
+<select id="videoPageCount" resultType="int">
+SELECT count(videono)
+FROM video
+</select>
+
 <!-- 리스트 띄우기 -->
-<select id="videoList" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoVO"> 
-SELECT video.memEmail, video.videono, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as videosomenale, video.videoDate, member.memEmail, member.memteamname
-FROM video 
-INNER JOIN member          
-ON video.mememail = member.mememail
-order by videoDate desc
+<select id="videoList" parameterType="int" resultType="busker.scan.vo.VideoVO"> 
+SELECT  memEmail, videono,videoname, videodetail, videourl, videosomenale, videoDate, memteamname
+FROM (SELECT  rownum as rnum , video.memEmail memEmail, video.videono videono, video.videoname videoname, video.videodetail videodetail, video.videourl videourl, substr(video.videourl, -11) as videosomenale, 
+      video.videoDate videoDate, member.memteamname memteamname
+      FROM video 
+      INNER JOIN member          
+      ON video.mememail = member.mememail
+      order by videoDate desc )
+WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
 
 <!-- 글 보기 -->
