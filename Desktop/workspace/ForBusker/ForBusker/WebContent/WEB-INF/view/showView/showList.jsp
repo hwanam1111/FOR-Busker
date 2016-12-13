@@ -155,12 +155,13 @@ $("#registBtn").click(function(){
 	$('#exampleSelect2').show();
 	$('#example-text-input').attr("name","");
 	$('#exampleSelect2').attr("name","val");
-	$("#exampleSelect2").val('<%=value%>'); //두번째 셀렉트 option 선택
+	$("#exampleSelect2").val("<%=value%>"); //두번째 셀렉트 option 선택
 	<%}%><%-- 	$("#exampleSelect1").val(<%=select%>); --%>
 
-
-  
+ 
 <%}%>
+$("input[name=date_submit]").val('<%=date%>');
+});
 
 </script>
 
