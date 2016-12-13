@@ -16,32 +16,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript">
+$(function(){
+	alert("${showvo.shTeamName}팀 등록");	
+	location.href="main.do"
+});
+</script>
 </head>
-
-<body id="top">
-<!-- #############  header nav부분 include  ############# -->
-<%if(session.getAttribute("login") == null) { %>
-
-<jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
-<% } else { %>
-<jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
-<% } %>
-<!-- ################################################### -->
-
-
-<!-- 이부분 부터 코딩 시작 -->
-
-${showvo.shTeamName}팀 등록
-
-
-<!-- 코딩 종료 -->
-
-
-<!-- ##############  footer 부분 include  ############## -->
-<jsp:include page="/WEB-INF/view/includeFile/footer.jsp" />
-<!-- ################################################## -->
-<!-- #############  반응형 모바일 js  ############# -->
-<script src="<%=projectName %>/resources/js/index_js/jquery.mobilemenu.js"></script>
-<!-- ################################################### -->
-</body>
-</html>
