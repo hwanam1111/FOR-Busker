@@ -3,6 +3,7 @@ $(function(){
 	$("#popup").hide();
 
 	$(".messageView").each(function(){
+		$("#inputText").val('');
 		$(this).click(function(){
 		$('[name="smsContent"]').val("");
 		var start = $(this);
@@ -11,14 +12,14 @@ $(function(){
 		var loginEmail = smsType.next();		//로그인 아이디 session id 
 		var sendEmail = loginEmail.next();		//보내는 사람 smsSendEmail
 		var receiveEmail = sendEmail.next();	//받는 사람	  smsReceiveEmail
-
 		
 		$("#smsNo").val(smsNo);							// 글번호
 		$("#smsType").val(smsType.val());				// 글타입
 		$("#smsReceiveEmail").val(sendEmail.val());		// 보내는 사람
 		$("#smsSendEmail").val(receiveEmail.val())		// 로그인 아이디
 		$("#smsTo").val(receiveEmail.val());			// 보내는 사람 -고정-
-		
+
+
 		$.ajax({
 			url : 'chatView.do',
 			type : 'post',
@@ -37,19 +38,20 @@ $(function(){
 					var time = message[i].smsSendTime.split(" ");
 					//날짜 찍기
 					if(time[0]!=year){
-						$("#chatLog").append("<tr><td align='center'> "+ time[0]+"</td></tr>")
+						$("#chatLog").append("<tr><td align='center'><div class='day'>"+ time[0]+"<div></td></tr>")
 						year = time[0];
 					}
 					//보낸 사람 표시
 					if(!(message[i].smsSendEmail==loginEmail.val())){
-					$("#chatLog").append("<tr><td>" + message[i].smsSendEmail +"  " 
-							+ time[2] + "<br/>" + 
-							message[i].smsContent +"</td></tr>");								
+					$("#chatLog").append(
+			"<tr><td><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsSendEmail +"  " + time[2] + "<br/>" + 
+							message[i].smsContent +"</div></div></td></tr>");								
 					}else{
 						//받는 사람 표시
-						$("#chatLog").append("<tr><td align='right'>" + message[i].smsContent +"</td></tr>");	
+					$("#chatLog").append("<tr><td align='right'><div class='talk-mybubble tri-right right-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");	
 					}
-				//	$("#chatDiv").append(message[i].smsNo +"<br>");
+				
+				$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
 				}
 			},
 			error : function(data) {
@@ -62,30 +64,23 @@ $(function(){
 		});
 	});
 
+	
 	// 메시지 보내기 눌렀을때 Submit
 	$("#chatSubmit").click(function() {
-		$('[name="smsContent"]').empty();
-		$.ajax({
-			url : 'sponserMessage.do',
-			type : 'post',
-			data : ({
-				smsNo : $("#smsNo").val(),					// 글번호
-				smsContent : $('[name="smsContent"]').val(),// 글 내용
-				smsType : $("#smsType").val(),				// 글타입
-				smsSendEmail : $("#smsSendEmail").val(),	// 받는 사람 
-				smsReceiveEmail : $("#smsReceiveEmail").val(),	// 보내는 사람
-				smsTo : $("#smsTo").val(),					// 보내는 사람 -고정-
-			}),
-			dataType : "text", // html / xml / json / jsonp / text
-			success : function(data) {
-				location.href="message.do?email="+$("#loginsess").val();
-			},
-			error : function(data) {
-				alert("에러발생");
-			}
-		});
+		if(!($("#inputText").val()=="")){			
+			MessageInsert();
+		}
 	});
 	
+	$("#inputText").keypress(function(event){
+	      if(event.which == 13 &&!($("#inputText").val()=='')){
+	    	  if($("#inputText").val()=="\n"){
+	    		  $("#inputText").val('');
+	    		  return false;
+	    	  }	    	  
+	    	  MessageInsert();
+	      }
+	});
 	
 	$(".deleteMessage").each(function(){
 		$(this).click(function(){
@@ -122,10 +117,57 @@ $(function(){
 				alert("실패");
 			}
 		});
-
-	
 	});
 
+	
+	function MessageInsert(){
+		
+		var loginEmail = $("#loginsess");
+		
+		$('[name="smsContent"]').empty();
+		$.ajax({
+			url : 'sponserMessage.do',
+			type : 'post',
+			data : ({
+				smsNo : $("#smsNo").val(),					// 글번호
+				smsContent : $('[name="smsContent"]').val(),// 글 내용
+				smsType : $("#smsType").val(),				// 글타입
+				smsSendEmail : $("#smsSendEmail").val(),	// 받는 사람 
+				smsReceiveEmail : $("#smsReceiveEmail").val(),	// 보내는 사람
+				smsTo : $("#smsTo").val(),					// 보내는 사람 -고정-
+			}),
+			dataType : "text", // html / xml / json / jsonp / text
+			success : function(data) {
+
+				$("#chatLog").empty();
+				var message = eval("("+data+")");
+				var year = ""
+				for(var i=0; i<message.length; i++){	
+					var time = message[i].smsSendTime.split(" ");
+					//날짜 찍기
+					if(time[0]!=year){
+						$("#chatLog").append("<tr><td align='center'><div class='day'>"+ time[0]+"<div></td></tr>")
+						year = time[0];
+					}
+					//보낸 사람 표시
+					if(!(message[i].smsSendEmail==loginEmail.val())){
+					$("#chatLog").append(
+			"<tr><td><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsSendEmail +"  " + time[2] + "<br/>" + 
+							message[i].smsContent +"</div></div></td></tr>");								
+					}else{
+						//받는 사람 표시
+					$("#chatLog").append("<tr><td align='right'><div class='talk-mybubble tri-right right-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");	
+					}
+				}
+				$("#inputText").val('');
+				$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
+				//location.href="message.do?email="+$("#loginsess").val();
+			},
+			error : function(data) {
+				alert("에러발생");
+			}
+		});
+		}
 	
 
 	function popupOpen(){
