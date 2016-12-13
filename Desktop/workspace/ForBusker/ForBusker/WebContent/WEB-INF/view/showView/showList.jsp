@@ -30,7 +30,7 @@ Object obj = request.getAttribute("volist");
 	//shno값 controller에서 받아와서 저장 
 	int shno = 0;
 	Object shnoObj = request.getAttribute("shno");
-	if(shnoObj != null) shno=(int)shnoObj;
+	if(shnoObj != null) shno=(Integer)shnoObj;
 	
 	//검색어 받아오기
 	String value =(String)request.getAttribute("value");
