@@ -127,16 +127,24 @@ public class VideoDaoImpl implements VideoDao {
 
 	// 좋아요 한 페이지 리스트
 	@Override
-	public List<VideoLikeVO> videoMypageLikeList(String memEmail) {
+	public List<VideoLikeVO> videoMypageLikeList(String memEmail,int curPage) {
 		System.out.println("videoDao:"+memEmail);
 		HashMap<String,Object> map = new HashMap<String,Object>();
 		map.put("memEmail", memEmail);
+		map.put("curPage", curPage);
 		return ss.selectList("video.videoMypageLikeList",map);
 	}
 
 	@Override
 	public VideoLikeVO videoLikeParentDelete(HashMap hashmap) {
 		return ss.selectOne("video.videoLikeParentDelete", hashmap);
+	}
+
+	//좋아요한 테이블 전체 row갯수 가져오기
+	@Override
+	public int likePageCount(String memEmail) {
+		
+		return ss.selectOne("video.likePageCount",memEmail);
 	}
 
 
