@@ -37,7 +37,7 @@ Object obj = request.getAttribute("volist");
 	
 	//날짜 받아오기
 	String date =(String)request.getAttribute("date");
-	
+	 
 	//select 받아오기
 	String select =(String)request.getAttribute("select");
 %>
