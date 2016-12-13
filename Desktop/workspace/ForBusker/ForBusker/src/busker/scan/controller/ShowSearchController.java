@@ -1,11 +1,15 @@
 package busker.scan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import busker.scan.service.ShowService;
+import busker.scan.vo.PageVO;
+import busker.scan.vo.ShowVO;
 
 // 공연찾기 컨트롤러
 
@@ -16,15 +20,34 @@ public class ShowSearchController {
 	ShowService service;
 	
 	@RequestMapping(value="showList")
-	public String showList(int shno, String loc,Model m) throws Exception{
+	public String showList(int shno, String loc,String page , Model m) throws Exception{
 		System.out.println("showList.jsp로 이동");
 		System.out.println("loc는"+loc);
 		System.out.println("shno는"+shno);
+		
+		//페이징 부분 
+		PageVO pageVO = new PageVO();
+		if(page == null){
+			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
+		}else{
+			int curPage = Integer.parseInt(page); //형변환
+			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
+		}
+		
 		if(loc==null){//Main에서 지도의 링크클릭했을때
 			m.addAttribute("volist",service.selectList(shno));
+			
+			
 		}else{//Main에서 공연찾기 링크 눌렀을때
-			m.addAttribute("volist",service.selectList(loc));
+			List<ShowVO> volist = service.selectList(loc,pageVO);
+		
+			m.addAttribute("volist",volist);
+			m.addAttribute("page",pageVO);
+			m.addAttribute("mapo","마포");
+			
 		}
+		
+		m.addAttribute("shno",shno);
 		
 		return "showView/showList";
 	}
@@ -36,9 +59,23 @@ public class ShowSearchController {
 		return "showView/showRegist";
 	}
 	@RequestMapping(value="showListSearch")
-	public String showList2(String date, String select, String val, Model m) throws Exception{
-		System.out.println("으아아아아"+service.selectList(date,select,val).size());
-		m.addAttribute("volist",service.selectList(date,select,val)); //뷰에서 받아온 날짜값과 셀렉트박스값, 텍스트필드or셀렉트값(카테고리로검색일경우) 서비스로넘겨줌
+	public String showList2(String date, String select, String val, String page, Model m) throws Exception{
+		
+		
+		//페이징 부분 
+		PageVO pageVO = new PageVO();
+		if(page == null){
+			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
+		}else{
+			int curPage = Integer.parseInt(page); //형변환
+			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
+		}
+		
+		m.addAttribute("volist",service.selectList(date,select,val,pageVO));
+		m.addAttribute("value",val);
+		m.addAttribute("date",date);
+		m.addAttribute("select",select);
+		m.addAttribute("page",pageVO);
 		return "showView/showList";
 	}
 }

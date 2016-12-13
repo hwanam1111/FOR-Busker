@@ -39,11 +39,20 @@ public class ShowDaoImpl implements ShowDao {
 	}
 
 	@Override
-	public List selectShow(String loc) throws Exception {
+	public List selectShow(String loc,int curPage){
 		System.out.println("showdao쪽 selectShow진입(string버전)");
 		HashMap map = new HashMap();
 		map.put("first", loc);
-		return ss.selectList("show.selectShow2",loc);
+		map.put("curPage",curPage);
+		return ss.selectList("show.selectShow2",map);
+	}
+	
+	//loc들어왔을 때 row 갯수 가져오기
+	@Override
+	public int showLocCount(String loc){
+		int showLocCount =ss.selectOne("show.showLocCount", loc);
+		System.out.println(loc+"들어왔을때 갯수 "+showLocCount);
+		return showLocCount;
 	}
 
 	@Override
@@ -54,21 +63,52 @@ public class ShowDaoImpl implements ShowDao {
 		return ss.selectList("show.selectShow3",shno);
 	}
 	
-	public List selectShow(String date, String select, String val) throws Exception {
+	
+	
+	public List selectShow(String date, String select, String val,int curPage) throws Exception {
 		System.out.println("showDao쪽 selectShow진입(검색버전) 데이트는 :"+date+"/셀렉트는"+select+"발은"+val);
 		HashMap map = new HashMap();
 	
 		map.put("date", date);
 		map.put("select", select);
+		map.put("curPage", curPage);
 		if(val!=null){
-			if(val.equals("기타"))//카테고리가 기타일 경우 val에 0 넣어줌
+			if(val.equals("기타"))
 			{
 			map.put("val", 0);	
 			}else{
-			map.put("val", val); //기타가 아닐경우 넘어온 val을 넣어줌(select태그로 선택된값)
+			map.put("val", val);
 			}
 		}
-		return ss.selectList("show.selectShowSearch",map);
+		
+		List selectShow = ss.selectList("show.selectShowSearch",map);
+		System.out.println("DAO에서 리스트 갯수 : "+selectShow.size());
+		System.out.println("DAO에서 현재 페이지 번호 : "+curPage);
+		return selectShow;
 	}
+	
+	//검색어가 들어왔을 때 row 갯수 가져오기
+	@Override
+	public int showSearchCount(String date, String select, String val){
+		HashMap map = new HashMap();
+		
+		map.put("date", date);
+		map.put("select", select);
+		if(val!=null){
+			if(val.equals("기타"))
+			{
+			map.put("val", 0);	
+			}else{
+			map.put("val", val);
+			}
+		}
+		int showSearchCount =  ss.selectOne("show.showSearchCount",map);
+		System.out.println("검색했을때 총 row 갯수 = "+showSearchCount);
+		return showSearchCount;
+	}
+
+	
+
+
 
 }

@@ -1,26 +1,45 @@
-<%@page import="busker.scan.vo.ShowVO"%>
+<%@page import="busker.scan.vo.*"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
 <%
-Object logincheck=session.getAttribute("login");//로그인세션값 받아옴
-Object obj = request.getAttribute("volist");//volist로 컨트롤에서 넘어온 값 받아옴
+Object logincheck=session.getAttribute("login");
+Object obj = request.getAttribute("volist");
 
 	List<ShowVO> showVoList = null;
-	String loc = "(37.555448809581634, 126.92352876576223)"; //default coords값(홍대)->넘어온값이 하나도 없을경우 이 coords로 중심좌표 정해줌
+	String loc = "(37.555448809581634, 126.92352876576223)";
 	if(obj!=null){
 		showVoList=(List)obj;
 		if(showVoList.size()==0){
 			System.out.println("하하하핳"+showVoList.size());
 			
 		}else{
-			loc=showVoList.get(0).getShMapCoords();//showVoList.size()가 0이란건 넘어온값이 없다는 것, 값이 있다면 0번방(제일첫번째방)의 coords값으로 중심좌표 정해줌
+			loc=showVoList.get(0).getShMapCoords();
 		}
 		
 	}else{
 		System.out.println("에러발생");
 	}
+	//페이징 클래스 받아오기
+	PageVO pVO = (PageVO)request.getAttribute("page");
+	//마포 받아오기
+	String mapo=(String)request.getAttribute("mapo");
+	if( (mapo !=null && mapo.equals("null") )|| mapo == null ) mapo="";
+	
+	//shno값 controller에서 받아와서 저장 
+	int shno = 0;
+	Object shnoObj = request.getAttribute("shno");
+	if(shnoObj != null) shno=(int)shnoObj;
+	
+	//검색어 받아오기
+	String value =(String)request.getAttribute("value");
+	
+	//날짜 받아오기
+	String date =(String)request.getAttribute("date");
+	
+	//select 받아오기
+	String select =(String)request.getAttribute("select");
 %>
 
 <!DOCTYPE html>
@@ -36,10 +55,11 @@ Object obj = request.getAttribute("volist");//volist로 컨트롤에서 넘어�
 <link href="<%=projectName %>/resources/css/index_css/include.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/default.css?<?=filemtime('<%=projectName %>/resources/css/show_css/default.css')?>">
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/performanceList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/performanceList.css')?>">
-<!-- Bootstrap 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Bootstrap 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/legacy.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/legacy')?>"></script>
@@ -48,6 +68,7 @@ Object obj = request.getAttribute("volist");//volist로 컨트롤에서 넘어�
 <script type="text/javascript">
 $(function(){
 	$('#exampleSelect2').hide();
+	
 var $input = $( '.datepicker' ).pickadate({
     formatSubmit: 'yyyy/mm/dd',
     // min: [2015, 7, 14],
@@ -55,6 +76,7 @@ var $input = $( '.datepicker' ).pickadate({
     // editable: true,
     closeOnSelect: true,
     closeOnClear: true,    
+  	
 });
 
 $("#searchBtn").click(function(){
@@ -68,14 +90,17 @@ $("#searchBtn").click(function(){
       var day   = now.getDate();
       if (("" + month).length == 1) { month = "0" + month; }
       if (("" + day).length   == 1) { day   = "0" + day;   }
-
+	
+      
 	var date = $("input[name=date_submit]").val(); //날짜값 저장
 	if(date==''){
 		date=(year+'/'+month+'/'+day); //날짜값을 안넣고 그냥 submit할때 오늘날짜 넣어줌(placeholder에 오늘의 날짜라고 되어있기때문)
 	}
-	alert(date);
+	
     var select = $("#exampleSelect1 option:selected").val();
+   
     var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
+    alert(date);
     window.location.href="showListSearch.do?date="
                             + date
                             + "&select="
@@ -83,7 +108,7 @@ $("#searchBtn").click(function(){
                             + "&val="
                             + inputvalue;
                    
-	
+    
 });
 
 /* Set the width of the side navigation to 250px */
@@ -121,8 +146,18 @@ $("#registBtn").click(function(){
     window.location.href="showRegist.do";
  <%}%>
 });
+<%if(select != null){%>
+
+	$("#exampleSelect1 option:eq(<%=select%>)").prop("selected", "selected"); //첫번째 option 선택
+<%-- 	$("#exampleSelect1").val(<%=select%>); --%>
+<%}%>
+
+$("input[name=date_submit]").val('<%=date%>');
 });
+
 </script>
+
+
 </head>
 
 <body id="top">
@@ -156,13 +191,21 @@ $("#registBtn").click(function(){
 	<td colspan="2">   	
 	<form class="form-inline" id="searchGo" style="margin-left:50px; margin-bottom:20px;"> 
 	 <div class="form-group">
-		<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style=" position: relative; right:20px;"/>
+	 <%if(date!=null) {%>
+			<input id="input_01" type="text" class="datepicker form-control" name="date" style=" position: relative; right:20px;" value=<%=date %>>
+	 <%}else{ %>	
+			<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style=" position: relative; right:20px;">
+	 <%} %>		
 		<select class="form-control" id="exampleSelect1" style="width:200px;  position: relative; right:5px;">
 			<option value="0">팀명</option>
 			<option value="1">카테고리</option>
 			<option value="2">지역</option>
 		</select>
+		<%if(value != null){ %>
+		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" value=<%=value %> >
+		<%} else{%>
 		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" />
+		<%} %>
 		<select class='form-control' name="cate" id="exampleSelect2" style="width:280px; margin-left:25px;">
 			<option value=''>선택하세요</option>
 			<option value='노래'>노래</option>
@@ -172,8 +215,8 @@ $("#registBtn").click(function(){
 			<option value='퍼포먼스'>퍼포먼스</option>
 			<option value='기타'>기타</option>
 		</select>
-		<button type="button" id="searchBtn" class="btn btn-outline-info" style="width:100px; color:white">검색</button>
-		<button type="button" id="registBtn" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:100px; color:white">등록하기</button>
+		<button type="button" id="searchBtn" class="btn btn-outline-info" style="width:90px; color:white">검색</button>
+		<button type="button" id="registBtn" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:90px; color:white">등록하기</button>
 	</div>
 	</form>
 	</td>
@@ -204,15 +247,59 @@ $("#registBtn").click(function(){
 		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a><%=showVoList.get(i).getShTeamName() %></a></label>						
 		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>상세보기</a></label>
 	</div>
-</form> 
-</div>
+</form>
+
 <% } %>
-</td> 
+	<%if(shno == 0 && value==null) {%>
+	<nav align="center">
+	  <ul class="pagination pagination-lg">
+	    <li class="page-item">
+	      <a class="page-link" href="showList.do?page=<%=pVO.getPreviPage()%>&loc=<%=mapo %>&shno=0" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	        <span class="sr-only">Previous</span>
+	      </a>
+	    </li>
+  		<%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="showList.do?page=<%=i %>&loc=<%=mapo %>&shno=0"><%=i %></a></li>
+	   	 	
+	 	<%} %>
+	    <li class="page-item">
+	      <a class="page-link" href="showList.do?page=<%=pVO.getNextPage()%>&loc=<%=mapo %>&select=<%=select %>&date=<%=date %>" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	        <span class="sr-only">Next</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+	<%} else if(shno == 0 && value !=null){%>
+	<nav align="center">
+	  <ul class="pagination pagination-lg">
+	    <li class="page-item">
+	      <a class="page-link" href="showListSearch.do?page=<%=pVO.getPreviPage()%>&val=<%=value %>&select=<%=select %>&date=<%=date %>" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	        <span class="sr-only">Previous</span>
+	      </a>
+	    </li>
+  		<%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="showListSearch.do?page=<%=i %>&val=<%=value %>&select=<%=select %>&date=<%=date %>"><%=i %></a></li>
+	   	 	
+	 	<%} %>
+	    <li class="page-item">
+	      <a class="page-link" href="showListSearch.do?page=<%=pVO.getNextPage()%>&val=<%=value %>&select=<%=select %>&date=<%=date %>" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	        <span class="sr-only">Next</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
+	<%} %>
+</div>
+</td>
 <td style="width:50%;"><div id="map" style="width:100%; height:770px; z-index: -1; "></div></td>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e"></script>
 <script>
-var showlistsize = <%=showVoList.size()%>; //리스트의 size값저장
+var showlistsize = <%=showVoList.size()%>;
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
 			center: new daum.maps.LatLng<%=loc%>, // 지도의 중심좌표

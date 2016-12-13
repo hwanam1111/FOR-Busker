@@ -9,26 +9,68 @@
 </insert>
 
 <select id="selectShow" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
-	select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) 
-	<choose>
-		<when test="second neq null">
-			and shmapaddr LIKE '%' || #{second} || '%'
-		</when>
-		<otherwise>
-			and shmapaddr LIKE '%' || #{first} || '%'
-		</otherwise>
-	</choose>
+   select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) 
+   <choose>
+      <when test="second neq null">
+         and shmapaddr LIKE '%' || #{second} || '%'
+      </when>
+      <otherwise>
+         and shmapaddr LIKE '%' || #{first} || '%'
+      </otherwise>
+   </choose>
 </select>
+
 <select id="selectShow2" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
-	select * from show where shdate=to_char( sysdate, 'YYYY/MM/DD' ) and shmapaddr LIKE '%' || #{first} || '%'
+SELECT * 
+FROM (select  rownum as rnum , shno,mememail,shteamname,shvideo,shname,shmapcoords,shmapaddr,shmapdetail,shdate,shtime,shtype,shdetail 
+	  FROM show  
+	  WHERE shdate=to_char( sysdate, 'YYYY/MM/DD' ) and shmapaddr LIKE '%' || #{first} || '%' ORDER BY shno DESC) 
+WHERE  rnum BETWEEN  ((#{curPage}-1)*2)+1  AND #{curPage}*2
+</select>	
+
+<!-- loc들어왔을 때 row 갯수 가져오기 -->
+<select id="showLocCount" parameterType="String" resultType="int">
+	SELECT count(shno)
+	FROM show
+	where shdate=to_char( sysdate, 'YYYY/MM/DD' ) and shmapaddr LIKE '%' || #{first} || '%'
 </select>
 
 <select id="selectShow3" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
 	select * from show where shno=#{first}
 </select>
 <select id="selectShowSearch" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
-	select * from show where shdate=#{date} 
-	<choose>
+	select * 
+	FROM (SELECT  rownum as rnum , shno,mememail,shteamname,shvideo,shname,shmapcoords,shmapaddr,shmapdetail,shdate,shtime,shtype,shdetail 
+	  	  FROM show  
+	  	  WHERE shdate=#{date}
+	  	  	<choose>
+				<when test="val neq null and select eq 0">
+				and shTeamName LIKE '%'|| #{val} ||'%'
+				</when> 
+				<when test="val neq null and select eq 2">
+				and shmapaddr LIKE '%' || #{val} || '%'
+				</when>
+			 	<when test='val neq "0" and select eq 1'>
+			 	and shType = #{val}
+				</when>
+				<when test='val eq "0" and select eq 1'>
+				and shType not in ('노래','마술','댄스','연주','마술','퍼포먼스')
+				</when>
+				<otherwise>
+			
+				</otherwise>
+			</choose>
+	  	  ORDER BY shno DESC)
+	WHERE rnum BETWEEN  ((#{curPage}-1)*2)+1  AND #{curPage}*2
+
+</select>
+
+<!-- 검색했을 때 count -->
+<select id="showSearchCount" parameterType="hashmap" resultType="int">
+SELECT count(shNo)
+FROM show
+WHERE shdate=#{date} 
+<choose>
 	<when test="val neq null and select eq 0">
 	and shTeamName LIKE '%'|| #{val} ||'%'
 	</when> 
