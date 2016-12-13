@@ -21,6 +21,7 @@
     /* background-color: #ffc19e; */
     transition: 0.5s;
     float:right;
+    overflow-y: auto;
 }
 #p_font{
 	margin-bottom:20px;
