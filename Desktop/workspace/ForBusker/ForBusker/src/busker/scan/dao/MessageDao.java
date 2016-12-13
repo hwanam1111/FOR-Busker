@@ -11,13 +11,13 @@ public interface MessageDao {
 
 	public void Insert(SmsVO sms) throws Exception ;
 
-	public List<SmsVO>  select(String Email) throws Exception ;
+	public List<SmsVO>  select(String email) throws Exception ;
 	
-	public void delete(SmsVO sms,String Email) throws Exception ;
+	public void delete(SmsVO sms,String email) throws Exception ;
 
-	List<SmsVO> selectMessageByNoType(SmsVO sms,String Email) throws Exception;
+	List<SmsVO> selectMessageByNoType(SmsVO sms,String email) throws Exception;
 
-	void updateMessage(SmsVO sms) throws Exception;
+	void updateMessage(SmsVO sms,String email) throws Exception;
 
 	public String messageCheck(String email) throws Exception;
 

@@ -71,7 +71,7 @@ public class MessageController {
 
 		// 받는 사람이 나일때 읽음 표시
 		if(sms.getSmsReceiveEmail().equals(mem.getMemEmail())){
-			 service.updateMessage(sms);
+			 service.updateMessage(sms,mem.getMemEmail());
 		}
 		
 		//select 해온 문장중 보기를 눌렀을시 해당하는 글 내용 가져오기

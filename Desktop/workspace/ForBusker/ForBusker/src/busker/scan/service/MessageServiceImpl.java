@@ -35,8 +35,8 @@ public class MessageServiceImpl implements MessageService {
 	}
 	
 	@Override
-	public void updateMessage(SmsVO sms) throws Exception{
-		dao.updateMessage(sms);
+	public void updateMessage(SmsVO sms,String email) throws Exception{
+		dao.updateMessage(sms,email);
 	}
 
 	@Override

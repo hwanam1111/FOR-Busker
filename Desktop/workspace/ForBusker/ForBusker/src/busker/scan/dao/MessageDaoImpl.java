@@ -42,44 +42,6 @@ public class MessageDaoImpl implements MessageDao {
 		collection.insert(documentRec);
 		 	
 	}
-
-	//########################################################################################################	
-	//####################################쪽지 Insert###########################################################	
-	//##############################      document 생성               ##################################################
-	// mongodb create 했을때 이름 부여
-	private BasicDBObject createDocumentSend(SmsVO sms) {
-		BasicDBObject doc = new BasicDBObject();
-		Date date = new Date();
-		SimpleDateFormat smsSendTime = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
-		doc.put("smsNo", sms.getSmsNo());					//글 내용
-		doc.put("smsSendEmail", sms.getSmsSendEmail());		//보내는 이메일
-		doc.put("smsContent", sms.getSmsContent());			//보내는 내용
-		doc.put("smsReceiveEmail", sms.getSmsReceiveEmail());	//받는 이메일
-		doc.put("smsSendTime", smsSendTime.format(date));	//보내는 시간
-		doc.put("smsStatus", "1");							//읽음 상태
-		doc.put("smsType", sms.getSmsType());				//글 타입
-		doc.put("smsTo", sms.getSmsSendEmail());			//보내는 이메일 -고정-
-		doc.put("smsDeleteStatus", "1");					//delete 여부
-		return doc;
-	}
-
-	private BasicDBObject createDocumentRec(SmsVO sms) {
-		BasicDBObject doc = new BasicDBObject();
-		Date date = new Date();
-		SimpleDateFormat smsSendTime = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
-		doc.put("smsNo", sms.getSmsNo());					//글 내용
-		doc.put("smsSendEmail", sms.getSmsSendEmail());		//보내는 이메일
-		doc.put("smsContent", sms.getSmsContent());			//보내는 내용
-		doc.put("smsReceiveEmail", sms.getSmsReceiveEmail());	//받는 이메일
-		doc.put("smsSendTime", smsSendTime.format(date));	//보내는 시간
-		doc.put("smsStatus", "1");							//읽음 상태
-		doc.put("smsType", sms.getSmsType());				//글 타입
-		doc.put("smsTo", sms.getSmsReceiveEmail());			//보내는 이메일 -고정-
-		doc.put("smsDeleteStatus", "1");					//delete 여부
-		return doc;
-	}
-
-	
 	
 	//########################################################################################################	
 	//########################################################################################################	
@@ -105,10 +67,8 @@ public class MessageDaoImpl implements MessageDao {
 														// (0)=help@busker.com 1
 				// disListTo 에 본인이 아니고 vo.getSmsTo가 본인 일때.
 				if (!(disListTo.get(i).equals(Email))) {
-					System.out.println(disListType.get(j));
-					System.out.println(disListTo.get(i));
 					
-					// { "$and" : [ { "smsSendEmail" : 로그인한 사람}, { "smsTo" : 받는사람}
+					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 }, {"smsReceiveEmail" : 보낸사람 },{"smsTo" : 나 } ] }
 					BasicDBObject andQuery1 = new BasicDBObject();
 					List<BasicDBObject> obj1 = new ArrayList<BasicDBObject>();
 					obj1.add(new BasicDBObject("smsType",disListType.get(j)));
@@ -117,7 +77,7 @@ public class MessageDaoImpl implements MessageDao {
 					obj1.add(new BasicDBObject("smsTo", Email));			
 					andQuery1.put("$and", obj1);
 
-					// "$and" : [ { "smsSendEmail" : 보낸 사람} , { "smsTo" : 로그인한 사람}
+					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 보낸사람 }, {"smsReceiveEmail" : 나 },{"smsTo" : 나 } ] }
 					BasicDBObject andQuery2 = new BasicDBObject();
 					List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
 					obj2.add(new BasicDBObject("smsType",disListType.get(j)));
@@ -175,37 +135,27 @@ public class MessageDaoImpl implements MessageDao {
 		BasicDBObject qq = new BasicDBObject();
 		List<BasicDBObject> q = new ArrayList<BasicDBObject>();
 		
-		BasicDBObject orQuery = new BasicDBObject();
-		List<BasicDBObject> obj1 = new ArrayList<BasicDBObject>();
-		obj1.add(new BasicDBObject("smsType", sms.getSmsType()));
-		obj1.add(new BasicDBObject("smsSendEmail", sms.getSmsSendEmail()));
-		obj1.add(new BasicDBObject("smsReceiveEmail", sms.getSmsReceiveEmail()));
-		obj1.add(new BasicDBObject("smsDeleteStatus", "1"));
-		obj1.add(new BasicDBObject("smsTo",Email));
-		orQuery.put("$and", obj1);
-
-		BasicDBObject andQuery = new BasicDBObject();
-		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
-		obj.add(new BasicDBObject("smsType", sms.getSmsType()));
-		obj.add(new BasicDBObject("smsSendEmail", sms.getSmsReceiveEmail()));
-		obj.add(new BasicDBObject("smsReceiveEmail", sms.getSmsSendEmail()));
-		obj.add(new BasicDBObject("smsDeleteStatus", "1"));
-		obj.add(new BasicDBObject("smsTo",Email));
-		andQuery.put("$and", obj);
-
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 } ,
+		// {"smsReceiveEmail" : 상대방 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 					
+		BasicDBObject firstQuery = firstQuery(sms,Email);
+	
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 상대방 } ,
+		// {"smsReceiveEmail" : 나 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 		
+		BasicDBObject SecondQuery = SecondQuery(sms,Email);
+		
 		BasicDBObject result = new BasicDBObject();
 		List<BasicDBObject> ResultQuery = new ArrayList<BasicDBObject>();
-		ResultQuery.add(orQuery);
-		ResultQuery.add(andQuery);
+		ResultQuery.add(firstQuery);
+		ResultQuery.add(SecondQuery);
 		result.put("$or", ResultQuery);
 
 		// 정렬을 위한 HashMap
 		HashMap sortmap = new HashMap();
 		sortmap.put("smsSendTime", 1);
 		DBObject sort = new BasicDBObject(sortmap);
-
 		DBObject query = new BasicDBObject(result);
 
+		
 		List<SmsVO> list = new ArrayList();
 
 		DBCursor cursor = collection.find(query).sort(sort);
@@ -232,40 +182,28 @@ public class MessageDaoImpl implements MessageDao {
 	//########################################################################################################	
 
 	@Override
-	public void updateMessage(SmsVO sms) throws Exception {	
+	public void updateMessage(SmsVO sms,String Email) throws Exception {	
 		
 		DB db = MongoClientFactory.getDB(); // DB 연결
 		DBCollection collection = db.getCollection(memberCollectionName);
 		// 해당 쿼리를 작성하고
 		BasicDBObject document = new BasicDBObject("$set", new BasicDBObject("smsStatus", "0"));
 
-		BasicDBObject orQuery = new BasicDBObject();
-		List<BasicDBObject> obj1 = new ArrayList<BasicDBObject>();
-		obj1.add(new BasicDBObject("smsType", sms.getSmsType()));
-		obj1.add(new BasicDBObject("smsSendEmail", sms.getSmsSendEmail()));
-		obj1.add(new BasicDBObject("smsReceiveEmail", sms.getSmsReceiveEmail()));
-		obj1.add(new BasicDBObject("smsDeleteStatus", "1"));
-		obj1.add(new BasicDBObject("smsTo",sms.getSmsSendEmail()));
-		orQuery.put("$and", obj1);
-
-		System.out.println("orQuery : " + orQuery.toString());
-		BasicDBObject andQuery = new BasicDBObject();
-		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
-		obj.add(new BasicDBObject("smsType", sms.getSmsType()));
-		obj.add(new BasicDBObject("smsSendEmail", sms.getSmsSendEmail()));
-		obj.add(new BasicDBObject("smsReceiveEmail", sms.getSmsReceiveEmail()));
-		obj.add(new BasicDBObject("smsDeleteStatus", "1"));
-		obj.add(new BasicDBObject("smsTo",sms.getSmsReceiveEmail()));
-		andQuery.put("$and", obj);
-		System.out.println("andQuery :  " +andQuery.toString());
+		
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 } ,
+		// {"smsReceiveEmail" : 상대방 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 					
+		BasicDBObject firstQuery = firstQuery(sms,Email);
+	
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 상대방 } ,
+		// {"smsReceiveEmail" : 나 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 		
+		BasicDBObject SecondQuery = SecondQuery(sms,Email);
 		
 		BasicDBObject result = new BasicDBObject();
 		List<BasicDBObject> ResultQuery = new ArrayList<BasicDBObject>();
-		ResultQuery.add(orQuery);
-		ResultQuery.add(andQuery);
+		ResultQuery.add(firstQuery);
+		ResultQuery.add(SecondQuery);
 		result.put("$or", ResultQuery);
 
-		System.out.println(result.toString());
 		collection.updateMulti(result, document);
 	}
 	
@@ -284,28 +222,18 @@ public class MessageDaoImpl implements MessageDao {
 		// 해당 쿼리를 작성하고 smsDeleteStatus 가 0으로 변경
 		BasicDBObject document = new BasicDBObject("$set", new BasicDBObject("smsDeleteStatus", "0"));
 
-		BasicDBObject orQuery = new BasicDBObject();
-		List<BasicDBObject> obj1 = new ArrayList<BasicDBObject>();
-		obj1.add(new BasicDBObject("smsType", sms.getSmsType()));
-		obj1.add(new BasicDBObject("smsSendEmail", sms.getSmsSendEmail()));
-		obj1.add(new BasicDBObject("smsReceiveEmail", sms.getSmsReceiveEmail()));
-		obj1.add(new BasicDBObject("smsDeleteStatus", "1"));
-		obj1.add(new BasicDBObject("smsTo",Email));
-		orQuery.put("$and", obj1);
-
-		BasicDBObject andQuery = new BasicDBObject();
-		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
-		obj.add(new BasicDBObject("smsType", sms.getSmsType()));
-		obj.add(new BasicDBObject("smsSendEmail", sms.getSmsReceiveEmail()));
-		obj.add(new BasicDBObject("smsReceiveEmail", sms.getSmsSendEmail()));
-		obj.add(new BasicDBObject("smsDeleteStatus", "1"));
-		obj.add(new BasicDBObject("smsTo",Email));
-		andQuery.put("$and", obj);
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 } ,
+		// {"smsReceiveEmail" : 상대방 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 					
+		BasicDBObject firstQuery = firstQuery(sms,Email);
+	
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 상대방 } ,
+		// {"smsReceiveEmail" : 나 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 		
+		BasicDBObject SecondQuery = SecondQuery(sms,Email);
 		
 		BasicDBObject result = new BasicDBObject();
 		List<BasicDBObject> ResultQuery = new ArrayList<BasicDBObject>();
-		ResultQuery.add(orQuery);
-		ResultQuery.add(andQuery);
+		ResultQuery.add(firstQuery);
+		ResultQuery.add(SecondQuery);
 		result.put("$or", ResultQuery);
 
 		collection.updateMulti(result, document);
@@ -316,9 +244,16 @@ public class MessageDaoImpl implements MessageDao {
 		DB db = MongoClientFactory.getDB(); // DB 연결
 		DBCollection collection = db.getCollection(memberCollectionName);
 		String result = "";		
-		
-		DBObject Document = collection.findOne(new BasicDBObject("smsTo", email));
-	
+				
+		// [  $and : {"smsTo" : 나 } , {"smsStatus":읽지않음 } ,{ "smsReceiveEmail" : 나 }      ]
+		BasicDBObject query = new BasicDBObject();
+		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();		
+		obj.add(new BasicDBObject("smsTo", email));
+		obj.add(new BasicDBObject("smsStatus", "1"));
+		obj.add(new BasicDBObject("smsReceiveEmail",email));
+		query.put("$and", obj);
+		DBObject Document = collection.findOne(query);
+
 		if(Document!=null){
 			result = "success";
 		}else{
@@ -327,6 +262,82 @@ public class MessageDaoImpl implements MessageDao {
 		System.out.println(result);
 		return result;
 	}
+	
+	
+	//########################################################################################################	
+	//####################################쪽지 Insert###########################################################	
+	//##############################      document 생성               ##################################################
+	// mongodb create 했을때 이름 부여
+	private BasicDBObject createDocumentSend(SmsVO sms) {
+		BasicDBObject doc = new BasicDBObject();
+		Date date = new Date();
+		SimpleDateFormat smsSendTime = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
+		doc.put("smsNo", sms.getSmsNo());					//글 내용
+		doc.put("smsSendEmail", sms.getSmsSendEmail());		//보내는 이메일
+		doc.put("smsContent", sms.getSmsContent());			//보내는 내용
+		doc.put("smsReceiveEmail", sms.getSmsReceiveEmail());	//받는 이메일
+		doc.put("smsSendTime", smsSendTime.format(date));	//보내는 시간
+		doc.put("smsStatus", "1");							//읽음 상태
+		doc.put("smsType", sms.getSmsType());				//글 타입
+		doc.put("smsTo", sms.getSmsSendEmail());			//보내는 이메일 -고정-
+		doc.put("smsDeleteStatus", "1");					//delete 여부
+		return doc;
+	}
+
+	private BasicDBObject createDocumentRec(SmsVO sms) {
+		BasicDBObject doc = new BasicDBObject();
+		Date date = new Date();
+		SimpleDateFormat smsSendTime = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
+		doc.put("smsNo", sms.getSmsNo());					//글 내용
+		doc.put("smsSendEmail", sms.getSmsSendEmail());		//보내는 이메일
+		doc.put("smsContent", sms.getSmsContent());			//보내는 내용
+		doc.put("smsReceiveEmail", sms.getSmsReceiveEmail());	//받는 이메일
+		doc.put("smsSendTime", smsSendTime.format(date));	//보내는 시간
+		doc.put("smsStatus", "1");							//읽음 상태
+		doc.put("smsType", sms.getSmsType());				//글 타입
+		doc.put("smsTo", sms.getSmsReceiveEmail());			//보내는 이메일 -고정-
+		doc.put("smsDeleteStatus", "1");					//delete 여부
+		return doc;
+	}
+
+	
+	//########################################################################################################	
+	//#################################### 쪽지 select #########################################################
+	//##############################        Query 생성       ######################################################
+
+	private BasicDBObject firstQuery(SmsVO sms,String Email){
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 } ,
+		//{"smsReceiveEmail" : 상대방 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 					
+				
+		BasicDBObject firstQuery = new BasicDBObject();
+		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+		obj.add(new BasicDBObject("smsType", sms.getSmsType()));
+		obj.add(new BasicDBObject("smsSendEmail", sms.getSmsSendEmail()));
+		obj.add(new BasicDBObject("smsReceiveEmail", sms.getSmsReceiveEmail()));
+		obj.add(new BasicDBObject("smsDeleteStatus", "1"));
+		obj.add(new BasicDBObject("smsTo",Email));
+		firstQuery.put("$and", obj);
+		
+		return firstQuery;
+	}
+	
+	private BasicDBObject SecondQuery(SmsVO sms,String Email){
+		
+		// [ $and : {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 상대방 } ,
+		//{"smsReceiveEmail" : 나 } ,{"smsDeleteStatus" : 지워지지않는 상태 } , {"smsTo" : 나 일떄 } ] 		
+		
+		BasicDBObject SecondQuery = new BasicDBObject();
+		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+		obj.add(new BasicDBObject("smsType", sms.getSmsType()));
+		obj.add(new BasicDBObject("smsSendEmail", sms.getSmsReceiveEmail()));
+		obj.add(new BasicDBObject("smsReceiveEmail", sms.getSmsSendEmail()));
+		obj.add(new BasicDBObject("smsDeleteStatus", "1"));
+		obj.add(new BasicDBObject("smsTo",Email));
+		SecondQuery.put("$and", obj);
+		
+		return SecondQuery;
+	}
+
 		
 }
 
