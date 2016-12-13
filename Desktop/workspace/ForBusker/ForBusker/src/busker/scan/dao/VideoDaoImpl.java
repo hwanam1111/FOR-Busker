@@ -127,6 +127,11 @@ public class VideoDaoImpl implements VideoDao {
 		return ss.selectList("video.videoMypageLikeList",map);
 	}
 
+	@Override
+	public VideoLikeVO videoLikeParentDelete(HashMap hashmap) {
+		return ss.selectOne("video.videoLikeParentDelete", hashmap);
+	}
+
 
 
 

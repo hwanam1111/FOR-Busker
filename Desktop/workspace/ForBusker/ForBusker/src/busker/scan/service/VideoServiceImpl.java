@@ -108,15 +108,23 @@ public class VideoServiceImpl implements VideoService {
 		return videoDao.videoLikeMinusUpdate(vvo);
 	}
 
+//	좋아요한 페이지 리스트
 	@Override
 	public List<VideoLikeVO> videoMypageLikeList(String memEmail) throws Exception {
 	
 		System.out.println("videoService:"+memEmail);
 		return videoDao.videoMypageLikeList(memEmail);
 
-} 
+}
 
-//	좋아요한 페이지 리스트
+
+//	좋아요 되있는 글도 삭제
+	@Override
+	public VideoLikeVO videoLikeParentDelete(HashMap hashmap) {
+
+		return videoDao.videoLikeParentDelete(hashmap);
+	} 
+
 
 
 

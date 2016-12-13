@@ -51,5 +51,8 @@ public interface VideoDao {
 	// 좋아요한 페이지 리스트
 	public List<VideoLikeVO> videoMypageLikeList(String memEmail);
 
+	// 좋아요 한 글도 삭제
+	public VideoLikeVO videoLikeParentDelete(HashMap hashmap);
+
 	
 }

@@ -51,6 +51,9 @@ public interface VideoService {
 	// 좋아요 페이지 보기
 	public List<VideoLikeVO> videoMypageLikeList(String memEmail) throws Exception;
 
+	// 좋아요 되있는 글도 삭제
+	public VideoLikeVO videoLikeParentDelete(HashMap hashmap);
+
 
 	
 	

@@ -205,16 +205,21 @@ public class VideoListController {
 		HashMap hashmap = new HashMap();
 		hashmap.put("videoNo", videoNo);
 		
+		// 좋아요 테이블에 delete
+		VideoLikeVO videoLikeParentDelete = service.videoLikeParentDelete(hashmap);
 		VideoVO videoDelete = service.videoDelete(hashmap);
-		 
-		if(videoDelete==null){
+		
+		// 좋아요페이지 delete
+	
+		if(videoDelete==null && videoLikeParentDelete==null){
+			System.out.println("성공에 들어옴");
 			m.addAttribute("state", "yes");
 			m.addAttribute("message", "삭제성공");
 		}else{
+			System.out.println("실패에 들어옴");
 			m.addAttribute("state", "no");
 			m.addAttribute("message", "실패");
 		}
-		
 		
 		return "videoCollectionView/videoFormDelete";
 	}

@@ -28,11 +28,16 @@ where video.videono=#{videoNo}
 order by videoDate desc
 </select>
 
+<!-- 좋아요 한 페이지도 삭제 -->
+<delete id="videoLikeParentDelete" parameterType="hashmap">
+delete from videoLike where videoNo=#{videoNo}
+</delete>
+
 <!-- 글 삭제 -->
 <delete id="videoDelete" parameterType="hashmap">
 	DELETE FROM video where videono=#{videoNo}
 </delete>
-
+ 
 <!-- 글 수정 폼 셀렉트 -->
 <select id="videoViewSelect" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoVO">
 	select * from video where videono=#{videoNo}
