@@ -18,8 +18,15 @@
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <script type="text/javascript">
 $(function(){
-	alert("${showvo.shTeamName}팀 등록");	
-	location.href="main.do"
+alert("회원정보가 수정되었습니다. 다시로그인 하세요");
+	<%session.invalidate();%>
+	location.href="main.do";
+	
 });
+	
+	
+
 </script>
 </head>
+
+

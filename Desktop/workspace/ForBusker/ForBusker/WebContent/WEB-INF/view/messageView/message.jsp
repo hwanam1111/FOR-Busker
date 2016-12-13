@@ -110,7 +110,7 @@ if((!(s.getSmsSendEmail().equals(""))&&s.getSmsDeleteStatus().equals("1"))){ %>
     			<span class="button b-close" id="close"><span>X</span></span><br/>
 				<form id="pform" action="sponserMessage.do" method="post">
 				<div class="form-group" align="center" >
-					<div id="chatDiv"  style="overflow:scroll;">
+					<div id="chatDiv"   style="overflow:scroll; overflow-y:scroll;overflow-x:hidden;">
 					<table style="width:300px;">
 					<tbody id="chatLog">
 					</tbody>

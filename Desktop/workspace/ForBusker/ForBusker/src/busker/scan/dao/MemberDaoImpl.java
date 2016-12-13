@@ -1,5 +1,7 @@
 package busker.scan.dao;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -65,6 +67,31 @@ public class MemberDaoImpl implements MemberDao {
 			MemberVO result=ss.selectOne("main.searchPw", memvo);
 			return result;
 		}	
+		
+		public int updateSimple(String updateEmail, String updateSimplePassword,String updateTel){
+			System.out.println("memberDao pw:"+updateSimplePassword+"memberdao email"+updateEmail+"memberdao tel:"+updateTel);
+			HashMap<String,Object> map =new HashMap<String,Object>();
+			map.put("Email", updateEmail);
+			map.put("pw", updateSimplePassword);
+			map.put("tel", updateTel);
+			int result = ss.update("main.updateSimple",map);
+			return result;
+		}
+		
+		public int updateBusker(MemberVO memberVO){
+			int result = ss.update("main.updateBusker",memberVO);
+			return result;
+		}
+		
+		public int updateSimpleToBusker(MemberVO memberVO){
+			
+			System.out.println(" / dao쪽 : "+memberVO.getMemEmail());
+			System.out.println(" / dao쪽 : "+memberVO.getMemDetail());
+			int result = ss.update("main.updateSimpleToBusker",memberVO);
+			
+			return result;
+		}
+
 
 
 }

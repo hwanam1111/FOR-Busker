@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="busker.scan.vo.*"%>    
+<%@page import="java.util.*"%>    
 <% String projectName = "/ForBusker"; %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%	
+	List<VideoVO>list=(List<VideoVO>)request.getAttribute("list"); 
+	//페이징 클래스 받아오기
+	PageVO pVO = (PageVO)request.getAttribute("page"); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,27 +55,31 @@
 	</div>
 	</c:forEach>
 </div>
-	<!-- <nav aria-label="..."  align="center">
-	  <ul class="pagination pagination-lg">
+	<nav aria-label="..."  align="center">
+   <ul>
+   <li> 
+	<nav aria-label="..."  align="center">
+	  <ul class="pagination pagination-lg" >
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="mypageLike.do?page=<%=pVO.getPreviPage()%>&memEmail=${sessionScope.login.memEmail}" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	   	 	<li class="page-item"><a class="page-link" href="mypageLike.do?page=<%=i%>&memEmail=${sessionScope.login.memEmail}"><%=i %></a></li>
+	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="mypageLike.do?page=<%=pVO.getNextPage()%>&memEmail=${sessionScope.login.memEmail}" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </li>
 	  </ul>
-	</nav> -->
+	</nav>
+   </li> 
+  </ul>
+  </nav>
 </div>
 
 <!-- 코딩 종료 -->

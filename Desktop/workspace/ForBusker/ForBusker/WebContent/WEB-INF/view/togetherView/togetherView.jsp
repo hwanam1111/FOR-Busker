@@ -14,6 +14,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- bPopup -->
+<script type="text/javascript" src="<%=projectName %>/resources/js/popup_js/jquery.bpopup.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
@@ -23,7 +25,11 @@
 
 <body id="top">
 <!-- #############  header nav부분 include  ############# -->
+<%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
+<% } else { %>
+<jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
+<% } %>
 <!-- ################################################### -->
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
@@ -122,12 +128,39 @@
 	<tr><!-- 문의하기 -->
 	<td>
 	<div align="center">
-	<button type="button" class="btn btn-warning">쪽지 보내기</button>
+	<button type="button" class="btn btn-warning" id="togetherJoin">쪽지 보내기</button>
 	<a href="togetherList.do"><button type="button" class="btn btn-warning">목록보기</button></a>
 	</div>
 	</td>
 	</tr>
 	</table>
+	
+	<div id="popup" class="popup-div popup-style">
+		<div class="content">
+		<form id="pform" action="sponserMessage.do" method="post">
+			<div class="b-ajax-wrapper" style="height: 200px; width: 400px; background: #f1f1f1; border-radius: 15px;">
+    			<span class="button b-close" id="close"><span>X</span></span><br/>
+				<div class="form-group" align="center" > 
+					<div id="insertDiv">
+						<label id="receivelabel">받는 이  :  ${tovo.toId }</label>		<!-- 문의 내용  -->
+		   				<textarea rows="4" id="inputText" class="form-control" name="smsContent"></textarea>
+					</div>
+						<button type="button"  class="btn btn-info form-control" id="chatSubmit">전송</button>
+				</div>
+			</div>	
+				<input type="hidden" id="smsType" name="smsType" value="함께해요"/>                  <!-- 후원하기 -->
+				<input type="hidden" id="smsNo" name="smsNo" value="${tovo.toNo}" />  		 <!-- 글 번호 -->
+				<input type="hidden" id="smsSendEmail" name="smsSendEmail" value="${sessionScope.login.memEmail}" /> <!-- 로그인한 사람  -->
+				<input type="hidden" id="smsReceiveEmail" name="smsReceiveEmail" value="${tovo.toId }" />  <!-- 받는 사람의 이메일 즉 글쓴 사람   -->
+				<input type="hidden" id="smsTo" name="smsTo" value="${tovo.toId}" />                 <!-- 받는 사람의 이메일 즉 글쓴 사람  -->
+				<input type="text" style="display: none">
+			</form>
+		</div>
+	</div>
+	
+	
+	
+	
 </div>
 <!-- 코딩 종료 -->
 <!-- ##############  footer 부분 include  ############## -->

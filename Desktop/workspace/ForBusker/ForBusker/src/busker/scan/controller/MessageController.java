@@ -54,7 +54,25 @@ public class MessageController {
 	
 		service.InsertMessage(sms);
 		
-		return "messageView/MessageInsert";
+		//select 해온 문장중 보기를 눌렀을시 해당하는 글 내용 가져오기
+		List<SmsVO> list =service.selectMessageByNoType(sms,mem.getMemEmail());
+	
+		//가져온 리스트를 ajax형태인 자바스크립트로 보낼때 
+		//JSON배열로 만들어서 전송
+		JSONArray jsonarray = new JSONArray();
+		for(SmsVO vo : list){ 
+			JSONObject json = new JSONObject();
+			json.put("smsNo", vo.getSmsNo());
+			json.put("smsContent", vo.getSmsContent());
+			json.put("smsReceiveEmail", vo.getSmsReceiveEmail());
+			json.put("smsSendEmail", vo.getSmsSendEmail());
+			json.put("smsStatus", vo.getSmsStatus());
+			json.put("smsSendTime", vo.getSmsSendTime());
+			json.put("smsType", vo.getSmsType());
+			jsonarray.add(json);						
+		}
+	
+		return jsonarray.toString();
 	}	
 	
 	@RequestMapping(value="chatView",produces = "application/text; charset=utf8")

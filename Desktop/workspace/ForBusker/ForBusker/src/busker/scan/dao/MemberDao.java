@@ -19,4 +19,10 @@ public interface MemberDao {
 	MemberVO buskerIdSearch(MemberVO memvo);
 
 	MemberVO searchPw(MemberVO memvo);
+	
+	int updateSimple(String updateEmail, String updateSimplePassword,String updateTel);
+	
+
+	int updateBusker(MemberVO memberVO);
+	int updateSimpleToBusker(MemberVO memberVO);
 }
