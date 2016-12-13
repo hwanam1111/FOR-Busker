@@ -52,8 +52,11 @@ public interface VideoDao {
 	public int videoLikeMinusUpdate(VideoVO vvo);
 
 	// 좋아요한 페이지 리스트
-	public List<VideoLikeVO> videoMypageLikeList(String memEmail);
+	public List<VideoLikeVO> videoMypageLikeList(String memEmail,int curPage);
 
+	// 좋아요 테이블 전체 row갯수 가져오기
+	public int likePageCount(String memEmail);
+	
 	// 좋아요 한 글도 삭제
 	public VideoLikeVO videoLikeParentDelete(HashMap hashmap);
 

@@ -22,3 +22,98 @@
 
 /* 전송버튼 */
 #chatSubmit{width:70px;}
+
+/* CSS talk bubble */
+.talk-yoububble {
+	margin: 10px;
+    display: inline-block;
+    position: relative;
+	width: 200px;
+	height: auto;
+	border-radius : 5px;
+	background-color: lightblue;
+}
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+    left: -40px;
+	right: auto;
+    top: 30px;
+	bottom: auto;
+	border: 20px solid;
+	border-color: lightblue lightblue transparent transparent;
+}
+.tri-right.left-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  	left: -20px;
+	right: auto;
+	top: 38px;
+	bottom: auto;
+	border: 12px solid;
+	border-color: lightblue lightblue transparent transparent;	
+}
+
+/* talk bubble contents */
+.talktext{
+ 	 padding: 1em;
+	text-align: left;
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+
+
+/* CSS talk bubble */
+.talk-mybubble {
+	margin: 10px;
+    display: inline-block;
+    position: relative;
+	width: 200px;
+	height: auto;
+	border-radius : 5px;
+	background-color: #ffb08a;
+}
+.tri-right.border.right-in:before {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+    right: 0px;
+    top: 0px;
+	left: auto;
+	bottom: auto;
+	border: 20px solid;
+	border-color: #ffb08a #ffb08a transparent transparent; 
+	transform: rotate(270deg); 
+}
+.tri-right.right-in:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  	left: 190px;
+	top: 3px;
+	right: auto;
+	bottom: auto;
+	border: 12px solid;
+	border-color: #ffb08a #ffb08a transparent transparent;
+	transform: rotate(270deg);
+}
+
+.day{
+	border-top-style: solid;
+	border-top-color : #111;
+	
+	border-bottom-style : solid;
+	border-bottom-color: #111;
+}
+

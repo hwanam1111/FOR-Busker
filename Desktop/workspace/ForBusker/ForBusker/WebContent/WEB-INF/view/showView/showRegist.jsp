@@ -204,12 +204,12 @@ $(function(){
 						<div class="col-xs-8">
 							<select class="form-control" id="ShowRegistGenreInput" name="shType">
 								<option value=''>선택하세요</option>
-								<option value='0'>노래</option>
-								<option value='1'>댄스</option>
-								<option value='2'>연주</option>
-								<option value='3'>마술</option>
-								<option value='4'>퍼포먼스</option>
-								<option value='5'>기타</option>
+								<option value='노래'>노래</option>
+								<option value='댄스'>댄스</option>
+								<option value='연주'>연주</option>
+								<option value='마술'>마술</option>
+								<option value='퍼포먼스'>퍼포먼스</option>
+								<option value='기타'>기타</option>
 							</select>
 							<input class="form-control" type="text" placeholder="공연분류(기타)를 입력하세요" id="ShowRegistGenreEtcInput" name="shType" style="margin-top:15px;">
 							</div>

@@ -71,7 +71,6 @@ Object obj = request.getAttribute("volist");
 <script src="<%=projectName %>/resources/js/show_js/showList.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showList.js')?>"></script>
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/showList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/showList.css">
 
-
 <script type="text/javascript">
 $(function(){
 	$('#exampleSelect2').hide();
@@ -87,10 +86,14 @@ var $input = $( '.datepicker' ).pickadate({
 });
 
 $("#searchBtn").click(function(){
-	
-// 	$("input[name=date_submit]").attr("name",$("input[name=date_submit]").val());
-// 	$("#searchGo").attr("action","showList.do");
-// 	$("#searchGo").submit();
+	searchGo();
+});
+$("#example-text-input").keypress(function(event){
+	if(event.which == 13){
+		searchGo();
+	}
+});
+var searchGo = function(){
 	var now = new Date();
 	  var year  = now.getFullYear();
       var month = now.getMonth() + 1; // 0부터 시작하므로 1더함 더함
@@ -107,7 +110,7 @@ $("#searchBtn").click(function(){
     var select = $("#exampleSelect1 option:selected").val();
    
     var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
-    alert(date);
+//     alert(select);
     window.location.href="showListSearch.do?date="
                             + date
                             + "&select="
@@ -115,8 +118,7 @@ $("#searchBtn").click(function(){
                             + "&val="
                             + inputvalue;
                    
-    
-});
+	};
 
 /* Set the width of the side navigation to 250px */
 $("#clickopen").click(function(){
@@ -156,9 +158,17 @@ $("#registBtn").click(function(){
 <%if(select != null){%>
 
 	$("#exampleSelect1 option:eq(<%=select%>)").prop("selected", "selected"); //첫번째 option 선택
-<%-- 	$("#exampleSelect1").val(<%=select%>); --%>
-<%}%>
+	<%-- 	$("#exampleSelect1").val(<%=select%>); --%>
+	<%if(select.equals("1")){%>
+	$("#example-text-input").hide();
+	$('#exampleSelect2').show();
+	$('#example-text-input').attr("name","");
+	$('#exampleSelect2').attr("name","val");
+	$("#exampleSelect2").val("<%=value%>"); //두번째 셀렉트 option 선택
+	<%}%><%-- 	$("#exampleSelect1").val(<%=select%>); --%>
 
+ 
+<%}%>
 $("input[name=date_submit]").val('<%=date%>');
 });
 
@@ -193,11 +203,7 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value="1">카테고리</option>
 			<option value="2">지역</option>
 		</select>
-		<%if(value != null){ %>
-		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" value=<%=value %> >
-		<%} else{%>
 		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" />
-		<%} %>
 		<select class='form-control' name="cate" id="exampleSelect2" style="width:280px; margin-left:25px;">
 			<option value=''>선택하세요</option>
 			<option value='노래'>노래</option>

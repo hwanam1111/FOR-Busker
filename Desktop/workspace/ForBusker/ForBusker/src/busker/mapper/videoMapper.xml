@@ -102,14 +102,19 @@ update video set videoLike= videoLike-1 where videoNo =#{videoNo}
 
 <!-- 좋아요 리스트 띄우기 -->
 <select id="videoMypageLikeList" parameterType="hashmap" resultType="busker.scan.vo.VideoVO"> 
-SELECT member.memEmail, member.memTeamName, videoLike.memloginemail, videoLike.LikeNo, video.videoNo, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as videosomenale, video.videoDate, videoLike.videoNo
-FROM video 
-INNER JOIN videoLike
-ON video.videoNo = videoLike.videoNo
-INNER JOIN member
-ON videoLike.memloginemail = member.mememail
-WHERE member.memEmail = #{memEmail}
-order by likeno desc
+SELECT *
+FROM (SELECT  rownum as rnum , m.memEmail memEmail, m.memTeamName memTeamName, vLike.LikeNo LikeNo, v.videoNo videoNo, v.videoname videoname, 
+      v.videodetail videodetail, v.videourl videourl, substr(v.videourl, -11) as videosomenale, v.videoDate videoDate
+      FROM video v, videoLike vlike, member m
+      WHERE vlike.memloginemail =m.mememail AND v.videoNo = vlike.videoNo AND m.memEmail=#{memEmail}
+      ORDER BY likeno desc )
+WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
 
+<!-- 좋아요한 테이블 전체 row갯수 가져오기 -->
+<select id="likePageCount" parameterType="String" resultType="int">
+SELECT count(likeno)
+FROM videolike
+WHERE memloginemail = #{memEmail}
+</select>
 </mapper>
