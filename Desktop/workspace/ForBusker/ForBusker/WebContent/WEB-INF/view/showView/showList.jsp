@@ -81,10 +81,14 @@ var $input = $( '.datepicker' ).pickadate({
 });
 
 $("#searchBtn").click(function(){
-	
-// 	$("input[name=date_submit]").attr("name",$("input[name=date_submit]").val());
-// 	$("#searchGo").attr("action","showList.do");
-// 	$("#searchGo").submit();
+	searchGo();
+});
+$("#example-text-input").keypress(function(event){
+	if(event.which == 13){
+		searchGo();
+	}
+});
+var searchGo = function(){
 	var now = new Date();
 	  var year  = now.getFullYear();
       var month = now.getMonth() + 1; // 0부터 시작하므로 1더함 더함
@@ -101,6 +105,7 @@ $("#searchBtn").click(function(){
     var select = $("#exampleSelect1 option:selected").val();
    
     var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
+//     alert(select);
     window.location.href="showListSearch.do?date="
                             + date
                             + "&select="
@@ -108,8 +113,7 @@ $("#searchBtn").click(function(){
                             + "&val="
                             + inputvalue;
                    
-    
-});
+	};
 
 /* Set the width of the side navigation to 250px */
 $("#clickopen").click(function(){
