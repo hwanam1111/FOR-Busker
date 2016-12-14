@@ -55,7 +55,7 @@
 	</div>
 	</c:forEach>
 </div>
-	<nav aria-label="..."  align="center">
+<%-- 	<nav aria-label="..."  align="center">
    <ul>
    <li> 
 	<nav aria-label="..."  align="center">
@@ -79,7 +79,7 @@
 	</nav>
    </li> 
   </ul>
-  </nav>
+  </nav> --%>
 </div>
 
 <!-- 코딩 종료 -->
