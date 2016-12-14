@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="busker.scan.vo.*" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html> 
@@ -31,13 +32,29 @@
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
 <!-- ################################################### -->
+<!-- 세션값의 email값이랑 입력한 놈의 email 값이 같다면 수정,삭제버튼 보여주기 -->
+<%
+	Object obj = session.getAttribute("login");
+	TogetherVO tVO = (TogetherVO)request.getAttribute("tovo");
+	System.out.println("후원해주세요 이메일은?"+tVO.getToId());
+	MemberVO mVO = new MemberVO();
+	if(obj!=null) mVO = (MemberVO)obj;
+%>
+
+<%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
+<script type="text/javascript">
+	$(function() {
+		$('.MDBtn').css('display', 'block');	
+	})
+</script>
+		<% } %>
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
 	<tr>
 		<td>
-		<div class="MDBtn">
+	<div class="MDBtn" style="display:none;">
 		<a class="ModifyBtn">
 			<button type="button" class="btn btn-info mdBtn">
 				<input type="hidden" value="${tovo.toNo}">
