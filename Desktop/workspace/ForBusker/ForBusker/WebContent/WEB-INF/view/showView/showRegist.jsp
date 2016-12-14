@@ -26,7 +26,7 @@
 <script src="<%=projectName%>/resources/js/show_js/jquery.datetimepicker.full.js"></script>
 <!--  Daum Map api 가져오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script	src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e&libraries=services"></script>
+<script	src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
 
  <script type="text/javascript">
 $(function(){
