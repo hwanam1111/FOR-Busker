@@ -33,4 +33,9 @@ public class ShowController {
 		
 		return "showView/showRegistCompleteForm";
 	}
+	
+	@RequestMapping(value="showRegistUploadInfo")
+	public String ShowRegistUploadInfo(){
+		return "showView/showRegistUploadInfo";
+	}
 }

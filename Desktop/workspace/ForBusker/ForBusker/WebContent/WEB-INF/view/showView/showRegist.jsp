@@ -26,7 +26,7 @@
 <script src="<%=projectName%>/resources/js/show_js/jquery.datetimepicker.full.js"></script>
 <!--  Daum Map api 가져오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script	src="//apis.daum.net/maps/maps3.js?apikey=74be419bba1e2ea84f96e8fd5d379f5e&libraries=services"></script>
+<script   src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
 
  <script type="text/javascript">
 $(function(){
@@ -89,6 +89,7 @@ $(function(){
 						<label for="example-text-input" class="col-xs-2 col-form-label">영상 URL</label>
 						<div class="col-xs-8">
 							<input class="form-control" type="text" placeholder="홍보 영상을 업로드하세요" id="ShowRegistVideoInput" name="shVideo">
+							<a href="showRegistUploadInfo.do">영상등록하는방법확인</a> &nbsp;&nbsp;
 						</div>
 					</div>
 				</tr>
@@ -96,9 +97,9 @@ $(function(){
 				<tr>
 					<div class="form-group row">
 						<label for="example-text-input" class="col-xs-2 col-form-label">지도</label>
-					<div class="col-xs-8">
+					<div class="col-xs-6">
 						<input class="form-control" type="text" id="ShowRegistAddrInput" name="shMapAddr" placeholder="주소검색을 눌러주세요." style="background-color: #fff;" readonly/>
-						<button type="button" id="addressSearch" class="btn btn-info" onclick="sample5_execDaumPostcode()" style="width:100px;">주소 검색</button>
+					
 					<div id="map"style="width: 100%; height: 300px; margin-top: 10px; float:right; display: none"></div>
 					
 					<!--  주소 검색시 div(map)에 지도 생성  -->
@@ -166,6 +167,9 @@ $(function(){
 				   </script>
 					
 					</div>
+				<div class="col-xs-2">
+					<button type="button" id="addressSearch" class="btn btn-info" onclick="sample5_execDaumPostcode()" style="width:100px;">주소 검색</button>
+				    </div>
 				</div>
 				</tr>
 			
