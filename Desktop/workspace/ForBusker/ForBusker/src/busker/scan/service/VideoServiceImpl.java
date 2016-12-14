@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import busker.scan.dao.VideoDao;
+import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
@@ -196,6 +197,9 @@ public class VideoServiceImpl implements VideoService {
 	
 	}
 
-
+	@Override
+	public List<BestVideoVO> videoBest() throws Exception{		
+		return videoDao.videoBest();
+	};
 
 }

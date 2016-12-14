@@ -1,6 +1,7 @@
 package busker.scan.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import busker.scan.service.MemberService;
 import busker.scan.service.ShowService;
+import busker.scan.service.VideoService;
+import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 // 메인페이지 컨트롤러 
 import busker.scan.vo.ShowVO;
@@ -24,10 +27,19 @@ public class MainController {
 	
 	@Autowired
 	private ShowService service;
+	
+	@Autowired
+	private VideoService videoService;
+	
 //	메인 페이지로 이동
 	@RequestMapping(value="main")
-	public String main(){
+	public String main(Model m) throws Exception{
 		System.out.println("main.jsp로 이동");
+
+		List<BestVideoVO> vlist = videoService.videoBest();
+		//베스트 3명
+		m.addAttribute("vlist", vlist);
+		
 		return "mainView/main";
 	}
 	

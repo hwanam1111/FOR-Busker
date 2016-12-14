@@ -68,6 +68,7 @@ public class MessageDaoImpl implements MessageDao {
 				// disListTo 에 본인이 아니고 vo.getSmsTo가 본인 일때.
 				if (!(disListTo.get(i).equals(Email))) {
 					
+					
 					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 }, {"smsReceiveEmail" : 보낸사람 },{"smsTo" : 나 } ] }
 					BasicDBObject andQuery1 = new BasicDBObject();
 					List<BasicDBObject> obj1 = new ArrayList<BasicDBObject>();

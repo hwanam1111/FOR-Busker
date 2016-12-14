@@ -3,6 +3,7 @@ package busker.scan.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.VideoLikeVO;
 import busker.scan.vo.VideoVO;
@@ -59,6 +60,7 @@ public interface VideoDao {
 	
 	// 좋아요 한 글도 삭제
 	public VideoLikeVO videoLikeParentDelete(HashMap hashmap);
-
 	
+	// 베스트 영상 가져오기
+	public List<BestVideoVO> videoBest();
 }

@@ -1,7 +1,7 @@
 <%@page import="busker.scan.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <% String projectName = "/ForBusker"; 
 Object obj = session.getAttribute("login");
 	MemberVO mvo = (MemberVO)obj;
@@ -267,50 +267,29 @@ function logout(){
 			
 			<p>이번달 Top3에 Rank된 분들입니다.</p>
 		</div>
-		<div class="group latest">
-			<article class="one_third first"> <figure>
-			<a href="#"><img src="images/demo/320x220.png" alt=""></a></figure>
-			<div class="txtwrap">
-				<h4 class="heading">Ex etiam auctor blandit</h4>
+		<div class="group latest" align="center">	
+		<c:forEach var="best" items="${vlist}" varStatus="status"  >
+			<c:choose>
+		    <c:when test="${status.index=='0'}">
+					<article class="one_third first"> <figure>
+		    </c:when>
+		    <c:otherwise>
+					<article class="one_third"> <figure>
+		    </c:otherwise>
+			</c:choose>
+			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" alt=""></a></figure> 	<!-- 팀사진 -->
+			<div class="txtwrap" align="center">
+				<h4 class="heading"> ${best.memTeamName} </h4>					<!-- 팀명  -->
 				<ul class="nospace meta">
-					<li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
-					<li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
+					<li><i class="fa fa-user"></i> <a href="#">좋아요 : ${best.videoLike} </a></li>
+					<li><i class="fa fa-tag"></i> <a href="#">${best.memTeamType}</a></li> <!-- 팀 카테고리 -->
 				</ul>
-				<p>Tellus accumsan et egestas eu semper ac odio aenean quis
-					dapibus massa sit amet tincidunt dui nulla facilisi&hellip;</p>
+			<!-- <p>${best.memDetail} &hellip;</p>  -->
 				<footer>
-				<a href="#">Read More &raquo;</a></footer>
+			<!-- 	<a href="#">Read More &raquo;</a></footer>  -->
 			</div>
 			</article>
-			<article class="one_third"> <figure>
-			<a href="#"><img src="images/demo/320x220.png" alt=""></a></figure>
-			<div class="txtwrap">
-				<h4 class="heading">Risus in commodo arcu</h4>
-				<ul class="nospace meta">
-					<li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
-					<li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
-				</ul>
-				<p>Aliquam erat volutpat convallis nunc at risus tempor nec
-					suscipit erat efficitur et elit lectus vestibulum ante&hellip;</p>
-				<footer>
-				<a href="#">Read More &raquo;</a></footer>
-			</div>
-			</article>
-			<article class="one_third"> <figure>
-			<a href="#"><img src="images/demo/320x220.png" alt=""></a></figure>
-			<div class="txtwrap">
-				<h4 class="heading">Gravida eu sed elit</h4>
-				<ul class="nospace meta">
-					<li><i class="fa fa-user"></i> <a href="#">Admin</a></li>
-					<li><i class="fa fa-tag"></i> <a href="#">Category Name</a></li>
-				</ul>
-				<p>Cubilia curae aliquam feugiat laoreet malesuada elementum
-					habitant morbi tristique et netus et fames ac&hellip;</p>
-				<footer>
-				<a href="#">Read More &raquo;</a>
-				</footer>
-			</div>
-			</article>
+		</c:forEach>
 		</div>
 		<!-- ################################################################################################ -->
 		</section>

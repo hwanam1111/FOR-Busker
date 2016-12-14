@@ -3,6 +3,7 @@ package busker.scan.service;
 import java.util.HashMap;
 import java.util.List;
 
+import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
@@ -55,7 +56,8 @@ public interface VideoService {
 	// 좋아요 되있는 글도 삭제
 	public VideoLikeVO videoLikeParentDelete(HashMap hashmap);
 
-
+	// 베스트 영상 가져오기
+	public List<BestVideoVO> videoBest() throws Exception;
 	
 	
 }

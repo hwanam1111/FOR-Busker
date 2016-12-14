@@ -3,6 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="video">
 
+<!-- BestVideoVO resultMap 생성 -->
+	<resultMap type="busker.scan.vo.BestVideoVO" id="bestVideoMap">
+		<id column="memTeamName" property="memTeamName" />
+		<result column="memTeamPhoto" property="memTeamPhoto" />
+		<result column="videoLike" property="videoLike" />
+		<result column="memTeamType" property="memTeamType" />
+		<result column="memDetail" property="memDetail" />
+	</resultMap>
+
 <!-- 글 등록 -->
 <insert id="videoInsert" parameterType="busker.scan.vo.VideoVO">
 	INSERT INTO Video(videono, videoname, videodetail, videourl, videoDate, memEmail, memteamname, videocount, videolike)
@@ -117,4 +126,25 @@ SELECT count(likeno)
 FROM videolike
 WHERE memloginemail = #{memEmail}
 </select>
+
+<!-- main의 Best 영상 3개를 가져오기 -->
+<select id="videoBest" resultMap="bestVideoMap" resultType="busker.scan.vo.BestVideoVO">
+<![CDATA[
+select 
+mem.memTeamPhoto as memTeamPhoto,
+mem.memteamname as memTeamName,
+vl.videolike as videoLike,
+mem.memTeamType as memTeamType,
+mem.memdetail as memDetail
+from 
+(select mememail,sum(videolike) videolike 
+from video 
+where videodate like to_char(sysdate,'yy/mm/')||'%' 
+group by mememail 
+order by videolike desc) vl, member mem
+where mem.memEmail = vl.memEmail
+AND rownum <=3
+]]>
+</select>
+
 </mapper>
