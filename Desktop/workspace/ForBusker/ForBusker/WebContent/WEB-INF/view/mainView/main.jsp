@@ -90,7 +90,7 @@ function logout(){
 					<li onclick="logout()" id="liLogout" style="cursor: pointer">로그아웃</li>
 					<li id="liMyPage"> 카테고리메뉴
 						<ul> 
-							<li class="ul_li_List"><a href="showList.do">공연찾기</a></li>
+							<li class="ul_li_List"><a href="showList.do?loc=마포&shno=0">공연찾기</a></li>
 							<li class="ul_li_List"><a href="sponAndBacked.do?cate=spon">후원하기</a></li>
 							<li class="ul_li_List"><a href="videoMain.do">영상모음</a></li>
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
@@ -147,7 +147,7 @@ function logout(){
 			<article> <!-- ################################################################################################ -->
 			<h3 class="heading">Street Performance</h3>
 			<p>
-				무엇 하나 쉽지 않은 거리공연, 여기저기 흩어져 있는 공연정보,<br> 이제 OOOO을 통해 1년 365일 생생한
+				무엇 하나 쉽지 않은 거리공연, 여기저기 흩어져 있는 공연정보,<br> 이제 FOR_BUSKER를 통해 1년 365일 생생한
 				거리공연의 즐거움을 만나보세요.
 			</p>
 			<p class="font-x1 uppercase bold">For Busker</p>

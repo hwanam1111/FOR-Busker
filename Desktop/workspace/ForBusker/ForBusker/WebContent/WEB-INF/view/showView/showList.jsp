@@ -294,9 +294,9 @@ $("input[name=date_submit]").val('<%=date%>');
 </div>
 </td>
 <td style="width:50%;">
-<div class="map_wrap">
+<div class="map_wrap" style="height:905px;">
 
-    <div id="map" style="width:100%; height:770px; z-index: -1; "></div>
+    <div id="map" style="width:100%; height:905px; z-index: -1; "></div>
     <!-- ################################확대 축소 컨트롤러 들어가는 부분############################### -->
     <div class="custom_zoomcontrol radius_border"> 
         <div id="plus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"></div>  
