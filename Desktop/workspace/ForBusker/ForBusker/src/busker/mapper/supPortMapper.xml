@@ -83,12 +83,14 @@ FROM backed
 
 <!-- 후원해주세요 리스트 -->
 <select id="backedList" parameterType="hashMap" resultType="backvo">
-SELECT backNO, backName, substr(backvideo, -11) as backVideo, backContent 
-FROM (select  rownum as rnum , backNo, backName,backContent,backVideo,backTel FROM backed 
-																<if test="search neq null">
-																	WHERE  backName LIKE '%' || #{search} || '%' 
-																</if>	
-																ORDER BY backNo DESC)
+SELECT *
+FROM(SELECT rownum as rnum,backNo, backName,backContent,backVideo,backTel
+      FROM (SELECT  backNo, backName,backContent,substr(backvideo, -11) as backVideo,backTel 
+            FROM backed 
+            <if test="search neq null">
+				WHERE  backName LIKE '%' || #{search} || '%' 
+			</if>
+            ORDER BY backNo DESC))
 WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
 
