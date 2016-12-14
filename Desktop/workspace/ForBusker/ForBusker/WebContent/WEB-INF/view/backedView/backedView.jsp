@@ -56,14 +56,14 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
-<h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Backed View</h1>
+<h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Backed View</h1><br/>
 <table class="sponTable">
 	<td class="backedLeft">
 	<div>
 	
 		<!-- 제목,이미지  -->
 		<div class="backedimg">
-			<p>${selectBacked.backName }</p>
+			<p style="position: relative; right:10px;">TITLE : ${selectBacked.backName }</p><br/>
 			<!-- 이부분은 다름 -->
 			<iframe width="600" height="430" src="${ selectBacked.backVideo}" frameborder="0" allowfullscreen></iframe>
 		</div>
@@ -76,16 +76,15 @@
 	
 	<td class="sponRight" style="word-wrap:break-word" >
 	<!-- 내용, 조건, 전화번호 -->
-	<div>
+	<div><br/>
 		<h2>Content</h2>
 		<div id="rightContent">
-		${selectBacked.backContent}
+		<pre style="white-space: pre-wrap;">${selectBacked.backContent}</pre>
 		</div>
-		
-		<h2></h2>
+		<br/>
 		<h2>Tel</h2>
 		<p>
-		${selectBacked.backTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		${selectBacked.backTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br/><br/>
 		<button type="button" class="btn btn-primary" id="insertMessage">문의하기</button>
 		</p>
 	</div>

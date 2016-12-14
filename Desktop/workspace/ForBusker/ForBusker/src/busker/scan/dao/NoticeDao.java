@@ -11,8 +11,11 @@ public interface NoticeDao {
 	public int noticeInsert(NoticeVO nvo);
 
 	// 게시글 리스트
-	public List<NoticeVO> noticeList();
+	public List<NoticeVO> noticeList(int curPage);
 
+	//공지사항 테이블에서 전체 row갯수 가져오기
+	public int noticePageCount();
+	
 	// 게시글 뷰
 	public NoticeVO noticeView(HashMap map);
 

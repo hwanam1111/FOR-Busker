@@ -61,14 +61,14 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
-<h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Sponser View</h1>
+<h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Sponser View</h1><br/>
 <table class="sponTable" >
 	<td class="sponLeft">
 	<div>
 	
 		<!-- 제목,이미지  -->
 		<div class="sponimg">
-			<p>${selectSpon.spName }</p>
+			<p style="position: relative; right:10px;">TITLE : ${selectSpon.spName }</p><br/>
 			<!-- 이부분은 다름 -->
 			<img  src="<%=projectName %>/upload/${selectSpon.spPhoto }">
 		</div>
@@ -82,16 +82,17 @@
 	
 	<td class="sponRight" style="word-wrap:break-word" >
 	<!-- 내용, 조건, 전화번호 -->
+	<br/>
 	<div>
 		<h2>Content</h2>
 		<div id="rightContent">
-		${selectSpon.spContent}
+		<pre style="white-space: pre-wrap;">${selectSpon.spContent}</pre><br/>
 		</div>
 		<h2>Condition</h2>
-		<p>	${selectSpon.spCond} </p>
+		<pre style="white-space: pre-wrap;"> ${selectSpon.spCond} </pre><br/>
 		<h2>Tel</h2>
 		<p>
-		${selectSpon.spTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+		${selectSpon.spTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br/><br/>
 		<button type="button" class="btn btn-primary" id="insertMessage">문의하기</button>
 		</p>
 	</div>
