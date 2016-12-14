@@ -44,7 +44,7 @@ function logout(){
 					<li onclick="logout()" id="liLogout">로그아웃</li>
 					<li id="liMyPage"> 카테고리메뉴
 						<ul> 
-							<li class="ul_li_List"><a href="showList.do">공연찾기</a></li>
+							<li class="ul_li_List"><a href="showList.do?loc=마포&shno=0">공연찾기</a></li>
 							<li class="ul_li_List"><a href="sponAndBacked.do">후원하기</a></li>
 							<li class="ul_li_List"><a href="videoMain.do">영상모음</a></li>
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
