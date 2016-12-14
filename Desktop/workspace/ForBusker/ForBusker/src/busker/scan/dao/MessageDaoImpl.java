@@ -259,7 +259,6 @@ public class MessageDaoImpl implements MessageDao {
 		}else{
 			result = "fail";
 		}
-		System.out.println(result);
 		return result;
 	}
 	

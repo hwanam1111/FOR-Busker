@@ -132,7 +132,6 @@ public class MessageController {
 	public String messageCheck(String Email) throws Exception{
 		
 		String result = service.messageCheck(Email);
-		System.out.println("결과값 " + result);
 		return result; 
 	}
 	
