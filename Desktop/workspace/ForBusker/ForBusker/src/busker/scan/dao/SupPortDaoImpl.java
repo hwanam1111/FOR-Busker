@@ -77,6 +77,13 @@ public class SupPortDaoImpl implements SupPortDao {
 		return result;
 	}
 
+	//후원해주세요 등록form에서 url 띄우기
+	@Override
+	public String selectPrVideo(String memEmail) {
+		String prUrl=ss.selectOne("support.selectPrVideo",memEmail);
+		return prUrl;
+	}	
+	
 	//후원해주세요 리스트
 	@Override
 	public List<BackedVO> backedList(int curPage, String search) {

@@ -57,7 +57,7 @@
 		   <div class="form-group row">
 		     <label for="example-text-input" class="col-xs-2 col-form-label">PR영상</label>
 		     <div class="col-xs-8">
-			   <input class="form-control" type="text" placeholder="영상 URL을 입력하세요"  name="backVideo">
+			   <input class="form-control" type="text" name="backVideo" value = '${ prUrl}'>
 			 </div>
 		   </div>
 		</tr>

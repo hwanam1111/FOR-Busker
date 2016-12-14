@@ -79,6 +79,13 @@ public class SupPortServiceImpl implements SupPortService {
 		return result;
 	}
 
+	//후원해주세요 등록form에서 url 띄우기
+	@Override
+	public String selectPrVideo(String memEmail) throws Exception {
+		String prUrl = supportDao.selectPrVideo(memEmail);
+		return prUrl;
+	}
+	
 	//후원해주세요 리스트
 	@Override
 	public List<BackedVO> backedList(PageVO pageVO,String search) throws Exception {

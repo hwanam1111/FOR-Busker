@@ -28,6 +28,9 @@ public interface SupPortDao {
 	//후원해주세요 입력
 	public int insertBacked(BackedVO backedVO);
 	
+	//후원해주세요 등록form에서 url 띄우기
+	public String selectPrVideo(String memEmail);
+	
 	//후원해주세요 리스트
 	public List<BackedVO> backedList(int curPage,String search);
 	
