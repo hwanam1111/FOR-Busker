@@ -21,6 +21,7 @@
    if( cate.equals("spon")) sponList = (List)request.getAttribute("sponList");
    else if ( cate.equals("backed")){
 	   backedList = (List)request.getAttribute("backedList");
+	   System.out.println(backedList.get(0).getBackVideo());
 	   
    }
    //페이징 클래스 받아오기
@@ -206,7 +207,7 @@ $(function(){
 			<div> <!-- 이미지들어가는부분 -->
 			<a href="backedView.do?num=<%=bvo.getBackNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
 				<!-- 일단 걍 사진으로 -->
-				<img src="https://img.youtube.com/vi/<%=bvo.getBackVideo() %>/hqdefault.jpg" style="width:300px; height:200px;">
+			<img src="https://img.youtube.com/vi/<%=bvo.getBackVideo() %>/hqdefault.jpg" style="width:300px; height:200px;">
 			</a>
 			</div>
 		
