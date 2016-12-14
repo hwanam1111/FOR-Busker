@@ -91,6 +91,7 @@ function logout(){
 				});
 			}, 2000); 
 		});	
+		/* asdfasdf */
  		</script>
 	</div>
 </div>
