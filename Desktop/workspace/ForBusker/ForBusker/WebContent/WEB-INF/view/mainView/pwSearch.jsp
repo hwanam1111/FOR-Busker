@@ -38,7 +38,7 @@
 	<!-- ################################################### -->
 	<!-- ################################################### -->
 	<!-- buskerIdSearchForm -->
-	<form>
+	<form id="pwSearchForm">
 		<p>FOR_Busker를 이용하실 때 사용하시던 이메일을 입력해주십시오.</p>
 		<div>
 	    	<input type="email" class="form-control" id="buskerEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
