@@ -210,7 +210,7 @@ $(function(){
 			<img src="https://img.youtube.com/vi/<%=bvo.getBackVideo() %>/hqdefault.jpg" style="width:300px; height:200px;">
 			</a>
 			</div>
-		
+		 
 			<div class="detail">
 			<div><strong><%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
 			<div><strong><%=bvo.getBackContent() %></strong></div> <!-- 조건 들어가는 부분 -->
