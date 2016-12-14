@@ -277,12 +277,12 @@ function logout(){
 					<article class="one_third"> <figure>
 		    </c:otherwise>
 			</c:choose>
-			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" alt=""></a></figure> 	<!-- 팀사진 -->
+			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg.jpg';"></a></figure> 	<!-- 팀사진 -->
 			<div class="txtwrap" align="center">
 				<h4 class="heading"> ${best.memTeamName} </h4>					<!-- 팀명  -->
 				<ul class="nospace meta">
-					<li><i class="fa fa-user"></i> <a href="#">좋아요 : ${best.videoLike} </a></li>
-					<li><i class="fa fa-tag"></i> <a href="#">${best.memTeamType}</a></li> <!-- 팀 카테고리 -->
+					<li><i class="fa fa-user"></i> 좋아요 : ${best.videoLike} </li>
+					<li><i class="fa fa-tag"></i> ${best.memTeamType}</li> <!-- 팀 카테고리 -->
 				</ul>
 			<!-- <p>${best.memDetail} &hellip;</p>  -->
 				<footer>
