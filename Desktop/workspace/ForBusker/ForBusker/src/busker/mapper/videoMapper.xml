@@ -17,14 +17,14 @@ FROM video
 
 <!-- 리스트 띄우기 -->
 <select id="videoList" parameterType="int" resultType="busker.scan.vo.VideoVO"> 
-SELECT  memEmail, videono,videoname, videodetail, videourl, videosomenale, videoDate, memteamname
-FROM (SELECT  rownum as rnum , video.memEmail memEmail, video.videono videono, video.videoname videoname, video.videodetail videodetail, video.videourl videourl, substr(video.videourl, -11) as videosomenale, 
+SELECT rownum , memEmail, videono,videoname, videodetail, videourl, videosomenale, videoDate, memteamname
+FROM (SELECT  video.memEmail memEmail, video.videono videono, video.videoname videoname, video.videodetail videodetail, video.videourl videourl, substr(video.videourl, -11) as videosomenale, 
       video.videoDate videoDate, member.memteamname memteamname
       FROM video 
       INNER JOIN member          
       ON video.mememail = member.mememail
       order by videoDate desc )
-WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
+WHERE  rownum BETWEEN  ((1-1)*9)+1  AND 1*9
 </select>
 
 <!-- 글 보기 -->
