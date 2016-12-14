@@ -111,10 +111,10 @@ $(function() {
   <!-- ################################################ -->
   <!-- ################################################ -->
  
-  <nav aria-label="..."  align="center">
+  <nav aria-label="..." style="margin-left:400px;">
    <ul>
    <li> 
-	<nav aria-label="..."  align="center">
+	<nav aria-label="..." >
 	  <ul class="pagination pagination-lg" >
 	    <li class="page-item">
 	      <a class="page-link" href=" videoMain.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">

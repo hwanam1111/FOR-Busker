@@ -76,9 +76,9 @@
 		</td>
 	</tr>
 	<tr> <!-- 제목 들어가는 부분 -->
-	<td>
+	<td style="width:650px;">
 	
-	<div><h1><img src="<%=projectName %>/resources/images/together_img/idea.png">TITLE : ${tovo.toName}</h1></div>
+	<div style="width:650px;"><h1><img src="<%=projectName %>/resources/images/together_img/idea.png">TITLE : ${tovo.toName}</h1></div>
 	
 	</td>
 	</tr>
@@ -179,6 +179,10 @@
 			</form>
 		</div>
 	</div>
+	
+	
+	
+	
 </div>
 <!-- 코딩 종료 -->
 <!-- ##############  footer 부분 include  ############## -->
