@@ -30,7 +30,6 @@
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
-<% } %>
 <!-- ################################################### -->
 <!-- 세션값의 email값이랑 입력한 놈의 email 값이 같다면 수정,삭제버튼 보여주기 -->
 <%
@@ -44,10 +43,16 @@
 <%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
 <script type="text/javascript">
 	$(function() {
-		$('.MDBtn').css('display', 'block');	
+		$('.MDBtn').css('display', 'block');
+		
+	<%if(tVO.getToId().equals(mVO.getMemEmail())){%>
+		$("#insertMessage").attr("disabled","disabled");
+	<% } %>
+	
 	})
+	<%}%>
 </script>
-		<% } %>
+<% } %>
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
