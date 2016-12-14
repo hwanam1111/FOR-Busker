@@ -19,7 +19,7 @@ import com.mongodb.DBObject;
 
 import busker.scan.vo.SmsVO;
 
-@Repository
+@Repository 
 public class MessageDaoImpl implements MessageDao {
 
 	private static final String memberCollectionName = "Message";
@@ -28,7 +28,7 @@ public class MessageDaoImpl implements MessageDao {
 	//####################################쪽지 Insert###########################################################	
 	//########################################################################################################		
 	
-	@Override
+	@Override 
 	public void Insert(SmsVO sms) throws Exception {
 
 		DB db = MongoClientFactory.getDB(); // DB 연결
