@@ -3,6 +3,8 @@ package busker.scan.controller;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import busker.scan.service.SupPortService;
 import busker.scan.vo.BackedVO;
+import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
 import busker.scan.vo.SponserVO;
 
@@ -172,8 +175,17 @@ public class SupPortController {
 	
 	//후원받기 입력페이지로 이동
 	@RequestMapping(value="backedForm.do")
-	public String backedForm(){
+	public String backedForm(HttpSession session, Model m) throws Exception{
 		System.out.println("backedForm로 이동");
+		Object obj= session.getAttribute("login");
+		MemberVO mem= null;
+		if(obj!=null){
+			mem = (MemberVO)obj;
+		}
+		
+		String prUrl = service.selectPrVideo(mem.getMemEmail());
+		m.addAttribute("prUrl",prUrl);
+		
 		return "backedView/backedForm";
 	}
 	

@@ -56,12 +56,21 @@ UPDATE sponser
 SET spName=#{spName}, spPhoto=#{spPhoto}, spContent=#{spContent}, spCond=#{spCond}, spTel=#{spTel}
 WHERE spNo=#{spNo}
 </update>
+
 <!-- 후원해주세요 입력 -->
 <insert id="insertBacked" parameterType="backvo">
 INSERT INTO backed(backNO, memEmail, backName, backVideo, backContent, backTel) 
 VALUES (seq_backed.nextval, #{memEmail}, #{backName}, #{backVideo}, 
 		#{backContent}, #{backTel})
 </insert>
+
+<!-- 후원해주세요 등록form에서 url 띄우기 -->
+<select id="selectPrVideo" parameterType="String" resultType="String">
+SELECT memvideo
+FROM member
+WHERE memEmail = #{memEmail} 
+</select>
+
 
 <!-- Backed 테이블 총 갯수 구하기 -->
 <select id="backedListCount" parameterType="hashmap" resultType="int">
