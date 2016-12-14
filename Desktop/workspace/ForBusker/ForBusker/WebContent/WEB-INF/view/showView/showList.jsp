@@ -94,6 +94,7 @@ $("#example-text-input").keypress(function(event){
 	}
 });
 var searchGo = function(){
+	
 	var now = new Date();
 	  var year  = now.getFullYear();
       var month = now.getMonth() + 1; // 0부터 시작하므로 1더함 더함
@@ -103,10 +104,10 @@ var searchGo = function(){
 	
       
 	var date = $("input[name=date_submit]").val(); //날짜값 저장
-	if(date==''){
+	if(date=='null'){
 		date=(year+'/'+month+'/'+day); //날짜값을 안넣고 그냥 submit할때 오늘날짜 넣어줌(placeholder에 오늘의 날짜라고 되어있기때문)
 	}
-	
+	alert(date);
     var select = $("#exampleSelect1 option:selected").val();
    
     var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
