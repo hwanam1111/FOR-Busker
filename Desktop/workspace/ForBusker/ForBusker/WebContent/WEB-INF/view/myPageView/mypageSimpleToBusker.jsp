@@ -31,9 +31,9 @@
 <div class="hoc">
 	<!-- ################################################### -->
 	<!-- ################################################### -->
-	<h1 id="update_title">정보수정</h1>
+	<h1 id="update_title" style="margin-left:100px;">정보수정</h1> <br/>
 	<!-- simpleJoin Form -->
-	<form id="updateSimpleToBuskerForm" action="updateSimpleToBusker.do" method="post" enctype="multipart/form-data">
+	<form id="updateSimpleToBuskerForm" action="updateSimpleToBusker.do" method="post" enctype="multipart/form-data" style="width:700px; margin-left:140px;">
 		<!-- #################################################### -->
 		<!-- #################################################### -->
 		<div class="form-group">
@@ -88,8 +88,8 @@
 		<textarea class="form-control" rows="5" name="memDetail"></textarea>
 		
   		
-		<!-- submit button -->
-		<div id="buttonGroup">
+		<!-- submit button --><br/>
+		<div id="buttonGroup" style="float: right;">
   			<button type="submit" class="btn btn-success" id="submitBtn">등록</button>
   			<button type="reset" class="btn btn-success" id="resetBtn">다시작성</button>
 		</div>

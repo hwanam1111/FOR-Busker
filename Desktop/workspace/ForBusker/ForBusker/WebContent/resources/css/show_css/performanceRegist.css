@@ -2,14 +2,15 @@
 
 
 #addressSearch {
-	float: right;
-	position: relative;
-	bottom: 36px;
-	height:35px;
+	
 	width: 110px;
 	font: 15px;
 	text-align: center;
+	float:left;
 }
 #sample5_address{
-	width: 80%;
+	width: 100%;
+}
+#ShowRegistAddrInput{
+	width: 100%;
 }

@@ -21,6 +21,7 @@
    if( cate.equals("spon")) sponList = (List)request.getAttribute("sponList");
    else if ( cate.equals("backed")){
 	   backedList = (List)request.getAttribute("backedList");
+	   System.out.println(backedList.get(0).getBackVideo());
 	   
    }
    //페이징 클래스 받아오기
@@ -84,7 +85,7 @@ $(function(){
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 <div id="container">
-    <ul class="tabs">
+    <ul class="tabs" style="border:none; margin-left:15px;">
         <li class="kkk" rel="tab1" >후원하기</li>
         <li rel="tab2">후원해주세요</li>
     </ul>
@@ -103,14 +104,14 @@ $(function(){
 		<input class="form-control" type="text" id="example-text-input1" placeholder="제목으로 검색어를 입력하세요" >
 		<%} %>				
 	</div>
-	<div class="col-xs-2">
+	<div class="col-xs-2" style="position: relative; right:20px">
 		
 		<button type="button" class="btn btn-info" id="sponSearchBtn">검색</button>
 		
 	</div>
 	
 	<div class="col-xs-6 ">
-		<button type="button" class="btn btn-info marginRight" id="moveToSponBtn">후원하기</button>
+		<button type="button" class="btn btn-info marginRight" id="moveToSponBtn" style="float: right;">후원하기</button>
 	</div>
 	</div>
 	
@@ -183,19 +184,19 @@ $(function(){
 <table> 
     <tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" id="searchForm1">
-	<div class="col-xs-4">
+	<div class="col-xs-4" >
 		<%if(search !=null){ %>
 		<input class="form-control" type="text" id="example-text-input2" value=<%=search %>>
 		<%} else{%>		
 		<input class="form-control" type="text" id="example-text-input2" placeholder="제목으로 검색어를 입력하세요" />
 		<%} %>
 	</div>
-	<div class="col-xs-2">
+	<div class="col-xs-2" style="position: relative; right:20px">
 		<button type="button" class="btn btn-info" id="backedSearchBtn">검색</button>
 	</div>
 	
 	<div class="col-xs-6">
-		<button type="button" class="btn btn-info marginRight" id="moveToBackedBtn">후원받기</button>
+		<button type="button" class="btn btn-info marginRight" id="moveToBackedBtn" style="float: right;">후원받기</button>
 	</div>
 	</div>
 	</tr>
@@ -206,10 +207,10 @@ $(function(){
 			<div> <!-- 이미지들어가는부분 -->
 			<a href="backedView.do?num=<%=bvo.getBackNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
 				<!-- 일단 걍 사진으로 -->
-				<img src="https://img.youtube.com/vi/<%=bvo.getBackVideo() %>/hqdefault.jpg" style="width:300px; height:200px;">
+			<img src="https://img.youtube.com/vi/<%=bvo.getBackVideo() %>/hqdefault.jpg" style="width:300px; height:200px;">
 			</a>
 			</div>
-		
+		 
 			<div class="detail">
 			<div><strong><%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
 			<div><strong><%=bvo.getBackContent() %></strong></div> <!-- 조건 들어가는 부분 -->

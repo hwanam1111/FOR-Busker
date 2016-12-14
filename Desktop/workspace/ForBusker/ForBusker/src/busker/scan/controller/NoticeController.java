@@ -14,6 +14,7 @@ import busker.scan.dao.NoticeDao;
 import busker.scan.dao.NoticeDaoImpl;
 import busker.scan.service.NoticeService;
 import busker.scan.vo.NoticeVO;
+import busker.scan.vo.PageVO;
 
 @Controller
 public class NoticeController {
@@ -25,12 +26,23 @@ public class NoticeController {
 
 //	공지사항 페이지로 이동
 	@RequestMapping(value="noticeList")
-	public String noticeList(NoticeVO noticevo, Model m) throws Exception{
+	public String noticeList(NoticeVO noticevo, String page, Model m) throws Exception{
 		System.out.println("noticeList.jsp로 이동");
+		//페이징 부분 
+		PageVO pageVO = new PageVO();
+		if(page == null){
+			pageVO.setCurPage(1);				//page값이 null이면 1로 지정
+		}else{
+			int curPage = Integer.parseInt(page); //형변환
+			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
+		}
 		
-		List<NoticeVO> list = service.noticeList();
-		System.out.println(list);
+		
+		
+		List<NoticeVO> list = service.noticeList(pageVO);
+
 		m.addAttribute("list", list);
+		m.addAttribute("page",pageVO);
 		
 		return "noticeView/noticeList";
 			

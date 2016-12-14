@@ -32,6 +32,9 @@ public interface SupPortService {
 	//후원해주세요 등록
 	public int insertBacked(BackedVO backedVO) throws Exception;
 	
+	//후원해주세요 등록form에서 url 띄우기
+	public String selectPrVideo(String memEmail) throws Exception;
+	
 	//후원해주세요 리스트
 	public List<BackedVO> backedList(PageVO pageVO,String search) throws Exception;
 	

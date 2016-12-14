@@ -101,7 +101,7 @@
 				
 			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
 				<button type="submit" class="btn btn-info">등록하기</button>
-				<button type="button" class="btn btn-info">취소</button>
+				<button type="reset" class="btn btn-info">다시작성</button>
 			</div>
 		</tr>
 		</table>

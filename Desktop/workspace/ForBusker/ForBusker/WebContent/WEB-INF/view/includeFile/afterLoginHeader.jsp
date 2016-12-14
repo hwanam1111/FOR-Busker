@@ -44,13 +44,13 @@ function logout(){
 					<li onclick="logout()" id="liLogout">로그아웃</li>
 					<li id="liMyPage"> 카테고리메뉴
 						<ul> 
-							<li class="ul_li_List"><a href="showList.do">공연찾기</a></li>
+							<li class="ul_li_List"><a href="showList.do?loc=마포&shno=0">공연찾기</a></li>
 							<li class="ul_li_List"><a href="sponAndBacked.do">후원하기</a></li>
 							<li class="ul_li_List"><a href="videoMain.do">영상모음</a></li>
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
-					<li id="messageicon"><a href="message.do?email=${sessionScope.login.memEmail}"><img src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
+					<li id="messageicon"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:14px;" src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
 					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
@@ -91,6 +91,7 @@ function logout(){
 				});
 			}, 2000); 
 		});	
+		/* asdfasdf */
  		</script>
 	</div>
 </div>

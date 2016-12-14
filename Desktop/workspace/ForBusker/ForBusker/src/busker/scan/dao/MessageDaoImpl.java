@@ -19,7 +19,7 @@ import com.mongodb.DBObject;
 
 import busker.scan.vo.SmsVO;
 
-@Repository
+@Repository 
 public class MessageDaoImpl implements MessageDao {
 
 	private static final String memberCollectionName = "Message";
@@ -28,7 +28,7 @@ public class MessageDaoImpl implements MessageDao {
 	//####################################쪽지 Insert###########################################################	
 	//########################################################################################################		
 	
-	@Override
+	@Override 
 	public void Insert(SmsVO sms) throws Exception {
 
 		DB db = MongoClientFactory.getDB(); // DB 연결
@@ -67,6 +67,7 @@ public class MessageDaoImpl implements MessageDao {
 														// (0)=help@busker.com 1
 				// disListTo 에 본인이 아니고 vo.getSmsTo가 본인 일때.
 				if (!(disListTo.get(i).equals(Email))) {
+					
 					
 					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 }, {"smsReceiveEmail" : 보낸사람 },{"smsTo" : 나 } ] }
 					BasicDBObject andQuery1 = new BasicDBObject();
@@ -259,7 +260,6 @@ public class MessageDaoImpl implements MessageDao {
 		}else{
 			result = "fail";
 		}
-		System.out.println(result);
 		return result;
 	}
 	

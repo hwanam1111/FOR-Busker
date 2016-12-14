@@ -4,15 +4,15 @@
 .login_img{width:140px; height: 140px; margin-left:130px;}
 .login_img:hover{opacity: 0.6; filter: alpha(opacity=60);}
 p{font-weight: bold; font-family:inherit; font-size:15px; margin-top:20px; margin-bottom:10px; padding-left:175px;}
-#searchForm>p>span#temp_span{margin-right:215px;}
+#searchForm>p>span#temp_span{margin-right:230px;}
 
 /* ######################################################## */
 /* ######################## 팝업창부분 ########################*/
-/* ######################################################## */
+/* ####################################################### */
 #popup{border: 2px solid #ffc19e; background: #fff;}
 
 #close{margin-left:550px;}
 
 .join_img{width:140px; height: 140px; margin-left:90px;}
 .join_img:hover{opacity: 0.6; filter: alpha(opacity=60);}
-#temp_spanPop{margin-left:117px; margin-right: 135px; margin-bottom:20px;}
+#temp_spanPop{margin-left:117px; margin-right: 145px; margin-bottom:20px;}

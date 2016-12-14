@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.VideoLikeVO;
 import busker.scan.vo.VideoVO;
@@ -147,7 +148,12 @@ public class VideoDaoImpl implements VideoDao {
 		return ss.selectOne("video.likePageCount",memEmail);
 	}
 
-
+	//베스트 영상 가져오기
+	@Override
+	public List<BestVideoVO> videoBest(){
+		
+		return ss.selectList("video.videoBest");
+	}
 
 
 

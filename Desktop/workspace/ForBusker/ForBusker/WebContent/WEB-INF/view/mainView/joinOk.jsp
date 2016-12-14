@@ -25,8 +25,21 @@
 
 
 <!-- 이부분 부터 코딩 시작 -->
-회원 가입 성공 실패 : ${result}
+<style rel="stylesheet">
+a{
+text-decoration: none;
+}
+a:hover{
+text-decoration: none;
+}
+</style>
 
+<div class="hoc">
+<div style="margin-left:290px; margin-top:140px; margin-bottom:140px;">
+<h1 style="margin-bottom:30px;">FOR_BUSKER의 회원이 되신 것을 축하드립니다</h1>
+<a href="login.do"><button style="background-color: #ffc19e; color:#fff; border:none; border-radius: 10px; width:400px; height:50px; font-size:20px;">로그인 하러 가기</button></a>
+</div>
+</div>
 
 <!-- 코딩 종료 -->
 

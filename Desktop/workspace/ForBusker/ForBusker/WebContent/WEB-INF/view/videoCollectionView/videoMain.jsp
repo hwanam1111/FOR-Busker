@@ -33,9 +33,12 @@
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- sponser js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/sponser_js/sponser.js?<?=filemtime('<%=projectName %>/resources/sponser_js/sponser.js')?>" type="text/css"></script>
- 
-
-<body id="top">
+<script type="text/javascript">
+window.onerror = function() {
+		document.getElementById('videothumb').attr.src = "<%=projectName %>/resources/images/error_img/errorImg.jpg";
+	
+}
+</script>
 </head>
 
 <body id="top">
@@ -74,7 +77,10 @@ $(function() {
   <c:forEach var="video" items="${list}">
   	<div class="col-xs-4" style="margin-bottom:60px;">
   		<a href="videoLikeSearch.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}&myId=${sessionScope.login.memEmail}">
-  		<img class='videothumb' src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg" ><br/><br/>
+  		
+  		<img class='videothumb' id="videothumb" style="width:296.66px; height:222.48px;" 
+  		src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg"><br/><br/>
+    	
     	<p style="height: 40px;">Title : ${video.videoName}</p></a>
     	<p>TeamName : ${video.memTeamName}</p>
     	<p>Date : ${video.videoDate}</p>
@@ -105,10 +111,10 @@ $(function() {
   <!-- ################################################ -->
   <!-- ################################################ -->
  
-  <nav aria-label="..."  align="center">
+  <nav aria-label="..." style="margin-left:400px;">
    <ul>
    <li> 
-	<nav aria-label="..."  align="center">
+	<nav aria-label="..." >
 	  <ul class="pagination pagination-lg" >
 	    <li class="page-item">
 	      <a class="page-link" href=" videoMain.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">

@@ -45,7 +45,7 @@
 <div class="form-group row">
   <label for="example-text-input" class="col-xs-2 col-form-label">제목</label>
   <div class="col-xs-8">
-    <input class="form-control" type="text" value="${tovo.toName}" id="example-text-input" name="toName">
+    <input class="form-control" type="text" value="${tovo.toName}" id="example-text-input" name="toName" maxlength="40">
   </div>
 </div>
 </tr>

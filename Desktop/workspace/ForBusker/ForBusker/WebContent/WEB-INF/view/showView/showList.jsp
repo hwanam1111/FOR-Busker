@@ -61,7 +61,11 @@ Object obj = request.getAttribute("volist");
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Bootstrap 자바스크립트 --> 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
+
+<script   src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
@@ -94,6 +98,7 @@ $("#example-text-input").keypress(function(event){
 	}
 });
 var searchGo = function(){
+	
 	var now = new Date();
 	  var year  = now.getFullYear();
       var month = now.getMonth() + 1; // 0부터 시작하므로 1더함 더함
@@ -103,10 +108,10 @@ var searchGo = function(){
 	
       
 	var date = $("input[name=date_submit]").val(); //날짜값 저장
-	if(date==''){
+	if(date=='null'){
 		date=(year+'/'+month+'/'+day); //날짜값을 안넣고 그냥 submit할때 오늘날짜 넣어줌(placeholder에 오늘의 날짜라고 되어있기때문)
 	}
-	
+	alert(date);
     var select = $("#exampleSelect1 option:selected").val();
    
     var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
@@ -294,9 +299,9 @@ $("input[name=date_submit]").val('<%=date%>');
 </div>
 </td>
 <td style="width:50%;">
-<div class="map_wrap">
+<div class="map_wrap" style="height:905px;">
 
-    <div id="map" style="width:100%; height:770px; z-index: -1; "></div>
+    <div id="map" style="width:100%; height:905px; z-index: -1; "></div>
     <!-- ################################확대 축소 컨트롤러 들어가는 부분############################### -->
     <div class="custom_zoomcontrol radius_border"> 
         <div id="plus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"></div>  
