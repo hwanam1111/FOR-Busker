@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import busker.scan.vo.NoticeVO;
+import busker.scan.vo.PageVO;
 
 public interface NoticeService {
 
@@ -11,7 +12,7 @@ public interface NoticeService {
 	public int noticeInsert(NoticeVO nvo) throws Exception;
 
 	// 게시글 리스트
-	public List<NoticeVO> noticeList() throws Exception;
+	public List<NoticeVO> noticeList(PageVO pageVO) throws Exception;
 
 	//	게시글 뷰
 	public NoticeVO noticeView(HashMap map) throws Exception;

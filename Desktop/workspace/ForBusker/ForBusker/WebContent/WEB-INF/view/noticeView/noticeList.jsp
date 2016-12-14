@@ -3,6 +3,11 @@
 <%@ page import="busker.scan.vo.*" %>
     
 <% String projectName = "/ForBusker"; %>
+<%
+	//페이징 클래스 받아오기
+	PageVO pVO = (PageVO)request.getAttribute("page");
+
+%>
 <!DOCTYPE html>
 <html> 
 <head>
@@ -77,18 +82,16 @@
 		<nav aria-label="..."  align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Previous">
+	      <a class="page-link" href="noticeList.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
 	      </a>
 	    </li>
-	    <li class="page-item"><a class="page-link" href="#">1</a></li>
-	    <li class="page-item"><a class="page-link" href="#">2</a></li>
-	    <li class="page-item"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item"><a class="page-link" href="#">4</a></li>
-	    <li class="page-item"><a class="page-link" href="#">5</a></li>
+	    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+	    <li class="page-item"><a class="page-link" href="noticeList.do?page=<%=i%>"><%=i %></a></li>
+	    <%} %>
 	    <li class="page-item">
-	      <a class="page-link" href="#" aria-label="Next">
+	      <a class="page-link" href="noticeList.do?page=<%=pVO.getNextPage()%>" aria-label="Next">
 	        <span aria-hidden="true">&raquo;</span>
 	        <span class="sr-only">Next</span>
 	      </a>
