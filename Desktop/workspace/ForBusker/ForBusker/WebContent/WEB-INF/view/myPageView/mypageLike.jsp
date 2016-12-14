@@ -55,10 +55,10 @@
 	</div>
 	</c:forEach>
 </div>
-<%-- 	<nav aria-label="..."  align="center">
+<nav aria-label="..." style="margin-left:400px;">
    <ul>
    <li> 
-	<nav aria-label="..."  align="center">
+	<nav aria-label="...">
 	  <ul class="pagination pagination-lg" >
 	    <li class="page-item">
 	      <a class="page-link" href="mypageLike.do?page=<%=pVO.getPreviPage()%>&memEmail=${sessionScope.login.memEmail}" aria-label="Previous">
@@ -79,7 +79,7 @@
 	</nav>
    </li> 
   </ul>
-  </nav> --%>
+  </nav> 
 </div>
 
 <!-- 코딩 종료 -->

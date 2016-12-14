@@ -95,10 +95,10 @@
 				<img src="<%=projectName %>/upload/<%=list.get(i).getToPhoto()%>" style="height:300px; width:300px;">
 			</a>		
 			</div>
-		
+			<br/>
 			<div class="detail">
-			<div><strong><%=list.get(i).getToName()%></strong></div>  <!-- 팀명 들어가는 부분 -->
-			<div><strong><%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
+			<div style="height: 42px;"><strong>TITLE :  <%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
+			<div><strong>LEADER :  <%=list.get(i).getToTeamLeader()%></strong></div>  <!-- 팀명 들어가는 부분 -->
 			</div>
 			
 		</div>
@@ -126,11 +126,11 @@
 	    </tr>
     	<%} %>
     <%} %>	
-
 		
 <!-- ########################################################################## -->		
-	<tr> <!-- 페이징 할 부분(paging master) -->
-	<nav align="center">
+</table>
+<!-- 페이징 할 부분(paging master) -->
+	<nav style="margin-left:400px;">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
 	      <a class="page-link" href="togetherList.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
@@ -149,8 +149,6 @@
 	    </li>
 	  </ul>
 	</nav>
-	</tr>
-</table>
 </div>
 
 
