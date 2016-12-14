@@ -26,11 +26,8 @@
 <script src="<%=projectName%>/resources/js/show_js/jquery.datetimepicker.full.js"></script>
 <!--  Daum Map api 가져오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<<<<<<< HEAD
 <script	src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
-=======
 <script   src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
->>>>>>> branch 'master' of https://github.com/hwanam1111/FOR-Busker.git
 
  <script type="text/javascript"> 
 $(function(){
