@@ -43,6 +43,9 @@ window.location.href="showListSearch.do?date="
 });
 
 /* Set the width of the side navigation to 250px */
+//################################################################################################
+//################################################################################################
+//################################################################################################
 $("#clickopen").click(function(){
 document.getElementById("mySidenav").style.width = "250px";
 }); 
@@ -52,7 +55,9 @@ document.getElementById("mySidenav").style.width = "250px";
 function closeNav() {
 document.getElementById("mySidenav").style.width = "0";
 }
-
+//################################################################################################
+//################################################################################################
+//################################################################################################
 
 var picker = $input.pickadate('picker');
 
@@ -76,8 +81,8 @@ if($("#exampleSelect1 option:selected").val() == "1"){
 //*******************js**********************
 //###############슬라이더 열고 닫기################
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidenav").style.width = "50px";
+//    document.getElementById("main").style.marginLeft = "50px";
 }
 
 /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */

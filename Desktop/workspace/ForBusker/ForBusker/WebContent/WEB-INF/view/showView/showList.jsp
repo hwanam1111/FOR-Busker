@@ -105,10 +105,11 @@ $("input[name=date_submit]").val('<%=date%>');
 <!-- 이부분 부터 코딩 시작 -->
 
 <div class="hoc" align="center">
+<h1 style="text-align: left; margin-left:30px; font-size:30px;">공연 찾기 <span style="font-size:20px;">(날짜를 선택하시고 검색해주세요.)</span></h1>
 <table style="width:100%;">
 <tr>
 	<td colspan="2">   	
-	<form class="form-inline" id="searchGo" style="margin-left:50px; margin-bottom:20px;"> 
+	<form class="form-inline" id="searchGo" style="margin-left:50px; height: 90px;"> 
 	 <div class="form-group">
 	 <%if(date!=null && !date.equals("null")) {%>
 			<input id="input_01" type="text" class="datepicker form-control" name="date" style=" position: relative; right:20px;" value=<%=date %>>
@@ -134,8 +135,8 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value='퍼포먼스'>퍼포먼스</option>
 			<option value='기타'>기타</option>
 		</select>
-		<button type="button" id="searchBtn" class="btn btn-outline-info" style="width:90px; color:white">검색</button>
-		<button type="button" id="registBtn" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:90px; color:white">등록하기</button>
+		<button type="button" id="searchBtn" class="btn btn-outline-info" style="width:90px; color:white; margin-left:12px; margin-right:10px;">검색</button>
+		<button type="button" id="registBtn" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:90px; color:white;margin-right:0;">등록하기</button>
 	</div>
 	</form>
 	</td>
@@ -146,13 +147,11 @@ $("input[name=date_submit]").val('<%=date%>');
 <% if(showVoList.size()==0){%>
 <div style="width:100%;">
 <div>
-<form class="form-inline"> 
-	 <div class="form-group" align="center" style="margin-left: 130px">
+	 <div style="font-size:40px; line-height: 70px; position: relative; bottom:300px;">
 		오늘은 공연이 없습니다. <br/>
 		다른 지역을 검색해보세요.						
 		
 	</div>
-</form>
 </div>
 
 <% } %>
@@ -163,9 +162,10 @@ $("input[name=date_submit]").val('<%=date%>');
 <!-- 이미지들어가는부분 -->
 <iframe src="https://www.youtube.com/embed/<%=showVoList.get(i).getShVideo().substring(showVoList.get(i).getShVideo().length()-11,showVoList.get(i).getShVideo().length())%>" frameborder="0" allowfullscreen style="width:95%; height:300px;"></iframe>
 <form class="form-inline"> 
-	 <div class="form-group" align="center" style="margin-left: 130px">
-		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a><%=showVoList.get(i).getShTeamName() %></a></label>						
-		<label class="form-control" style="margin-bottom:40px; margin-top:5px;">
+	 <div class="form-group" align="center" style="margin-left: 50px">
+		<label class="form-control" style="margin-bottom:40px; margin-top:5px; width:160px;">
+		<a><%=showVoList.get(i).getShTeamName() %></a></label>						
+		<label class="form-control" style="margin-bottom:40px; margin-top:5px; width:160px;">
 		<a class="detail">
 		<input type="hidden" value="<%=showVoList.get(i).getShNo()%>">
 		상세보기
@@ -178,9 +178,9 @@ $("input[name=date_submit]").val('<%=date%>');
 <input type="hidden" value="" id="loc">
 <!-- 페이징 부분 -->
 	<%if(shno == 0 && value==null) {%>
-	<nav align="center">
+	<%-- <nav>
 	  <ul class="pagination pagination-lg">
-	    <li class="page-item">
+	    <li class="page-item" >
 	      <a class="page-link" href="showList.do?page=<%=pVO.getPreviPage()%>&loc=<%=mapo %>&shno=0" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
 	        <span class="sr-only">Previous</span>
@@ -197,9 +197,9 @@ $("input[name=date_submit]").val('<%=date%>');
 	      </a>
 	    </li>
 	  </ul>
-	</nav>
+	</nav> --%>
 	<%} else if(shno == 0 && value !=null){%>
-	<nav align="center">
+	<nav style="position: relative; left:120px; bottom:30px;">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
 	      <a class="page-link" href="showListSearch.do?page=<%=pVO.getPreviPage()%>&val=<%=value %>&select=<%=select %>&date=<%=date %>" aria-label="Previous">
@@ -223,9 +223,9 @@ $("input[name=date_submit]").val('<%=date%>');
 </div>
 </td>
 <td style="width:50%;">
-<div class="map_wrap">
+<div class="map_wrap" style="width:100%; height:905px;">
 
-    <div id="map" style="width:100%; height:770px;"></div>
+    <div id="map" style="width:100%; height:870px;"></div>
 <!-- ################################확대 축소 컨트롤러 들어가는 부분############################### -->
     <div class="custom_zoomcontrol radius_border"> 
         <div id="plus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"></div>  
@@ -234,35 +234,37 @@ $("input[name=date_submit]").val('<%=date%>');
 </div>    
 </td>
 <!-- #####################숨겨진 슬라이드 창(상세보기 버튼을 눌렀을때 상세정보 나옴)###################### -->
+<!-- #################################################################################### -->
+<!-- #################################################################################### -->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <ul>
+  <li id="shName" style="font-size: 25px; margin-bottom:20px; text-align: left; margin-left:15px; color:#000"></li>
+  <iframe width="560" height="315" src="" frameborder="0" allowfullscreen id="shVideo"></iframe><br/><br/>
+  <div style="text-align: left; margin-left:15px;">
+  <button type="button" class="surInfo btn btn-success li_btn" value="FD6">주변 음식점</button><!-- FD6  -->
+  <button type="button" class="surInfo btn btn-info li_btn" value="CE7">주변 카페</button><!-- CE7  -->
+  <button type="button" class="surInfo btn btn-warning li_btn" value="CS2">주변 편의점</button><!-- CS2  -->
+  <button type="button" class="surInfo btn btn-danger li_btn" value="SW8" id="li_btn_right">주변 지하철역</button><!-- SW8  --><br/><br/>
+  </div>
+  <div style="text-align: left; margin-left:15px; color:#000;" id="li_detail">
   <li id="teamName"></li>
-  <li id="shVideo"></li>
-  <li id="shName"></li>
-  <li id="shMapCoords"></li>
   <li id="shMapAddr"></li>
   <li id="shMapDetail"></li>
   <li id="shTime"></li>
   <li id="shDate"></li>
   <li id="shType"></li>
-  <li id="shDetail"></li>
+  <li id="shDetail" style="color:#555"></li>
+  </div>
  <!-- 주변 정보가 나올 부분 -->
-  <li>
-  <button type="button" class="surInfo btn btn-success" value="FD6">주변 음식점</button><!-- FD6  -->
-  </li>
-  <li>
-  <button type="button" class="surInfo btn btn-info" value="CE7">주변 카페</button><!-- CE7  -->
-  </li>
-  <li>
-  <button type="button" class="surInfo btn btn-warning" value="CS2">주변 편의점</button><!-- CS2  -->
-  </li>
-  <li>
-  <button type="button" class="surInfo btn btn-danger" value="SW8">주변 지하철역</button><!-- SW8  -->
-  </li>
+ <!-- #################################################################################### -->
+ <!-- #################################################################################### -->
  
   </ul>
 </div>
+<!-- #################################################################################### -->
+<!-- #################################################################################### -->
+<!-- #################################################################################### -->
 <!-- 메인 -->
 <div id="main"></div>
 

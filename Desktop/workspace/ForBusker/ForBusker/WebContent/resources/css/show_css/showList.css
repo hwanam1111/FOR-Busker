@@ -17,17 +17,44 @@
 	margin-left:2px;
 }
 
+/* ################################################################################################ */
+/* ################################################################################################ */
 .sidenav {
-    height: 100%; /* 100% Full-height */
+    height: 870px; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
+    position: absolute; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 0;
+    top: 282px;
     left: 0;
     background-color: #FFF; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-y: auto; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+    border-right: none;
+}
+
+#mySidenav ul{
+	position:relative;
+	right:15px;
+} 
+
+.li_btn{
+	width:100px;
+	margin-right:49px;
+}
+
+#li_btn_right{
+	margin-right:0;
+}
+
+#li_detail{
+	line-height: 40px;
+}
+
+#mySidenav ul li{
+	font-size:20px;
 }
 
 /* The navigation menu links */
@@ -53,6 +80,9 @@
     font-size: 36px;
     margin-left: 50px;
 }
+/* ################################################################################################ */
+/* ################################################################################################ */
+
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {

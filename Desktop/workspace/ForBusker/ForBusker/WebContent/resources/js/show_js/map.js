@@ -16,14 +16,14 @@ $(function(){
 				var data=eval("("+param+")");
 				//console.log(data.shTeamName);
 				$('#teamName').text("팀 이름 : "+data.shTeamName);
-				$('#shVideo').text("팀 홍보영상 : "+data.shVideo);
-				$('#shName').text("제목 : "+data.shName);
+				$('#shVideo').attr("src", data.shVideo);
+				$('#shName').text("TITLE : "+data.shName);
 				$('#shMapCoords').text("위치"+data.shMapCoords);
 				$('#shMapAddr').text("주소: "+data.shMapAddr);
 				$('#shMapDetail').text("상세주소 : "+data.shMapDetail);
 				$('#shTime').text("시간 : "+data.shTime);
 				$('#shDate').text("날짜: "+data.shDate);
-				$('#shType').text("타입 : "+data.shType);
+				$('#shType').text("공연타입 : "+data.shType);
 				$('#shDetail').text("상세정보 : "+data.shDetail);
 	            
 			},
@@ -33,9 +33,9 @@ $(function(){
 		});
 		
 		//슬라이드 나오는부분
-		$('#mySidenav').css("width","750px");
+		$('#mySidenav').css("width","630px");
 		$('#mySidenav').css("margin-top","75px");
-		$('#main').css("margin-left","250px");
+//		$('#main').css("margin-left","250px");
 
 	});
 	
