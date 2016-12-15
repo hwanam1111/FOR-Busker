@@ -88,4 +88,8 @@ WHERE shdate=#{date}
 	</otherwise>
 	</choose>
 </select>
+
+<select id="selectShowByNum" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+SELECT * FROM show WHERE shNo=#{shNo}
+</select>
 </mapper>

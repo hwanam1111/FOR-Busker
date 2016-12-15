@@ -18,4 +18,5 @@ public interface ShowDao {
 	public List selectShow(String date, String select, String val,int curPage) throws Exception;
 	//검색어가 들어왔을 때 row 갯수 가져오기
 	public int showSearchCount(String date, String select, String val);
+	public ShowVO selectShowByNum(int shNo);
 }

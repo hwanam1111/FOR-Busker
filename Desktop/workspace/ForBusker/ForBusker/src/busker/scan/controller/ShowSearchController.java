@@ -48,11 +48,8 @@ public class ShowSearchController {
 		}
 		
 		m.addAttribute("shno",shno);
-		
 		return "showView/showList";
 	}
-	
-	
 	@RequestMapping(value="showRegist")
 	public String showRegist(){
 		System.out.println("showRegist.jsp로 이동");

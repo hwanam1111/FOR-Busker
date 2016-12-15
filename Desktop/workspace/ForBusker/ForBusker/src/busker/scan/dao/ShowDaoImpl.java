@@ -106,7 +106,12 @@ public class ShowDaoImpl implements ShowDao {
 		System.out.println("검색했을때 총 row 갯수 = "+showSearchCount);
 		return showSearchCount;
 	}
-
+//slide 나올때 상세정보 적어주기
+	public ShowVO selectShowByNum(int shNo){
+		HashMap<String,Integer> hash=new HashMap<>();
+		hash.put("shNo",shNo);
+		return ss.selectOne("show.selectShowByNum",hash);
+	}
 	
 
 

@@ -111,6 +111,10 @@ public class ShowServiceImpl implements ShowService {
 		int showSearchCount = dao.showSearchCount(date,select,val);
 		return showSearchCount;
 	}
+	//slide 눌렀을때 정보가지고오기
+	public ShowVO selectShowByNum(int shNo){
+		return dao.selectShowByNum(shNo);
+	}
 
 
 }
