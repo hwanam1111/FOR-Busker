@@ -24,7 +24,8 @@
     width: 0; /* 0 width - change this with JavaScript */
     position: absolute; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 282px;
+/*     top: 282px; 맥 */
+	top:260px; /*윈도우*/
     left: 0;
     background-color: #FFF; /* Black*/
     overflow-y: auto; /* Disable horizontal scroll */
@@ -40,8 +41,15 @@
 	right:15px;
 } 
 
+/* 맥 */
+/* .li_btn{ */
+/* 	width:100px; */
+/* 	margin-right:49px; */
+/* } */
+
+/* 윈도우 */
 .li_btn{
-	width:100px;
+	width:116px;
 	margin-right:49px;
 }
 

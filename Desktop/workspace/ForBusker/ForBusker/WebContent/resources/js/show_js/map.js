@@ -33,7 +33,8 @@ $(function(){
 		});
 		
 		//슬라이드 나오는부분
-		$('#mySidenav').css("width","630px");
+		$('#mySidenav').css("width","730px"); // 윈도우
+//		$('#mySidenav').css("width","630px"); // 맥 
 		$('#mySidenav').css("margin-top","75px");
 //		$('#main').css("margin-left","250px");
 

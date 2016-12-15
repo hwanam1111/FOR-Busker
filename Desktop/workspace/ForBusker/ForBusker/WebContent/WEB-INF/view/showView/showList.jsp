@@ -240,7 +240,8 @@ $("input[name=date_submit]").val('<%=date%>');
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <ul>
   <li id="shName" style="font-size: 25px; margin-bottom:20px; text-align: left; margin-left:15px; color:#000"></li>
-  <iframe width="560" height="315" src="" frameborder="0" allowfullscreen id="shVideo"></iframe><br/><br/>
+<!--   <iframe width="560" height="315" src="" frameborder="0" allowfullscreen id="shVideo"></iframe><br/><br/> 맥-->
+<iframe width="625" height="315" src="" frameborder="0" allowfullscreen id="shVideo" style="position: relative; right:10px;"></iframe><br/><br/>  <!-- 윈도우 -->
   <div style="text-align: left; margin-left:15px;">
   <button type="button" class="surInfo btn btn-success li_btn" value="FD6">주변 음식점</button><!-- FD6  -->
   <button type="button" class="surInfo btn btn-info li_btn" value="CE7">주변 카페</button><!-- CE7  -->
