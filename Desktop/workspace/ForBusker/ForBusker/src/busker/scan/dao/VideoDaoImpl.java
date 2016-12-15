@@ -155,6 +155,11 @@ public class VideoDaoImpl implements VideoDao {
 		return ss.selectList("video.videoBest");
 	}
 
+	@Override
+	public List<VideoVO> videoAll(String email) {
+		return ss.selectList("video.videoAll", email);
+	}
+
 
 
 

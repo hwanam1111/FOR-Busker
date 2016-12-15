@@ -102,6 +102,7 @@ function logout(){
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
 							<li class="ul_li_List"><a href="mypageUpdate.do?memType=${sessionScope.login.memType}">내 정보 수정</a></li>							<%if(mvo.getMemType().equals("2")){ %>
+							<li class="ul_li_List"><a  href="mypageAll.do?email=${sessionScope.login.memEmail}">내가 쓴 글</a></li>	
 							<li class="ul_li_List"><a href="showRegist.do">공연 등록하기</a></li>
 							<%}%>
 							<li class="ul_li_List"><a href="mypageLike.do?memEmail=${sessionScope.login.memEmail}">좋아요 페이지</a></li>
@@ -110,6 +111,7 @@ function logout(){
 					</li>
 				</ul>
 			</nav>
+			<input type="hidden" name="memEmail" value="${sessionScope.login.memEmail}">
 			<!-- ################################################# -->
 			<!-- ################################################# -->
 		</header>

@@ -4,5 +4,3 @@
 
 
 <% response.sendRedirect("main.do");%>
-
-

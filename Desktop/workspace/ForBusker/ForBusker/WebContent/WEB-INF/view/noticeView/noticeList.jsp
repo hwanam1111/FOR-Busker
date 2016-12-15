@@ -78,7 +78,7 @@
 	<hr/>
 	</li>
 	</c:forEach>
-	<li> <!-- 페이징 할 부분 -->
+ 	<li> <!-- 페이징 할 부분 -->
 		<nav aria-label="..."  align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">

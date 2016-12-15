@@ -1,14 +1,17 @@
 package busker.scan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import busker.scan.service.MemberServiceImpl;
+import busker.scan.service.VideoServiceImpl;
 import busker.scan.vo.MemberVO;
+import busker.scan.vo.VideoVO;
 
 // 마이페이지 컨트롤러
 
@@ -17,6 +20,8 @@ public class MyPageController {
 
 	@Autowired
 	private MemberServiceImpl service;
+	@Autowired
+	private VideoServiceImpl videoService;
 	
 //	정보수정 페이지로 이동
 	@RequestMapping(value="mypageUpdate")
@@ -86,5 +91,16 @@ public class MyPageController {
 	@RequestMapping(value="gomain")
 	public String mypageSimpleToBusker(){
 		return "myPageView/goMain";
+	}
+	
+	
+	
+	@RequestMapping(value="mypageAll")
+	public String mypageAll(VideoVO vvo, Model m, String email) throws Exception{
+		
+		List<VideoVO> videoList = videoService.videoAll(email);
+		m.addAttribute("videoList", videoList);
+		
+		return "myPageView/mypageAll";
 	}
 }

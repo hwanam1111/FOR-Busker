@@ -58,6 +58,9 @@ public interface VideoService {
 
 	// 베스트 영상 가져오기
 	public List<BestVideoVO> videoBest() throws Exception;
+
+	// 마이페이지
+	public List<VideoVO> videoAll(String email) throws Exception;
 	
 	
 }

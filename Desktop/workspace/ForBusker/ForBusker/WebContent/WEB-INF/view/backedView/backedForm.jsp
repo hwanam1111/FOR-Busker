@@ -1,20 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import ="busker.scan.vo.*" %>
-    
 <% String projectName = "/ForBusker"; %>
-<% 
-	Object obj= session.getAttribute("login");
-	MemberVO mem= null;
-	String type="1";
-	if(obj!=null){
-		mem = (MemberVO)obj;
-		type = mem.getMemType();
-	}
-	
-	
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,13 +26,6 @@
 <%if(session.getAttribute("login") == null) { %>
 <% response.sendRedirect("login.do");%>
 <%-- <jsp:include page="/WEB-INF/view/includeFile/header.jsp" /> --%>
-<% } else if(type.equals("1")){ %>
-	<script type="text/javascript">
-	alert("${message}");
-	location.href="backedList.do?cate=backed"
-	</script>
-	
-
 <% } else { %>
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>

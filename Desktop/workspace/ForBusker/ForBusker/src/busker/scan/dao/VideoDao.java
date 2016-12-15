@@ -63,4 +63,7 @@ public interface VideoDao {
 	
 	// 베스트 영상 가져오기
 	public List<BestVideoVO> videoBest();
+
+	//	마이페이지
+	public List<VideoVO> videoAll(String email);
 }

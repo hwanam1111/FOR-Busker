@@ -200,6 +200,11 @@ public class VideoServiceImpl implements VideoService {
 	@Override
 	public List<BestVideoVO> videoBest() throws Exception{		
 		return videoDao.videoBest();
+	}
+	
+	@Override
+	public List<VideoVO> videoAll(String email) throws Exception{
+		return videoDao.videoAll(email);
 	};
 
 }
