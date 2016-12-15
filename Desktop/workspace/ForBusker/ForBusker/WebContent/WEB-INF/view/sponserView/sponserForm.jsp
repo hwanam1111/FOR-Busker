@@ -6,16 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>FOR-Busker</title>
+<!-- jQuery lib CDN URL -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- Bootstrap 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- Bootstrap 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<!-- jQuery lib CDN URL -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- backForm -->
+<script type="text/javascript" src="<%=projectName %>/resources/js/sponser_js/sponserForm.js?<?=filemtime('<%=projectName %>/resources/sponser_js/sponserForm.js')?>" type="text/css"></script>
+
 </head>
 
 <body id="top">
@@ -32,7 +35,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<form style="margin-left:140px;" action="sponInsert.do" enctype="multipart/form-data" method="post">
+	<form style="margin-left:140px;" id="sponserForm" >
 		<table>
 		<!-- 어떤 입력폼인가 -->
 		<tr>
@@ -100,7 +103,7 @@
 			<div align="center">
 				
 			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
-				<button type="submit" class="btn btn-info">등록하기</button>
+				<button type="button" class="btn btn-info" id="sponSubmit">등록하기</button>
 				<button type="reset" class="btn btn-info">다시작성</button>
 			</div>
 		</tr>
