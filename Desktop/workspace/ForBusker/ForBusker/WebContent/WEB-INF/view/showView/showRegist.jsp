@@ -27,7 +27,7 @@
 <!--  Daum Map api 가져오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- <script	src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script> -->
-<script src="//apis.daum.net/maps/maps3.js?apikey=2121ff8297dee68927e93bb6d3ea2855&libraries=services"></script>
+<script src="//apis.daum.net/maps/maps3.js?apikey=4f21221b31649843b25f7a67007038c7&libraries=services"></script>
 <script type="text/javascript" src="<%=projectName %>/resources/js/show_js/performanceRegist.js?<?=filemtime('<%=projectName %>/resources/js/show_js/performanceRegist.js')?>"></script>
 
 

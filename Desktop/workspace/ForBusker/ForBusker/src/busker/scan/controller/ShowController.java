@@ -57,4 +57,8 @@ public class ShowController {
 				
 		return json.toString();	
 	}
+	@RequestMapping(value="showRegistUploadInfo")
+	public String ShowRegistUploadInfo(){
+		return "showView/showRegistUploadInfo";
+	}
 }
