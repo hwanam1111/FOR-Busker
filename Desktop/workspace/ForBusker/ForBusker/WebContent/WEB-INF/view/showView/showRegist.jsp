@@ -28,24 +28,12 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script	src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
 <script   src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
+<script type="text/javascript" src="<%=projectName %>/resources/js/show_js/performanceRegist.js?<?=filemtime('<%=projectName %>/resources/js/show_js/performanceRegist.js')?>"></script>
+
 
  <script type="text/javascript"> 
 $(function(){
-	$('.some_class').datetimepicker(	
-	);
-	
-	 $('#ShowRegistGenreEtcInput').hide();
-	$("#ShowRegistGenreInput").change(function(){
-		if($("#ShowRegistGenreInput option:selected").val() == "5"){
-			$('#ShowRegistGenreEtcInput').show();
-			$('#ShowRegistGenreInput').attr("name","");
-			$('#ShowRegistGenreEtcInput').attr("name","shType");
-		}else{
-			$('#ShowRegistGenreEtcInput').hide();
-			$('#ShowRegistGenreEtcInput').attr("name","");
-			$('#ShowRegistGenreInput').attr("name","shType");
-		}
-	}); 
+
 	<% MemberVO ok=(MemberVO)session.getAttribute("login");%>
 	$("#ShowRegistMemEmail").val("<%=ok.getMemEmail()%>");
 	
@@ -232,7 +220,7 @@ $(function(){
 				</tr>
 				<tr>
 					<div align="center">
-						<button type="submit" class="btn btn-info">등록하기</button>
+						<button type="button" id="submitbtn" class="btn btn-info">등록하기</button>
 					</div>
 				</tr>
 			</table>
