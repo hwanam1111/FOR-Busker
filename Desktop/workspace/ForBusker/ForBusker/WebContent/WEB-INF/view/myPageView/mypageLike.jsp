@@ -46,7 +46,7 @@
 	<div style="margin-bottom:60px; " class="col-xs-4">
 		<div >
   			<a href="videoLikeSearch.do?videoNo=${likeList.videoNo}&memEmail=${likeList.memEmail}&myId=${sessionScope.login.memEmail}">
-  			<img class='videothumb' src="https://img.youtube.com/vi/${likeList.videoSomenale}/hqdefault.jpg" ><br/><br/>
+  			<img class='videothumb' src="https://img.youtube.com/vi/${likeList.videoSomenale}/hqdefault.jpg" style="width:306.66px; height:229.98px;"><br/><br/>
     		<p style="height: 40px;">Title : ${likeList.videoName}</p></a>
     		<p>TeamName : ${likeList.memTeamName}</p>
     		<p>Date : ${likeList.videoDate}</p>
