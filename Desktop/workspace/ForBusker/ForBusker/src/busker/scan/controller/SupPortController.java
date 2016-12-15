@@ -184,7 +184,12 @@ public class SupPortController {
 		}
 		
 		String prUrl = service.selectPrVideo(mem.getMemEmail());
+		String message = null;
+		if(mem.getMemType().equals("1")){
+			message = "공연자 회원이 아닙니다.";
+		}
 		m.addAttribute("prUrl",prUrl);
+		m.addAttribute("message",message);
 		
 		return "backedView/backedForm";
 	}
