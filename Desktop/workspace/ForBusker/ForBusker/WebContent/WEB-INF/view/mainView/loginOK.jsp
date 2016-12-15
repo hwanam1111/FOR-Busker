@@ -25,12 +25,15 @@
 
 
 <!-- 이부분 부터 코딩 시작 -->
-  ${message};
-
-이메일: ${vo.memEmail} / 이름: ${vo.memName} / 비번: ${vo.memPw}
-
-<%response.sendRedirect("main.do"); %>
-
+<script type="text/javascript">
+if("${message}" == "로그인실패"){
+	alert("${message}");	
+	location.href="login.do"
+}else{
+	alert("${message}");
+	location.href="main.do";
+}
+</script>
 
 <!-- 코딩 종료 -->
 
