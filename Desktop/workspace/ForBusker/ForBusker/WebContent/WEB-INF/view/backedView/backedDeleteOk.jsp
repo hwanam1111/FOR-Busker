@@ -25,9 +25,10 @@
 
 
 <!-- 이부분 부터 코딩 시작 -->
-<div id="hoc">
-	${message }
-</div>
+<script type="text/javascript">
+alert("${message}");
+location.href="backedList.do?cate=backed"
+</script>
 
 
 

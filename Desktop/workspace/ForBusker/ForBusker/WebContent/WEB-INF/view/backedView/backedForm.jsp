@@ -10,12 +10,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- Bootstrap 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<!-- Bootstrap 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- Bootstrap 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- sponForm -->
+<script type="text/javascript" src="<%=projectName %>/resources/js/backed_js/backedForm.js?<?=filemtime('<%=projectName %>/resources/backed_js/backedForm.js')?>" type="text/css"></script>
+
 </head>
 
 <body id="top">
@@ -31,7 +34,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<form style="margin-left:140px;" action="backedInsert.do">
+	<form style="margin-left:140px;" id ="backedForm" action="backedInsert.do">
 		<table>
 		<!-- 어떤 입력폼인가 -->
 		<tr>
@@ -78,7 +81,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">연락처</label>
 			  <div class="col-xs-8">
-			    <input class="form-control" type="text" placeholder="-빼고 입력해주세요"  name="backTel">
+			    <input class="form-control" type="text" placeholder="-포함 입력해주세요"  name="backTel">
 			  </div>
 		  </div>
 		</tr>
@@ -87,7 +90,7 @@
 		<tr>
 			<div align="center">
 			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
-				<button type="submit" class="btn btn-info">등록하기</button>
+				<button type="button" class="btn btn-info" id="backedSubmit">등록하기</button>
 				<button type="button" class="btn btn-info">취소</button>
 			</div>
 		</tr>

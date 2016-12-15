@@ -25,8 +25,10 @@
 
 
 <!-- 이부분 부터 코딩 시작 -->
-${message }
-
+<script type="text/javascript">
+alert("${message}");
+location.href="backedList.do?cate=backed"
+</script>
 
 
 <!-- 코딩 종료 -->

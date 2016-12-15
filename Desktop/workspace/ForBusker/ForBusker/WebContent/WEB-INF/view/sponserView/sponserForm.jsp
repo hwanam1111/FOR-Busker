@@ -93,7 +93,7 @@
 		  <div class="form-group row">
 			<label for="example-text-input" class="col-xs-2 col-form-label">연락처</label>
 			  <div class="col-xs-8">
-			    <input class="form-control" type="text" name="spTel" placeholder="-빼고 입력해주세요">
+			    <input class="form-control" type="text" name="spTel" placeholder="-포함 입력해주세요">
 			  </div>
 		  </div>
 		</tr>
