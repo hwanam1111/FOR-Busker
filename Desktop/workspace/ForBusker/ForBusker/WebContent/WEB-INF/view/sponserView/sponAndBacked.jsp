@@ -199,7 +199,7 @@ $(function(){
 		<button type="button" class="btn btn-info marginRight" id="moveToBackedBtn" style="float: right;">후원받기</button>
 	</div>
 	</div>
-	</tr>
+	</tr> 
 	
 	
     <% for(BackedVO bvo:backedList){ %>	
