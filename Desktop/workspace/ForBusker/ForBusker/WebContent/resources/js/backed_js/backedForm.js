@@ -28,6 +28,7 @@ $(function(){
 			return false;
 		}else if(!reg_url.test($("input[name=backVideo]").val())){
 	         alert("영상주소 형식을 URL형식으로 맞춰주세요");
+	         return false;
 		}
 		
 		$('#backedForm').attr("action","backedInsert.do");

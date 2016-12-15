@@ -6,11 +6,13 @@
 <% 
 	Object obj= session.getAttribute("login");
 	MemberVO mem= null;
+	String type="1";
 	if(obj!=null){
 		mem = (MemberVO)obj;
+		type = mem.getMemType();
 	}
-	String type = mem.getMemType();
-	System.out.println("멤버타입은 : "+type);
+	
+	
 %>
 
 <!DOCTYPE html>
