@@ -57,3 +57,20 @@ ul.tabs li.kkk {
 #moveToSponBtn{
 	margin-left: 380px;
 }
+
+/* 후원해주세요 내용 자르기 */
+.backCon{
+	display: inline-block;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: normal;
+    line-height: 1.2;
+    height: 3.6em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical
+}

@@ -179,7 +179,7 @@ $(function(){
        
         
        
-    <% if( cate != null && cate.equals("backed")) {%>
+   <% if( cate != null && cate.equals("backed")) {%>
         
 <table> 
     <tr> <!-- 검색창 들어갈 부분 -->
@@ -203,7 +203,7 @@ $(function(){
 	
 	
     <% for(BackedVO bvo:backedList){ %>	
-    <div class="col-xs-4 marginTop50">
+    <div class="col-xs-4 marginTop50" style="height:245px;">
 			<div> <!-- 이미지들어가는부분 -->
 			<a href="backedView.do?num=<%=bvo.getBackNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
 				<!-- 일단 걍 사진으로 -->
@@ -213,7 +213,7 @@ $(function(){
 		 
 			<div class="detail">
 			<div><strong><%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
-			<div><strong><%=bvo.getBackContent() %></strong></div> <!-- 조건 들어가는 부분 -->
+			<div class="backCon"><%=bvo.getBackContent() %></div> <!-- 조건 들어가는 부분 -->
 			</div>
 			
 		</div>
@@ -235,8 +235,7 @@ $(function(){
     <%} %>	
 	
 	
-	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@  이부분 고쳐야댐 !!!!!!!!!!!!!!!!!!  @@@@@@@@@@@@@@@@@@@@@@-->	
-	<tr> <!-- 페이징 할 부분(paging master) -->
+	
 	<nav align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
@@ -256,7 +255,6 @@ $(function(){
 	    </li>
 	  </ul>
 	</nav>
-	</tr>
 	
 </table>      
 <% } %> <!-- end if -->	   
@@ -282,3 +280,4 @@ $(function(){
 
 </body>
 </html>
+
