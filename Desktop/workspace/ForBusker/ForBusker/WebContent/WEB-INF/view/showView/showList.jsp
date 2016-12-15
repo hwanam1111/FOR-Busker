@@ -12,14 +12,12 @@ Object obj = request.getAttribute("volist");
 	if(obj!=null){
 		showVoList=(List)obj;
 		if(showVoList.size()==0){
-			System.out.println("하하하핳"+showVoList.size());
 			
 		}else{
 			loc=showVoList.get(0).getShMapCoords();
 		}
-		
 	}else{
-		System.out.println("에러발생");
+		//System.out.println("에러발생");
 	}
 	//페이징 클래스 받아오기
 	PageVO pVO = (PageVO)request.getAttribute("page");
@@ -59,13 +57,9 @@ Object obj = request.getAttribute("volist");
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- jQuery lib CDN URL -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- Bootstrap 자바스크립트 --> 
+<!-- Bootstrap 자바스크립트 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
-
-<script   src="//apis.daum.net/maps/maps3.js?apikey=5108c86decdbe007d7eeb3cee1dfce12&libraries=services"></script>
-
+<script   src="//apis.daum.net/maps/maps3.js?apikey=2121ff8297dee68927e93bb6d3ea2855&libraries=services"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker')?>"></script>
 <script src="<%=projectName %>/resources/js/show_js/picker.date.js?<?=filemtime('<%=projectName %>/resources/js/performance_js/picker.date')?>"></script>
@@ -73,85 +67,13 @@ Object obj = request.getAttribute("volist");
 <script src="<%=projectName %>/resources/js/show_js/showList.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showList.js')?>"></script>
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/showList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/showList.css">
 <script src="<%=projectName %>/resources/js/show_js/showList.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showList.js')?>"></script>
+<script src="<%=projectName %>/resources/js/show_js/map.js?<?=filemtime('<%=projectName %>/resources/js/show_js/map.js')?>"></script>
 <link rel="stylesheet" href="<%=projectName %>/resources/css/show_css/showList.css?<?=filemtime('<%=projectName %>/resources/css/show_css/showList.css">
+
 
 <script type="text/javascript">
 $(function(){
-	$('#exampleSelect2').hide();
-	
-var $input = $( '.datepicker' ).pickadate({
-    formatSubmit: 'yyyy/mm/dd',
-    // min: [2015, 7, 14],
-    container: '#container',
-    // editable: true,
-    closeOnSelect: true,
-    closeOnClear: true,    
-  	
-});
-
-$("#searchBtn").click(function(){
-	searchGo();
-});
-$("#example-text-input").keypress(function(event){
-	if(event.which == 13){
-		searchGo();
-	}
-});
-var searchGo = function(){
-	
-	var now = new Date();
-	  var year  = now.getFullYear();
-      var month = now.getMonth() + 1; // 0부터 시작하므로 1더함 더함
-      var day   = now.getDate();
-      if (("" + month).length == 1) { month = "0" + month; }
-      if (("" + day).length   == 1) { day   = "0" + day;   }
-	
-      
-	var date = $("input[name=date_submit]").val(); //날짜값 저장
-	if(date=='null'){
-		date=(year+'/'+month+'/'+day); //날짜값을 안넣고 그냥 submit할때 오늘날짜 넣어줌(placeholder에 오늘의 날짜라고 되어있기때문)
-	}
-	alert(date);
-    var select = $("#exampleSelect1 option:selected").val();
-   
-    var inputvalue = $("[name=val]").val(); //select값과 value값들을 parameter로 같이 넘김
-//     alert(select);
-    window.location.href="showListSearch.do?date="
-                            + date
-                            + "&select="
-                            + select
-                            + "&val="
-                            + inputvalue;
-                   
-	};
-
-/* Set the width of the side navigation to 250px */
-$("#clickopen").click(function(){
-	document.getElementById("mySidenav").style.width = "250px";
-}); 
-
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-<%-- alert("<%=showVoList.get(1).getShName()%>"); --%>
-
-var picker = $input.pickadate('picker');
- 
-$("#exampleSelect1").change(function(){//카테고리로 검색할경우 input을 text->select로 바꿔줌
-	if($("#exampleSelect1 option:selected").val() == "1"){
-		$("#example-text-input").hide();
-		$('#exampleSelect2').show();
-		$('#example-text-input').attr("name","");
-		$('#exampleSelect2').attr("name","val");
-	}else {
-		$("#example-text-input").show();
-		$('#exampleSelect2').hide();
-		$('#exampleSelect2').attr("name","");
-		$('#example-text-input').attr("name","val");
-	}
-});
+ //등록버튼 눌렀을때
 $("#registBtn").click(function(){
 	
 	<%if(session.getAttribute("login") == null) { %>
@@ -162,23 +84,13 @@ $("#registBtn").click(function(){
 });
 <%if(select != null){%>
 
-	$("#exampleSelect1 option:eq(<%=select%>)").prop("selected", "selected"); //첫번째 option 선택
-	<%-- 	$("#exampleSelect1").val(<%=select%>); --%>
-	<%if(select.equals("1")){%>
-	$("#example-text-input").hide();
-	$('#exampleSelect2').show();
-	$('#example-text-input').attr("name","");
-	$('#exampleSelect2').attr("name","val");
-	$("#exampleSelect2").val("<%=value%>"); //두번째 셀렉트 option 선택
-	<%}%><%-- 	$("#exampleSelect1").val(<%=select%>); --%>
+$("#exampleSelect1 option:eq(<%=select%>)").prop("selected", "selected"); //첫번째 option 선택
 
- 
 <%}%>
+
 $("input[name=date_submit]").val('<%=date%>');
 });
-
 </script>
-
 
 </head>
 
@@ -208,7 +120,11 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value="1">카테고리</option>
 			<option value="2">지역</option>
 		</select>
+		<%if(value != null){ %>
+		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" value=<%=value %> >
+		<%} else{%>
 		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" />
+		<%} %>
 		<select class='form-control' name="cate" id="exampleSelect2" style="width:280px; margin-left:25px;">
 			<option value=''>선택하세요</option>
 			<option value='노래'>노래</option>
@@ -226,10 +142,10 @@ $("input[name=date_submit]").val('<%=date%>');
 </tr>
 <tr>
 <td style="padding-top: 10px; padding-left:30px; padding-bottom: 10px; padding-right: 10px;">
+<!-- show list 없을때 -->
 <% if(showVoList.size()==0){%>
 <div style="width:100%;">
 <div>
-<!-- 이미지들어가는부분 -->
 <form class="form-inline"> 
 	 <div class="form-group" align="center" style="margin-left: 130px">
 		오늘은 공연이 없습니다. <br/>
@@ -240,6 +156,7 @@ $("input[name=date_submit]").val('<%=date%>');
 </div>
 
 <% } %>
+<!-- show list 나오는 부분 -->
 <% for (int i =0; i<showVoList.size(); i++){ %>
 <div style="width:100%;">
 <div>
@@ -248,11 +165,18 @@ $("input[name=date_submit]").val('<%=date%>');
 <form class="form-inline"> 
 	 <div class="form-group" align="center" style="margin-left: 130px">
 		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a><%=showVoList.get(i).getShTeamName() %></a></label>						
-		<label class="form-control" style="margin-bottom:40px; margin-top:5px;"><a>상세보기</a></label>
+		<label class="form-control" style="margin-bottom:40px; margin-top:5px;">
+		<a class="detail">
+		<input type="hidden" value="<%=showVoList.get(i).getShNo()%>">
+		상세보기
+		</a>
+		<input type="hidden" value="new daum.maps.LatLng<%=showVoList.get(i).getShMapCoords()%>">
+		</label>
 	</div>
 </form>
-
 <% } %>
+<input type="hidden" value="" id="loc">
+<!-- 페이징 부분 -->
 	<%if(shno == 0 && value==null) {%>
 	<nav align="center">
 	  <ul class="pagination pagination-lg">
@@ -299,55 +223,87 @@ $("input[name=date_submit]").val('<%=date%>');
 </div>
 </td>
 <td style="width:50%;">
-<div class="map_wrap" style="height:905px;">
+<div class="map_wrap">
 
-    <div id="map" style="width:100%; height:905px; z-index: -1; "></div>
-    <!-- ################################확대 축소 컨트롤러 들어가는 부분############################### -->
+    <div id="map" style="width:100%; height:770px;"></div>
+<!-- ################################확대 축소 컨트롤러 들어가는 부분############################### -->
     <div class="custom_zoomcontrol radius_border"> 
         <div id="plus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png"></div>  
         <div id="minus" class="marginTop"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png"></div>
     </div>
 </div>    
 </td>
+<!-- #####################숨겨진 슬라이드 창(상세보기 버튼을 눌렀을때 상세정보 나옴)###################### -->
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <ul>
+  <li id="teamName"></li>
+  <li id="shVideo"></li>
+  <li id="shName"></li>
+  <li id="shMapCoords"></li>
+  <li id="shMapAddr"></li>
+  <li id="shMapDetail"></li>
+  <li id="shTime"></li>
+  <li id="shDate"></li>
+  <li id="shType"></li>
+  <li id="shDetail"></li>
+ <!-- 주변 정보가 나올 부분 -->
+  <li>
+  <button type="button" class="surInfo btn btn-success" value="FD6">주변 음식점</button><!-- FD6  -->
+  </li>
+  <li>
+  <button type="button" class="surInfo btn btn-info" value="CE7">주변 카페</button><!-- CE7  -->
+  </li>
+  <li>
+  <button type="button" class="surInfo btn btn-warning" value="CS2">주변 편의점</button><!-- CS2  -->
+  </li>
+  <li>
+  <button type="button" class="surInfo btn btn-danger" value="SW8">주변 지하철역</button><!-- SW8  -->
+  </li>
+ 
+  </ul>
+</div>
+<!-- 메인 -->
+<div id="main"></div>
+
+</tr>
+</table>
+<!-- #####################################상세보기 끝#######################################-->
+
 <script>
 var showlistsize = <%=showVoList.size()%>;
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
 			center: new daum.maps.LatLng<%=loc%>, // 지도의 중심좌표
-        	level:5// 지도의 확대 레벨
+        	level:7                              // 지도의 확대 레벨
         
     };
 
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-/* function setZoomable(zoomable) {
-    // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
-    map.setZoomable(zoomable);
+//장소 검색 객체를 생성합니다
+var ps = new daum.maps.services.Places(map); 
+var src="";
 
-} */
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
 	<% for(int i =0;i<showVoList.size();i++){%>
     {
-        title: "<%=showVoList.get(i).getShName()%>" , 
+        title: "<%=showVoList.get(i).getShName()%>", 
         latlng: new daum.maps.LatLng<%=showVoList.get(i).getShMapCoords()%>
     }
     <%if(i!=showVoList.size()-1){%>
-    ,
+     ,
 	<%}%>
 	<%}%>
 ];
 
 // ###############마커 이미지의 이미지 주소넣기입니다#####################
-var imageSrc = "<%=projectName %>/resources/images/show_img/pin.png"; 
-    
+//마커 이미지 사이즈와 이미지소스
+var imageSrc = "/ForBusker/resources/images/show_img/pin.png"; 
+var imageSize = new daum.maps.Size(30, 35);   // 마커 이미지의 이미지 크기 입니다
+var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);// 마커 이미지를 생성합니다   
+
 for (var i = 0; i < positions.length; i ++) {
-    
-    // 마커 이미지의 이미지 크기 입니다
-    var imageSize = new daum.maps.Size(30, 35); 
-    
-    // 마커 이미지를 생성합니다    
-    var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
-    
     // 마커를 생성합니다
     var marker = new daum.maps.Marker({
         map: map, // 마커를 표시할 지도
@@ -363,24 +319,98 @@ for (var i = 0; i < positions.length; i ++) {
     daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
     // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 }
+    
+  //인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+    function makeOverListener(map, marker, infowindow) {
+        //console.log("마우스 오버 불림");
+        return function() {
+            infowindow.open(map, marker);
+        };
+    }
 
-//인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-function makeOverListener(map, marker, infowindow) {
-    return function() {
-        infowindow.open(map, marker);
-    };
+    // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+    function makeOutListener(infowindow) {
+        return function() {
+            infowindow.close();
+        };
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+ $('.surInfo').click(function(){
+	
+		   var loc=$('#loc').val();
+	    	console.log("주변정보 버튼 눌렸음"+loc);
+	    	 mapOption = { 
+	    			   image : markerImage,
+	    				center:eval("("+loc+")"), // 지도의 중심좌표
+	    	        	level:3// 지도의 확대 레벨
+	    	        
+	    	 };
+	    	$('#map').empty();
+	    	 map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	    		console.log("지도 생성 성공");
+	    	 
+	    		//장소 검색 객체를 생성합니다
+	    		var ps = new daum.maps.services.Places(map); 
+	    		var infBtn=$(this).val();
+	    		if(infBtn=="FD6"){ //음식점 핀으로 바꾸기
+	    			src="/ForBusker/resources/images/show_img/restuarant.png";
+	    		}
+	    		else if(infBtn=="CE7"){//카페 핀으로 바꾸기
+	    			src="/ForBusker/resources/images/show_img/cafe.png";
+	    		}
+	    		else if(infBtn=="CS2"){//편의점 핀으로 바꾸기
+	    			src="/ForBusker/resources/images/show_img/store.png";
+	    		}
+	    		else if(infBtn=="SW8"){//지하철 핀으로 바꾸기
+	    			src="/ForBusker/resources/images/show_img/subway.png";
+	    		}
+	    		
+	    		
+	    		console.log("눌린버튼은 :"+infBtn);
+	    		ps.categorySearch(infBtn, placesSearchCB, {useMapBounds:true});  
+	    		//중심 마커 찍기
+	    		var centerMarker = new daum.maps.Marker({
+					 	map: map, // 마커를 표시할 지도
+				        position:eval("("+loc+")"), // 마커를 표시할 위치
+				        image : markerImage // 마커 이미지 
+				 });
+	    		console.log("centerMarker ; "+centerMarker);
+});
+
+
+//키워드 검색 완료 시 호출되는 콜백함수 입니다
+function placesSearchCB (status, data, pagination) {
+	console.log("data : "+data.toString());
+   if (status === daum.maps.services.Status.OK) {
+       for (var i=0; i<data.places.length; i++) {
+           displayMarker(data.places[i]);    
+       }       
+   }
 }
 
-// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-function makeOutListener(infowindow) {
-    return function() {
-        infowindow.close();
-    };
+//지도에 마커를 표시하는 함수입니다
+function displayMarker(place) {
+   // 마커를 생성하고 지도에 표시합니다
+   var marker2 = new daum.maps.Marker({
+       map: map,
+       position: new daum.maps.LatLng(place.latitude, place.longitude) ,
+       image: new daum.maps.MarkerImage(src, imageSize)
+   });
+   //배열에 마커 저장
+ // markerArr.push(marker2);
+   
+   // 마커에 클릭이벤트를 등록합니다
+   daum.maps.event.addListener(marker2, 'click', function(){
+       // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+       infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.title + '</div>');
+       infowindow.open(map, marker2);
+   });
 }
+	
+ 
 
 </script>
-</tr>
-</table>
 	
 </div>
 
