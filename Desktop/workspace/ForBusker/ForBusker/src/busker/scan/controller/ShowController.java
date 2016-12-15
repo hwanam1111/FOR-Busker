@@ -1,12 +1,16 @@
 package busker.scan.controller;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import busker.scan.service.ShowService;
 import busker.scan.vo.ShowVO;
+import busker.scan.vo.SmsVO;
 
 
 
@@ -33,9 +37,24 @@ public class ShowController {
 		
 		return "showView/showRegistCompleteForm";
 	}
+	@RequestMapping(value="selectShowByNum",produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String selectShowByNum(int shNo){
+		ShowVO vo=service.selectShowByNum(shNo);
 	
-	@RequestMapping(value="showRegistUploadInfo")
-	public String ShowRegistUploadInfo(){
-		return "showView/showRegistUploadInfo";
+			JSONObject json = new JSONObject();
+			json.put("shTeamName",vo.getShTeamName());
+			json.put("shVideo",vo.getShVideo());
+			json.put("shName",vo.getShName());
+			json.put("shMapCoords",vo.getShMapCoords());
+			json.put("shMapAddr",vo.getShMapAddr());
+			json.put("shMapDetail",vo.getShMapDetail());
+			json.put("shTime",vo.getShTime());
+			json.put("shDate",vo.getShDate());
+			json.put("shType",vo.getShType());
+			json.put("shDetail",vo.getShDetail());
+
+				
+		return json.toString();	
 	}
 }
