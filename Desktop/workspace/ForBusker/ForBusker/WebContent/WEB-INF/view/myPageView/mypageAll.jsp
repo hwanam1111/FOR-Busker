@@ -434,7 +434,7 @@ position:relative;
 
 	<!-- ##############  footer 부분 include  ############## -->
 	<div id="copyright" class="clear"
-		style="text-align: center; margin-top: 70px; background-color: #ffc19e">
+		style="text-align: center; margin-top: 70px; background-color: #ffc19e; color:white">
 		<span>회사명 : (주)FOR_Busker | 주소 : 경기 성남시 분당구 삼평동 유스페이스2 B동 8층 |
 			대표: Show | 개인정보관리책임자 : Show</span> <br /> <span>사업자등록번호 :
 			000-00-00000 | 통신판매업신고 : 2016-분당판교-00000호 | 이메일 : help@forbusker.com</span><br />
