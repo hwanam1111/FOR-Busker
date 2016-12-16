@@ -20,9 +20,13 @@ public class TogetherDaoImpl {
 		result=ss.insert("together.insertTogether",tovo);
 		return result;
 	}
-	public List<TogetherVO> selectAllTogether(int curPage){
+	public List<TogetherVO> selectAllTogether(int curPage,String memEmail){
+		HashMap hash=new HashMap<>();
+		hash.put("curPage",curPage);
+		hash.put("memEmail",memEmail);
+		System.out.println("hash맵"+hash);
 		List<TogetherVO> list=null;
-		list=ss.selectList("together.selectAllTogether",curPage);
+		list=ss.selectList("together.selectAllTogether",hash);
 		return list;
 	}
 	

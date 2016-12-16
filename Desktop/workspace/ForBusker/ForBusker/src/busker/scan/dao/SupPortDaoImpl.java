@@ -3,12 +3,13 @@ package busker.scan.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import busker.scan.vo.BackedVO;
-import busker.scan.vo.PageVO;
 import busker.scan.vo.SponserVO;
 
 @Repository
@@ -91,7 +92,7 @@ public class SupPortDaoImpl implements SupPortDao {
 		HashMap<String, Object>hash=new HashMap<>();
 		hash.put("curPage", curPage);
 		hash.put("search", search);
-		
+		System.out.println(hash.toString());
 		List<BackedVO> backedList = ss.selectList("support.backedList",hash);
 		return backedList;
 	}
@@ -146,6 +147,48 @@ public class SupPortDaoImpl implements SupPortDao {
 		return backedCount;
 	}
 
+	
+//-------------------------My page ----------------------------------------------
+//-------------------------카운트 하기  -------------------------------------------
+
+	@Override
+	public int myPageBackedListCount(String memEmail) {
+		HashMap<String, String> hash = new HashMap<>();
+		hash.put("memEmail", memEmail);
+		System.out.println(hash);
+		int backedCount = ss.selectOne("support.myPageBackedListCount",hash);
+		System.out.println("backed 총 계수 :" + backedCount);
+		return backedCount;
+	}
+
+	@Override
+	public List<BackedVO> myPagebackedList(int curPage, String memEmail){
+		
+		HashMap<String, Object>hash=new HashMap<>();
+		hash.put("curPage", curPage);
+		hash.put("memEmail", memEmail);
+		List<BackedVO> myPagebackedList= ss.selectList("support.myPageBackedList",hash);
+		return myPagebackedList;
+	}
+	
+	@Override
+	public int myPageSponListCount(String memEmail) {
+		HashMap<String, String> hash = new HashMap<>();
+		hash.put("memEmail", memEmail);
+		int sponCount = ss.selectOne("support.myPageSponListCount",hash);
+		System.out.println("spon 총 계수 :" + sponCount);
+		return sponCount;
+	}
+
+	@Override
+	public List<SponserVO> myPageSponList(int curPage, String memEmail) {
+		
+		HashMap<String, Object>hash=new HashMap<>();
+		hash.put("curPage", curPage);
+		hash.put("memEmail", memEmail);
+		List<SponserVO> myPageSponList= ss.selectList("support.myPageSponList",hash);
+		return myPageSponList;
+	}
 
 
 }

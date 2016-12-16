@@ -93,6 +93,8 @@ public class SupPortServiceImpl implements SupPortService {
 		//###################페이징
 		int backedCount = backedPageCount(search);		//테이블의 row카운트
 		pageVO.setCount(backedCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
+
+		System.out.println("테이블의 row 카운트  : " +pageVO.getCount());
 		
 		PageVO pVO = pagingMaster(pageVO);
 		int curPage = pVO.getCurPage();
@@ -147,6 +149,57 @@ public class SupPortServiceImpl implements SupPortService {
 	public int backedPageCount(String search){
 		int backedCount=supportDao.backedListCount(search);
 		return backedCount;
+	}
+	
+	
+	
+	//후원하기 List 페이지
+	@Override
+	public List<SponserVO> myPageSponList(PageVO pageVO, String memEmail) throws Exception {
+		
+		//###################페이징
+		int sponCount = myPageSponPageCount(memEmail);		//테이블의 row카운트
+		
+		pageVO.setCount(sponCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
+		PageVO pVO = pagingMaster(pageVO);
+		int curPage = pVO.getCurPage();
+		List<SponserVO> sponList = supportDao.myPageSponList(curPage,memEmail);
+		return sponList;
+	}
+	
+	//sponser 테이블에 내가 쓴 글 카운트 해오기
+	@Override
+	public int myPageSponPageCount(String memEmail){
+		
+		int sponCount=supportDao.myPageSponListCount(memEmail);
+		return sponCount;
+	}
+	
+	
+	//후원해주세요 리스트
+	@Override
+	public List<BackedVO> myPageBackedList(PageVO pageVO,String memEmail) throws Exception {
+			
+		//###################페이징
+		int backedCount = myPageBackedPageCount(memEmail);		//테이블의 row카운트
+	
+		pageVO.setCount(backedCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
+		
+		PageVO pVO = pagingMaster(pageVO);
+		int curPage = pVO.getCurPage();
+		
+		List<BackedVO> backedList = supportDao.myPagebackedList(curPage,memEmail);
+		
+			
+		return backedList;
+	}
+	
+
+	//backed 테이블에 내가 쓴 글 카운트 해오기
+	@Override
+	public int myPageBackedPageCount(String memEmail){
+		int sponCount=supportDao.myPageBackedListCount(memEmail);
+		return sponCount;
 	}
 	
 	

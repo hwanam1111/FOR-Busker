@@ -16,7 +16,7 @@ public class TogetherServiceImpl{
 	private TogetherDaoImpl dao;
 
 	 
-	public List<TogetherVO> selectAllTogether(PageVO pageVO) throws Exception {
+	public List<TogetherVO> selectAllTogether(PageVO pageVO,String memEmail) throws Exception {
 		List<TogetherVO> toList=null;
 		
 		int togeCount = togetherPageCount();
@@ -24,7 +24,7 @@ public class TogetherServiceImpl{
 		PageVO pVO = pagingMaster(pageVO);
 		int curPage = pVO.getCurPage();
 		
-		toList=dao.selectAllTogether(curPage);
+		toList=dao.selectAllTogether(curPage,memEmail);
 		return toList;
 	}
 	

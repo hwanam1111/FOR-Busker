@@ -19,4 +19,6 @@ public interface ShowDao {
 	//검색어가 들어왔을 때 row 갯수 가져오기
 	public int showSearchCount(String date, String select, String val);
 	public ShowVO selectShowByNum(int shNo);
+	int myShowCount(String email);
+	List<ShowVO> selectShowByEmail(String email, int curPage);
 }

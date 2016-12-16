@@ -3,123 +3,195 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="support">
 
-<!-- 후원하기 입력 -->
-<insert id="insertSpon" parameterType="busker.scan.vo.SponserVO">
-INSERT INTO sponser(spNo,memEmail,spName,spPhoto,spContent,spCond,spTel) 
-VALUES (seq_sponser.nextVal, #{memEmail}, #{spName}, #{spPhoto}, 
+	<!-- 후원하기 입력 -->
+	<insert id="insertSpon" parameterType="busker.scan.vo.SponserVO">
+		INSERT INTO
+		sponser(spNo,memEmail,spName,spPhoto,spContent,spCond,spTel)
+		VALUES
+		(seq_sponser.nextVal, #{memEmail}, #{spName}, #{spPhoto},
 		#{spContent}, #{spCond}, #{spTel})
-</insert>
+	</insert>
 
-<!-- 후원하기 테이블 총 갯수 구하기 -->
-<select id="sponListCount" parameterType="hashmap"   resultType="int">
-SELECT count(spNo)
-FROM sponser
-<if test="search neq null">
-	WHERE  spName LIKE '%' || #{search} || '%' 
-</if>
-</select>
+	<!-- 후원하기 테이블 총 갯수 구하기 -->
+	<select id="sponListCount" parameterType="hashmap" resultType="int">
+		SELECT count(spNo)
+		FROM sponser
+		<if test="search neq null">
+			WHERE spName LIKE '%' || #{search} || '%'
+		</if>
+	</select>
 
-<!-- 후원하기 리스트 -->
-<select id="sponList"  parameterType="hashmap"   resultType="busker.scan.vo.SponserVO">
-SELECT spNo, spName,spCond,spPhoto,spTel
-FROM (select  rownum as rnum , spNo, spName,spCond,spPhoto,spTel FROM sponser 
-																		<if test="search neq null">
-																			WHERE  spName LIKE '%' || #{search} || '%' 
-																		</if>ORDER BY 
-																		spNO DESC) 
-WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
-</select>
+	<!-- 후원하기 리스트 -->
+	<select id="sponList" parameterType="hashmap" resultType="busker.scan.vo.SponserVO">
+		SELECT spNo, spName,spCond,spPhoto,spTel
+		FROM (select rownum as rnum ,
+		spNo, spName,spCond,spPhoto,spTel FROM
+		sponser
+		<if test="search neq null">
+			WHERE spName LIKE '%' || #{search} || '%'
+		</if>
+		ORDER BY
+		spNO DESC)
+		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND
+		#{curPage}*9
+	</select>
 
-<!-- 후원하기 View -->
-<select id="selectSpon" parameterType="int" resultType="busker.scan.vo.SponserVO">
-SELECT memEmail, spName, spPhoto, spContent, spCond, spTel, spNo 
-FROM sponser 
-WHERE spNo=#{num}
-</select>
+	<!-- 후원하기 View -->
+	<select id="selectSpon" parameterType="int" resultType="busker.scan.vo.SponserVO">
+		SELECT
+		memEmail, spName, spPhoto, spContent, spCond, spTel, spNo
+		FROM sponser
+		WHERE spNo=#{num}
+	</select>
 
-<!-- 후원하기 삭제 -->
-<delete id="delteSpon" parameterType="int" >
-DELETE FROM sponser
-WHERE spNo=#{sponNo}
-</delete>
+	<!-- 후원하기 삭제 -->
+	<delete id="delteSpon" parameterType="int">
+		DELETE FROM sponser
+		WHERE
+		spNo=#{sponNo}
+	</delete>
 
-<!-- 후원하기 수정폼 -->
-<select id="sponUpdateForm" parameterType="busker.scan.vo.SponserVO" resultType="busker.scan.vo.SponserVO">
-SELECT spName, spContent, spCond, spTel, spNo, memEmail 
-FROM sponser
-WHERE spNo=#{spNo}
-</select>
+	<!-- 후원하기 수정폼 -->
+	<select id="sponUpdateForm" parameterType="busker.scan.vo.SponserVO"
+		resultType="busker.scan.vo.SponserVO">
+		SELECT spName, spContent, spCond, spTel, spNo, memEmail
+		FROM sponser
+		WHERE spNo=#{spNo}
+	</select>
 
-<!-- 후원하기 수정 -->
-<update id="sponUpdate" parameterType="busker.scan.vo.SponserVO">
-UPDATE sponser  
-SET spName=#{spName}, spPhoto=#{spPhoto}, spContent=#{spContent}, spCond=#{spCond}, spTel=#{spTel}
-WHERE spNo=#{spNo}
-</update>
+	<!-- 후원하기 수정 -->
+	<update id="sponUpdate" parameterType="busker.scan.vo.SponserVO">
+		UPDATE sponser
+		SET
+		spName=#{spName}, spPhoto=#{spPhoto}, spContent=#{spContent},
+		spCond=#{spCond}, spTel=#{spTel}
+		WHERE spNo=#{spNo}
+	</update>
 
-<!-- 후원해주세요 입력 -->
-<insert id="insertBacked" parameterType="backvo">
-INSERT INTO backed(backNO, memEmail, backName, backVideo, backContent, backTel) 
-VALUES (seq_backed.nextval, #{memEmail}, #{backName}, #{backVideo}, 
+	<!-- 후원해주세요 입력 -->
+	<insert id="insertBacked" parameterType="backvo">
+		INSERT INTO
+		backed(backNO, memEmail, backName, backVideo, backContent,
+		backTel)
+		VALUES (seq_backed.nextval, #{memEmail}, #{backName}, #{backVideo},
 		#{backContent}, #{backTel})
-</insert>
+	</insert>
 
-<!-- 후원해주세요 등록form에서 url 띄우기 -->
-<select id="selectPrVideo" parameterType="String" resultType="String">
-SELECT memvideo
-FROM member
-WHERE memEmail = #{memEmail} 
-</select>
+	<!-- 후원해주세요 등록form에서 url 띄우기 -->
+	<select id="selectPrVideo" parameterType="String" resultType="String">
+		SELECT memvideo
+		FROM member
+		WHERE memEmail = #{memEmail}
+	</select>
 
 
-<!-- Backed 테이블 총 갯수 구하기 -->
-<select id="backedListCount" parameterType="hashmap" resultType="int">
-SELECT count(backNo)
-FROM backed
-<if test="search neq null">
-	WHERE  backName LIKE '%' || #{search} || '%' 
-</if>
-</select>
+	<!-- Backed 테이블 총 갯수 구하기 -->
+	<select id="backedListCount" parameterType="hashmap" resultType="int">
+		SELECT count(backNo)
+		FROM backed
+		<if test="search neq null">
+			WHERE backName LIKE '%' || #{search} || '%'
+		</if>
+	</select>
 
-<!-- 후원해주세요 리스트 -->
-<select id="backedList" parameterType="hashMap" resultType="backvo">
-SELECT *
-FROM(SELECT rownum as rnum,backNo, backName,backContent,backVideo,backTel
-      FROM (SELECT  backNo, backName,backContent,substr(backvideo, -11) as backVideo,backTel 
-            FROM backed 
-            <if test="search neq null">
-				WHERE  backName LIKE '%' || #{search} || '%' 
-			</if>
-            ORDER BY backNo DESC))
-WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
-</select>
+	<!-- 후원해주세요 리스트 -->
+	<select id="backedList" parameterType="hashMap" resultType="backvo">
+		SELECT *
+		FROM(SELECT rownum as rnum,backNo,
+		backName,backContent,backVideo,backTel
+		FROM (SELECT backNo,
+		backName,backContent,substr(backvideo, -11) as
+		backVideo,backTel
+		FROM
+		backed
+		<if test="search neq null">
+			WHERE backName LIKE '%' || #{search} || '%'
+		</if>
+		ORDER BY backNo DESC))
+		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND
+		#{curPage}*9
+	</select>
 
-<!-- 후원해주세요 View -->
-<select id="selectBacked" parameterType="int" resultType="backvo">
-SELECT backName, backVideo, backContent, backTel, memEmail, backNo
-FROM backed
-WHERE backNO=#{num}
-</select>
+	<!-- 후원해주세요 View -->
+	<select id="selectBacked" parameterType="int" resultType="backvo">
+		SELECT
+		backName, backVideo, backContent, backTel, memEmail, backNo
+		FROM backed
+		WHERE backNO=#{num}
+	</select>
 
-<!-- 후원해주세요 삭제 -->
-<delete id="deleteBacked" parameterType="int" >
-DELETE FROM backed
-WHERE backNo=#{backedNo}
-</delete>
+	<!-- 후원해주세요 삭제 -->
+	<delete id="deleteBacked" parameterType="int">
+		DELETE FROM backed
+		WHERE
+		backNo=#{backedNo}
+	</delete>
 
-<!-- 후원해주세요 수정폼 -->
-<select id="backedUpdateForm" parameterType="backvo" resultType="backvo">
-SELECT backName, backVideo, backContent, backTel, backNo, memEmail
-FROM backed
-WHERE backNo=#{backNo}
-</select>
+	<!-- 후원해주세요 수정폼 -->
+	<select id="backedUpdateForm" parameterType="backvo" resultType="backvo">
+		SELECT backName, backVideo, backContent, backTel, backNo, memEmail
+		FROM backed
+		WHERE backNo=#{backNo}
+	</select>
 
-<!-- 후원해주세요 수정 -->
-<update id="backedUpdate" parameterType="backvo">
-UPDATE backed
-SET backName=#{backName}, backVideo=#{backVideo}, backContent=#{backContent}, backTel=#{backTel} 
-WHERE backNo=#{backNo}
-</update>
+	<!-- 후원해주세요 수정 -->
+	<update id="backedUpdate" parameterType="backvo">
+		UPDATE backed
+		SET
+		backName=#{backName}, backVideo=#{backVideo},
+		backContent=#{backContent}, backTel=#{backTel}
+		WHERE backNo=#{backNo}
+	</update>
 
+
+	<!-- 내가 쓴글 후원해주세요 리스트 -->
+
+	<select id="myPageBackedList" parameterType="hashMap"
+		resultType="backvo">
+		SELECT *
+		FROM (SELECT rownum as rnum,backNo,
+		backName,backContent,backVideo,backTel,memEmail
+		FROM (SELECT
+		memEmail,backNo, backName,backContent,substr(backvideo, -11)
+		as
+		backVideo,backTel
+		FROM backed ORDER BY backNo DESC))
+		WHERE rnum BETWEEN
+		((#{curPage}-1)*9)+1 AND #{curPage}*9
+		AND memEmail = #{memEmail}
+	</select>
+
+	<!-- 내가 쓴글 후원하기 리스트 -->
+
+	<select id="myPageSponList" parameterType="hashmap"	resultType="busker.scan.vo.SponserVO">
+		SELECT *
+		FROM (select rownum as rnum , memEmail,spNo,
+		spName,spCond,spPhoto,spTel
+		FROM (select rownum as rnum , memEmail,spNo, spName,spCond,spPhoto,spTel
+		FROM sponser
+		WHERE memEmail = #{memEmail}
+		ORDER BY spNO DESC) subQuery
+		)
+		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND #{curPage}*9
+	</select>
+
+
+	<!-- 내가 쓴글 후원하기 테이블 총 갯수 구하기 -->
+
+	<select id="myPageSponListCount" parameterType="hashmap"
+		resultType="int">
+		SELECT count(spNo)
+		FROM sponser
+		WHERE memEmail = #{memEmail}
+	</select>
+
+	<!-- Backed 테이블 총 갯수 구하기 -->
+
+	<select id="myPageBackedListCount" parameterType="hashmap"
+		resultType="int">
+		SELECT count(backNo)
+		FROM backed
+		WHERE memEmail = #{memEmail}
+	</select>
 
 </mapper>

@@ -50,4 +50,12 @@ public interface SupPortService {
 	//후원해주세요 수정
 	public int backedUpdate(BackedVO backedVO) throws Exception;
 
+	public List<SponserVO> myPageSponList(PageVO pageVO, String search) throws Exception;
+
+	public List<BackedVO> myPageBackedList(PageVO pageVO, String search) throws Exception;
+
+	public int myPageSponPageCount(String memEmail) throws Exception;
+
+	public int myPageBackedPageCount(String memEmail) throws Exception;
+
 }

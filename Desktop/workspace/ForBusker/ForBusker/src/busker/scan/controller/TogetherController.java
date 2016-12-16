@@ -29,7 +29,7 @@ public class TogetherController {
 	
 	// 함께하기 리스트로 이동하면서 together 테이블에서 select*
 	@RequestMapping(value="togetherList")
-	public String togetherList(Model m, String page){
+	public String togetherList(Model m, String page,String memEmail){
 		//페이징 부분 
 		PageVO pageVO = new PageVO();
 		if(page == null){
@@ -40,7 +40,8 @@ public class TogetherController {
 		}
 		
 		try {
-			List<TogetherVO>list=service.selectAllTogether(pageVO);
+			List<TogetherVO>list=service.selectAllTogether(pageVO,memEmail);
+			System.out.println("listsize - " + list.size());
 			m.addAttribute("list",list);
 			m.addAttribute("page",pageVO);
 		} catch (Exception e) {
@@ -91,7 +92,7 @@ public class TogetherController {
 				
 		if(result==1){
 			nextPage= "togetherView/togetherList";
-			List<TogetherVO>list=service.selectAllTogether(pageVO);
+			List<TogetherVO>list=service.selectAllTogether(pageVO,null);
 			m.addAttribute("list",list);
 			m.addAttribute("page",pageVO);
 		}else{
@@ -118,7 +119,7 @@ public class TogetherController {
 			result2=service.deleteTogether(tovo);
 			if(result2==1){
 				//삭제 결과 다음 페이지에 넘겨주고 거기서 load될때 result값에 따라 삭제 완료인지 실패인지 띄워주기
-				List<TogetherVO>list=service.selectAllTogether(pageVO);
+				List<TogetherVO>list=service.selectAllTogether(pageVO,null);
 				m.addAttribute("list",list);
 				m.addAttribute("page",pageVO);
 				m.addAttribute("result2",1);
@@ -192,7 +193,6 @@ public class TogetherController {
 				nextPage="togetherView/togetherSearch";
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return nextPage;

@@ -3,6 +3,7 @@ package busker.scan.service;
 import java.util.HashMap;
 import java.util.List;
 
+import busker.scan.vo.BackedVO;
 import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
@@ -59,8 +60,11 @@ public interface VideoService {
 	// 베스트 영상 가져오기
 	public List<BestVideoVO> videoBest() throws Exception;
 
-	// 마이페이지
-	public List<VideoVO> videoAll(String email) throws Exception;
+	// 내가 쓴글 비디오 영상 카운트
+	int myPageVideoPageCount(String memEmail) throws Exception;
+
+	// 내가 쓴글 비디오 영상 리스트 가져오기
+	List<VideoVO> myPageVideoList(PageVO pageVO, String memEmail) throws Exception;
 	
 	
 }

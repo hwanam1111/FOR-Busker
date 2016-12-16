@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="video">
 
-<!-- BestVideoVO resultMap 생성 -->
+	<!-- BestVideoVO resultMap 생성 -->
 	<resultMap type="busker.scan.vo.BestVideoVO" id="bestVideoMap">
 		<id column="memTeamName" property="memTeamName" />
 		<result column="memTeamPhoto" property="memTeamPhoto" />
@@ -12,68 +12,92 @@
 		<result column="memDetail" property="memDetail" />
 	</resultMap>
 
-<!-- 글 등록 -->
-<insert id="videoInsert" parameterType="busker.scan.vo.VideoVO">
-	INSERT INTO Video(videono, videoname, videodetail, videourl, videoDate, memEmail, memteamname, videocount, videolike)
-	values(seq_video.nextVal, #{videoName}, #{videoDetail}, #{videoUrl}, sysdate, #{memEmail}, #{memTeamName}, '0', '0')
-</insert>
+	<!-- 글 등록 -->
+	<insert id="videoInsert" parameterType="busker.scan.vo.VideoVO">
+		INSERT INTO
+		Video(videono, videoname, videodetail, videourl, videoDate,
+		memEmail,
+		memteamname, videocount, videolike)
+		values(seq_video.nextVal,
+		#{videoName}, #{videoDetail}, #{videoUrl},
+		sysdate, #{memEmail},
+		#{memTeamName}, '0', '0')
+	</insert>
 
-<!-- 비디오 테이블 전체 로우 갯수 가져오기 -->
-<select id="videoPageCount" resultType="int">
-SELECT count(videono)
-FROM video
-</select>
+	<!-- 비디오 테이블 전체 로우 갯수 가져오기 -->
+	<select id="videoPageCount" resultType="int">
+		SELECT count(videono)
+		FROM video
+	</select>
 
-<!-- 리스트 띄우기 -->
-<select id="videoList" parameterType="int" resultType="busker.scan.vo.VideoVO"> 
-SELECT *
-FROM(SELECT rownum as rnum,memEmail,videono,videoname,videodetail,videourl,videosomenale,videoDate,memteamname
-     FROM(SELECT video.memEmail memEmail, video.videono videono, video.videoname videoname, 
-     		video.videodetail videodetail, video.videourl videourl, substr(video.videourl, -11) as videosomenale, 
-      		video.videoDate videoDate, member.memteamname memteamname
-      	  FROM video 
-      	  INNER JOIN member ON video.mememail = member.mememail
-      	  ORDER BY videoDate DESC))
-WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9  
-</select>
+	<!-- 리스트 띄우기 -->
+	<select id="videoList" parameterType="int" resultType="busker.scan.vo.VideoVO">
+		SELECT *
+		FROM(SELECT rownum as
+		rnum,memEmail,videono,videoname,videodetail,videourl,videosomenale,videoDate,memteamname
+		FROM(SELECT video.memEmail memEmail, video.videono videono,
+		video.videoname videoname,
+		video.videodetail videodetail,
+		video.videourl videourl, substr(video.videourl, -11) as
+		videosomenale,
+		video.videoDate videoDate, member.memteamname memteamname
+		FROM video
+		INNER JOIN member ON video.mememail = member.mememail
+		ORDER BY
+		videoDate DESC))
+		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND
+		#{curPage}*9
+	</select>
 
-<!-- 글 보기 -->
-<select id="videoView" parameterType="hashmap" resultType="busker.scan.vo.VideoVO"> 
-SELECT video.videono, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as urlsomenale, video.videoDate, video.videolike, video.videoCount, member.memEmail, member.memteamname
-FROM video 
-INNER JOIN member          
-ON video.mememail = member.mememail
-where video.videono=#{videoNo}
-order by videoDate desc
-</select>
+	<!-- 글 보기 -->
+	<select id="videoView" parameterType="hashmap" resultType="busker.scan.vo.VideoVO">
+		SELECT video.videono, video.videoname, video.videodetail,
+		video.videourl, substr(video.videourl, -11) as urlsomenale,
+		video.videoDate, video.videolike, video.videoCount, member.memEmail,
+		member.memteamname
+		FROM video
+		INNER JOIN member
+		ON video.mememail =
+		member.mememail
+		where video.videono=#{videoNo}
+		order by videoDate desc
+	</select>
 
-<!-- 좋아요 한 페이지도 삭제 -->
-<delete id="videoLikeParentDelete" parameterType="hashmap">
-delete from videoLike where videoNo=#{videoNo}
-</delete>
+	<!-- 좋아요 한 페이지도 삭제 -->
+	<delete id="videoLikeParentDelete" parameterType="hashmap">
+		delete from
+		videoLike where videoNo=#{videoNo}
+	</delete>
 
-<!-- 글 삭제 -->
-<delete id="videoDelete" parameterType="hashmap">
-	DELETE FROM video where videono=#{videoNo}
-</delete>
- 
-<!-- 글 수정 폼 셀렉트 -->
-<select id="videoViewSelect" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoVO">
-	select * from video where videono=#{videoNo}
-</select>
+	<!-- 글 삭제 -->
+	<delete id="videoDelete" parameterType="hashmap">
+		DELETE FROM video where
+		videono=#{videoNo}
+	</delete>
 
-<!-- 글 수정 -->
-<update id="videoUpdate" parameterType="busker.scan.vo.VideoVO">
-	UPDATE video SET videoname=#{videoName}, videourl=#{videoUrl},videodetail=#{videoDetail} WHERE videono=#{videoNo}
-</update>
+	<!-- 글 수정 폼 셀렉트 -->
+	<select id="videoViewSelect" parameterType="busker.scan.vo.VideoVO"
+		resultType="busker.scan.vo.VideoVO">
+		select * from video where videono=#{videoNo}
+	</select>
 
-<!-- 글 조회수 -->
-<update id="videoCount" parameterType="busker.scan.vo.VideoVO">
-	update video set videocount= videocount+1 where videono =#{videoNo}
-</update>
+	<!-- 글 수정 -->
+	<update id="videoUpdate" parameterType="busker.scan.vo.VideoVO">
+		UPDATE video SET
+		videoname=#{videoName},
+		videourl=#{videoUrl},videodetail=#{videoDetail} WHERE
+		videono=#{videoNo}
+	</update>
 
-<!-- NEW LIST -->
-<select id="videoNewList" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoVO">
+	<!-- 글 조회수 -->
+	<update id="videoCount" parameterType="busker.scan.vo.VideoVO">
+		update video set
+		videocount= videocount+1 where videono =#{videoNo}
+	</update>
+
+	<!-- NEW LIST -->
+	<select id="videoNewList" parameterType="busker.scan.vo.VideoVO"
+		resultType="busker.scan.vo.VideoVO">
 <![CDATA[
 SELECT video.memEmail, video.videono, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as videosomenale, video.videoDate, member.memEmail, member.memteamname
 FROM video  
@@ -82,61 +106,78 @@ ON video.mememail = member.mememail
 WHERE rownum <= 2 
 order by videono desc
 ]]>
-</select>
+	</select>
 
-<!-- 좋아요 Insert -->
-<insert id="videoLikeInsert" parameterType="busker.scan.vo.VideoLikeVO">
-INSERT INTO VideoLike(likeNo, memLoginEmail, videoNo) VALUES(seq_videolike.nextval, #{memLoginEmail}, #{videoNo})
-</insert>
+	<!-- 좋아요 Insert -->
+	<insert id="videoLikeInsert" parameterType="busker.scan.vo.VideoLikeVO">
+		INSERT INTO
+		VideoLike(likeNo, memLoginEmail, videoNo)
+		VALUES(seq_videolike.nextval, #{memLoginEmail}, #{videoNo})
+	</insert>
 
-<!-- 좋아요 Update -->
-<update id="videoLikeUpdate" parameterType="busker.scan.vo.VideoVO">
-update video set videoLike= videoLike+1 where videoNo =#{videoNo}
-</update>
+	<!-- 좋아요 Update -->
+	<update id="videoLikeUpdate" parameterType="busker.scan.vo.VideoVO">
+		update video set
+		videoLike= videoLike+1 where videoNo =#{videoNo}
+	</update>
 
-<!-- 좋아요 확인 -->
-<select id="videoLikeList" parameterType="busker.scan.vo.VideoVO" resultType="busker.scan.vo.VideoLikeVO"> 
-select * from videoLike where videoNo =#{videoNo}
-</select>
+	<!-- 좋아요 확인 -->
+	<select id="videoLikeList" parameterType="busker.scan.vo.VideoVO"
+		resultType="busker.scan.vo.VideoLikeVO">
+		select * from videoLike where videoNo =#{videoNo}
+	</select>
 
-<!-- 좋아요 Delete -->
-<delete id="videoLikeDelete" parameterType="busker.scan.vo.VideoLikeVO">
-delete from VideoLike where videoNo =#{videoNo}
-</delete>
+	<!-- 좋아요 Delete -->
+	<delete id="videoLikeDelete" parameterType="busker.scan.vo.VideoLikeVO">
+		delete from VideoLike
+		where videoNo =#{videoNo}
+	</delete>
 
-<!-- 좋아요 UpdateMinus -->
-<update id="videoLikeUpdateMinus" parameterType="busker.scan.vo.VideoVO">
-update video set videoLike= videoLike-1 where videoNo =#{videoNo}
-</update>
+	<!-- 좋아요 UpdateMinus -->
+	<update id="videoLikeUpdateMinus" parameterType="busker.scan.vo.VideoVO">
+		update video set
+		videoLike= videoLike-1 where videoNo =#{videoNo}
+	</update>
 
 
-<!-- 좋아요 리스트 띄우기 -->
-<select id="videoMypageLikeList" parameterType="hashmap" resultType="busker.scan.vo.VideoVO"> 
-SELECT *
-FROM (SELECT  rownum as rnum , m.memEmail memEmail, m.memTeamName memTeamName, vLike.LikeNo LikeNo, v.videoNo videoNo, v.videoname videoname, 
-      v.videodetail videodetail, v.videourl videourl, substr(v.videourl, -11) as videosomenale, v.videoDate videoDate
-      FROM video v, videoLike vlike, member m
-      WHERE vlike.memloginemail =m.mememail AND v.videoNo = vlike.videoNo AND m.memEmail=#{memEmail}
-      ORDER BY likeno desc )
-WHERE  rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9
-</select>
+	<!-- 좋아요 리스트 띄우기 -->
+	<select id="videoMypageLikeList" parameterType="hashmap"
+		resultType="busker.scan.vo.VideoVO">
+		SELECT *
+		FROM (SELECT rownum as rnum , m.memEmail memEmail,
+		m.memTeamName
+		memTeamName, vLike.LikeNo LikeNo, v.videoNo videoNo,
+		v.videoname
+		videoname,
+		v.videodetail videodetail, v.videourl videourl,
+		substr(v.videourl, -11) as
+		videosomenale, v.videoDate videoDate
+		FROM
+		video v, videoLike vlike, member m
+		WHERE vlike.memloginemail
+		=m.mememail AND v.videoNo = vlike.videoNo AND
+		m.memEmail=#{memEmail}
+		ORDER BY likeno desc )
+		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND
+		#{curPage}*9
+	</select>
 
-<!-- 좋아요한 테이블 전체 row갯수 가져오기 -->
-<select id="likePageCount" parameterType="String" resultType="int">
-SELECT count(likeno)
-FROM videolike
-WHERE memloginemail = #{memEmail}
-</select>
+	<!-- 좋아요한 테이블 전체 row갯수 가져오기 -->
+	<select id="likePageCount" parameterType="String" resultType="int">
+		SELECT count(likeno)
+		FROM videolike
+		WHERE memloginemail = #{memEmail}
+	</select>
 
-<!-- main의 Best 영상 3개를 가져오기 -->
-<select id="videoBest" resultMap="bestVideoMap" resultType="busker.scan.vo.BestVideoVO">
+	<!-- main의 Best 영상 3개를 가져오기 -->
+	<select id="videoBest" resultMap="bestVideoMap" resultType="busker.scan.vo.BestVideoVO">
 <![CDATA[
 select 
 mem.memTeamPhoto as memTeamPhoto,
 mem.memteamname as memTeamName,
 vl.videolike as videoLike,
 mem.memTeamType as memTeamType,
-mem.memdetail as memDetail
+mem.memdetail as memDeil
 from 
 (select mememail,sum(videolike) videolike 
 from video 
@@ -146,6 +187,30 @@ order by videolike desc) vl, member mem
 where mem.memEmail = vl.memEmail
 AND rownum <=3
 ]]>
-</select>
+	</select>
 
+	<select id="myPageVideoList" parameterType="hashmap" resultType="busker.scan.vo.VideoVO">
+	<![CDATA[	SELECT *
+		FROM (SELECT rownum as rnum, subQuery.*
+		FROM (SELECT video.memEmail memEmail, video.videono videono,
+		video.videoname videoname,
+		video.videodetail videodetail, video.videourl videourl, substr(video.videourl, -11) as
+		videosomenale,
+		video.videoDate videoDate, member.memteamname memteamname
+		FROM video
+		INNER JOIN member ON video.mememail = #{memEmail}
+		WHERE member.mememail = #{memEmail}
+		ORDER BY videoDate DESC) subQuery
+		) total
+		WHERE total.rnum BETWEEN ((#{curPage}-1)*9)+1 AND #{curPage}*9
+	]]>
+	</select>
+	
+	<select id="myPageVideoListCount" parameterType="String" resultType="int">
+	select count(*)
+	from video
+	where memEmail = #{memEmail}
+	</select>
+	
+	
 </mapper>

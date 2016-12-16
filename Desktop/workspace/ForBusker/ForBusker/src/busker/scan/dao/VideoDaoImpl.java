@@ -155,9 +155,21 @@ public class VideoDaoImpl implements VideoDao {
 		return ss.selectList("video.videoBest");
 	}
 
+	
+	// 내가 쓴글 비디오 영상 카운트
 	@Override
-	public List<VideoVO> videoAll(String email) {
-		return ss.selectList("video.videoAll", email);
+	public int myPageBackedListCount(String memEmail) {
+		return ss.selectOne("video.myPageVideoListCount",memEmail);
+	}
+	
+	// 내가 쓴글 비디오 영상 리스트 가져오기
+	@Override
+	public List<VideoVO> myPagebackedList(int curPage, String memEmail) {
+	
+		HashMap<String, Object>hash=new HashMap<>();
+		hash.put("curPage", curPage);
+		hash.put("memEmail", memEmail);
+		return ss.selectList("video.myPageVideoList", hash);
 	}
 
 

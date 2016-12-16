@@ -92,4 +92,21 @@ WHERE shdate=#{date}
 <select id="selectShowByNum" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
 SELECT * FROM show WHERE shNo=#{shNo}
 </select>
+
+
+<select id="myShowCount" parameterType="String" resultType="int">
+SELECT count(shno) FROM show WHERE memEmail=#{memEmail}
+</select>
+
+<select id="selectShowByEmail" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+SELECT *
+FROM (select shno,mememail,SHTEAMNAME,substr(SHVIDEO,-11) as shVideo,SHNAME
+				,SHMAPCOORDS,SHMAPDETAIL,SHDATE,SHTIME,SHTYPE,SHDETAIL 
+				from show 
+				where mememail=#{email}
+	  ) 
+WHERE rownum  BETWEEN ((#{curPage}-1)*9)+1  AND #{curPage}*9
+</select>
+
+
 </mapper>

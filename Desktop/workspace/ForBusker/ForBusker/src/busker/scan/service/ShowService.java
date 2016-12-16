@@ -13,5 +13,7 @@ public interface ShowService {
 	public List selectList(int shno)throws Exception;
 	public List selectList(String date, String select, String val,PageVO pageVO) throws Exception;
 	public ShowVO selectShowByNum(int shNo);
+	public List<ShowVO> selectShowByEmail(String email, PageVO pageVO, String mapping);
+	public int myShowCount(String email);
 
 }

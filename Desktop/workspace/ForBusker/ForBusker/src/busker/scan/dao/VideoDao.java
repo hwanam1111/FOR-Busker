@@ -3,6 +3,7 @@ package busker.scan.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import busker.scan.vo.BackedVO;
 import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.VideoLikeVO;
@@ -64,6 +65,9 @@ public interface VideoDao {
 	// 베스트 영상 가져오기
 	public List<BestVideoVO> videoBest();
 
-	//	마이페이지
-	public List<VideoVO> videoAll(String email);
+	// 내가 쓴글 비디오 영상 카운트
+	public int myPageBackedListCount(String memEmail);
+
+	// 내가 쓴글 비디오 영상 리스트 가져오기
+	public List<VideoVO> myPagebackedList(int curPage, String memEmail);
 }

@@ -113,6 +113,21 @@ public class ShowDaoImpl implements ShowDao {
 		return ss.selectOne("show.selectShowByNum",hash);
 	}
 	
+	//내 이메일로 적은 쇼 갯수 가져오기
+	@Override
+	public int myShowCount(String email){
+		    System.out.println("내가 쓴 쇼글 갯수 : "+ss.selectOne("show.myShowCount", email));
+			return ss.selectOne("show.myShowCount", email);
+		}
+	
+	@Override
+	public List<ShowVO> selectShowByEmail(String email,int curPage){
+		HashMap hash=new HashMap();
+		hash.put("email",email);
+		hash.put("curPage", curPage);
+		System.out.println("email 과 curpage :"+email+" / "+curPage);
+		return ss.selectList("show.selectShowByEmail", hash);
+	}
 
 
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import busker.scan.dao.VideoDao;
+import busker.scan.vo.BackedVO;
 import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
@@ -134,13 +135,13 @@ public class VideoServiceImpl implements VideoService {
 		PageVO pVO = pagingMaster(pageVO);
 		int curPage = pVO.getCurPage();
 		
-		
-	
 	//전체 로우 갯수 가져오기 (count)
 	
 		return videoDao.videoMypageLikeList(memEmail,curPage);
 
-}
+	}
+	
+	
 	public int likePageCount(String memEmail){
 		
 		int likePageCount=videoDao.likePageCount(memEmail);
@@ -202,9 +203,30 @@ public class VideoServiceImpl implements VideoService {
 		return videoDao.videoBest();
 	}
 	
+	// 내가 쓴글 비디오 영상 리스트 가져오기
 	@Override
-	public List<VideoVO> videoAll(String email) throws Exception{
-		return videoDao.videoAll(email);
-	};
-
+	public List<VideoVO> myPageVideoList(PageVO pageVO,String memEmail) throws Exception {
+			
+		//###################페이징
+		int videoCount = myPageVideoPageCount(memEmail);		//테이블의 row카운트
+	
+		pageVO.setCount(videoCount);				//sponser 테이블에서 가져온 값 pageVO에 Count에 set해주기
+		
+		PageVO pVO = pagingMaster(pageVO);
+		int curPage = pVO.getCurPage();
+		
+		List<VideoVO> videoList = videoDao.myPagebackedList(curPage,memEmail);
+		
+			
+		return videoList;
+	}
+	
+	// 내가 쓴글 비디오 영상 카운트
+	@Override
+	public int myPageVideoPageCount(String memEmail){
+		int videoCount= videoDao.myPageBackedListCount(memEmail);
+		return videoCount;
+	}
+	
+	
 }

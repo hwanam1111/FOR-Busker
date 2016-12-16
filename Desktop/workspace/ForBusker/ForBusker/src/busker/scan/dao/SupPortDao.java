@@ -51,4 +51,12 @@ public interface SupPortDao {
 	
 	//후원해주세요 수정
 	public int backedUpdate(BackedVO backedVO);
+
+	public int myPageBackedListCount(String search);
+
+	public int myPageSponListCount(String search);
+
+	public List<BackedVO> myPagebackedList(int curPage, String memEmail);
+	
+	public List<SponserVO> myPageSponList(int curPage, String memEmail);
 }

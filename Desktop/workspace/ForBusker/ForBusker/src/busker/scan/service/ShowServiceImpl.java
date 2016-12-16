@@ -36,7 +36,7 @@ public class ShowServiceImpl implements ShowService {
 		System.out.println("showService_selectList내부진입(string버전)");
 		int showLocCount =showLocCount(loc);
 		pageVO.setCount(showLocCount);				//together 테이블에서 가져온 값 pageVO에 Count에 set해주기
-		PageVO pVO = pagingMaster(pageVO);
+		PageVO pVO = pagingMaster(pageVO,null);
 		int curPage = pVO.getCurPage();
 		
 		return dao.selectShow(loc,curPage);
@@ -47,12 +47,19 @@ public class ShowServiceImpl implements ShowService {
 		int showLocCount=dao.showLocCount(loc);
 		return showLocCount;
 	}
+
 	//페이징 ㄱ ㄱ
-	public PageVO pagingMaster(PageVO pageVO){
+	public PageVO pagingMaster(PageVO pageVO,String mapping){
 			
-		int curPage = pageVO.getCurPage();			//현제 페이지 가져오기
-		int limit=2;								//화면에 보일 리스트 갯수 지정
+		int curPage = pageVO.getCurPage();//현제 페이지 가져오기
+		int limit=0;								
 		
+		//화면에 보일 리스트 갯수 지정
+		if(mapping!=null){
+			limit=9;
+		}else{
+			limit=2;
+		}
 		int sponCount = pageVO.getCount();   //카운트 가져오기
 		int maxpage = (sponCount+limit-1)/limit;	  //마지막 페이지 구하기 
 		int startpage = ((curPage-1)/5) * 5 + 1; //1부터 5까지는 1 6부터 10까지는 2
@@ -101,7 +108,7 @@ public class ShowServiceImpl implements ShowService {
 		System.out.println("showService_selectList내부진입(검색버전)  데이트는 :"+date+"/셀렉트는"+select+"발은"+val);
 		int showSearchCount = showSearchCount(date,select,val);
 		pageVO.setCount(showSearchCount);				//together 테이블에서 가져온 값 pageVO에 Count에 set해주기
-		PageVO pVO = pagingMaster(pageVO);
+		PageVO pVO = pagingMaster(pageVO,null);
 		int curPage = pVO.getCurPage();
 		return dao.selectShow(date,select,val,curPage); 
 	}
@@ -111,10 +118,30 @@ public class ShowServiceImpl implements ShowService {
 		int showSearchCount = dao.showSearchCount(date,select,val);
 		return showSearchCount;
 	}
+	
 	//slide 눌렀을때 정보가지고오기
 	public ShowVO selectShowByNum(int shNo){
 		return dao.selectShowByNum(shNo);
 	}
 
-
+	
+	//해당 이메일로 등록한 show 가져오기
+	@Override
+	public List<ShowVO>selectShowByEmail (String email,PageVO pageVO,String mapping){
+		int myShowCount=myShowCount(email);
+		
+		pageVO.setCount(myShowCount);				
+		PageVO pVO = pagingMaster(pageVO,mapping);
+		int curPage = pVO.getCurPage();
+		System.out.println("서비스 curpage :"+curPage);
+		return dao.selectShowByEmail(email,curPage);
+	}
+	//show테이블에서 해당 이메일의 갯수 가져오기
+	@Override
+	public int myShowCount(String email){
+		int myShowCount=dao.myShowCount(email);
+		return myShowCount;
+	}
+	
+	
 }
