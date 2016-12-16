@@ -70,10 +70,10 @@
 		<div class="sponimg">
 			<p style="position: relative; right:10px;">TITLE : ${selectSpon.spName }</p><br/>
 			<!-- 이부분은 다름 -->
-			<img  src="<%=projectName %>/upload/${selectSpon.spPhoto }">
+			<img src="<%=projectName %>/upload/${selectSpon.spPhoto} " style="width:540px; height: 402px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
 		</div>
 	</div>
-	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
+	<div id="footBtn" style="margin-top:40px; margin-left:60px; display:none;">
 <%-- 		<input type="hidden" value="${selectSpon.memEmail}" name="memEmail"> --%>
 		<a href="sponUpdateForm.do?spNo=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
 		<a href="sponDelete.do?num=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>

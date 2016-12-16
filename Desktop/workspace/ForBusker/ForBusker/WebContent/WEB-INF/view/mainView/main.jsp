@@ -278,7 +278,7 @@ function logout(){
 					<article class="one_third"> <figure>
 		    </c:otherwise>
 			</c:choose>
-			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg.jpg';"></a></figure> 	<!-- 팀사진 -->
+			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"></a></figure> 	<!-- 팀사진 -->
 			<div class="txtwrap" align="center">
 				<h4 class="heading"> ${best.memTeamName} </h4>					<!-- 팀명  -->
 				<ul class="nospace meta">

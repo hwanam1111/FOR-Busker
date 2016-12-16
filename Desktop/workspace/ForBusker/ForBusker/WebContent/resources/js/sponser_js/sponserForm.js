@@ -11,9 +11,6 @@ $(function(){
 		if($('input[name=spName]').val().length<1){
 			alert('제목을 입력하세요');
 			return false;
-		}else if($('input[name=file]').val().length<1){
-			alert('파일을 등록해주세요');
-			return false;
 		}else if($('textarea[name=spContent]').val().length<1){
 			alert('내용을 입력하세요');
 			return false;

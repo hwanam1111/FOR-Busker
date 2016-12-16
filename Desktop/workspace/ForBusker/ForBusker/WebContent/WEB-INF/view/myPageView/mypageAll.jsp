@@ -190,7 +190,8 @@ position:relative;
 							href="sponserView.do?num=<%=spvo.getSpNo() %>">
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"><br />
+							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
+							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 							<br />
 
 							<p style="height: 40px;">Title : <%=spvo.getSpName()%></p>
@@ -378,7 +379,8 @@ position:relative;
 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="/ForBusker/upload/<%=tvo.getToPhoto()%>"><br />
+							src="/ForBusker/upload/<%=tvo.getToPhoto()%>"
+							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 						<br />
 
 							<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
