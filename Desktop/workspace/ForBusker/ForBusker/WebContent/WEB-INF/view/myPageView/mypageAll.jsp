@@ -77,6 +77,12 @@ $(function(){
 });
 
 </script>
+<style type="text/css" rel="stylesheet">
+nav{
+position:relative;
+
+}
+</style>
 </head>
 
 <body id="top">
@@ -134,7 +140,7 @@ $(function(){
 				</c:forEach>
 		<!-- #####################################  페 이 징  ########################################################### -->
 				
-				<nav style="margin-left:400px;">
+				<nav>
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageAll.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
@@ -182,7 +188,7 @@ $(function(){
 				</c:forEach>
 		<!-- #####################################  페 이 징  ########################################################### -->
 
-				<nav align="center">
+				<nav>
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageSponserList.do?cate=spon&page=<%=pVO.getPreviPage()%>"
@@ -231,7 +237,7 @@ $(function(){
 				
 		<!-- #####################################  페 이 징  ########################################################### -->
 
-				<nav align="center">
+				<nav>
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageBackedList.do?cate=backed&page=<%=pVO.getPreviPage()%>"
@@ -282,7 +288,7 @@ $(function(){
 				</c:forEach>
 		
 		<!-- #####################################  페 이 징  ########################################################### -->
-		   	<nav align="center">
+		   	<nav>
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageVideoList.do?cate=video&page=<%=pVO.getPreviPage()%>"
@@ -335,7 +341,7 @@ $(function(){
 		<!-- #######################################################################################################  -->
 		<!-- #####################################  페 이 징  ########################################################### -->
 		<!-- #######################################################################################################  -->	
-			<nav style="margin-left:400px;">
+			<nav>
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageTogetherList.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
