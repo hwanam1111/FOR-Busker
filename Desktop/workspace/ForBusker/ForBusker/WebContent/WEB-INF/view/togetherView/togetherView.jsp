@@ -46,7 +46,7 @@
 		$('.MDBtn').css('display', 'block');
 		
 	<%if(tVO.getToId().equals(mVO.getMemEmail())){%>
-		$("#insertMessage").attr("disabled","disabled");
+		$("#togetherJoin").attr("disabled","disabled");
 	<% } %>
 	
 	})
