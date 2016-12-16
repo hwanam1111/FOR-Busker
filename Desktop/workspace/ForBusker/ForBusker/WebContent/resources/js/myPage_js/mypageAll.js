@@ -20,7 +20,7 @@ $(document).ready(function() {
         if(activeTab=='#SponserList')window.location.href="mypageSponserList.do?cate=sponser&page=1";
         else if(activeTab=='#BackedList')window.location.href="mypageBackedList.do?cate=backed&page=1";
         else if(activeTab=='#VideoList')window.location.href="mypageVideoList.do?cate=video&page=1";
-        else if(activeTab=='#JoinList') window.location.href="mypageTogetherList.do?cate=join&page=1";
+        else if(activeTab=='#JoinList') window.location.href="mypageTogetherList.do?cate=toList&page=1";
         else window.location.href="mypageAll.do?cate=show&page=1";
 
 		

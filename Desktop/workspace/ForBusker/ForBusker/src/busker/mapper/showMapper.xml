@@ -104,6 +104,7 @@ FROM (select shno,mememail,SHTEAMNAME,substr(SHVIDEO,-11) as shVideo,SHNAME
 				,SHMAPCOORDS,SHMAPDETAIL,SHDATE,SHTIME,SHTYPE,SHDETAIL 
 				from show 
 				where mememail=#{email}
+				order by shdate desc
 	  ) 
 WHERE rownum  BETWEEN ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
