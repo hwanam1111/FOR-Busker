@@ -78,7 +78,7 @@
 	<tr> <!-- 제목 들어가는 부분 -->
 	<td style="width:650px;">
 	
-	<div style="width:650px;"><h1><img src="<%=projectName %>/resources/images/together_img/idea.png">TITLE : ${tovo.toName}</h1></div>
+	<div style="width:650px;"><h1><img src="<%=projectName %>/resources/images/together_img/idea.png" >TITLE : ${tovo.toName}</h1></div>
 	
 	</td>
 	</tr>
@@ -86,7 +86,7 @@
 	<tr><!-- 이미지 들어가는 부분 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/upload/${tovo.toPhoto}" id="viewImg" style="width:750px; height:450px;">
+	<img src="<%=projectName %>/upload/${tovo.toPhoto}" id="viewImg" style="width:750px; height:450px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
 	</div>
 	</td>
 	</tr>
