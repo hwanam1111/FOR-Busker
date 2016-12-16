@@ -134,31 +134,28 @@ position:relative;
 						</a>
 						<p>TeamName : ${show.shTeamName}</p>
 						<p>Date : ${show.shDate}</p>
-						<input type="hidden" value="${show.memEmail}" name="memEmail">
-					</div>
-					
+						<input type="hidden" value="${show.memEmail}" name="memEmail">	
+						</div>				
 				</c:forEach>
 		<!-- #####################################  페 이 징  ########################################################### -->
 				
-				<nav>
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
-				      <a class="page-link" href="mypageAll.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+				      <a class="page-link" href="mypageAll.do?cate=show&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				        <span class="sr-only">Previous</span>
 				      </a>
 				    </li>
 				    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-				   	 	<li class="page-item"><a class="page-link" href="mypageAll.do?page=<%=i %>"><%=i %></a></li>
+				   	 	<li class="page-item"><a class="page-link" href="mypageAll.do?cate=show&page=<%=i %>"><%=i %></a></li>
 				    <%} %>
 				    <li class="page-item">
-				      <a class="page-link" href="mypageAll.do?page=<%=pVO.getNextPage()%>" aria-label="Next">
+				      <a class="page-link" href="mypageAll.do?cate=show&page=<%=pVO.getNextPage()%>" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				        <span class="sr-only">Next</span>
 				      </a>
 				    </li>
 				  </ul>
-				</nav>
 				
 			</div>
 
@@ -188,10 +185,9 @@ position:relative;
 				</c:forEach>
 		<!-- #####################################  페 이 징  ########################################################### -->
 
-				<nav>
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
-							href="mypageSponserList.do?cate=spon&page=<%=pVO.getPreviPage()%>"
+							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								<span class="sr-only">Previous</span>
 						</a></li>
@@ -199,17 +195,17 @@ position:relative;
 							for (int i = pVO.getStartPage(); i <= pVO.getEndPage(); i++) {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="mypageSponserList.do?cate=spon&page=<%=i%>"><%=i%></a></li>
+							href="mypageSponserList.do?cate=sponser&page=<%=i%>"><%=i%></a></li>
 						<%
 							}
 						%>
 						<li class="page-item"><a class="page-link"
-							href="mypageSponserList.do?cate=spon&page=<%=pVO.getNextPage()%>"
+							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getNextPage()%>"
 							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-				</nav>
+
 			</div>
 
 		<% } %>
@@ -237,7 +233,6 @@ position:relative;
 				
 		<!-- #####################################  페 이 징  ########################################################### -->
 
-				<nav>
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageBackedList.do?cate=backed&page=<%=pVO.getPreviPage()%>"
@@ -248,7 +243,7 @@ position:relative;
 							for (int i = pVO.getStartPage(); i <= pVO.getEndPage(); i++) {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="mypageBackedList.do?cate=spon&page=<%=i%>"><%=i%></a></li>
+							href="mypageBackedList.do?cate=backed&page=<%=i%>"><%=i%></a></li>
 						<%
 							}
 						%>
@@ -258,13 +253,12 @@ position:relative;
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-				</nav>
 				
 			</div>
 		<% } %>
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
-		<!--###########################################   리스트     ######################################################## -->
+		<!--###########################################     리스트            ######################################################## -->
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
 		<% if(cate.equals("video")) {  %>
@@ -288,7 +282,6 @@ position:relative;
 				</c:forEach>
 		
 		<!-- #####################################  페 이 징  ########################################################### -->
-		   	<nav>
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageVideoList.do?cate=video&page=<%=pVO.getPreviPage()%>"
@@ -309,7 +302,6 @@ position:relative;
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-				</nav>
 		   </div>
 		 
 		<% } %>
@@ -341,30 +333,27 @@ position:relative;
 		<!-- #######################################################################################################  -->
 		<!-- #####################################  페 이 징  ########################################################### -->
 		<!-- #######################################################################################################  -->	
-			<nav>
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
-				      <a class="page-link" href="mypageTogetherList.do?page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				        <span class="sr-only">Previous</span>
 				      </a>
 				    </li>
 				    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?page=<%=i %>"><%=i %></a></li>
+				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=i %>"><%=i %></a></li>
 				    <%} %>
 				    <li class="page-item">
-				      <a class="page-link" href="mypageTogetherList.do?page=<%=pVO.getNextPage()%>" aria-label="Next">
+				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getNextPage()%>" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				        <span class="sr-only">Next</span>
 				      </a>
 				    </li>
 				  </ul>
-				</nav>
 			
 			</div>
 		<% } %>
 		</div>
-	</div>
 
 	<!-- 코딩 종료 -->
 

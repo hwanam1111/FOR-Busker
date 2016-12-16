@@ -19,3 +19,4 @@ $(function(){
 	$('#updateForm').attr("enctype","multipart/form-data");
 
 });
+

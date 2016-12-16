@@ -61,4 +61,16 @@ public class ShowController {
 	public String ShowRegistUploadInfo(){
 		return "showView/showRegistUploadInfo";
 	}
+	
+	@RequestMapping(value="selectShowByNum2")
+	public String selectShowByNum2(int shNo,Model m){
+		
+		ShowVO vo=service.selectShowByNum(shNo);
+		System.out.println("video"+vo.getShVideo());
+		m.addAttribute("show",vo);
+		return "showView/showView";		
+
+	}
+	
+	
 }
