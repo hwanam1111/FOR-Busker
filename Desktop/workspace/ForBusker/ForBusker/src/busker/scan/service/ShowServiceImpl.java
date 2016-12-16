@@ -153,6 +153,6 @@ public class ShowServiceImpl implements ShowService {
 	public int deleteShow(int shNo){
 		int result = dao.deleteShow(shNo);
 		return result;
-	} 	
+	} 		
 	
 }

@@ -19,7 +19,27 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- showView js -->
-<script src="<%=projectName %>/resources/js/show_js/showView.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showView.js')?>"></script>
+<%-- <script src="<%=projectName %>/resources/js/show_js/showView.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showView.js')?>"></script> --%>
+<script type="text/javascript">
+$(function(){
+	
+	$('#mdBtn').click(function(){
+		
+		location.href="showUpdate.do?shNo=${show.shNo}";
+	})
+	
+	$('#deBtn').click(function(){
+		var result = confirm('정말 삭제하시겠습니까??');
+		if (result){    //확인
+			location.href="showDelete.do?shNo=${show.shNo}";
+		}else{   //취소
+		    return;
+		}
+		
+		
+	})
+})
+</script>
 </head>
 
 <body id="top">
