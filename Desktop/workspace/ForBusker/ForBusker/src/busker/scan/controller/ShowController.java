@@ -72,5 +72,43 @@ public class ShowController {
 
 	}
 	
+	@RequestMapping(value="showUpdate")
+	public String updateShow(int shNo,Model m){
+		ShowVO sVO = service.selectShowByNum(shNo);
+		m.addAttribute("showVO",sVO);
+		
+		return "showView/showUpdate";
+	}
+	
+	@RequestMapping(value="showUpdateOk")
+	public String showUpdateOk(ShowVO showVO,Model m){
+		
+		int result=service.updateShow(showVO);
+		String message="";
+		if(result == 1){
+			message="수정을 완료했습니다";
+		}else{
+			message="수정을 실패했습니다";
+		}
+		m.addAttribute("message",message);
+		m.addAttribute("shNo",showVO.getShNo());
+		return "showView/showUpdateOk";
+	}
+	
+	@RequestMapping(value="showDelete")
+	public String showDelete(int shNo,Model m){
+		
+		int result =service.deleteShow(shNo);
+		String message="";
+		if(result == 1){
+			message="삭제를 완료했습니다";
+		}else{
+			message="삭제를 실패했습니다";
+		}
+		m.addAttribute("message",message);
+		
+		return "showView/showDeleteOk";
+	}
+	
 	
 }

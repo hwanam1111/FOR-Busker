@@ -109,5 +109,18 @@ FROM (select shno,mememail,SHTEAMNAME,substr(SHVIDEO,-11) as shVideo,SHNAME
 WHERE rownum  BETWEEN ((#{curPage}-1)*9)+1  AND #{curPage}*9
 </select>
 
+<!-- 수정하기 -->
+<update id="updateShow" parameterType="ShowVO" >
+UPDATE show
+SET shteamname=#{shTeamName}, shvideo = #{shVideo}, shname=#{shName} ,shmapcoords=#{shMapCoords} ,
+	shmapaddr=#{shMapAddr} ,shmapdetail=#{shDate} ,shdate=#{shDate},shtime=#{shTime},shtype=#{shType},shdetail=#{shDetail}
+WHERE shno = #{shNo}
+</update>
+
+<!-- 삭제하기 -->
+<delete id="deleteShow" parameterType="int">
+DELETE FROM show
+WHERE shno=#{shNo}
+</delete>
 
 </mapper>
