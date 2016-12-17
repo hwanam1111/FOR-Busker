@@ -120,7 +120,6 @@ position:relative;
 		<% if(cate.equals("show")) {  %>
 	
 			<div id="ShowList" class="tab_content">
-			
 				<% for(ShowVO shvo:showList){ %>	
 				
 					<div class="col-xs-4" style="margin-bottom: 60px;">
