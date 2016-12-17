@@ -4,6 +4,7 @@
 
 <c:if test="${not empty sessionScope.list }">  
 	<div class="float">
+		<div id="floatTop">
 		<div id="floatdiv">
 			<ul>
 				<li>최근 본 동영상</li>
@@ -15,6 +16,7 @@
   				</li>		
 				</c:forEach>	
 			</ul>
+		</div>
 		</div>	
 	</div>
 </c:if>
