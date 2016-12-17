@@ -120,8 +120,7 @@ position:relative;
 		<% if(cate.equals("show")) {  %>
 	
 			<div id="ShowList" class="tab_content">
-				<c:forEach var="show" items="${showList}">
-				
+				<c:forEach var="show" items="${showList}">				
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a href="selectShowByNum2.do?shNo=${show.shNo}">
 

@@ -88,7 +88,7 @@ public class VideoListController {
 	
 //	글보기 뷰
 	@RequestMapping(value="videoView")
-	public String videoView(VideoVO vvo, VideoLikeVO vlo , String videoNo, Model m,  String myId, String result) throws Exception{
+	public String videoView(VideoVO vvo, VideoLikeVO vlo , String videoNo, Model m,  String myId, String result,String imgpath, HttpSession session) throws Exception{
 		System.out.println("비디오 번호 : " + videoNo);
 		System.out.println("result  : " + result);
 		System.out.println("my id : " + myId);
@@ -98,6 +98,18 @@ public class VideoListController {
 		
 		// 화면 뷰
 		VideoVO videoView = service.videoView(hashmap);
+		
+		ArrayList<String> list = (ArrayList) session.getAttribute("list");
+		if (list == null) {
+			System.out.println("if문 null"+imgpath);
+			list = new ArrayList<String>();
+			list.add(imgpath);
+			session.setAttribute("list", list);
+		} else {
+			System.out.println("else문 " + imgpath);
+			list.add(imgpath);
+			session.setAttribute("list", list);
+		}
 		
 		// 조회수
 		service.videoCount(vvo);
@@ -118,7 +130,7 @@ public class VideoListController {
 	
 	// 좋아요 누른 리스트
 	@RequestMapping(value="videoLikeSearch")
-	public String videoLikeSearch(Model m, String videoNo,  String myId, RedirectAttributes rttr) throws Exception{
+	public String videoLikeSearch(Model m, String videoNo,  String myId, RedirectAttributes rttr,String imgpath, HttpSession session) throws Exception{
 		VideoVO vvo=new VideoVO();
 		vvo.setVideoNo(Integer.parseInt(videoNo));
 		System.out.println("videoNo : " + videoNo);
@@ -136,6 +148,19 @@ public class VideoListController {
 				}
 			}
 		}
+		
+		ArrayList<String> list = (ArrayList) session.getAttribute("list");
+		if (list == null) {
+			System.out.println("if문 null"+imgpath);
+			list = new ArrayList<String>();
+			list.add(imgpath);
+			session.setAttribute("list", list);
+		} else {
+			System.out.println("else문 " + imgpath);
+			list.add(imgpath);
+			session.setAttribute("list", list);
+		}
+		
 		rttr.addAttribute("result", result);
 		rttr.addAttribute("myId", myId);
 		rttr.addAttribute("videoNo", videoNo);
