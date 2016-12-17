@@ -36,7 +36,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<form method="post" action="togetherRegist.do">
+<form method="post" action="togetherRegist.do" style="margin-left:140px;">
 <input type="hidden" name="toId" value="${sessionScope.login.memEmail}">
 <table>
 <!-- 어떤 입력폼인가 -->

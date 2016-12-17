@@ -57,12 +57,12 @@
 				id="toSearch"/>
 	</div>
 	<div class="col-xs-2">
-	 <a id="nextPage"><button type="button" class="btn btn-outline-info" style="position: relative; right:20px;"id="searchBtn">검색</button></a>
+	 <a id="nextPage"><button type="button" class="btn btn-defalut" style="position: relative; right:20px; color:#fff"id="searchBtn">검색</button></a>
 	</div>
 	
 	<div class="col-xs-6 ">
 		<a href="togetherForm.do">
-			<button type="button" class="btn btn-outline-secondary marginRight" id="moveToFormBtn">등록하기</button>
+			<button type="button" class="btn btn-defalut marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
 		</a>
 	</div>
 	</div>
@@ -92,7 +92,7 @@
 		<div class="col-xs-4 marginTop50">
 			<div> <!-- 이미지들어가는부분 -->
 			<a href="togetherView.do?toNo=<%=list.get(i).getToNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
-				<img src="<%=projectName %>/upload/<%=list.get(i).getToPhoto()%>" style="height:300px; width:300px;">
+				<img src="<%=projectName %>/upload/<%=list.get(i).getToPhoto()%>" style="height:300px; width:300px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
 			</a>		
 			</div>
 			<br/>

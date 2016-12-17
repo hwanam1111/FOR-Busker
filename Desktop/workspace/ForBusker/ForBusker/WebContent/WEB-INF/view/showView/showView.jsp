@@ -18,7 +18,28 @@
 <script type="text/javascript" src="<%=projectName %>/resources/js/popup_js/jquery.bpopup.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
-
+<!-- showView js -->
+<%-- <script src="<%=projectName %>/resources/js/show_js/showView.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showView.js')?>"></script> --%>
+<script type="text/javascript">
+$(function(){
+	
+	$('#mdBtn').click(function(){
+		
+		location.href="showUpdate.do?shNo=${show.shNo}";
+	})
+	
+	$('#deBtn').click(function(){
+		var result = confirm('정말 삭제하시겠습니까??');
+		if (result){    //확인
+			location.href="showDelete.do?shNo=${show.shNo}";
+		}else{   //취소
+		    return;
+		}
+		
+		
+	})
+})
+</script>
 </head>
 
 <body id="top">
@@ -34,13 +55,13 @@
 		<td>
 	<div class="MDBtn">
 		<a class="ModifyBtn">
-			<button type="button" class="btn btn-info mdBtn">
+			<button type="button" class="btn btn-info mdBtn" id="mdBtn">
 				<input type="hidden" value="${show.shNo}">
 				수정
 			</button>
 		</a>
 		<a class="deleteBtn">
-		<button type="button" class="btn btn-danger dlBtn">
+		<button type="button" class="btn btn-danger dlBtn" id="deBtn">
 			<input type="hidden" value="${show.shNo}">
 			삭제
 		</button>

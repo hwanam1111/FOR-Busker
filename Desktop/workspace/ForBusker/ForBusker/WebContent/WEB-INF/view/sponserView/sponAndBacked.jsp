@@ -123,7 +123,7 @@ $(function(){
 			<a href="sponserView.do?num=<%=svo.getSpNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
 				<!-- 임시경로 -->
 <!-- 				<img src="C:\\upload\\Image\\${list.spPhoto }"> -->
-				<img src="<%=projectName %>/upload/<%=svo.getSpPhoto()%>" style="width:300px; height:200px;">
+				<img src="<%=projectName %>/upload/<%=svo.getSpPhoto()%>" style="width:300px; height:200px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
 			</a>
 			</div>
 		
@@ -212,23 +212,23 @@ $(function(){
 			</div>
 		 
 			<div class="detail">
-			<div><strong><%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
-			<div class="backCon"><%=bvo.getBackContent() %></div> <!-- 조건 들어가는 부분 -->
+			<div style="margin-top:10px; margin-bottom:5px;"><strong>TITLE : <%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
+			<div class="backCon">CONTENT : <%=bvo.getBackContent() %></div> <!-- 조건 들어가는 부분 -->
 			</div>
 			
 		</div>
     <%} %>
     <!-- 틀 맞춰주는 부분 -->
     <%if(backedList.size()%3 == 2){ %>
-    <div class="col-xs-4 marginTop50">
+    <div class="col-xs-4 marginTop50" >
    		 <div style="height:250px; width:300px;">
 		 </div>
 	   
     </div>
     <%} else if(backedList.size()%3 == 1){%>
     	<%for(int i=0;i<2;i++){ %>
-	     <div class="col-xs-4 marginTop50" >
-			    <div style="height:250px; width:300px;">
+	     <div class="col-xs-4 marginTop50">
+			    <div style="height:250px; width:300px;" >
 				</div>
 	    </div>
     	<%} %>

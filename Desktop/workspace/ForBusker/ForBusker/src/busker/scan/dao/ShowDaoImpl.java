@@ -128,7 +128,18 @@ public class ShowDaoImpl implements ShowDao {
 		System.out.println("email 과 curpage :"+email+" / "+curPage);
 		return ss.selectList("show.selectShowByEmail", hash);
 	}
-
+	
+	//수정하기
+	public int updateShow(ShowVO showVO){
+		int result = ss.update("show.updateShow",showVO);
+		return result;
+	}
+	
+	//삭제하기
+	public int deleteShow(int shNo){
+		int result = ss.delete("show.deleteShow",shNo);
+		return result;
+	}
 
 
 }

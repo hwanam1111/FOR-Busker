@@ -13,13 +13,13 @@
 	List<SponserVO> sponList =null;
 	List<BackedVO> backedList =null;
 	List<VideoVO> videoList =null;
-	List<TogetherVO> joinList =null;
+	List<TogetherVO> toList =null;
 	
 	if( cate.equals("show")){ showList = (List<ShowVO>)request.getAttribute("showList"); System.out.println("jsp위에 show에 옴");}
 	else if ( cate.equals("sponser")){ sponList = (List<SponserVO>)request.getAttribute("sponserList"); System.out.println("jsp위에  sponser옴");}
 	else if ( cate.equals("backed")){ backedList =  (List<BackedVO>)request.getAttribute("backedList"); System.out.println("jsp위에 backed옴");}
 	else if ( cate.equals("video")){ videoList =  (List<VideoVO>)request.getAttribute("videoList"); System.out.println("jsp위에 video옴");}
-	else if ( cate.equals("join")){ joinList = (List<TogetherVO>)request.getAttribute("togetherList"); System.out.println("jsp위에 join옴");}
+	else if ( cate.equals("toList")){ toList = (List<TogetherVO>)request.getAttribute("toList"); System.out.println("jsp위에 join옴");}
 
 
 
@@ -120,24 +120,39 @@ position:relative;
 		<% if(cate.equals("show")) {  %>
 	
 			<div id="ShowList" class="tab_content">
-				<c:forEach var="show" items="${showList}">				
+				<% for(ShowVO shvo:showList){ %>	
+				
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="selectShowByNum2.do?shNo=${show.shNo}">
+						<a href="selectShowByNum2.do?shNo=<%=shvo.getShNo()%>">
 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="https://img.youtube.com/vi/${show.shVideo}/hqdefault.jpg"><br />
-						<br />
+							src="https://img.youtube.com/vi/<%=shvo.getShVideo()%>/hqdefault.jpg"><br />
+						<br/>
 
-							<p style="height: 40px;">Title : ${show.shName}</p>
+							<p style="height: 40px;">Title : <%=shvo.getShName()%></p>
 						</a>
-						<p>TeamName : ${show.shTeamName}</p>
-						<p>Date : ${show.shDate}</p>
-						<input type="hidden" value="${show.memEmail}" name="memEmail">	
-						</div>				
-				</c:forEach>
+						<p>TeamName : <%=shvo.getShTeamName()%></p>
+						<p>Date : <%=shvo.getShDate() %></p>
+						<input type="hidden" value="<%=shvo.getMemEmail() %>" name="memEmail">	
+						</div>
+						<%} %>
+						<%if(showList.size()%3 == 2){ %>
+   							 <div class="col-xs-4 marginTop50">
+   								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							 </div>
+						<!-- 마지막이 한개인 경우 -->  
+    					</div>
+    					<%} else if(showList.size()%3 == 1){%>
+    						<%for(int i=0;i<2;i++){ %>
+		   					 <div class="col-xs-4 marginTop50">
+	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							</div>
+		    
+    					<%} %>
+    			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
-				
+				<div align="center">
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageAll.do?cate=show&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
@@ -155,7 +170,7 @@ position:relative;
 				      </a>
 				    </li>
 				  </ul>
-				
+				</div>
 			</div>
 
 		<% } %>
@@ -168,22 +183,37 @@ position:relative;
 		 
 			<div id="SponserList" class="tab_content">
 
-				<c:forEach var="sponser" items="${sponserList}">
+				<% for(SponserVO spvo:sponList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a
-							href="sponserView.do?num=${sponser.spNo}">
+							href="sponserView.do?num=<%=spvo.getSpNo() %>">
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="<%=projectName%>/upload/${sponser.spPhoto }"><br />
+							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
+							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 							<br />
 
-							<p style="height: 40px;">Title : ${sponser.spName}</p>
+							<p style="height: 40px;">Title : <%=spvo.getSpName()%></p>
 						</a>
-						<input type="hidden" value="${video.memEmail}" name="memEmail">
+						<input type="hidden" value="<%=spvo.getMemEmail()%>" name="memEmail">
 					</div>
-				</c:forEach>
+				<%} %>
+						<%if(sponList.size()%3 == 2){ %>
+   							 <div class="col-xs-4 marginTop50">
+   								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							 </div>
+						<!-- 마지막이 한개인 경우 -->  
+    					</div>
+    					<%} else if(sponList.size()%3 == 1){%>
+    						<%for(int i=0;i<2;i++){ %>
+		   					 <div class="col-xs-4 marginTop50">
+	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							</div>
+		    
+    					<%} %>
+    			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
-
+			<div align="center">
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
@@ -204,7 +234,7 @@ position:relative;
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-
+</div>
 			</div>
 
 		<% } %>
@@ -216,22 +246,36 @@ position:relative;
 		 <% if(cate.equals("backed")) {  %>
 			<div id="BackedList" class="tab_content">
 
-				<c:forEach var="backed" items="${backedList}">
+				<% for(BackedVO bkvo:backedList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a
-							href="backedView.do?num=${backed.backNo }">
+							href="backedView.do?num=<%=bkvo.getBackNo()%>">
 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="https://img.youtube.com/vi/${backed.backVideo}/hqdefault.jpg"><br />
+							src="https://img.youtube.com/vi/<%=bkvo.getBackVideo()%>/hqdefault.jpg"><br />
 							<br />
 						</a>
-						<input type="hidden" value="${backed.memEmail}" name="memEmail">
+						<input type="hidden" value="<%=bkvo.getMemEmail()%>" name="memEmail">
 					</div>
-				</c:forEach>
+				<%} %>
+						<%if(backedList.size()%3 == 2){ %>
+   							 <div class="col-xs-4 marginTop50">
+   								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							 </div>
+						<!-- 마지막이 한개인 경우 -->  
+    					</div>
+    					<%} else if(backedList.size()%3 == 1){%>
+    						<%for(int i=0;i<2;i++){ %>
+		   					 <div class="col-xs-4 marginTop50">
+	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							</div>
+		    
+    					<%} %>
+    			<%} %>	
 				
 		<!-- #####################################  페 이 징  ########################################################### -->
-
+			<div align="center">
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageBackedList.do?cate=backed&page=<%=pVO.getPreviPage()%>"
@@ -252,7 +296,7 @@ position:relative;
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-				
+				</div>
 			</div>
 		<% } %>
 		<!--################################################################################################################# -->
@@ -263,24 +307,39 @@ position:relative;
 		<% if(cate.equals("video")) {  %>
 		   <div id="VideoList" class="tab_content">
 		   
-		   	<c:forEach var="video" items="${videoList}">
+		   	<% for(VideoVO vvo:videoList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="videoLikeSearch.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}&myId=${sessionScope.login.memEmail}">
+						<a href="videoLikeSearch.do?videoNo=<%=vvo.getVideoNo()%>&memEmail=<%=vvo.getMemEmail() %>&myId=${sessionScope.login.memEmail}">
 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg"><br />
+							src="https://img.youtube.com/vi/<%=vvo.getVideoSomenale()%>/hqdefault.jpg"><br />
 						<br />
 
-							<p style="height: 40px;">Title : ${video.videoName}</p>
+							<p style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
 						</a>
-						<p>TeamName : ${video.memTeamName}</p>
-						<p>Date : ${video.videoDate}</p>
-						<input type="hidden" value="${video.memEmail}" name="memEmail">
+						<p>TeamName : <%=vvo.getMemTeamName() %></p>
+						<p>Date : <%=vvo.getVideoDate() %></p>
+						<input type="hidden" value="<%=vvo.getMemEmail() %>" name="memEmail">
 					</div>
-				</c:forEach>
+				<%} %>
+						<%if(videoList.size()%3 == 2){ %>
+   							 <div class="col-xs-4 marginTop50">
+   								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							 </div>
+						<!-- 마지막이 한개인 경우 -->  
+    					</div>
+    					<%} else if(videoList.size()%3 == 1){%>
+    						<%for(int i=0;i<2;i++){ %>
+		   					 <div class="col-xs-4 marginTop50">
+	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							</div>
+		    
+    					<%} %>
+    			<%} %>	
 		
 		<!-- #####################################  페 이 징  ########################################################### -->
+					<div align="center">
 					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageVideoList.do?cate=video&page=<%=pVO.getPreviPage()%>"
@@ -302,6 +361,7 @@ position:relative;
 						</a></li>
 					</ul>
 		   </div>
+		   </div>
 		 
 		<% } %>
 		<!--################################################################################################################# -->
@@ -309,29 +369,45 @@ position:relative;
 		<!--###########################################   리스트     ######################################################## -->
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
-		<% if(cate.equals("join")) {  %>
+		<% if(cate.equals("toList")) {  %>
 		 
 			<div id="JoinList" class="tab_content">
-			<c:forEach var="to" items="${toList}">
+			<% for(TogetherVO tvo:toList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="togetherView.do?toNo=${to.toNo}">
+						<a href="togetherView.do?toNo=<%=tvo.getToNo()%>">
 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
-							src="${to.toPhoto}"><br />
+							src="/ForBusker/upload/<%=tvo.getToPhoto()%>"
+							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 						<br />
 
-							<p style="height: 40px;">Title : ${to.toName}</p>
+							<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
 						</a>
-						<p>TeamLeader : ${to.toTeamLeader}</p>
-						<p>Date : ${to.toStartDate} ~ ${to.toEndDate}</p>
-						<input type="hidden" value="${to.toId}" name="memEmail">
+						<p>TeamLeader : <%=tvo.getToTeamLeader() %></p>
+						<p>Date : <%=tvo.getToStartDate() %> ~ <%=tvo.getToEndDate() %></p>
+						<input type="hidden" value="<%=tvo.getToId() %>" name="memEmail">
 					</div>
-				</c:forEach>
+				<%} %>
+						<%if(toList.size()%3 == 2){ %>
+   							 <div class="col-xs-4 marginTop50">
+   								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							 </div>
+						<!-- 마지막이 한개인 경우 -->  
+    					</div>
+    					<%} else if(toList.size()%3 == 1){%>
+    						<%for(int i=0;i<2;i++){ %>
+		   					 <div class="col-xs-4 marginTop50">
+	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+							</div>
+		    
+    					<%} %>
+    			<%} %>	
 			
 		<!-- #######################################################################################################  -->
 		<!-- #####################################  페 이 징  ########################################################### -->
 		<!-- #######################################################################################################  -->	
+				  <div align="center">
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
@@ -349,7 +425,7 @@ position:relative;
 				      </a>
 				    </li>
 				  </ul>
-			
+			</div>
 			</div>
 		<% } %>
 		</div>
@@ -359,7 +435,7 @@ position:relative;
 
 	<!-- ##############  footer 부분 include  ############## -->
 	<div id="copyright" class="clear"
-		style="text-align: center; margin-top: 70px; background-color: #ffc19e">
+		style="text-align: center; margin-top: 70px; background-color: #ffc19e; color:white">
 		<span>회사명 : (주)FOR_Busker | 주소 : 경기 성남시 분당구 삼평동 유스페이스2 B동 8층 |
 			대표: Show | 개인정보관리책임자 : Show</span> <br /> <span>사업자등록번호 :
 			000-00-00000 | 통신판매업신고 : 2016-분당판교-00000호 | 이메일 : help@forbusker.com</span><br />

@@ -142,6 +142,17 @@ public class ShowServiceImpl implements ShowService {
 		int myShowCount=dao.myShowCount(email);
 		return myShowCount;
 	}
+
+	//수정하기
+	public int updateShow(ShowVO showVO){
+		int result = dao.updateShow(showVO);
+		return result;
+	}
 	
+	//삭제하기
+	public int deleteShow(int shNo){
+		int result = dao.deleteShow(shNo);
+		return result;
+	} 		
 	
 }

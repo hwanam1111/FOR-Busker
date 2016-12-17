@@ -16,4 +16,8 @@ public interface ShowService {
 	public List<ShowVO> selectShowByEmail(String email, PageVO pageVO, String mapping);
 	public int myShowCount(String email);
 
+	//수정
+	public int updateShow(ShowVO showVO);
+	//삭제
+	public int deleteShow(int shNo);	
 }

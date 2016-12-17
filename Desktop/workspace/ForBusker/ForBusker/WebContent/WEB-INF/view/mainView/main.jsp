@@ -96,7 +96,7 @@ function logout(){
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
-					<li id="messageicon"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:14px;"  src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
+					<li id="messageicon" style="display:none;"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:12px;" src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
 					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>	
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
@@ -118,7 +118,6 @@ function logout(){
 		<input type= "hidden" id="messageCheckEmail" name="messageCheckEmail" value="${sessionScope.login.memEmail}"/>
 		<script type="text/javascript">
 		$(function(){
-			$("#messageicon").hide();
  		setInterval(function() {
 			$.ajax({
 				url: "messageCheck.do"	,
@@ -279,7 +278,7 @@ function logout(){
 					<article class="one_third"> <figure>
 		    </c:otherwise>
 			</c:choose>
-			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg.jpg';"></a></figure> 	<!-- 팀사진 -->
+			<a href="#"><img src="<%=projectName %>/upload/${best.memTeamPhoto}" style="width:250px; height:180px" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"></a></figure> 	<!-- 팀사진 -->
 			<div class="txtwrap" align="center">
 				<h4 class="heading"> ${best.memTeamName} </h4>					<!-- 팀명  -->
 				<ul class="nospace meta">
