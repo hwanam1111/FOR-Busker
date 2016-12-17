@@ -141,14 +141,19 @@ public class VideoListController {
 			list.add(img);
 			session.setAttribute("list", list);
 		} else {
-			END:
+			String add = "yes";
+			
 			for(int i=0; i<list.size(); i++){
-				System.out.println(("img 값 : " + img));
-				if(!(list.get(i).equals(img))){
-					list.add(img);				
-					break END;
+				if(list.get(i).equals(img)){
+					add = "no";
+					break;
 				}
 			}
+			if(add.equals("yes")){
+				list.add(img);			
+			}else{				
+			}
+			
 			session.setAttribute("list", list);
 		}
 		
