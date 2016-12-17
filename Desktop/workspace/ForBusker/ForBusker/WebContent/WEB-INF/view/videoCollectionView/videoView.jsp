@@ -213,6 +213,11 @@ ${map.videoDetail} </pre><br/><br/>
 <div class='col-xs-2'><span id='openBtn' style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">&#9776; NewVideo</span>
 <span id='closeBtn' style="font-size:23px;cursor:pointer;display:none" onclick="closeNav()">&times; NewVideo</span></div>
 </div>
+<div style="margin-left:200px;">
+<a href="videoMain.do">
+<button type="button" class="btn default" style="width:200px; background-color:#FFD3B0; color:white;">목록보기</button>
+</a>
+</div>
 <div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
 	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
 	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
