@@ -131,11 +131,12 @@ public class VideoListController {
 				}
 			}
 		}
+		
 		String img=imgpath.substring(imgpath.length()-11);
 
 		
 		ArrayList<String> list = (ArrayList) session.getAttribute("list");
-
+		
 		if (list == null) {
 			list = new ArrayList<String>();
 			list.add(img);
