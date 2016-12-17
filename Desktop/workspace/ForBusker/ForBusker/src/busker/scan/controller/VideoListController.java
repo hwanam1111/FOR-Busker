@@ -89,34 +89,20 @@ public class VideoListController {
 //	글보기 뷰
 	@RequestMapping(value="videoView")
 	public String videoView(VideoVO vvo, VideoLikeVO vlo , String videoNo, Model m,  String myId, String result,String imgpath, HttpSession session) throws Exception{
-		System.out.println("비디오 번호 : " + videoNo);
-		System.out.println("result  : " + result);
-		System.out.println("my id : " + myId);
 		// 해시맵으로 글 넘버
 		HashMap hashmap = new HashMap();
 		hashmap.put("videoNo", videoNo);
 		
+		System.out.println("videoView");
 		// 화면 뷰
 		VideoVO videoView = service.videoView(hashmap);
-		
-		ArrayList<String> list = (ArrayList) session.getAttribute("list");
-		if (list == null) {
-			System.out.println("if문 null"+imgpath);
-			list = new ArrayList<String>();
-			list.add(imgpath);
-			session.setAttribute("list", list);
-		} else {
-			System.out.println("else문 " + imgpath);
-			list.add(imgpath);
-			session.setAttribute("list", list);
-		}
 		
 		// 조회수
 		service.videoCount(vvo);
 		
 		// 실시간 새로운 동영상 리스트
 		List<VideoVO> videoList = service.videoNewList();
-		System.out.println(videoList);
+		
 		m.addAttribute("list", videoList);
 
 		if(videoView!=null){
@@ -133,14 +119,11 @@ public class VideoListController {
 	public String videoLikeSearch(Model m, String videoNo,  String myId, RedirectAttributes rttr,String imgpath, HttpSession session) throws Exception{
 		VideoVO vvo=new VideoVO();
 		vvo.setVideoNo(Integer.parseInt(videoNo));
-		System.out.println("videoNo : " + videoNo);
 		// 좋아요 됬는지 확인
 		ArrayList<VideoLikeVO> likeList = (ArrayList<VideoLikeVO>) service.videoLikeList(vvo);
-		System.out.println("likeList : " + likeList.size());
 		String result= "";
 		// 로그인이 됬을때만 확인
 		if(myId!=""){
-			System.out.println("myid : " + myId);
 			for(VideoLikeVO temp:likeList){
 				System.out.println("temp.getMemLoginEmail : " + temp.getMemLoginEmail());
 				if(temp.getMemLoginEmail().equals(myId)) {
@@ -148,23 +131,30 @@ public class VideoListController {
 				}
 			}
 		}
+		String img=imgpath.substring(imgpath.length()-11);
+
 		
 		ArrayList<String> list = (ArrayList) session.getAttribute("list");
+
 		if (list == null) {
-			System.out.println("if문 null"+imgpath);
 			list = new ArrayList<String>();
-			list.add(imgpath);
+			list.add(img);
 			session.setAttribute("list", list);
 		} else {
-			System.out.println("else문 " + imgpath);
-			list.add(imgpath);
+			END:
+			for(int i=0; i<list.size(); i++){
+				System.out.println(("img 값 : " + img));
+				if(!(list.get(i).equals(img))){
+					list.add(img);				
+					break END;
+				}
+			}
 			session.setAttribute("list", list);
 		}
 		
 		rttr.addAttribute("result", result);
 		rttr.addAttribute("myId", myId);
 		rttr.addAttribute("videoNo", videoNo);
-		
 		
 		
 		return "redirect:videoView.do";

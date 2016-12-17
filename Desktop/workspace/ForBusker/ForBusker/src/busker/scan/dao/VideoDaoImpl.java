@@ -170,6 +170,7 @@ public class VideoDaoImpl implements VideoDao {
 		hash.put("curPage", curPage);
 		hash.put("memEmail", memEmail);
 		return ss.selectList("video.myPageVideoList", hash);
+		
 	}
 
 

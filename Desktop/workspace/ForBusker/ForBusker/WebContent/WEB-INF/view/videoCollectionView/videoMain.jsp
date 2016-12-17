@@ -56,7 +56,7 @@ $(function() {
 <!-- ################################################### -->
 
 <!-- ############   rightBanner include  ###############-->
-<%-- <jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" /> --%>
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" /> 
 <!-- ################################################### -->
 
 
@@ -76,7 +76,8 @@ $(function() {
  <!-- ################################################ -->
   <c:forEach var="video" items="${list}">
   	<div class="col-xs-4" style="margin-bottom:60px;">
-  		<a href="videoLikeSearch.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}&myId=${sessionScope.login.memEmail}">
+  		<a href="videoLikeSearch.do?videoNo=${video.videoNo}&memEmail=${video.memEmail}
+  		&myId=${sessionScope.login.memEmail}&imgpath=${video.videoUrl}">
   		
   		<img class='videothumb' id="videothumb" style="width:296.66px; height:222.48px;" 
   		src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg"><br/><br/>

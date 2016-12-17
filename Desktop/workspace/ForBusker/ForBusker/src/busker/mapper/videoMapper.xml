@@ -99,7 +99,14 @@
 	<select id="videoNewList" parameterType="busker.scan.vo.VideoVO"
 		resultType="busker.scan.vo.VideoVO">
 <![CDATA[
-SELECT video.memEmail, video.videono, video.videoname, video.videodetail, video.videourl, substr(video.videourl, -11) as videosomenale, video.videoDate, member.memEmail, member.memteamname
+SELECT video.memEmail, 
+video.videono, 
+video.videoname, 
+video.videodetail,
+video.videourl, 
+substr(video.videourl, -11) as videosomenale, 
+video.videoDate, member.memEmail, 
+member.memteamname
 FROM video  
 INNER JOIN member          
 ON video.mememail = member.mememail 

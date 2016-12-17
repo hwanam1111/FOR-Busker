@@ -9,7 +9,7 @@
 				<li>최근 본 동영상</li>
 				<!--세션에 저장된 리스트 값 가져오기 -->
 				<c:forEach items="${sessionScope.list}" var='i' >
-					<li><a href="#"><img src='${i}'></a></li>	
+					<li><a href="#"><img src="https://img.youtube.com/vi/${i}/hqdefault.jpg"></a></li>	
 				</c:forEach>	
 			</ul>
 		</div>	
