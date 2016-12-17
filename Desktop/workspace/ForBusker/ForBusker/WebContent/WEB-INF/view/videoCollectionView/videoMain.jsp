@@ -56,7 +56,7 @@ $(function() {
 <!-- ################################################### -->
 
 <!-- ############   rightBanner include  ###############-->
-<%-- <jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" /> --%>
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
 <!-- ################################################### -->
 
 
