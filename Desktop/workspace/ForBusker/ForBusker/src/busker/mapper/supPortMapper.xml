@@ -6,10 +6,10 @@
 	<!-- 후원하기 입력 -->
 	<insert id="insertSpon" parameterType="busker.scan.vo.SponserVO">
 		INSERT INTO
-		sponser(spNo,memEmail,spName,spPhoto,spContent,spCond,spTel)
+		sponser(spNo,memEmail,spName,spPhoto,spContent,spCond,spTel,sponDate)
 		VALUES
 		(seq_sponser.nextVal, #{memEmail}, #{spName}, #{spPhoto},
-		#{spContent}, #{spCond}, #{spTel})
+		#{spContent}, #{spCond}, #{spTel},sysdate)
 	</insert>
 
 	<!-- 후원하기 테이블 총 갯수 구하기 -->
@@ -31,7 +31,7 @@
 			WHERE spName LIKE '%' || #{search} || '%'
 		</if>
 		ORDER BY
-		spNO DESC)
+		spNo DESC,spondate ASC)
 		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND
 		#{curPage}*9
 	</select>
@@ -72,9 +72,9 @@
 	<insert id="insertBacked" parameterType="backvo">
 		INSERT INTO
 		backed(backNO, memEmail, backName, backVideo, backContent,
-		backTel)
+		backTel,backDate)
 		VALUES (seq_backed.nextval, #{memEmail}, #{backName}, #{backVideo},
-		#{backContent}, #{backTel})
+		#{backContent}, #{backTel},sysdate)
 	</insert>
 
 	<!-- 후원해주세요 등록form에서 url 띄우기 -->
@@ -107,7 +107,7 @@
 		<if test="search neq null">
 			WHERE backName LIKE '%' || #{search} || '%'
 		</if>
-		ORDER BY backNo DESC))
+		ORDER BY backNo DESC,backDate ASC))
 		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND
 		#{curPage}*9
 	</select>
@@ -155,7 +155,7 @@
 		memEmail,backNo, backName,backContent,substr(backvideo, -11)
 		as
 		backVideo,backTel
-		FROM backed ORDER BY backNo DESC))
+		FROM backed ORDER BY backNo DESC,backDate ASC))
 		WHERE rnum BETWEEN
 		((#{curPage}-1)*9)+1 AND #{curPage}*9
 		AND memEmail = #{memEmail}
@@ -170,7 +170,7 @@
 		FROM (select rownum as rnum , memEmail,spNo, spName,spCond,spPhoto,spTel
 		FROM sponser
 		WHERE memEmail = #{memEmail}
-		ORDER BY spNO DESC) subQuery
+		ORDER BY spNo DESC,spondate ASC) subQuery
 		)
 		WHERE rnum BETWEEN ((#{curPage}-1)*9)+1 AND #{curPage}*9
 	</select>

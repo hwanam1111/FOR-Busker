@@ -135,8 +135,8 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value='퍼포먼스'>퍼포먼스</option>
 			<option value='기타'>기타</option>
 		</select>
-		<button type="button" id="searchBtn" class="btn btn-outline-info" style="width:90px; color:white; margin-left:12px; margin-right:10px;">검색</button>
-		<button type="button" id="registBtn" class="btn btn-outline-secondary marginRight" id="moveToFormBtn" style="width:90px; color:white;margin-right:0;">등록하기</button>
+		<button type="button" id="searchBtn" class="btn btn-info" style="width:90px; color:white; margin-left:12px; margin-right:10px;">검색</button>
+		<button type="button" id="registBtn" class="btn btn-info marginRight" id="moveToFormBtn" style="width:90px; color:white;margin-right:0;">등록하기</button>
 	</div>
 	</form>
 	</td>

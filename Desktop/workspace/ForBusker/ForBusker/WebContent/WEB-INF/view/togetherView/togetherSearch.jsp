@@ -96,8 +96,8 @@
 			</div>
 		
 			<div class="detail">
-			<div><strong><%=list.get(i).getToName()%></strong></div>  <!-- 팀명 들어가는 부분 -->
-			<div><strong><%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
+			<div><strong>TITLE :  <%=list.get(i).getToName()%></strong></div><!-- 제목-->
+			<div style="height: 42px;"><strong>TONEED :  <%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
 			</div>
 			
 		</div>

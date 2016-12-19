@@ -4,17 +4,17 @@
 <mapper namespace="together">
 
 <insert id="insertTogether" parameterType="busker.scan.vo.TogetherVO">
-INSERT INTO together VALUES(seq_together.nextval,#{toId},#{toVideo},#{toPhoto},#{toName},#{toNeed},#{toDetail},
-						#{toStartDate},#{toEndDate},#{toTel},#{toTeamLeader})
+INSERT INTO together VALUES(seq_together.nextval,#{toId},#{toVideo},#{toPhoto},#{toName},'${toNeed}',#{toDetail},
+						#{toStartDate},#{toEndDate},#{toTel},#{toTeamLeader},sysdate)
 </insert>
 
 <select id="selectAllTogether" parameterType="hashmap" resultType="busker.scan.vo.TogetherVO">
 SELECT *
-FROM(SELECT rownum as rnum,toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate,toEndDate, toTel, toTeamLeader 
-      FROM (SELECT toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate,toEndDate, toTel, toTeamLeader 
+FROM(SELECT rownum as rnum,toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate,toEndDate, toTel, toTeamLeader,toDate 
+      FROM (SELECT toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate,toEndDate, toTel, toTeamLeader ,toDate
             FROM together
             WHERE toenddate <![CDATA[>]]> to_char(sysdate,'yyyy-mm-dd')
-            ORDER BY toNO DESC))
+            ORDER BY tono DESC, todate ASC))
 WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9 
 <if test="memEmail neq null">
 AND toId=#{memEmail}
@@ -41,14 +41,12 @@ UPDATE together SET toName=#{toName},toNeed=#{toNeed},toDetail=#{toDetail},
 
 <select id="selectBySearchVal" parameterType="hashmap" resultType="busker.scan.vo.TogetherVO">
 SELECT * 
-FROM (select  rownum as rnum , toNo, toId, toVideo ,toPhoto ,toName toNeed, toDetail, toStartDate, toTel, toTeamLeader 
-	  FROM together WHERE <if test="searchVal neq null">
-									toNeed LIKE '%' || #{searchVal} || '%' 
-									</if>
-									<if test="searchVal neq null">
+FROM (select  rownum as rnum , toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate, toEndDate,toTel, toTeamLeader,todate 
+	  FROM together  <if test="searchVal neq null">
+									WHERE toNeed LIKE '%' || #{searchVal} || '%' 
 									OR toName LIKE '%' || #{searchVal} || '%'
 									</if>
-									ORDER BY toNO DESC) 
+									ORDER BY toNo DESC, toDate ASC) 
 WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9 
 
 </select>

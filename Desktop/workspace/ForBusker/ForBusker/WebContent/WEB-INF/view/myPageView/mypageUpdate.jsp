@@ -114,8 +114,8 @@
 		<!-- submit button -->
 		<div id="buttonGroup">
 		
-  			<button type="submit" class="btn btn-success" id="submitBtn">정보수정</button>
-  			<button type="reset" class="btn btn-success" id="resetBtn">다시작성</button>
+  			<button type="submit" class="btn btn-info" id="submitBtn">정보수정</button>
+  			<button type="reset" class="btn btn-info" id="resetBtn">다시작성</button>
 		</div>
 	</form>
 	

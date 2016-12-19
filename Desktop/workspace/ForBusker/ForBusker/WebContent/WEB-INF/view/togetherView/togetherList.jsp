@@ -57,12 +57,12 @@
 				id="toSearch"/>
 	</div>
 	<div class="col-xs-2">
-	 <a id="nextPage"><button type="button" class="btn btn-defalut" style="position: relative; right:20px; color:#fff"id="searchBtn">검색</button></a>
+	 <a id="nextPage"><button type="button" class="btn btn-info" style="position: relative; right:20px; color:#fff"id="searchBtn">검색</button></a>
 	</div>
 	
 	<div class="col-xs-6 ">
 		<a href="togetherForm.do">
-			<button type="button" class="btn btn-defalut marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
+			<button type="button" class="btn btn-info marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
 		</a>
 	</div>
 	</div>
@@ -97,8 +97,8 @@
 			</div>
 			<br/>
 			<div class="detail">
-			<div style="height: 42px;"><strong>TITLE :  <%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
-			<div><strong>LEADER :  <%=list.get(i).getToTeamLeader()%></strong></div>  <!-- 팀명 들어가는 부분 -->
+			<div><strong>TITLE :  <%=list.get(i).getToName()%></strong></div><!-- 제목-->
+			<div style="height: 42px;"><strong>TONEED :  <%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
 			</div>
 			
 		</div>
