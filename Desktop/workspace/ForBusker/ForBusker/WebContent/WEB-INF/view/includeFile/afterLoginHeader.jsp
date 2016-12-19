@@ -80,12 +80,9 @@ function logout(){
 				}),
 		  		dataType: "text",
 				success : function(data){
-					console.log(data);			
 					if(data=="success"){
 							$("#nomeesage").hide();
 							$("#messageicon").show();
-					}else{
-						console.log("실패");
 					}
 				}	
 				});

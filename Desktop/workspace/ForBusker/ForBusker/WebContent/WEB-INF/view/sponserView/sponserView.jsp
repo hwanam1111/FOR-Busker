@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="busker.scan.vo.*" %>    
 <% String projectName = "/ForBusker"; %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,6 +43,23 @@
 	MemberVO mVO = new MemberVO();
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
+
+<script type="text/javascript">
+$(function(){
+	if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
+		$(".delete").css("display","block");
+	}	
+
+	
+$(".delete").click(function(){	
+var result = confirm("대화를 삭제하시겠습니까?");
+	if(result){
+		location.href="SponserDelete.do?num=<%=sVO.getSpNo()%>";
+	}
+});
+
+});
+</script>
 
 <%if(mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
 <script type="text/javascript">
@@ -93,7 +111,15 @@
 		<h2>Tel</h2>
 		<p>
 		${selectSpon.spTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br/><br/>
+		<c:choose>
+		<c:when test="${sessionScope.login ne null}">
 		<button type="button" class="btn btn-primary" id="insertMessage">문의하기</button>
+		</c:when>
+		<c:otherwise>
+		<label>로그인 후 문의해주세요.</label>
+		</c:otherwise>
+		</c:choose>		
+		<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
 		</p>
 	</div>
 	

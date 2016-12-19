@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="busker.scan.vo.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html> 
@@ -39,6 +40,23 @@
 	MemberVO mVO = new MemberVO();
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
+
+<script type="text/javascript">
+$(function(){
+if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
+	$(".delete").css("display","block");
+}	
+
+$(".delete").click(function(){	
+	var result = confirm("대화를 삭제하시겠습니까?");
+		if(result){
+			location.href="SponserDelete.do?num=<%=tVO.getToNo()%>";
+		}
+	});
+});
+
+</script>
+
 
 <%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
 <script type="text/javascript">
@@ -150,8 +168,16 @@
 	<tr style="height:100px;"><!-- 문의하기 -->
 	<td>
 	<div align="center">
+	<c:choose>
+	<c:when test="${sessionScope.login ne null}">
 	<button type="button" class="btn btn-warning" id="togetherJoin">쪽지 보내기</button>
+	</c:when>
+	<c:otherwise>
+	<label>로그인 후 문의해주세요.</label>
+	</c:otherwise>
+	</c:choose>
 	<a href="togetherList.do"><button type="button" class="btn btn-warning">목록보기</button></a>
+	<button type="button" class='btn btn-warning delete' style="display: none;">삭제</button>
 	</div>
 	</td>
 	</tr>
