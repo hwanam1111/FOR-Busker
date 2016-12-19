@@ -52,7 +52,7 @@ public interface VideoService {
 	public int videoLikeMinusUpdate(VideoVO vvo) throws Exception;
 
 	// 좋아요 페이지 보기
-	public List<VideoLikeVO> videoMypageLikeList(String memEmail,PageVO pageVO) throws Exception;
+	public List<VideoVO> videoMypageLikeList(String memEmail,PageVO pageVO) throws Exception;
 
 	// 좋아요 되있는 글도 삭제
 	public VideoLikeVO videoLikeParentDelete(HashMap hashmap);

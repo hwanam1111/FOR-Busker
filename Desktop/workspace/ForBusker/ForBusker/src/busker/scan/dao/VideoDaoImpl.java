@@ -128,7 +128,7 @@ public class VideoDaoImpl implements VideoDao {
 
 	// 좋아요 한 페이지 리스트
 	@Override
-	public List<VideoLikeVO> videoMypageLikeList(String memEmail,int curPage) {
+	public List<VideoVO> videoMypageLikeList(String memEmail,int curPage) {
 		System.out.println("videoDao:"+memEmail);
 		HashMap<String,Object> map = new HashMap<String,Object>();
 		map.put("memEmail", memEmail);

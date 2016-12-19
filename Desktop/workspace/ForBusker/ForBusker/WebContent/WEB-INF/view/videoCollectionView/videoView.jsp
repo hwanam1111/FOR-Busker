@@ -155,7 +155,7 @@ window.onload = function() {
 <div id="mySidenav" class="sidenav">
 <c:forEach var="newList" items="${list}">
 	<div class="row-xs-4">
-	<a href="videoLikeSearch.do?videoNo=${newList.videoNo}&memEmail=${newList.memEmail}&myId=${sessionScope.login.memEmail}&imgpath=${newList.videoUrl}"><img class='videothumb' src="https://img.youtube.com/vi/${newList.videoSomenale}/hqdefault.jpg"  id="newImg"><br/></a>
+	<a href="videoLikeSearch.do?videoNo=${newList.videoNo}&myId=${sessionScope.login.memEmail}&imgpath=${newList.videoUrl}"><img class='videothumb' src="https://img.youtube.com/vi/${newList.videoSomenale}/hqdefault.jpg"  id="newImg"><br/></a>
     	<label class="newlabel">Title : ${newList.videoName} </label>
     	<label class="newlabel">TeamName : ${newList.memTeamName}</label> 
     	<label class="newlabel">Date : ${newList.videoDate}</label>

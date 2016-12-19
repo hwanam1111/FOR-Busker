@@ -38,14 +38,13 @@ $(function(){
 					var time = message[i].smsSendTime.split(" ");
 					//날짜 찍기
 					if(time[0]!=year){
-						$("#chatLog").append("<tr><td align='center'><div class='day'>"+ time[0]+"<div></td></tr>")
+						$("#chatLog").append("<tr><td align='center'><div class='day'>────────  "+ time[0]+"  ────────<div></td></tr>")
 						year = time[0];
 					}
 					//보낸 사람 표시
 					if(!(message[i].smsSendEmail==loginEmail.val())){
 					$("#chatLog").append(
-			"<tr><td><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsSendEmail +"  " + time[2] + "<br/>" + 
-							message[i].smsContent +"</div></div></td></tr>");								
+			"<tr><td><label class='youText'>"+message[i].smsSendEmail +"  " + time[2]+"</label><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");								
 					}else{
 						//받는 사람 표시
 					$("#chatLog").append("<tr><td align='right'><div class='talk-mybubble tri-right right-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");	
@@ -138,7 +137,6 @@ $(function(){
 			}),
 			dataType : "text", // html / xml / json / jsonp / text
 			success : function(data) {
-
 				$("#chatLog").empty();
 				var message = eval("("+data+")");
 				var year = ""
@@ -146,18 +144,19 @@ $(function(){
 					var time = message[i].smsSendTime.split(" ");
 					//날짜 찍기
 					if(time[0]!=year){
-						$("#chatLog").append("<tr><td align='center'><div class='day'>"+ time[0]+"<div></td></tr>")
+						$("#chatLog").append("<tr><td align='center'><div class='day'>────────  "+ time[0]+"  ────────<div></td></tr>")
 						year = time[0];
 					}
 					//보낸 사람 표시
 					if(!(message[i].smsSendEmail==loginEmail.val())){
 					$("#chatLog").append(
-			"<tr><td><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsSendEmail +"  " + time[2] + "<br/>" + 
-							message[i].smsContent +"</div></div></td></tr>");								
+			"<tr><td><label class='youText'>"+message[i].smsSendEmail +"  " + time[2]+"</label><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");								
 					}else{
 						//받는 사람 표시
 					$("#chatLog").append("<tr><td align='right'><div class='talk-mybubble tri-right right-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");	
 					}
+				
+				$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
 				}
 				$("#inputText").val('');
 				$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);

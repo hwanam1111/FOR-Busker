@@ -127,7 +127,7 @@ public class VideoServiceImpl implements VideoService {
 
 //	좋아요한 페이지 리스트
 	@Override
-	public List<VideoLikeVO> videoMypageLikeList(String memEmail,PageVO pageVO) throws Exception {
+	public List<VideoVO> videoMypageLikeList(String memEmail,PageVO pageVO) throws Exception {
 	
 		System.out.println("videoService:"+memEmail);
 		int likePageCount = likePageCount(memEmail);

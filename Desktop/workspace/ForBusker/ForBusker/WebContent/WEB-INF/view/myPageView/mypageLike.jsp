@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="busker.scan.vo.*"%>    
-<%@page import="java.util.*"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="busker.scan.vo.*"%> 
+<%@ page import="java.util.*"%>    
 <% String projectName = "/ForBusker"; %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%	
-	List<VideoVO>list=(List<VideoVO>)request.getAttribute("list"); 
+	List<VideoVO>list=(List<VideoVO>)request.getAttribute("likeList"); 
 	//페이징 클래스 받아오기
+	
 	PageVO pVO = (PageVO)request.getAttribute("page"); 
 %>
 <!DOCTYPE html>
@@ -40,17 +41,17 @@
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 
-	<h1>Like ListPage♥</h1>
+<h1>Like ListPage♥</h1>
 <div class="row" style="margin-top:50px;">
-<c:forEach var="likeList" items="${likeList}" >
+<c:forEach var='list' items="${likeList}">
 	<div style="margin-bottom:60px; " class="col-xs-4">
-		<div >
-  			<a href="videoLikeSearch.do?videoNo=${likeList.videoNo}&memEmail=${likeList.memEmail}&myId=${sessionScope.login.memEmail}">
-  			<img class='videothumb' src="https://img.youtube.com/vi/${likeList.videoSomenale}/hqdefault.jpg" style="width:306.66px; height:229.98px;"><br/><br/>
-    		<p style="height: 40px;">Title : ${likeList.videoName}</p></a>
-    		<p>TeamName : ${likeList.memTeamName}</p>
-    		<p>Date : ${likeList.videoDate}</p>
-    		<input type="hidden" value="${likeList.memEmail}" name="memEmail">
+		<div>
+  	 	<a href="videoLikeSearch.do?videoNo=${list.videoNo}&myId=${sessionScope.login.memEmail}&imgpath=${list.videoUrl}">
+  			<img class='videothumb' src="https://img.youtube.com/vi/${list.videoSomenale}/hqdefault.jpg" style="width:306.66px; height:229.98px;"><br/><br/>
+    		<p style="height: 40px;">Title : ${list.videoName}</p></a>
+    		<p>TeamName : ${list.memTeamName}</p>
+    		<p>Date : ${list.videoDate}</p>
+    		<input type="hidden" value="${list.memEmail}" name="memEmail"> 
     	</div>
 	</div>
 	</c:forEach>

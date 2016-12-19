@@ -309,7 +309,7 @@ position:relative;
 		   
 		   	<% for(VideoVO vvo:videoList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="videoLikeSearch.do?videoNo=<%=vvo.getVideoNo()%>&memEmail=<%=vvo.getMemEmail() %>&myId=${sessionScope.login.memEmail}">
+						<a href="videoLikeSearch.do?videoNo=<%=vvo.getVideoNo()%>&memEmail=<%=vvo.getMemEmail() %>&myId=${sessionScope.login.memEmail}&imgpath=<%=vvo.getVideoUrl()%>">
 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"

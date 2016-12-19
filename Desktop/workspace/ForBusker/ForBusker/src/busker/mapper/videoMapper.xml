@@ -151,14 +151,16 @@ order by videono desc
 	<select id="videoMypageLikeList" parameterType="hashmap"
 		resultType="busker.scan.vo.VideoVO">
 		SELECT *
-		FROM (SELECT rownum as rnum , m.memEmail memEmail,
-		m.memTeamName
-		memTeamName, vLike.LikeNo LikeNo, v.videoNo videoNo,
-		v.videoname
-		videoname,
-		v.videodetail videodetail, v.videourl videourl,
-		substr(v.videourl, -11) as
-		videosomenale, v.videoDate videoDate
+		FROM (SELECT rownum as rnum , 
+		m.memEmail memEmail,
+		m.memTeamName memTeamName, 
+		vLike.LikeNo LikeNo, 
+		v.videoNo videoNo,
+		v.videoname	videoName,
+		v.videodetail videoDetail, 
+		v.videourl videoUrl,
+		substr(v.videourl, -11) as videoSomenale, 
+		v.videoDate videoDate
 		FROM
 		video v, videoLike vlike, member m
 		WHERE vlike.memloginemail

@@ -33,6 +33,8 @@ public class VideoListController {
 	@Autowired
 	private VideoService service;
 	
+	private List<HashMap> list;
+	
 //	영상 업로드
 	@RequestMapping(value="videoUpload")
 	public String videoUpload(){
@@ -120,8 +122,12 @@ public class VideoListController {
 		VideoVO vvo=new VideoVO();
 		vvo.setVideoNo(Integer.parseInt(videoNo));
 		// 좋아요 됬는지 확인
+		
 		ArrayList<VideoLikeVO> likeList = (ArrayList<VideoLikeVO>) service.videoLikeList(vvo);
+		
 		String result= "";
+		
+		
 		// 로그인이 됬을때만 확인
 		if(myId!=""){
 			for(VideoLikeVO temp:likeList){
@@ -131,17 +137,24 @@ public class VideoListController {
 				}
 			}
 		}
-		String img=imgpath.substring(imgpath.length()-11);
-
 		
-		ArrayList<String> list = (ArrayList) session.getAttribute("list");
-
+		String img=imgpath.substring(imgpath.length()-11);
+		list = (List<HashMap>)session.getAttribute("list");
 		
 		if (list == null) {
-			list = new ArrayList<String>();
-			list.add(img);
+			list = new ArrayList<>();
+			HashMap hashMap = new HashMap();
+			hashMap.put("img", img);
+			hashMap.put("videoNo", videoNo);
+			hashMap.put("myId", myId);			
+			list.add(hashMap);
 			session.setAttribute("list", list);
 		} else {
+
+			if(list.size()==3){
+				list.remove(0);
+			}
+
 			String add = "yes";
 			
 			for(int i=0; i<list.size(); i++){
@@ -151,7 +164,11 @@ public class VideoListController {
 				}
 			}
 			if(add.equals("yes")){
-				list.add(img);			
+				HashMap hashMap = new HashMap();
+				hashMap.put("img", img);
+				hashMap.put("videoNo", videoNo);
+				hashMap.put("myId", myId);
+				list.add(hashMap);
 			}
 			session.setAttribute("list", list);
 		}
@@ -218,7 +235,6 @@ public class VideoListController {
 			}
 			
 			m.addAttribute("resultDel", resultDel);
-		
 		
 		m.addAttribute("vlo", vlo);
 		m.addAttribute("vvo", vvo);
@@ -299,8 +315,7 @@ public class VideoListController {
 			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
 		}
 						
-		List<VideoLikeVO> likeList = service.videoMypageLikeList(memEmail,pageVO);
-		System.out.println("likelist : " + likeList);
+		List<VideoVO> likeList = service.videoMypageLikeList(memEmail,pageVO);
 		m.addAttribute("likeList", likeList); 
 		m.addAttribute("page",pageVO);
 		

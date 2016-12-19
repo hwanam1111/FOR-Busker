@@ -23,9 +23,15 @@
 /* 전송버튼 */
 #chatSubmit{width:70px;}
 
+
+
+.youText{
+	font-weight: 200px;
+	font-size : 14px;
+}
 /* CSS talk bubble */
 .talk-yoububble {
-	margin: 10px;
+	margin: 0px;
     display: inline-block;
     position: relative;
 	width: 200px;
@@ -53,7 +59,7 @@
 	height: 0;
   	left: -20px;
 	right: auto;
-	top: 38px;
+	top: 5px;
 	bottom: auto;
 	border: 12px solid;
 	border-color: lightblue lightblue transparent transparent;	
@@ -61,7 +67,9 @@
 
 /* talk bubble contents */
 .talktext{
- 	 padding: 1em;
+	font-weight:100;
+	font-size:17px;
+ 	padding: 1em;
 	text-align: left;
 }
 .talktext p{
@@ -110,10 +118,14 @@
 }
 
 .day{
-	border-top-style: solid;
-	border-top-color : #111;
 	
+	margin-top : 5px;
+	margin-bottom : 5px;
+ 
+/*	border-top-style: solid;
+	border-top-color : #111;	
 	border-bottom-style : solid;
-	border-bottom-color: #111;
+	border-bottom-color: #111; */
+	
 }
 
