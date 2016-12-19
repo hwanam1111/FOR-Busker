@@ -68,7 +68,6 @@ public class MyPageController {
 		try {
 			result=service.deleteMember(memberVO);
 			
-			//System.out.println("탈퇴성공");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
