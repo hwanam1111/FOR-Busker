@@ -74,7 +74,7 @@
 		</div>
 		</li>
 		<li align="center">
-			<button type="button" class="btn btn-warning"><a href="noticeList.do" style="color:white">목록보기</a></button>
+			<button type="button" class="btn btn-info"><a href="noticeList.do" style="color:white">목록보기</a></button>
 		</li>
 	</ul>
 </div>
