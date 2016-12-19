@@ -215,7 +215,7 @@ ${map.videoDetail} </pre><br/><br/>
 </div>
 <div style="margin-left:200px;">
 <a href="videoMain.do">
-<button type="button" class="btn default" style="width:200px; background-color:#FFD3B0; color:white;">목록보기</button>
+<button type="button" class="btn btn-primary" style="width:200px; color:white;">목록보기</button>
 </a>
 </div>
 <div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">

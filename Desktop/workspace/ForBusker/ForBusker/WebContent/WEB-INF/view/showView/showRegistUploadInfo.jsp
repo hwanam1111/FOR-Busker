@@ -35,7 +35,7 @@
 <!-- 동영상 업로드 설명 페이지 -->
 <!-- ################################################### -->
 <img src="<%=projectName %>/resources/images/show_img/Showupload.jpg" style="margin-left:100px;">
-<a href="videoForm.do"><button class="btn default" style="width:200px; color:white; margin-left:440px;">영상등록하러가기</button></a>
+<a href="showRegist.do"><button class="btn btn-primary" style="width:200px; color:white; margin-left:440px;">영상등록하러가기</button></a>
 </div>
 <!-- 코딩 종료 -->
 

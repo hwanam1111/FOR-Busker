@@ -170,14 +170,14 @@ $(".delete").click(function(){
 	<div align="center">
 	<c:choose>
 	<c:when test="${sessionScope.login ne null}">
-	<button type="button" class="btn btn-warning" id="togetherJoin">쪽지 보내기</button>
+	<button type="button" class="btn btn-primary" id="togetherJoin">쪽지 보내기</button>
 	</c:when>
 	<c:otherwise>
 	<label>로그인 후 문의해주세요.</label>
 	</c:otherwise>
 	</c:choose>
-	<a href="togetherList.do"><button type="button" class="btn btn-warning">목록보기</button></a>
-	<button type="button" class='btn btn-warning delete' style="display: none;">삭제</button>
+	<a href="togetherList.do"><button type="button" class="btn btn-primary">목록보기</button></a>
+	<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
 	</div>
 	</td>
 	</tr>
