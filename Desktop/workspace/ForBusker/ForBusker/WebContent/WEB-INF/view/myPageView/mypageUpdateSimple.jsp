@@ -67,7 +67,7 @@
   		<!-- #################################################### -->
   		<div class="form-group">
  		    <label for="updateTel">전화번호</label>
-    		<input type="tel" class="form-control" id="updateTel"name="updateTel" placeholder="전화번호를 입력하세요" maxlength="13">
+    		<input type="tel" class="form-control" id="updateTel"name="updateTel" placeholder="전화번호를 입력하세요"  value="${sessionScope.login.memPhone}" maxlength="13">
   		</div>
   		
 		<!-- submit button -->
