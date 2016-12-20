@@ -137,7 +137,6 @@ public class MemberController {
 			vo.setMemEmail(memEmail);
 			vo.setMemPhone(memPhone);
 			MemberVO memvo=service.searchPw(vo);
-			System.out.println("비밀번호 찾음: "+memvo.getMemPw());
 			return memvo.getMemPw();
 		}
 	

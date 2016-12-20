@@ -38,7 +38,7 @@ $(function(){
 					var time = message[i].smsSendTime.split(" ");
 					//날짜 찍기
 					if(time[0]!=year){
-						$("#chatLog").append("<tr><td align='center'><div class='day'>────────  "+ time[0]+"  ────────<div></td></tr>")
+						$("#chatLog").append("<tr><td align='center'><div class='day'>─────── "+ time[0]+" ───────<div></td></tr>")
 						year = time[0];
 					}
 					//보낸 사람 표시
@@ -144,7 +144,7 @@ $(function(){
 					var time = message[i].smsSendTime.split(" ");
 					//날짜 찍기
 					if(time[0]!=year){
-						$("#chatLog").append("<tr><td align='center'><div class='day'>────────  "+ time[0]+"  ────────<div></td></tr>")
+						$("#chatLog").append("<tr><td align='center'><div class='day'>─────── "+ time[0]+" ───────<div></td></tr>")
 						year = time[0];
 					}
 					//보낸 사람 표시
