@@ -67,6 +67,9 @@
 			<button type="button" class="btn btn-info marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
 		</a>
 	</div>
+	
+	
+	
 	</c:if>
 	</div>
 	
