@@ -237,7 +237,7 @@ $(function(){
 	
 	
 	<nav align="center">
-	  <ul class="pagination pagination-lg">
+	  <ul class="pagination pagination-lg" style="margin-top: 60px;">
 	    <li class="page-item">
 	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getPreviPage()%>&search=<%=search %>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>
