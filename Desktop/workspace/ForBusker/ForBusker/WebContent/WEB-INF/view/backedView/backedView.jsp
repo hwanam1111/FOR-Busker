@@ -87,6 +87,11 @@ var result = confirm("대화를 삭제하시겠습니까?");
 			<iframe width="600" height="430" src="${ selectBacked.backVideo}" frameborder="0" allowfullscreen></iframe>
 		</div>
 	</div>
+	<div style="margin-left:190px; margin-top: 20px;">
+		<a href="backedList.do?cate=backed&page=1">
+		<button type="button" class="btn btn-primary" style="width:200px; color:white;">목록보기</button>
+		</a>
+	</div>
 	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
 		<a href="backedUpdateForm.do?backNo=${selectBacked.backNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
 		<a href="backedDelete.do?num=${selectBacked.backNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>

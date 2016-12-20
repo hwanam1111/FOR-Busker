@@ -91,6 +91,11 @@ var result = confirm("대화를 삭제하시겠습니까?");
 			<img src="<%=projectName %>/upload/${selectSpon.spPhoto} " style="width:540px; height: 402px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
 		</div>
 	</div>
+	<div style="margin-left:170px; margin-top: 20px;">
+		<a href="sponAndBacked.do">
+		<button type="button" class="btn btn-primary" style="width:200px; color:white;">목록보기</button>
+		</a>
+	</div>
 	<div id="footBtn" style="margin-top:40px; margin-left:60px; display:none;">
 <%-- 		<input type="hidden" value="${selectSpon.memEmail}" name="memEmail"> --%>
 		<a href="sponUpdateForm.do?spNo=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
