@@ -54,10 +54,15 @@
   		<div class="form-group" id="telForm">
  		    <p id="telTitle">FOR_Busker에 회원가입 하실 때 작성하셨던 전화번호를 입력해주십시오.</p>
     		<input type="tel" class="form-control" id="buskerTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
+			<div id="telMessage" style="display:none"></div>
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
-		<button type="button" class="btn btn-success" id="searchPwBtn">비밀번호 찾기</button>
+		<div align="center">
+		<button type="button" class="btn btn-info" id="searchPwBtn">비밀번호 찾기</button>
+		<button type="button" class="btn btn-info" id="loginBtn">로그인 하러가기</button>
+		<button type="button" class="btn btn-info" id="mainBtn">메인으로</button>
+		</div>	
 	</form>
 </div>
 

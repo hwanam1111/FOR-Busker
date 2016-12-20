@@ -40,24 +40,6 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-<script type="text/javascript">
-$(function(){
-	if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
-		$(".delete").css("display","block");
-	}	
-
-	
-$(".delete").click(function(){	
-var result = confirm("대화를 삭제하시겠습니까?");
-	if(result){
-		location.href="backedDelete.do?num=<%=bVO.getBackNo()%>";
-	}
-});
-
-});
-</script>
-
-
 <%if(mVO.getMemEmail().equals(bVO.getMemEmail())) { %>
 <script type="text/javascript">
 	$(function() {
@@ -70,11 +52,31 @@ var result = confirm("대화를 삭제하시겠습니까?");
 	})
 </script>
 		<% } %>
+
+<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
+	<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+			
+			$("#delete").click(function(){
+				var result = confirm("게시글을 삭제하시겠습니까?");
+				if(result){
+					location.href="backedDelete.do?num=${selectBacked.backNo}";
+				}
+			});
+		
+		});
+	</script>
+<% } %>		
+
 <% } %>
 <!-- ################################################### -->
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
+	<div id="adminBtn" style="margin-left:880px; display:none;">
+		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+	</div>
 <h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Backed View</h1><br/>
 <table class="sponTable">
 	<td class="backedLeft">
@@ -89,12 +91,12 @@ var result = confirm("대화를 삭제하시겠습니까?");
 	</div>
 	<div style="margin-left:190px; margin-top: 20px;">
 		<a href="backedList.do?cate=backed&page=1">
-		<button type="button" class="btn btn-primary" style="width:200px; color:white;">목록보기</button>
+		<button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 		</a>
 	</div>
 	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-		<a href="backedUpdateForm.do?backNo=${selectBacked.backNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
-		<a href="backedDelete.do?num=${selectBacked.backNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
+		<a href="backedUpdateForm.do?backNo=${selectBacked.backNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 수정</button></a>
+		<a href="backedDelete.do?num=${selectBacked.backNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	
@@ -111,7 +113,7 @@ var result = confirm("대화를 삭제하시겠습니까?");
 		${selectBacked.backTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br/><br/>
 		<c:choose>
 		<c:when test="${sessionScope.login ne null}">
-		<button type="button" class="btn btn-primary" id="insertMessage">문의하기</button>
+		<button type="button" class="btn btn-info" id="insertMessage">문의하기</button>
 		</c:when>
 		<c:otherwise>
 		<label>로그인 후 문의해주세요.</label>

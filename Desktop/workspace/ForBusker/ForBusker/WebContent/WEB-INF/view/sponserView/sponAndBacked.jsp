@@ -110,9 +110,11 @@ $(function(){
 		
 	</div>
 	
+	<c:if test="${null ne sessionScope.login}">
 	<div class="col-xs-6 ">
 		<button type="button" class="btn btn-info marginRight" id="moveToSponBtn" style="float: right;">후원하기</button>
 	</div>
+	</c:if>
 	</div>
 	
 	</tr>
@@ -194,10 +196,11 @@ $(function(){
 	<div class="col-xs-2" style="position: relative; right:20px">
 		<button type="button" class="btn btn-info" id="backedSearchBtn">검색</button>
 	</div>
-	
+	<c:if test="${null ne sessionScope.login}">
 	<div class="col-xs-6">
 		<button type="button" class="btn btn-info marginRight" id="moveToBackedBtn" style="float: right;">후원받기</button>
 	</div>
+	</c:if>
 	</div>
 	</tr> 
 	

@@ -73,9 +73,22 @@ $( document ).ready(function() {
 				$('#searchPwBtn').hide();
 			},
 			error:function(data){
+				$("#telTitle").text("입력 한 정보가 잘못되셨습니다.");
 				console.log("에러발생 : "+data.toString());
 			}
 			
 		});
 	});//비번찾기 끝
+	
+	//로그인 화면으로
+	$("#loginBtn").click(function(){
+		location.href="login.do";
+	});// 로그인 화면 끝
+	
+	
+	//메인으로
+	$("#mainBtn").click(function(){
+		location.href="main.do";
+	});//메인으로 끝
+	
 });

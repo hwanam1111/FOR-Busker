@@ -128,6 +128,23 @@ window.onload = function() {
 		})
 		</script>
 		<% } %>
+		
+	<%if(nvo.getMemEmail().equals("help@busker.com")) { %>
+	<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+		
+
+			$("#delete").click(function(){
+			var result = confirm("게시글을 삭제하시겠습니까?");
+			if(result){
+				location.href= "videoFormDelete.do?videoNo=${map.videoNo}";
+			}				
+
+			});
+		});
+	</script>
+<% } %>		
 <% } %>
 <!-- ################################################### -->
 
@@ -167,6 +184,10 @@ window.onload = function() {
 
 <!-- 뷰 시작 -->
 <!-- ################################################### -->
+<div id="adminBtn" style="margin-top:40px; margin-bottom:10px; margin-left:540px; display:none;">
+	<a id="adminDelete"><button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button></a>
+</div>
+
 <div class='row'>
 
 <div class='col-xs-12' style="width: 640px; margin: 0px auto;">
@@ -215,12 +236,12 @@ ${map.videoDetail} </pre><br/><br/>
 </div>
 <div style="margin-left:200px;">
 <a href="videoMain.do">
-<button type="button" class="btn btn-primary" style="width:200px; color:white;">목록보기</button>
+<button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 </a>
 </div>
 <div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
-	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
+	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 수정</button></a>
+	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 삭제</button></a>
 </div>
 <!-- ################################################### -->
 </div>

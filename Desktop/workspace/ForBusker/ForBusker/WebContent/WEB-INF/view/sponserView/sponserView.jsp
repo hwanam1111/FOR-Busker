@@ -44,22 +44,6 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-<script type="text/javascript">
-$(function(){
-	if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
-		$(".delete").css("display","block");
-	}	
-
-	
-$(".delete").click(function(){	
-var result = confirm("대화를 삭제하시겠습니까?");
-	if(result){
-		location.href="SponserDelete.do?num=<%=sVO.getSpNo()%>";
-	}
-});
-
-});
-</script>
 
 <%if(mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
 <script type="text/javascript">
@@ -73,12 +57,32 @@ var result = confirm("대화를 삭제하시겠습니까?");
 	})
 </script>
 		<% } %>
+
+<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
+	<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+		
+			$("#delete").click(function(){	
+				var result = confirm("대화를 삭제하시겠습니까?");
+					if(result){
+						location.href="sponDelete.do?num=${selectSpon.spNo}";
+					}
+				});
+		})
+	</script>
+<% } %>		
+
+
 <% } %>
 <!-- ################################################### -->
 
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
+	<div id="adminBtn" style="margin-left:880px; display:none;">
+		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+	</div>
 <h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Sponser View</h1><br/>
 <table class="sponTable" >
 	<td class="sponLeft">
@@ -93,13 +97,13 @@ var result = confirm("대화를 삭제하시겠습니까?");
 	</div>
 	<div style="margin-left:170px; margin-top: 20px;">
 		<a href="sponAndBacked.do">
-		<button type="button" class="btn btn-primary" style="width:200px; color:white;">목록보기</button>
+		<button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 		</a>
 	</div>
 	<div id="footBtn" style="margin-top:40px; margin-left:60px; display:none;">
 <%-- 		<input type="hidden" value="${selectSpon.memEmail}" name="memEmail"> --%>
-		<a href="sponUpdateForm.do?spNo=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
-		<a href="sponDelete.do?num=${selectSpon.spNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
+		<a href="sponUpdateForm.do?spNo=${selectSpon.spNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 수정</button></a>
+		<a href="sponDelete.do?num=${selectSpon.spNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	
@@ -118,13 +122,13 @@ var result = confirm("대화를 삭제하시겠습니까?");
 		${selectSpon.spTel} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <br/><br/>
 		<c:choose>
 		<c:when test="${sessionScope.login ne null}">
-		<button type="button" class="btn btn-primary" id="insertMessage">문의하기</button>
+		<button type="button" class="btn btn-info" id="insertMessage">문의하기</button>
 		</c:when>
 		<c:otherwise>
 		<label>로그인 후 문의해주세요.</label>
 		</c:otherwise>
 		</c:choose>		
-		<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
+		<button type="button" class='btn btn-info delete' style="display: none;">삭제</button>
 		</p>
 	</div>
 	

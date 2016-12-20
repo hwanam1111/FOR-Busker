@@ -19,8 +19,20 @@ $(function(){
 				$('#BuskersearchIdBtn').hide();
 			},
 			error:function(param){
+				$('#teamTel').text("입력한 정보가 틀리셨습니다. 다시 입력해주세요.");
 				console.log("에러발생 : "+param.toString());
 			}
 		});
 	});
+	
+	//로그인 화면으로
+	$("#loginBtn").click(function(){
+		location.href="login.do";
+	});// 로그인 화면 끝
+	
+	
+	//메인으로
+	$("#mainBtn").click(function(){
+		location.href="main.do";
+	});//메인으로 끝
 });

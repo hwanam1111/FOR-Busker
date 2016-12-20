@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="busker.scan.vo.*"%>
 <%@page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String projectName = "/ForBusker"; %>
 <%
 	List<TogetherVO>list=(List<TogetherVO>)request.getAttribute("list"); 
@@ -60,11 +61,13 @@
 	 <a id="nextPage"><button type="button" class="btn btn-info" style="position: relative; right:20px; color:#fff"id="searchBtn">검색</button></a>
 	</div>
 	
+	<c:if test="${null ne sessionScope.login}">
 	<div class="col-xs-6 ">
 		<a href="togetherForm.do">
 			<button type="button" class="btn btn-info marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
 		</a>
 	</div>
+	</c:if>
 	</div>
 	
 	</tr>
