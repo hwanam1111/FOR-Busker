@@ -16,6 +16,7 @@ function closeNav() {
 //#########################################################
 $(function(){
 	var range=3;
+	var result=[];
 	//댓글 입력 버튼 눌렀을때
 	$('#replyRegBtn').click(function(){
 		 if(!($("textarea").val()=="")&&!($('#memEmail').val()=="")){         
@@ -42,6 +43,7 @@ $(function(){
 			success:function(param){
 				//답변글찍어주기
 				var data=eval("("+param+")");
+				result=data;
 				$('.comments-list').empty();
 				for(var i=0;i<range && i<data.length;i++){
 					$('.comments-list').append("<div class='media'><p class='pull-right'><small>"+data[i].replDate+"</small></p><div class='media-body'>"                
@@ -56,8 +58,13 @@ $(function(){
 	}//showReply()끝
 	//더보기 눌렀을때
 	$('#more').click(function(){
+		console.log("더보기 클릭 :"+range+"/ 결과값 길이"+result.length)
+		if(range>=result.length && result.length!=0){
+			$(this).empty();
+		}else{
 		range+=3;
 		showReply();
+		}
 	});
 	
 });
