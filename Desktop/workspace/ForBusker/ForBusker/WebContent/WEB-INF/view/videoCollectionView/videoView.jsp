@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <%@ page import="busker.scan.vo.*" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="busker.scan.vo.*" %>
 <% String projectName = "/ForBusker"; %>
 <!DOCTYPE html>
 <html>
@@ -20,6 +21,7 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/videoCollection_css/imggrid.css?<?=filemtime('<%=projectName %>/resources/css/videoCollection_css/imggrid.css')?>" rel="stylesheet" type="text/css" media="all">
+<link href="<%=projectName %>/resources/css/videoCollection_css/videoView.css?<?=filemtime('<%=projectName %>/resources/css/videoCollection_css/videoView.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/video_js/videoView.js?<?=filemtime('<%=projectName %>/resources/js/video_js/videoView.js')?>"></script>
 
@@ -128,21 +130,6 @@ window.onload = function() {
 		})
 		</script>
 		<% } %>
-		
-		<%if(nvo.getMemEmail().equals("help@busker.com")) { %>
-	<script type="text/javascript">
-		$(function() {
-			$('#adminBtn').css('display', 'block');
-		
-			$("#delete").click(function(){	
-				var result = confirm("게시글을 삭제하시겠습니까?");
-					if(result){
-						location.href="videoFormDelete.do?videoNo=<%=vvo.getVideoNo()%>";
-					}
-				});
-		})
-	</script>
-<% } %>		
 <% } %>
 <!-- ################################################### -->
 
@@ -162,9 +149,7 @@ window.onload = function() {
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<div id="adminBtn" style="margin-left:540px; margin-bottom:5px; display:none;">
-	<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
-</div>
+
 <!-- ################################################### -->
 <!-- 오른쪽 메뉴 -->
 <div id="mySidenav" class="sidenav">
@@ -226,8 +211,12 @@ ${map.videoDetail} </pre><br/><br/>
 </div>
 </div>
 <!-- 비디오 목록열기 -->
-<div class='col-xs-2'><span id='openBtn' style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">&#9776; NewVideo</span>
-<span id='closeBtn' style="font-size:23px;cursor:pointer;display:none" onclick="closeNav()">&times; NewVideo</span></div>
+<div class='col-xs-2'>
+<span id='openBtn' style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">
+VideoList <img src="<%=projectName %>/resources/images/video_img/cursor.png"/>
+</span>
+<span id='closeBtn' style="font-size:23px;cursor:pointer;display:none" onclick="closeNav()">Close X</span></div>
+
 </div>
 <!-- #######################################답글######################################### -->
 <div style="width:640px;" align="left" class="form-inline">
@@ -257,11 +246,13 @@ ${map.videoDetail} </pre><br/><br/>
 		 
 	</div>
 	<!-- 더보기 -->
+	<c:if test="${fn:length(replyList)>3}">
 	<div align="center" id="more" style="cursor:pointer;">
 		<hr/>
 		<h4>더보기▽</h4>
 		<hr/>
-	</div>   
+	</div>
+	</c:if>   
 </div> <!-- end reply div -->
 
   
