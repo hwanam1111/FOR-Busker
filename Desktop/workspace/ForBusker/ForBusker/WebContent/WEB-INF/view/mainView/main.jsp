@@ -203,6 +203,7 @@ function logout(){
 	<!-- ################################################################################################ -->
 	<!-- ################################################################################################ -->
 
+	<!-- 메인하단 지도이미지 -->
 	<div class="wrapper bgded"
 		style="background-color: rgba(49, 255, 255, .49); border-top: 1px solid rgba(49, 101, 115, .75); border-bottom: 1px solid rgba(49, 101, 115, .75); width: 100%">
 		<div class="split clear">
@@ -246,7 +247,7 @@ function logout(){
 	<!-- ################################################################################################ -->
 	<div class="wrapper row3">
 		<section class="hoc container clear"> <!-- ################################################################################################ -->		
-<!-- 		<a class="areaname" href="#" style="position:relative; right:210px; bottom:150px; ">동작</a> -->
+	<!-- Top3 Rank -->
 		<div class="sectiontitle">	
 			<h6 class="heading">Busker Top3 Ranking</h6>
 			
