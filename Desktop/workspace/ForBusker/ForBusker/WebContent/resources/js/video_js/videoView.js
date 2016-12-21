@@ -56,7 +56,7 @@ $(function(){
 				
 		});//ajax 끝
 	}//showReply()끝
-	//더보기 눌렀을때
+	//더보기 눌렀을때 
 	$('#more').click(function(){
 		console.log("더보기 클릭 :"+range+"/ 결과값 길이"+result.length)
 		if(range>=result.length && result.length!=0){
