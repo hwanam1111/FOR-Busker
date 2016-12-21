@@ -54,7 +54,7 @@
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">  <!-- NoticeList -->
 	<ul>
-	<li><h1><img src="<%=projectName %>/resources/images/notice_img/notepad.png">NOTICE</h1></li>
+	<li><h1 style="font-size:30px;"><img src="<%=projectName %>/resources/images/notice_img/notepad.png">공지사항</h1></li>
 	<li>
 	<div class="floatRight marginBottom">
 	<a href="noticeForm.do" style="color:white; display: none;" id="noticebtn"><button type="button" class="btn btn-info" style="height:38px;">글쓰기</button></a>

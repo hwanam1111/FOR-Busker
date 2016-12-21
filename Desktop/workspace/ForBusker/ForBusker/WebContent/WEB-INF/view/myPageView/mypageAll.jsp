@@ -57,15 +57,15 @@
 
 $(function(){
 	if( '<%=cate%>' == 'show'  ){
-    	$(".tabs li").children().eq(0).addClass("changeColor")
+    	$(".tabs li").children().eq(0).addClass("changeColor");
     }else if('<%=cate%>' == 'sponser' ){
-    	$(".tabs li").children().eq(1).addClass("changeColor")
+    	$(".tabs li").children().eq(1).addClass("changeColor");
     }else if('<%=cate%>' == 'backed' ){
-    	$(".tabs li").children().eq(2).addClass("changeColor")
+    	$(".tabs li").children().eq(2).addClass("changeColor");
     }else if('<%=cate%>' == 'video' ){
-    	$(".tabs li").children().eq(3).addClass("changeColor")
+    	$(".tabs li").children().eq(3).addClass("changeColor");
     }else if('<%=cate%>' == 'join' ){
-    	$(".tabs li a").eq(4).addClass("changeColor")
+    	$(".tabs li").children().eq(4).addClass("changeColor");
     }
 });
 

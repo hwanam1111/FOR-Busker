@@ -73,7 +73,7 @@ $(function(){
 			<table>
 				<!-- 어떤 입력폼인가 -->
 				<tr>
-					<h1>performanceUp Form</h1>
+					<h1 style="font-size:30px;">공연 정보 수정</h1>
 					<br />
 					<br />
 				</tr>

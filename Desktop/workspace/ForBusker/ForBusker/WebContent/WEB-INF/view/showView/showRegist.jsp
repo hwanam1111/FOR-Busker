@@ -58,7 +58,7 @@ $(function(){
 			<table>
 				<!-- 어떤 입력폼인가 -->
 				<tr>
-					<h1>performanceRegist Form</h1>
+					<h1 style="font-size:30px;">공연등록 입력폼</h1>
 					<br />
 					<br />
 				</tr>

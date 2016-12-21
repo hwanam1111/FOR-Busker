@@ -41,7 +41,7 @@
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 
-<h1>Like ListPage♥</h1>
+<h1 style="font-size:30px;">좋아요 목록</h1>
 <div class="row" style="margin-top:50px;">
 <c:forEach var='list' items="${likeList}">
 	<div style="margin-bottom:60px; " class="col-xs-4">

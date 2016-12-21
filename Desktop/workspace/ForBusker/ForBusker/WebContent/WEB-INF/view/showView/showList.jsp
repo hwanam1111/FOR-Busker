@@ -151,7 +151,7 @@ $("input[name=date_submit]").val('<%=date%>');
 <div style="width:100%;">
 <div>
 	 <div style="font-size:40px; line-height: 70px; position: relative; bottom:300px;">
-		오늘은 공연이 없습니다. <br/>
+		해당 공연이 없습니다. <br/>
 		다른 지역을 검색해보세요.						
 		
 	</div>
@@ -181,26 +181,7 @@ $("input[name=date_submit]").val('<%=date%>');
 <input type="hidden" value="" id="loc">
 <!-- 페이징 부분 -->
 	<%if(shno == 0 && value==null) {%>
-	<%-- <nav>
-	  <ul class="pagination pagination-lg">
-	    <li class="page-item" >
-	      <a class="page-link" href="showList.do?page=<%=pVO.getPreviPage()%>&loc=<%=mapo %>&shno=0" aria-label="Previous">
-	        <span aria-hidden="true">&laquo;</span>
-	        <span class="sr-only">Previous</span>
-	      </a>
-	    </li>
-  		<%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-	   	 	<li class="page-item"><a class="page-link" href="showList.do?page=<%=i %>&loc=<%=mapo %>&shno=0"><%=i %></a></li>
-	   	 	
-	 	<%} %>
-	    <li class="page-item">
-	      <a class="page-link" href="showList.do?page=<%=pVO.getNextPage()%>&loc=<%=mapo %>&select=<%=select %>&date=<%=date %>" aria-label="Next">
-	        <span aria-hidden="true">&raquo;</span>
-	        <span class="sr-only">Next</span>
-	      </a>
-	    </li>
-	  </ul>
-	</nav> --%>
+	
 	<%} else if(shno == 0 && value !=null){%>
 	<nav style="position: relative; left:120px; bottom:30px;">
 	  <ul class="pagination pagination-lg">

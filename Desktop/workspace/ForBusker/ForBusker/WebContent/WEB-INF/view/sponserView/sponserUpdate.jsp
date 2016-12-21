@@ -40,11 +40,7 @@
 <div class="hoc">
 	<form style="margin-left:140px;" action="sponUpdate.do" enctype="multipart/form-data" method="post">
 		<table>
-		<!-- 어떤 입력폼인가 -->
-		<tr>
-			<h1> Sponser UpdateForm</h1> 
 		
-		</tr>
 		<tr>
 		
 		</tr>

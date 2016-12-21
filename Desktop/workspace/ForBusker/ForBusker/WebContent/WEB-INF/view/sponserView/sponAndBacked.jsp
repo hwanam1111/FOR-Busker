@@ -89,6 +89,7 @@ $(function(){
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
+<h1 style="font-size:30px;">후원하기/후원받기</h1>
 <div id="container">
     <ul class="tabs" style="border:none; margin-left:15px;">
         <li class="kkk" rel="tab1" >후원하기</li>

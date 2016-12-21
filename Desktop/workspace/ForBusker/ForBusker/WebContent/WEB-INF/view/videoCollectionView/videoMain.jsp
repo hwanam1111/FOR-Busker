@@ -64,7 +64,7 @@ $(function() {
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<h1> Video Collections </h1>
+	<h1 style="font-size:30px;">영상모음</h1>
 	<div class="container-fluid">
 	<div id="movieBtn" style="display:none;">
 		<a href="videoUpload.do">영상등록하는방법확인</a> &nbsp;&nbsp;

@@ -43,14 +43,6 @@
 <div class="hoc">
 	<form style="margin-left:140px;" id="sponserForm" >
 		<table>
-		<!-- 어떤 입력폼인가 -->
-		<tr>
-			<h1> Sponser Form</h1> 
-		
-		</tr>
-		<tr>
-		
-		</tr>
 		
 		<!-- 제목 -->
 		<tr>	

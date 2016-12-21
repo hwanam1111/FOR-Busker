@@ -34,7 +34,7 @@
 <div class="hoc">
 	<!-- ################################################### -->
 	<!-- ################################################### -->
-	<h1 id="leave_title">회원탈퇴</h1>
+	<h1 id="leave_title" style="font-size:30px;">회원탈퇴</h1>
 	<!-- simpleJoin Form -->
 	<form id="leaveForm" action="myPageLeaveConfig.do" method="post">
 		<!-- #################################################### -->

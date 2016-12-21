@@ -187,10 +187,10 @@ public class TogetherController {
 		try {
 			List<TogetherVO> voList=service.selectBySearchVal(searchVal,pageVO);
 			if(voList!=null){
-				m.addAttribute("voList", voList);
+				m.addAttribute("list", voList);
 				m.addAttribute("searchVal", searchVal);
 				m.addAttribute("page",pageVO);
-				nextPage="togetherView/togetherSearch";
+				nextPage="togetherView/togetherList";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
