@@ -52,6 +52,14 @@ function logout(){
 #mainav #liMyPage:hover{color:#000; background-color:inherit; text-decoration: none; cursor: pointer;}
 #mainav .ul_li_List{color:#ff0000; line-height: 30px;}
 #mainav .ul_li_List:first-child{margin-top:30px;}
+
+#messageimg{
+	position: relative;
+ 	left: 580px; 
+	top:-80px;
+	width: 25px;
+	heght: 25px;
+}
 </style>
 
 </head>
@@ -87,6 +95,7 @@ function logout(){
 			<!-- ################################################# -->
 			<!-- ################################################# -->
 			<!-- 오른쪽 nav메뉴 -->
+			<img id="messageimg" src="<%=projectName %>/resources/images/message_img/message.png"/>
 			<nav id="mainav" class="fl_right">
 				<ul class="clear">
 					<li onclick="logout()" id="liLogout" style="cursor: pointer">로그아웃</li>
@@ -98,7 +107,6 @@ function logout(){
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
-					<li id="messageicon" style="display:none;"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:12px;" src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
 					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>	
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
@@ -130,8 +138,7 @@ function logout(){
 		  		dataType: "text",
 				success : function(data){
 					if(data=="success"){
-							$("#nomeesage").hide();
-							$("#messageicon").show();
+						$("#messageimg").css("top","8px");
 					}
 				}	
 				});

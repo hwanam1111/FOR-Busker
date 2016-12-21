@@ -39,6 +39,7 @@ function logout(){
 			<!-- ################################################# -->
 			<!-- ################################################# -->
 			<!-- 오른쪽 nav메뉴 -->
+			<img id="messageimg" src="<%=projectName %>/resources/images/message_img/message.png"/>
 			<nav id="mainav" class="fl_right">
 				<ul class="clear">
 					<li onclick="logout()" id="liLogout">로그아웃</li>
@@ -50,7 +51,7 @@ function logout(){
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
-					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
+					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
@@ -81,7 +82,7 @@ function logout(){
 		  		dataType: "text",
 				success : function(data){
 					if(data=="success"){
-							$("#nomeesage").text("쪽지함 new ");
+						$("#messageimg").css("top","8px");
 					}
 				}	
 				});
