@@ -39,7 +39,7 @@ function logout(){
 			<!-- ################################################# -->
 			<!-- ################################################# -->
 			<!-- 오른쪽 nav메뉴 -->
-			<img id="messageimg" src="<%=projectName %>/resources/images/message_img/message.png"/>
+			<img id="messageimg" src="<%=projectName %>/resources/images/message_img/messageimg.png"/>
 			<nav id="mainav" class="fl_right">
 				<ul class="clear">
 					<li onclick="logout()" id="liLogout">로그아웃</li>

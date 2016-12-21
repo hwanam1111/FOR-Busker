@@ -98,14 +98,13 @@
 		
 		<!-- 등록, 취소 버튼 -->
 		<tr>
-			<div align="center">
-				
-			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
+			<div style="margin-left: 270px ">
 				<button type="button" class="btn btn-info" id="sponSubmit">등록하기</button>
 				<button type="reset" class="btn btn-info">다시작성</button>
 			</div>
 		</tr>
 		</table>
+			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
 	</form>
 </div>
 

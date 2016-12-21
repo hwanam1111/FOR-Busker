@@ -94,14 +94,13 @@
 		
 		<!-- 등록, 취소 버튼 -->
 		<tr>
-			<div align="center">
-			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
+			<div style="margin-left: 270px ">
 				<button type="button" class="btn btn-info" id="backedSubmit">등록하기</button>
 				<button type="button" class="btn btn-info">취소</button>
 			</div>
-		</tr>
-		
+		</tr>		
 		</table>
+			    <input type='hidden' name="memEmail" value='${sessionScope.login.memEmail }'>
 	</form>
 </div>
 

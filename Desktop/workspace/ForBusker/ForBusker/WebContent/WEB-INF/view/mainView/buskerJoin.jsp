@@ -124,8 +124,8 @@
 		<input type="hidden" name="memStatus" value="2">
 		<input type="hidden" name="memType" value="1">
 		<!-- submit button -->
-  			<button type="button" class="btn btn-success" id="submitBtn">회원가입</button>
-  			<button type="reset" class="btn btn-success" id="resetBtn">다시작성</button>
+  		<button type="button" class="btn btn-info" id="submitBtn">회원가입</button>
+  		<button type="reset" class="btn btn-info" id="resetBtn">다시작성</button>
 	</form>
 	
 	<!-- ################################################### -->
