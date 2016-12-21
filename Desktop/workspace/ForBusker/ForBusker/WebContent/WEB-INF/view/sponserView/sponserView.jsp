@@ -1,3 +1,9 @@
+<!-- 
+	@author : 이진욱, 정영재
+	@date : 2016. 12. 05, 2016. 12. 13
+	@desc : 후원하기 View 부분, 메세지 팝업으로 보내는 부분
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="busker.scan.vo.*" %>    
@@ -39,12 +45,11 @@
 <%
 	Object obj = session.getAttribute("login");
 	SponserVO sVO = (SponserVO)request.getAttribute("selectSpon");
-	System.out.println("이메일은:: " +sVO.getMemEmail());
 	MemberVO mVO = new MemberVO();
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-
+<!-- 세션값과 등록한 사람이 같으면 수정,삭제 버튼 보여주기 -->
 <%if(mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
 <script type="text/javascript">
 	$(function() {

@@ -1,3 +1,9 @@
+<!-- 
+	@author : 이진욱, 정영재
+	@date : 2016. 12. 07, 2016. 12. 13
+	@desc : 후원해주세요 View, 메세지 보내는 부분
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="busker.scan.vo.*" %>     
