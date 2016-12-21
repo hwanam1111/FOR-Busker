@@ -1,3 +1,9 @@
+<!-- 
+	@author : 이강문, 김경림, 정영재, 이진욱, 김이준
+	@date : 2016. 12. 20
+	@desc : 메인 페이지 
+ -->
+
 <%@page import="busker.scan.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -202,51 +208,25 @@ function logout(){
 		<div class="split clear">
 			<img src="/ForBusker/resources/images/index_img/map2.jpg" usemap="#maptag" class="mapper noborder iradius16 iopacity50 icolor00ff00">
 			<map name="maptag" id="maptag" >
- 			<!-- 강북 -->
  			
  			<area shape="poly"  coords="281,45,351,46,316,305,208,259" id="은평_서대문" name="2" target="_blank" title="은평/서대문/신촌">
-<!-- 			<area shape="poly" id="blue" rel="green,red" coords="223,204,327,214,315,301,207,261" href="#" target="_blank" title="신촌"> -->
-			
 			<area shape="poly" coords="165,255,282,305,355,318,368,354,340,464,122,294" id="마포" name="1"  target="_blank" title="마포/홍대">
-<!-- 			<area shape="poly" coords="297,321,354,326,338,462,247,387" href="#" target="_blank" title="홍대"> -->
-			
 			<area shape="poly" coords="371,25,557,27,563,129,557,223,495,217,492,295,331,297,346,177" id="종로" name="1" target="_blank" title="종로">
-<!-- 			<area shape="poly"  coords="347,210,493,225,494,294,332,299" href="#" target="_blank" title="광화문"> -->
-<!-- 			<area shape="poly" coords="460,28,551,29,561,130,457,121" href="#" target="_blank" title="대학로"> -->
-<!-- 			<area shape="poly" coords="455,140,553,148,558,219,452,205" href="#" target="_blank" title="삼청동"> -->
-			
 			<area shape="poly" coords="379,312,505,306,508,226,571,233,581,360,369,403" id="중" name="1" target="_blank" title="중구/명동">
-<!-- 			<area shape="poly" coords="381,314,490,311,490,380,381,397" href="#" target="_blank" title="명동"> -->
-
 			<area shape="poly" coords="355,423,572,378,584,438,476,488,459,494,425,507,353,477" id="용산" name="1" target="_blank" title="용산/이태원">
-<!-- 			<area shape="poly" coords="355,423,441,406,458,493,424,505,353,472" href="#" target="_blank" title="이태원"> -->
 			<area shape="poly" coords="573,60,660,52,672,151,583,163" id="강북_성북" name="2" target="_blank" title="강북/성북">
 			<area shape="poly" coords="580,179,672,170,684,253,593,271" id="동대문_성동" name="2" target="_blank" title="동대문/성동">
-			
 			<area shape="poly" coords="676,34,724,26,764,56,771,163,694,175" id="노원_도봉" name="2" target="_blank" title="노원/도봉">
-			
 			<area shape="poly" coords="595,284,702,261,692,192,788,174,769,292,695,320,699,343,606,383" id="중랑_광진" name="2" target="_blank" title="중랑/광진/건대">
-<!-- 			<area shape="poly" coords="596,285,685,273,699,342,604,385" href="#" target="_blank" title="건대"> -->
-			<!-- 강남 -->
 			<area shape="poly" coords="101,386,178,407,215,457,190,515,101,535" id="강서_양천" name="2" target="_blank" title="강서/양천">
 			<area shape="poly" coords="226,470,339,554,269,593,203,518" id="영등포" name="1" target="_blank" title="영등포">
 			<area shape="poly" coords="123,543,189,528,252,602,159,653,121,633" id="구로_금천" name="1" target="_blank" title="구로/금천">
 			<area shape="poly" coords="238,625,305,589,299,699,250,699" id="동작" name="1" target="_blank" title="동작">
 			<area shape="poly" coords="329,581,381,560,398,699,322,699" id="관악" name="1" target="_blank" title="관악">
-
 			<area shape="poly" coords="401,561,464,549,484,616,587,588,615,682,422,692" id="서초" name="1" target="_blank" title="서초/서래마을">
-<!-- 			<area shape="poly" coords="496,615,587,590,614,680,510,685" href="#" target="_blank" title="서래마을"> -->
-			
 			<area shape="poly" coords="486,496,563,501,656,435,732,592,623,658,595,569,492,602" id="강남" name="1" target="_blank" title="강남/신사/압구정">
-			
-<!-- 			<area shape="poly" coords="575,491,652,452,695,526,598,570" href="#" target="_blank" title="가로수길"> -->
-<!-- 			<area shape="poly" coords="602,585,702,540,731,598,624,656" href="#" target="_blank" title="강남"> -->
-			
 			<area shape="poly" coords="723,372,792,354,793,442,697,436" id="강동" name="1" target="_blank" title="강동">
 			<area shape="poly" coords="682,454,797,460,796,577,747,580" id="송파" name="1" target="_blank" title="송파">
-			
-			
-<!--  			<area shape="rect" coords="40,113,150,138" href="#" target="_blank"> -->
 		</map>
 			<section id="split-right" style="position:absolute; right:-350px"> <!-- ################################################################################################ -->
 	
