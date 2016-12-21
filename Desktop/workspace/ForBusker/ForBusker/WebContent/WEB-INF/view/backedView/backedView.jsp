@@ -46,20 +46,9 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-<%if(mVO.getMemEmail().equals(bVO.getMemEmail())) { %>
-<script type="text/javascript">
-	$(function() {
-		$('#footBtn').css('display', 'block');
-		
-	<%if(bVO.getMemEmail().equals(mVO.getMemEmail())){%>
-		$("#insertMessage").attr("disabled","disabled");
-	<% } %>
-	
-	})
-</script>
-		<% } %>
 
-<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
+
+<%if(mVO.getMemEmail().equals("help@busker.com") || mVO.getMemEmail().equals(mVO.getMemEmail())) { %>
 	<script type="text/javascript">
 		$(function() {
 			$('#adminBtn').css('display', 'block');
@@ -70,7 +59,12 @@
 					location.href="backedDelete.do?num=${selectBacked.backNo}";
 				}
 			});
-		
+			<%if(mVO.getMemEmail().equals(mVO.getMemEmail())) { %>
+				$("#modify").css('display','block');
+				$("#modify").click(function(){	
+					location.href="backedUpdateForm.do?backNo=${selectBacked.backNo}";
+				})
+			<%}%>
 		});
 	</script>
 <% } %>		
@@ -80,9 +74,10 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
-	<div id="adminBtn" style="margin-left:880px; display:none;">
-		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
-	</div>
+	<div class="form-group" id="adminBtn" style="width:980px; display:none; float:right;">
+			<button id="modify" type="button" class="btn btn-info" style="width:100px; color:white; float: right; margin-left: 10px; display:none; ">게시글 수정</button>
+			<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white; float: right;">게시글 삭제</button>
+		</div>
 <h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Backed View</h1><br/>
 <table class="sponTable">
 	<td class="backedLeft">
@@ -99,10 +94,6 @@
 		<a href="backedList.do?cate=backed&page=1">
 		<button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 		</a>
-	</div>
-	<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-		<a href="backedUpdateForm.do?backNo=${selectBacked.backNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 수정</button></a>
-		<a href="backedDelete.do?num=${selectBacked.backNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 삭제</button></a>
 	</div>
 	</td>
 	

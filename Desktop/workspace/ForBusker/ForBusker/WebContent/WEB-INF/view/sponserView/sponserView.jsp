@@ -49,21 +49,8 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-<!-- 세션값과 등록한 사람이 같으면 수정,삭제 버튼 보여주기 -->
-<%if(mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
-<script type="text/javascript">
-	$(function() {
-		$('#footBtn').css('display', 'block');
-		
-	<%if(sVO.getMemEmail().equals(mVO.getMemEmail())){%>
-		$("#insertMessage").attr("disabled","disabled");
-	<% } %>
-	
-	})
-</script>
-		<% } %>
 
-<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
+<%if(mVO.getMemEmail().equals("help@busker.com")|| mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
 	<script type="text/javascript">
 		$(function() {
 			$('#adminBtn').css('display', 'block');
@@ -73,7 +60,13 @@
 					if(result){
 						location.href="sponDelete.do?num=${selectSpon.spNo}";
 					}
-				});
+			});
+			<%if(mVO.getMemEmail().equals(sVO.getMemEmail())){%>
+				$("#modify").css('display','block');
+				$("#modify").click(function(){	
+					location.href="sponUpdateForm.do?spNo=${selectSpon.spNo}";
+				})
+			<%}%>
 		})
 	</script>
 <% } %>		
@@ -85,9 +78,10 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class='hoc' >
-	<div id="adminBtn" style="margin-left:880px; display:none;">
-		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
-	</div>
+		<div class="form-group" id="adminBtn" style="width:980px; display:none; float:right;">
+			<button id="modify" type="button" class="btn btn-info" style="width:100px; color:white; float: right; margin-left: 10px; display:none; ">게시글 수정</button>
+			<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white; float: right;">게시글 삭제</button>
+		</div>	
 <h1> <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Sponser View</h1><br/>
 <table class="sponTable" >
 	<td class="sponLeft">
@@ -105,11 +99,7 @@
 		<button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 		</a>
 	</div>
-	<div id="footBtn" style="margin-top:40px; margin-left:60px; display:none;">
-<%-- 		<input type="hidden" value="${selectSpon.memEmail}" name="memEmail"> --%>
-		<a href="sponUpdateForm.do?spNo=${selectSpon.spNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 수정</button></a>
-		<a href="sponDelete.do?num=${selectSpon.spNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 삭제</button></a>
-	</div>
+
 	</td>
 	
 	<td class="sponRight" style="word-wrap:break-word" >
