@@ -1,3 +1,9 @@
+<!-- 
+	@author : 김경림
+	@date : 2016. 12. 10
+	@desc : 함께해요 검색 리스트 부분
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="busker.scan.vo.TogetherVO"%>

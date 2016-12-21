@@ -1,3 +1,9 @@
+<!-- 
+	@author : 김경림
+	@date : 2016. 12. 10
+	@desc : 함께해요 수정 부분
+ -->
+
 <%@page import="busker.scan.vo.TogetherVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
