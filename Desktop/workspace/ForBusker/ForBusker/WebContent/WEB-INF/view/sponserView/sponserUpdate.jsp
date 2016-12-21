@@ -1,3 +1,9 @@
+<!-- 
+	@author : 이진욱
+	@date : 2016. 12. 06
+	@desc : 후원하기 수정 부분
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>

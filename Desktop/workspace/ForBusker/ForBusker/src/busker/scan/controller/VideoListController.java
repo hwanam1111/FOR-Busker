@@ -158,7 +158,7 @@ public class VideoListController {
 			String add = "yes";
 			
 			for(int i=0; i<list.size(); i++){
-				if(list.get(i).equals(img)){
+				if(list.get(i).get("img").equals(img)){
 					add = "no";
 					break;
 				}
@@ -169,8 +169,8 @@ public class VideoListController {
 				hashMap.put("videoNo", videoNo);
 				hashMap.put("myId", myId);
 				list.add(hashMap);
+				session.setAttribute("list", list);
 			}
-			session.setAttribute("list", list);
 		}
 		
 		rttr.addAttribute("result", result);

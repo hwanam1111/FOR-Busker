@@ -50,12 +50,12 @@ function logout(){
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
-					<li id="messageicon" style="display:none;"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:12px;" src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
-					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>
+					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
-							<li class="ul_li_List"><a href="mypageUpdate.do?memType=${sessionScope.login.memType}">내 정보 수정</a></li>							<%if(mvo.getMemType().equals("2")){ %>
+							<li class="ul_li_List"><a href="mypageUpdate.do?memType=${sessionScope.login.memType}">내 정보 수정</a></li>							
+							<%if(mvo.getMemType().equals("2")){ %>
 							<li class="ul_li_List"><a  href="mypageAll.do?email=${sessionScope.login.memEmail}">내가 쓴 글</a></li>
 							<li class="ul_li_List"><a href="showRegist.do" id="showReg">공연 등록하기</a></li>
 							<%}%>
@@ -81,8 +81,7 @@ function logout(){
 		  		dataType: "text",
 				success : function(data){
 					if(data=="success"){
-							$("#nomeesage").hide();
-							$("#messageicon").show();
+							$("#nomeesage").text("쪽지함 new ");
 					}
 				}	
 				});

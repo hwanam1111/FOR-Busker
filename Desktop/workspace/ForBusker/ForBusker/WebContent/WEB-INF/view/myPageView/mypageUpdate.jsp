@@ -19,7 +19,43 @@
 <link href="<%=projectName %>/resources/css/mypage_css/mypageUpdate.css?<?=filemtime('<%=projectName %>/resources/css/mypage_css/mypageUpdate.css)?>" rel="stylesheet" type="text/css" media="all">
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/myPage_js/buskerUpdate.js?<?=filemtime('<%=projectName %>/resources/js/myPage_js/buskerUpdate.js')?>"></script>
+<script type="text/javascript">
+$(function(){
+	//체크박스에 teamType 체크
+	var type='${sessionScope.login.memTeamType}'
+	var typeArray = type.split(',');
+	$('.checkbox-inline input:checkbox[name="memTeamType"]').each(function(){
+		
+		for(var i=0;i<typeArray.length;i++){
+			if(this.value==typeArray[i]){
+				
+				this.checked=true;
+			}
+		}
+	});
+	
+	 //사진등록시 미리보기
+     $("#InputFile").on('change', function(){
+          readURL(this);
+     });
+   
+	
+});
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+            $('#jImg').attr('src', e.target.result);
+        }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+}
+
+
+</script>
 </head>
 
 <body id="top">
@@ -65,33 +101,33 @@
   		<!-- #################################################### -->
   		<div class="form-group">
  		    <label for="updateTel">전화번호</label>
-    		<input type="tel" class="form-control" id="updateTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
+    		<input type="tel" class="form-control" id="updateTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13" value="${sessionScope.login.memPhone}">
   		</div>
   		<div class="form-group">
  		    <label for="updateTeamName">팀 이름</label>
-    		<input type="text" class="form-control" id="updateTeamName"name="memTeamName" placeholder="팀명을 입력하세요" maxlength="13">
+    		<input type="text" class="form-control" id="updateTeamName"name="memTeamName" placeholder="팀명을 입력하세요" maxlength="13" value="${sessionScope.login.memTeamName}">
   		</div>
   		<!-- ################################################### -->
   		<!-- ##################### CheckBox #################### -->
 		<!-- ################################################### -->
 		<label>공연장르</label>
   		<label class="checkbox-inline">
-  			<input type="checkbox" id="check_sing" value="노래" name="memTeamType" > 노래
+  			<input type="checkbox" class="check" id="check_sing" value="노래" name="memTeamType" > 노래
 		</label>
 		<label class="checkbox-inline">
-  			<input type="checkbox" id="check_dance" value="댄스" name="memTeamType"> 댄스
+  			<input type="checkbox" class="check" id="check_dance" value="댄스" name="memTeamType"> 댄스
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_band" value="연주" name="memTeamType"> 연주
+ 			<input type="checkbox" class="check" id="check_band" value="연주" name="memTeamType"> 연주
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_guitar" value="마술" name="memTeamType"> 마술
+ 			<input type="checkbox" class="check" id="check_guitar" value="마술" name="memTeamType"> 마술
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_piano" value="퍼포먼스"name="memTeamType"> 퍼포먼스
+ 			<input type="checkbox" class="check" id="check_piano" value="퍼포먼스"name="memTeamType"> 퍼포먼스
 		</label>
 		<label class="checkbox-inline">
- 			<input type="checkbox" id="check_magic" value="기타" name="memTeamType"> 기타
+ 			<input type="checkbox" class="check" id="check_magic" value="기타" name="memTeamType"> 기타
 		</label>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
@@ -101,14 +137,19 @@
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
+		<div style="margin-top: 10px; margin-left: 20px;">
+			<img id="jImg"src="<%=projectName%>/upload/${sessionScope.login.memTeamPhoto}">
+		</div>
+		<!-- ################################################### -->
+		<!-- ################################################### -->
   		<div class="form-group">
  		    <br/><label for="updateVideo">팀 홍보 영상</label>
-    		<input type="text" class="	form-control" id="updateVideo"name="memVideo" placeholder="영상URL을 입력하세요">
+    		<input type="text" class="	form-control" id="updateVideo"name="memVideo" placeholder="영상URL을 입력하세요" value="${sessionScope.login.memVideo}">
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
 		<label>팀 설명</label>
-		<textarea class="form-control" rows="5" name="memDetail"></textarea>
+		<textarea class="form-control" rows="5" name="memDetail">${sessionScope.login.memDetail}</textarea>
 		<!-- ################################################### -->
 		<!-- ################################################### -->
 		<!-- submit button -->

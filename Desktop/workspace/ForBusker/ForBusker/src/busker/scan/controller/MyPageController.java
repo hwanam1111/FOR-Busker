@@ -61,7 +61,7 @@ public class MyPageController {
 		//System.out.println("탈퇴할 아이디 2: "+mem);
 		return "myPageView/mypageLeave";
 	}
-//회원탈퇴처리	
+	//회원탈퇴처리	
 	@RequestMapping(value="myPageLeaveConfig")
 	public String myPageLeaveConfig(MemberVO memberVO){
 		int result=0;
@@ -77,17 +77,17 @@ public class MyPageController {
 	}
 	@RequestMapping(value="updateSimple")
 	public String myPageSimpleUpdate(String updateEmail, String updateSimplePassword,String updateTel){
-		System.out.println("으아:"+updateEmail);
+		System.out.println("updateSimple 전 : "+updateEmail);
 		int result = service.updateSimple(updateEmail,updateSimplePassword,updateTel);
-		System.out.println("됏니:"+result);
+		System.out.println("updateSimple 후 : "+result);
 		return "myPageView/mypageUpdateComplete";
 	}
 	
 	@RequestMapping(value="updateBusker")
 	public String myPageBuskerUpdate(MemberVO memberVO){
-		System.out.println("으아:"+memberVO.getMemEmail());
+		System.out.println("updateBusker 전 : "+memberVO.getMemEmail());
 		int result = service.updateBusker(memberVO);
-		System.out.println("됏니:"+result);
+		System.out.println("updateBusker 후 : "+result);
 		return "myPageView/mypageUpdateComplete";
 	}
 	
@@ -155,8 +155,8 @@ public class MyPageController {
 
 		List<SponserVO> sponserList = supportService.myPageSponList(pageVO, mVO.getMemEmail());
 		
-			m.addAttribute("sponserList", sponserList);
-			m.addAttribute("page",pageVO);
+		m.addAttribute("sponserList", sponserList);
+		m.addAttribute("page",pageVO);
 		
 		return "myPageView/mypageAll";
 	}
@@ -177,12 +177,11 @@ public class MyPageController {
 			int curPage = Integer.parseInt(page); //형변환
 			pageVO.setCurPage(curPage);			//현제페이지값 set해주기
 		}
-
 		
 		List<BackedVO> backedList = supportService.myPageBackedList(pageVO, mVO.getMemEmail()); 
 
-			m.addAttribute("backedList", backedList);
-			m.addAttribute("page",pageVO);
+		m.addAttribute("backedList", backedList);
+		m.addAttribute("page",pageVO);
 		
 		return "myPageView/mypageAll";
 	}
@@ -203,7 +202,6 @@ public class MyPageController {
 		}
 		
 		List<VideoVO> videoList = videoService.myPageVideoList(pageVO,mVO.getMemEmail());
-		System.out.println(videoList.size());
 		m.addAttribute("videoList", videoList);
 		m.addAttribute("page",pageVO);
 		
@@ -226,8 +224,6 @@ public class MyPageController {
 		}
 		
 		List<TogetherVO> toList=togetherService.selectAllTogether(pageVO,mVO.getMemEmail());
-	
-		System.out.println("together size : "+toList.size());
 		
 		m.addAttribute("toList",toList);
 		m.addAttribute("page",pageVO);

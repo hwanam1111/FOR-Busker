@@ -50,7 +50,11 @@
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->
-		<button type="button" class="btn btn-success" id="BuskersearchIdBtn">아이디 찾기</button>
+		<div  align="center">
+		<button type="button" class="btn btn-info" id="BuskersearchIdBtn">아이디 찾기</button>
+		<button type="button" class="btn btn-info" id="loginBtn">로그인 하러가기</button>
+		<button type="button" class="btn btn-info" id="mainBtn">메인으로</button>
+		</div>
 	</form>
 </div>
 

@@ -2,6 +2,7 @@
 <%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String projectName = "/ForBusker"; %>
 <%
 Object logincheck=session.getAttribute("login");
@@ -136,7 +137,9 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value='기타'>기타</option>
 		</select>
 		<button type="button" id="searchBtn" class="btn btn-info" style="width:90px; color:white; margin-left:12px; margin-right:10px;">검색</button>
+	<c:if test="${null ne sessionScope.login}">
 		<button type="button" id="registBtn" class="btn btn-info marginRight" id="moveToFormBtn" style="width:90px; color:white;margin-right:0;">등록하기</button>
+	</c:if>
 	</div>
 	</form>
 	</td>

@@ -1,3 +1,9 @@
+<!-- 
+	@author : 이진욱
+	@date : 2016. 12. 05
+	@desc : 후원하기,후원해주세요 리스트 부분 
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import= "java.util.*" %>
@@ -7,7 +13,7 @@
 <% String projectName = "/ForBusker"; %>
 
 <% 
-
+	//cate 값 받아오기 -> 값이 없으면 spon으로
  	String cate = request.getParameter("cate");
 	if( cate == null) cate = "spon";
    //후원하기, 후원해주세요 리스트 받기
@@ -51,16 +57,15 @@
 <link href="<%=projectName %>/resources/css/together_css/togetherList.css?<?=filemtime('<%=projectName %>/resources/css/together_css/togetherList.css')?>" rel="stylesheet" type="text/css" media="all">
 <script type="text/javascript">
 
+//탭 클릭시 css 변경
 $(function(){
 	if( '<%=cate%>' == 'spon'  ){
     
     	$("ul.tabs li:first").addClass("kkk").css("color", "darkred");
-        //$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"});
         $("ul.tabs li:last").removeClass("kkk").css("color", "#333");
     }else if('<%=cate%>' == 'backed' ){
     	
     	$("ul.tabs li:last").addClass("kkk").css("color", "darkred");
-        //$(this).addClass("active").css({"color": "darkred","font-weight": "bolder"});
         $("ul.tabs li:first").removeClass("kkk").css("color", "#333");
     }
 });
@@ -110,9 +115,11 @@ $(function(){
 		
 	</div>
 	
+	<c:if test="${null ne sessionScope.login}">
 	<div class="col-xs-6 ">
 		<button type="button" class="btn btn-info marginRight" id="moveToSponBtn" style="float: right;">후원하기</button>
 	</div>
+	</c:if>
 	</div>
 	
 	</tr>
@@ -194,10 +201,11 @@ $(function(){
 	<div class="col-xs-2" style="position: relative; right:20px">
 		<button type="button" class="btn btn-info" id="backedSearchBtn">검색</button>
 	</div>
-	
+	<c:if test="${null ne sessionScope.login}">
 	<div class="col-xs-6">
 		<button type="button" class="btn btn-info marginRight" id="moveToBackedBtn" style="float: right;">후원받기</button>
 	</div>
+	</c:if>
 	</div>
 	</tr> 
 	
@@ -237,7 +245,7 @@ $(function(){
 	
 	
 	<nav align="center">
-	  <ul class="pagination pagination-lg">
+	  <ul class="pagination pagination-lg" style="margin-top: 60px;">
 	    <li class="page-item">
 	      <a class="page-link" href="backedList.do?cate=backed&page=<%=pVO.getPreviPage()%>&search=<%=search %>" aria-label="Previous">
 	        <span aria-hidden="true">&laquo;</span>

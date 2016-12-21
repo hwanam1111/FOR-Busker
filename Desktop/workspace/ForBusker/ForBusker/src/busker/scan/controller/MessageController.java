@@ -113,6 +113,7 @@ public class MessageController {
 		return jsonarray.toString();		
 	}
 	
+	//메시지 삭제
 	@RequestMapping(value="deleteMessage",produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String mssageDelete(SmsVO sms,HttpSession session) throws Exception{
@@ -126,7 +127,7 @@ public class MessageController {
 		
 		return "null";
 	}
-	
+	//메세지가 나에게 왔는지 확인
 	@RequestMapping(value="messageCheck",produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String messageCheck(String Email) throws Exception{

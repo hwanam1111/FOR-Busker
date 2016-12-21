@@ -29,11 +29,6 @@
 <% } %>
 <!-- ################################################### -->
 
-<!-- ############   rightBanner include  ###############-->
-<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
-<!-- ################################################### -->
-
-
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 <form method="post" action="togetherRegist.do" style="margin-left:140px;">
