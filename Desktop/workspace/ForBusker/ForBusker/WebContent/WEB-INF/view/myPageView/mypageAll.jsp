@@ -146,7 +146,7 @@ position:relative;
     			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
 				<div align="center">
-				  <ul class="pagination pagination-lg">
+				  <ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageAll.do?cate=show&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
@@ -207,7 +207,7 @@ position:relative;
     			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
 			<div align="center">
-					<ul class="pagination pagination-lg">
+					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
 						<li class="page-item"><a class="page-link"
 							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -269,7 +269,7 @@ position:relative;
 				
 		<!-- #####################################  페 이 징  ########################################################### -->
 			<div align="center">
-					<ul class="pagination pagination-lg">
+					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
 						<li class="page-item"><a class="page-link"
 							href="mypageBackedList.do?cate=backed&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -333,7 +333,7 @@ position:relative;
 		
 		<!-- #####################################  페 이 징  ########################################################### -->
 					<div align="center">
-					<ul class="pagination pagination-lg">
+					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
 						<li class="page-item"><a class="page-link"
 							href="mypageVideoList.do?cate=video&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -401,7 +401,7 @@ position:relative;
 		<!-- #####################################  페 이 징  ########################################################### -->
 		<!-- #######################################################################################################  -->	
 				  <div align="center">
-				  <ul class="pagination pagination-lg">
+				  <ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
