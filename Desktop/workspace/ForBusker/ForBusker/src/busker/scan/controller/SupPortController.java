@@ -30,7 +30,7 @@ public class SupPortController {
 	@RequestMapping(value="sponAndBacked.do")
 	public String sponAndBacked(Model m,String page, PageVO pageVO , String search)  throws Exception {
 		System.out.println("sponList로 이동 ");
-		//		System.out.println("스폰리스트 search : "+search);
+		//System.out.println("스폰리스트 search : "+search);
 		//검색어 null들어오면 공백으로 처리
 		if( search !=null && search.equals("null")) search = "";
 

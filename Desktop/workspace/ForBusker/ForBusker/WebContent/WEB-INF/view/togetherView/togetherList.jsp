@@ -3,11 +3,12 @@
 	@date : 2016. 12. 10
 	@desc : 함께해요 리스트 부분
  -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="busker.scan.vo.*"%>
 <%@page import="java.util.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String projectName = "/ForBusker"; %>
 <%
 	List<TogetherVO>list=(List<TogetherVO>)request.getAttribute("list"); 
@@ -52,66 +53,91 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
- <!-- 어떤 view인지 들어가는 부분 -->
-	<h1 style="font-size:30px;">함께해요</h1>
-	
- <!-- 검색창 들어갈 부분 -->
+<table>
+	<tr> <!-- 어떤 view인지 들어가는 부분 -->
+	<h1>TogetherList</h1>
+	</tr>
+	<tr> <!-- 검색창 들어갈 부분 -->
 	<div class="row marginTop50" style="margin-left:1px;">
 	<div class="col-xs-4">
 		<input class="form-control" type="text" placeholder="검색어를 입력하세요 ex)기타,보컬" 
-				id="toSearch" value="${searchVal}"/>
+				id="toSearch"/>
 	</div>
 	<div class="col-xs-2">
 	 <a id="nextPage"><button type="button" class="btn btn-info" style="position: relative; right:20px; color:#fff"id="searchBtn">검색</button></a>
 	</div>
 	
+	<c:if test="${null ne sessionScope.login}">
 	<div class="col-xs-6 ">
 		<a href="togetherForm.do">
 			<button type="button" class="btn btn-info marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
 		</a>
 	</div>
+	</c:if>
+	
 	</div>
 	
+	</tr>
 	
+	<!-- ##############함께하기 리스트 반복문으로 뽑아주는 부분입니다.################## -->
+	 <%
+	int su=0;
+	if(list.size()>=3){
+		if(list.size()%3==0){
+			su=0;	
+		}else{
+			su=1;
+		}
+	}else{
+		su=1;
+	}%>
 	
-<!-- ##############함께하기 리스트 반복문으로 뽑아주는 부분입니다.################## -->
-	<c:forEach var="to" items="${list}">
-  	<div class="col-xs-4 marginTop50">
+	<%for(int j=0;j<(list.size()/3)+su;j++){%>
+	<tr>
+	<%
+	if(j>0){
+		j+=2;
+	}
+	for(int i=j;i<j+3&&i<list.size();i++){%>
+		<div class="col-xs-4 marginTop50">
 			<div> <!-- 이미지들어가는부분 -->
-			<a href="togetherView.do?toNo=${to.toNo}"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
-				<img src="<%=projectName %>/upload/${to.toPhoto}" style="width:296.66px; height:222.48px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
+			<a href="togetherView.do?toNo=<%=list.get(i).getToNo()%>"> <!-- 해당 이미지 누르면 링크타고 들어가기 -->
+				<img src="<%=projectName %>/upload/<%=list.get(i).getToPhoto()%>" style="height:300px; width:300px;" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';">
 			</a>		
 			</div>
 			<br/>
 			<div class="detail">
-			<div><strong>TITLE :  ${to.toName}</strong></div><!-- 제목-->
-			<div style="height: 42px;"><strong>TONEED :  ${to.toNeed}</strong></div><!-- 찾는 역할 들어가는 부분 -->
+			<div><strong>TITLE :  <%=list.get(i).getToName()%></strong></div><!-- 제목-->
+			<div style="height: 42px;"><strong>TONEED :  <%=list.get(i).getToNeed()%></strong></div><!-- 찾는 역할 들어가는 부분 -->
 			</div>
-			
-	</div>
-  </c:forEach>
-	<%if(list.size()%3 == 2){ %>
-	 
+		</div>
+	<%} %> <!-- end inner forloop -->
+	</tr>
+
+	<%} %> <!-- end outer forloop -->
+		
+	 <%if(list.size()%3 == 2){ %>
+	 <tr>
      <div class="col-xs-4 marginTop50">
    		<div class="col-xs-4 marginTop50" >
 			    <div style="height:350px; width:300px;">
 				</div>
 	    </div>
     </div>
-   
+    </tr>
     <%} else if(list.size()%3 == 1){%>
     	<%for(int i=0;i<2;i++){ %>
-    	
+    	<tr>
 	     <div class="col-xs-4 marginTop50" >
 			    <div style="height:350px; width:300px;">
 				</div>
 	    </div>
-	    
+	    </tr>
     	<%} %>
     <%} %>	
 		
 <!-- ########################################################################## -->		
-
+</table>
 <!-- 페이징 할 부분(paging master) -->
 	<nav style="margin-left:400px;">
 	  <ul class="pagination pagination-lg">
@@ -137,6 +163,8 @@
 
 
 <!-- 코딩 종료 -->
+
+
 <!-- ##############  footer 부분 include  ############## -->
 <jsp:include page="/WEB-INF/view/includeFile/footer.jsp" />
 <!-- ################################################## -->

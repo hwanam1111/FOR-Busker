@@ -46,21 +46,22 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-<script type="text/javascript">
-$(function(){
-if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
-	$(".delete").css("display","block");
-}	
 
-$(".delete").click(function(){	
-	var result = confirm("대화를 삭제하시겠습니까?");
-		if(result){
-			location.href="SponserDelete.do?num=<%=tVO.getToNo()%>";
-		}
-	});
-});
+<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
+	<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+		
+			$("#delete").click(function(){	
+				var result = confirm("게시글을 삭제하시겠습니까?");
+					if(result){
+						location.href="togetherDel.do?toNo=<%=tVO.getToNo()%>";
+					}
+				});
+		})
+	</script>
+<% } %>		
 
-</script>
 
 
 <%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
@@ -78,6 +79,10 @@ $(".delete").click(function(){
 <% } %>
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
+<div id="adminBtn" style="margin-left:760px; display:none;">
+	<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+</div>
+
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
 	<tr>
@@ -182,7 +187,6 @@ $(".delete").click(function(){
 	</c:otherwise>
 	</c:choose>
 	<a href="togetherList.do"><button type="button" class="btn btn-primary">목록보기</button></a>
-	<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
 	</div>
 	</td>
 	</tr>
