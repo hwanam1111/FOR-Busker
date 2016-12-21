@@ -16,27 +16,26 @@ ul.tabs li {
 	height: 45px; /*--Subtract 1px from the height of the unordered list--*/
 	width: 195px;
 	line-height: 45px; /*--Vertically aligns the text within the tab--*/
-	border: 1px solid #999;
+	/* border: 1px solid #999; */
 	border-left: none;
 	margin-bottom: -1px; /*--Pull the list item down 1px--*/
 	overflow: hidden;
 	position: relative;
-	background: #e0e0e0;
+	background: #c8c8c8;
 }
 ul.tabs li a {
 	text-decoration: none;
-	color: #000;
+	color: white;
 	display: block;
 	font-size: 1.2em;
 	padding: 0 20px;
-	border: 1px solid #fff; /*--Gives the bevel look with a 1px white border inside the list item--*/
+	/* border: 1px solid #fff; */ /*--Gives the bevel look with a 1px white border inside the list item--*/
 	outline: none;
 }
-ul.tabs li a:hover {
-	background: #ccc;
-}
 
-
+/* ul.tabs li a:hover {
+	background: #FF4646;
+} */
 Tab Conent CSS
 
 b_container {
@@ -53,4 +52,7 @@ b_container {
 .pagination{
 	/* position:relative;
 	left:400px; */
+}
+.changeColor{
+	background-color:#FF4646;
 }

@@ -4,8 +4,6 @@
 <%@page import="java.util.*"%>
 <%
 	String projectName = "/ForBusker";
-
-
 	String cate = request.getParameter("cate");
 	if( cate == null) cate = "show";
 
@@ -59,20 +57,15 @@
 
 $(function(){
 	if( '<%=cate%>' == 'show'  ){
-    	$("ul.li ").eq(0).addClass("active")
-        $("ul li ").removeClass("active")
+    	$(".tabs li").children().eq(0).addClass("changeColor")
     }else if('<%=cate%>' == 'sponser' ){
-    	$("ul.li ").eq(1).addClass("active")
-    	$("ul li ").removeClass("active")
+    	$(".tabs li").children().eq(1).addClass("changeColor")
     }else if('<%=cate%>' == 'backed' ){
-    	$("ul.li ").eq(2).addClass("active")
-    	$("ul li ").removeClass("active")
+    	$(".tabs li").children().eq(2).addClass("changeColor")
     }else if('<%=cate%>' == 'video' ){
-    	$("ul.li ").eq(3).addClass("active")
-    	$("ul li ").removeClass("active")
+    	$(".tabs li").children().eq(3).addClass("changeColor")
     }else if('<%=cate%>' == 'join' ){
-    	$("ul.li ").eq(4).addClass("active")
-    	$("ul li ").removeClass("active")
+    	$(".tabs li a").eq(4).addClass("changeColor")
     }
 });
 
@@ -104,11 +97,11 @@ position:relative;
 	<!-- 이부분 부터 코딩 시작 -->
 	<div class="hoc">
 		<ul class="tabs">
-			<li><a href="#ShowList">Show List</a></li>
-			<li><a href="#SponserList">Sponser List</a></li>
-			<li><a href="#BackedList">Backed List</a></li>
-			<li><a href="#VideoList">Video List</a></li>
-			<li><a href="#JoinList">Join List</a></li>
+			<li><a href="#ShowList">나의 공연</a></li>
+			<li><a href="#SponserList">후원하기</a></li>
+			<li><a href="#BackedList">후원받기</a></li>
+			<li><a href="#VideoList">비디오</a></li>
+			<li><a href="#JoinList">함께해요</a></li>
 		</ul>
 
 

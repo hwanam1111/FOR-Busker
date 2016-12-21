@@ -3,7 +3,6 @@
 	@date : 2016. 12. 10
 	@desc : 함께해요 View 부분
  -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import="busker.scan.vo.*" %>
@@ -47,6 +46,23 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
+<script type="text/javascript">
+$(function(){
+if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
+	$(".delete").css("display","block");
+}	
+
+$(".delete").click(function(){	
+	var result = confirm("대화를 삭제하시겠습니까?");
+		if(result){
+			location.href="SponserDelete.do?num=<%=tVO.getToNo()%>";
+		}
+	});
+});
+
+</script>
+
+
 <%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
 <script type="text/javascript">
 	$(function() {
@@ -59,28 +75,9 @@
 	})
 	<%}%>
 </script>
-
-<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
-	<script type="text/javascript">
-		$(function() {
-			$('#adminBtn').css('display', 'block');
-		
-			$("#delete").click(function(){	
-				var result = confirm("대화를 삭제하시겠습니까?");
-					if(result){
-						location.href="togetherDelete.do?num=${tovo.toNo}";
-					}
-				});
-		})
-	</script>
-<% } %>		
-
 <% } %>
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<div id="adminBtn" style="margin-left:760px; display:none;">
-		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
-	</div>
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
 	<tr>
@@ -178,13 +175,14 @@
 	<div align="center">
 	<c:choose>
 	<c:when test="${sessionScope.login ne null}">
-	<button type="button" class="btn btn-info" id="togetherJoin">쪽지 보내기</button>
+	<button type="button" class="btn btn-primary" id="togetherJoin">쪽지 보내기</button>
 	</c:when>
 	<c:otherwise>
 	<label>로그인 후 문의해주세요.</label>
 	</c:otherwise>
 	</c:choose>
-	<a href="togetherList.do"><button type="button" class="btn btn-info">목록보기</button></a>
+	<a href="togetherList.do"><button type="button" class="btn btn-primary">목록보기</button></a>
+	<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
 	</div>
 	</td>
 	</tr>

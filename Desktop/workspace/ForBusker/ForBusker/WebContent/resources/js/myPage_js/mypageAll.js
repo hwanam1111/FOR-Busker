@@ -7,7 +7,8 @@ $(document).ready(function() {
 
 	//On Click Event
 	$("ul.tabs li").click(function() {
-
+		$(this).addClass("changeColor");
+	
 		var activeTab = $(this).find("a").attr("href"); //Find the href attribute value to identify the active tab + content
         
         if(activeTab=='#SponserList')window.location.href="mypageSponserList.do?cate=sponser&page=1";

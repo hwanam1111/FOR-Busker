@@ -3,7 +3,6 @@
 	@date : 2016. 12. 20
 	@desc : 메인 페이지 
  -->
-
 <%@page import="busker.scan.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -24,7 +23,6 @@ Object obj = session.getAttribute("login");
 <!-- ################################################################ -->
 <!-- Main css -->
 <link href="<%=projectName %>/resources/css/index_css/layout.css" rel="stylesheet" type="text/css" media="all">
-
 <!-- ################################################################ -->
 <!-- ################################################################ -->
 <!-- jQuery lib CDN URL -->
@@ -46,10 +44,9 @@ function logout(){
 </script>	
 <!-- ################################################# -->
 <style type="text/css" rel="stylesheet">
-@import url(https://fonts.googleapis.com/css?family=Bungee);
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-	body, input, textarea, select{font-family: 'Hanna', serif;}
-	h1, h2, h3, h4, h5, h6, .heading{font-family: 'Hanna', serif;}
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+	body, input, textarea, select{font-family: 'Jeju Gothic', serif;}
+	h1, h2, h3, h4, h5, h6, .heading{font-family: 'Jeju Gothic', serif;}
 
 /* 네비게이션 메뉴 */
 #mainav #liMyPage:hover{color:#000; background-color:inherit; text-decoration: none; cursor: pointer;}
@@ -57,7 +54,6 @@ function logout(){
 #mainav .ul_li_List:first-child{margin-top:30px;}
 </style>
 
- 
 </head>
 <body id="top">
 	<!-- Top Background Image Wrapper -->
@@ -73,14 +69,6 @@ function logout(){
 			<nav id="mainav" class="fl_right">
 			<ul class="clear">
 				<li><a href="login.do">로그인</a></li>
-				<li id="liMyPage"> 카테고리메뉴
-					<ul> 
-						<li class="ul_li_List"><a href="showList.do?loc=마포&shno=0">공연찾기</a></li>
-						<li class="ul_li_List"><a href="sponAndBacked.do">후원하기</a></li>
-						<li class="ul_li_List"><a href="videoMain.do">영상모음</a></li>
-						<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
-					</ul>
-				</li>
 				<li><a href="join.do">회원가입</a></li>
 				<li><a href="noticeList.do">Notice</a></li>
 			</ul>
@@ -105,13 +93,13 @@ function logout(){
 					<li id="liMyPage"> 카테고리메뉴
 						<ul> 
 							<li class="ul_li_List"><a href="showList.do?loc=마포&shno=0">공연찾기</a></li>
-							<li class="ul_li_List"><a href="sponAndBacked.do?cate=spon">후원하기</a></li>
+							<li class="ul_li_List"><a href="sponAndBacked.do?cate=spon">후원하기/후원받기</a></li>
 							<li class="ul_li_List"><a href="videoMain.do">영상모음</a></li>
 							<li class="ul_li_List"><a href="togetherList.do">함께해요</a></li>
 						</ul>
 					</li>
 					<li id="messageicon" style="display:none;"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:12px;" src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
-					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>	
+					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>	
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
@@ -142,7 +130,8 @@ function logout(){
 		  		dataType: "text",
 				success : function(data){
 					if(data=="success"){
-						$("#nomeesage").text("쪽지함 new ");
+							$("#nomeesage").hide();
+							$("#messageicon").show();
 					}
 				}	
 				});
@@ -179,19 +168,19 @@ function logout(){
 		<ul class="nospace group center">
 			<li class="one_quarter first"><article>
 				<a href="showList.do?loc=마포&shno=0"><img src="<%=projectName %>/resources/images/index_img/categori_1.jpg" class="cate_img"></a>
-				<h6 class="heading font-x1">Find a show</h6>
+				<h6 class="heading font-x1">공연찾기</h6>
 				</article></li>
 			<li class="one_quarter"><article>
 				<a href="sponAndBacked.do"><img src="<%=projectName %>/resources/images/index_img/categori_2.jpg" class="cate_img"></a>
-				<h6 class="heading font-x1">Sponsor</h6>
+				<h6 class="heading font-x1">후원하기/후원받기</h6>
 				</article></li>
 			<li class="one_quarter"><article>
 				<a href="videoMain.do"><img src="<%=projectName %>/resources/images/index_img/categori_3.jpg" class="cate_img"></a>
-				<h6 class="heading font-x1">Video Collection</h6>
+				<h6 class="heading font-x1">영상모음</h6>
 				</article></li>
 			<li class="one_quarter"><article>
 				<a href="togetherList.do"><img src="<%=projectName %>/resources/images/index_img/categori_4.jpg" class="cate_img"></a>
-				<h6 class="heading font-x1">Together</h6>
+				<h6 class="heading font-x1">함께하기</h6>
 				</article></li>
 		</ul>
 		<!-- ################################################################################################ -->
@@ -202,41 +191,49 @@ function logout(){
 	<!-- ################################################################################################ -->
 	<!-- ################################################################################################ -->
 	<!-- ################################################################################################ -->
-
-	<!-- 메인하단 지도이미지 -->
+    <!-- 메인하단 지도이미지 -->
 	<div class="wrapper bgded"
-		style="background-color: rgba(49, 255, 255, .49); border-top: 1px solid rgba(49, 101, 115, .75); border-bottom: 1px solid rgba(49, 101, 115, .75); width: 100%">
+		style="background-color:#3CC2FF; border-top: 1px solid rgba(49, 101, 115, .75); border-bottom: 1px solid rgba(49, 101, 115, .75); width: 100%">
 		<div class="split clear">
-			<img src="/ForBusker/resources/images/index_img/map2.jpg" usemap="#maptag" class="mapper noborder iradius16 iopacity50 icolor00ff00">
+			<img src="/ForBusker/resources/images/index_img/map2.jpg" usemap="#maptag" class="mapper noborder iradius16 iopacity50 icolor28E7FF">
 			<map name="maptag" id="maptag" >
+ 			<!-- 강북 -->
  			
  			<area shape="poly"  coords="281,45,351,46,316,305,208,259" id="은평_서대문" name="2" target="_blank" title="은평/서대문/신촌">
+			
 			<area shape="poly" coords="165,255,282,305,355,318,368,354,340,464,122,294" id="마포" name="1"  target="_blank" title="마포/홍대">
 			<area shape="poly" coords="371,25,557,27,563,129,557,223,495,217,492,295,331,297,346,177" id="종로" name="1" target="_blank" title="종로">
 			<area shape="poly" coords="379,312,505,306,508,226,571,233,581,360,369,403" id="중" name="1" target="_blank" title="중구/명동">
 			<area shape="poly" coords="355,423,572,378,584,438,476,488,459,494,425,507,353,477" id="용산" name="1" target="_blank" title="용산/이태원">
 			<area shape="poly" coords="573,60,660,52,672,151,583,163" id="강북_성북" name="2" target="_blank" title="강북/성북">
 			<area shape="poly" coords="580,179,672,170,684,253,593,271" id="동대문_성동" name="2" target="_blank" title="동대문/성동">
+			
 			<area shape="poly" coords="676,34,724,26,764,56,771,163,694,175" id="노원_도봉" name="2" target="_blank" title="노원/도봉">
+			
 			<area shape="poly" coords="595,284,702,261,692,192,788,174,769,292,695,320,699,343,606,383" id="중랑_광진" name="2" target="_blank" title="중랑/광진/건대">
 			<area shape="poly" coords="101,386,178,407,215,457,190,515,101,535" id="강서_양천" name="2" target="_blank" title="강서/양천">
 			<area shape="poly" coords="226,470,339,554,269,593,203,518" id="영등포" name="1" target="_blank" title="영등포">
 			<area shape="poly" coords="123,543,189,528,252,602,159,653,121,633" id="구로_금천" name="1" target="_blank" title="구로/금천">
 			<area shape="poly" coords="238,625,305,589,299,699,250,699" id="동작" name="1" target="_blank" title="동작">
 			<area shape="poly" coords="329,581,381,560,398,699,322,699" id="관악" name="1" target="_blank" title="관악">
+
 			<area shape="poly" coords="401,561,464,549,484,616,587,588,615,682,422,692" id="서초" name="1" target="_blank" title="서초/서래마을">
+			
 			<area shape="poly" coords="486,496,563,501,656,435,732,592,623,658,595,569,492,602" id="강남" name="1" target="_blank" title="강남/신사/압구정">
+			
 			<area shape="poly" coords="723,372,792,354,793,442,697,436" id="강동" name="1" target="_blank" title="강동">
 			<area shape="poly" coords="682,454,797,460,796,577,747,580" id="송파" name="1" target="_blank" title="송파">
+			
+			
 		</map>
 			<section id="split-right" style="position:absolute; right:-350px"> <!-- ################################################################################################ -->
 	
-			<h6 class="heading">오늘의 공연</h6>
+			<h3 class="heading" style="font-size:30px">오늘의 공연</h3>
 			<p class="btmspace-30" id="kk">지역을 선택해주세요</p>
-			<ul class="fa-ul" id="mainlist">
-				<li><i class="fa-li fa fa-check-circle"></i> </li>
-				<li><i class="fa-li fa fa-check-circle"></i> </li>
-				<li><i class="fa-li fa fa-check-circle"></i> </li>
+			<ul class="fa-ul" id="mainlist" style="font-size:25px">
+				<li><i class="fa-li fa fa-check-circle"></i></li>
+				<li><i class="fa-li fa fa-check-circle"></i></li>
+				<li><i class="fa-li fa fa-check-circle"></i></li>
 			</ul>
 			<!-- ################################################################################################ -->
 			</section>
@@ -247,9 +244,9 @@ function logout(){
 	<!-- ################################################################################################ -->
 	<div class="wrapper row3">
 		<section class="hoc container clear"> <!-- ################################################################################################ -->		
-	<!-- Top3 Rank -->
+<!-- Top3 Rank -->
 		<div class="sectiontitle">	
-			<h6 class="heading">Busker Top3 Ranking</h6>
+			<h6 class="heading">이달의 TOP3</h6>
 			
 			<p>이번달 Top3에 Rank된 분들입니다.</p>
 		</div>
@@ -270,9 +267,7 @@ function logout(){
 					<li><i class="fa fa-user"></i> 좋아요 : ${best.videoLike} </li>
 					<li><i class="fa fa-tag"></i> ${best.memTeamType}</li> <!-- 팀 카테고리 -->
 				</ul>
-			<!-- <p>${best.memDetail} &hellip;</p>  -->
 				<footer>
-			<!-- 	<a href="#">Read More &raquo;</a></footer>  -->
 			</div>
 			</article>
 		</c:forEach>

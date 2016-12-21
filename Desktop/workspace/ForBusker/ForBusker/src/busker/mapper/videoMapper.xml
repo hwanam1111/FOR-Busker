@@ -221,5 +221,14 @@ AND rownum <=3
 	where memEmail = #{memEmail}
 	</select>
 	
+	<!-- 답변등록 -->
+	<insert id="insertReply" parameterType="busker.scan.vo.VideoReplyVO">
+	INSERT INTO videoReply VALUES(SEQ_VIDEOREPLY.nextval,#{videoNo},#{memEmail},#{reContent},sysdate)
+	</insert>
+	<!-- 답글 찾아오기 -->
+	<select id="selectReply" resultType="busker.scan.vo.VideoReplyVO" parameterType="busker.scan.vo.VideoReplyVO"> 
+	SELECT * FROM videoReply WHERE videoNo=#{videoNo} ORDER BY replDate DESC
+	</select>
+	
 	
 </mapper>

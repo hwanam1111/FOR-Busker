@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.VideoLikeVO;
+import busker.scan.vo.VideoReplyVO;
 import busker.scan.vo.VideoVO;
 
 @Repository
@@ -172,7 +173,13 @@ public class VideoDaoImpl implements VideoDao {
 		return ss.selectList("video.myPageVideoList", hash);
 		
 	}
-
+	public int insertReply(VideoReplyVO vo){
+		return ss.insert("video.insertReply",vo);
+	}
+	
+	public List<VideoReplyVO>selectReply(VideoReplyVO vo){
+		return ss.selectList("video.selectReply",vo);
+	}
 
 
 

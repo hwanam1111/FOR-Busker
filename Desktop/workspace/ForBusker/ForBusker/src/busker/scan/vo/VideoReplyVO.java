@@ -6,7 +6,14 @@ public class VideoReplyVO {
 	private int videoNo;
 	private String memEmail;
 	private String reContent;
+	private String replDate;
 	
+	public String getReplDate() {
+		return replDate;
+	}
+	public void setReplDate(String replDate) {
+		this.replDate = replDate;
+	}
 	public int getReNo() {
 		return reNo;
 	}

@@ -128,27 +128,8 @@ window.onload = function() {
 		})
 		</script>
 		<% } %>
-		
-	<%if(nvo.getMemEmail().equals("help@busker.com")) { %>
-	<script type="text/javascript">
-		$(function() {
-			$('#adminBtn').css('display', 'block');
-		
-
-			$("#delete").click(function(){
-			var result = confirm("게시글을 삭제하시겠습니까?");
-			if(result){
-				location.href= "videoFormDelete.do?videoNo=${map.videoNo}";
-			}				
-
-			});
-		});
-	</script>
-<% } %>		
 <% } %>
 <!-- ################################################### -->
-
-
 
 
 <!-- input type hidden 부분 -->
@@ -184,10 +165,6 @@ window.onload = function() {
 
 <!-- 뷰 시작 -->
 <!-- ################################################### -->
-<div id="adminBtn" style="margin-top:40px; margin-bottom:10px; margin-left:540px; display:none;">
-	<a id="adminDelete"><button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button></a>
-</div>
-
 <div class='row'>
 
 <div class='col-xs-12' style="width: 640px; margin: 0px auto;">
@@ -231,17 +208,56 @@ ${map.videoDetail} </pre><br/><br/>
 <!-- ################################################### -->
 </div>
 </div>
+<!-- 비디오 목록열기 -->
 <div class='col-xs-2'><span id='openBtn' style="font-size:23px;cursor:pointer;display:block" onclick="openNav()">&#9776; NewVideo</span>
 <span id='closeBtn' style="font-size:23px;cursor:pointer;display:none" onclick="closeNav()">&times; NewVideo</span></div>
 </div>
-<div style="margin-left:200px;">
+<!-- #######################################답글######################################### -->
+<div style="width:640px;" align="left" class="form-inline">
+      <h1> Comments </h1>
+      <!-- 답글 입력창 -->
+	  <div class="form-group">	
+	  		     <textarea class="form-control" rows="2" id="comment" style="width:600px;" name="reContent" id="reContent"></textarea>
+  			     <button type="button" class="btn btn-info form-control" id="replyRegBtn">확인</button>
+  				 <input type="hidden" value="${sessionScope.login.memEmail}" id="memEmail" name="memEmail"/>
+     			 <input type="hidden" value="${map.videoNo}" id="videoNo"name="videoNo"/>     
+      </div>
+  
+<!-- 댓글 입력창 끝 -->    
+      <hr/>
+      <div class="comments-list"> <!-- 답글 list-->
+      <c:forEach var="list" items="${replyList}" end="2">
+         <div class="media" > <!-- 답글 content -->
+          
+             <p class="pull-right"><small>${list.replDate}</small></p><!-- date -->
+                <div class="media-body">                
+                  <h4 class="media-heading user_name" style="font-size:13px;">${list.memEmail}</h4><!-- email -->
+                   <h6 style="font-size:20px;">${list.reContent}</h6> <!-- content -->
+                 </div>
+            <hr/>      
+		</div>
+	</c:forEach>
+		 
+	</div>
+	<!-- 더보기 -->
+	<div align="center" id="more" style="cursor:pointer;">
+		<hr/>
+		<h4>더보기▽</h4>
+		<hr/>
+	</div>   
+</div> <!-- end reply div -->
+
+  
+
+<!-- #######################################답글달기 끝######################################### -->
+<div style="margin-left:200px; margin-top:70px;">
 <a href="videoMain.do">
 <button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 </a>
 </div>
 <div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 수정</button></a>
-	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn btn-info" style="width:200px; color:white;">게시글 삭제</button></a>
+	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
+	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
 </div>
 <!-- ################################################### -->
 </div>

@@ -12,6 +12,7 @@ import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
+import busker.scan.vo.VideoReplyVO;
 import busker.scan.vo.VideoVO;
 
 @Service
@@ -226,6 +227,12 @@ public class VideoServiceImpl implements VideoService {
 	public int myPageVideoPageCount(String memEmail){
 		int videoCount= videoDao.myPageBackedListCount(memEmail);
 		return videoCount;
+	}
+	public int insertReply(VideoReplyVO vo){
+		return videoDao.insertReply(vo);
+	}
+	public List<VideoReplyVO>selectReply(VideoReplyVO vo){
+		return videoDao.selectReply(vo);
 	}
 	
 	

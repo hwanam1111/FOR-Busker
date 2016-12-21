@@ -3,7 +3,6 @@
 	@date : 2016. 12. 10
 	@desc : 함께해요 등록 부분
  -->
-
 <%@page import="busker.scan.vo.TogetherVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -34,6 +33,11 @@
 <jsp:include page="/WEB-INF/view/includeFile/afterLoginHeader.jsp" />
 <% } %>
 <!-- ################################################### -->
+
+<!-- ############   rightBanner include  ###############-->
+<jsp:include page="/WEB-INF/view/includeFile/rightBanner.jsp" />
+<!-- ################################################### -->
+
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">

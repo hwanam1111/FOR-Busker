@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Result;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -22,6 +23,7 @@ import busker.scan.service.VideoService;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
+import busker.scan.vo.VideoReplyVO;
 import busker.scan.vo.VideoVO;
 
 
@@ -98,17 +100,19 @@ public class VideoListController {
 		System.out.println("videoView");
 		// 화면 뷰
 		VideoVO videoView = service.videoView(hashmap);
-		
 		// 조회수
 		service.videoCount(vvo);
-		
 		// 실시간 새로운 동영상 리스트
 		List<VideoVO> videoList = service.videoNewList();
-		
+		//해당 비디오 뷰의 댓글 가져오기
+		VideoReplyVO vo=new VideoReplyVO();
+		vo.setVideoNo(Integer.parseInt(videoNo));
+		List<VideoReplyVO> replyList=service.selectReply(vo);
 		m.addAttribute("list", videoList);
 
 		if(videoView!=null){
 			m.addAttribute("map", videoView);
+			m.addAttribute("replyList",replyList);
 		}else{
 			m.addAttribute("map", "");
 		}
@@ -158,7 +162,7 @@ public class VideoListController {
 			String add = "yes";
 			
 			for(int i=0; i<list.size(); i++){
-				if(list.get(i).get("img").equals(img)){
+				if(list.get(i).equals(img)){
 					add = "no";
 					break;
 				}
@@ -169,8 +173,8 @@ public class VideoListController {
 				hashMap.put("videoNo", videoNo);
 				hashMap.put("myId", myId);
 				list.add(hashMap);
-				session.setAttribute("list", list);
 			}
+			session.setAttribute("list", list);
 		}
 		
 		rttr.addAttribute("result", result);
@@ -320,6 +324,28 @@ public class VideoListController {
 		m.addAttribute("page",pageVO);
 		
 		return "myPageView/mypageLike";
+	}
+	//답변등록+전체 답변 가져오기
+	@RequestMapping(value="replyReg",produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String replyReg(VideoReplyVO vo){
+		//insert후 selectAll
+		if(vo.getReContent()!=""){
+		int replyResult=service.insertReply(vo);
+		System.out.println("댓글"+replyResult+"행 입력");
+		}
+		
+		List<VideoReplyVO> list=service.selectReply(vo);
+		JSONArray jArray=new JSONArray();
+		for(VideoReplyVO repVo:list){
+		JSONObject json=new JSONObject();
+		json.put("memEmail",repVo.getMemEmail());
+		json.put("reContent",repVo.getReContent());
+		json.put("replDate", repVo.getReplDate());
+		jArray.add(json);
+		}
+		System.out.println("jArray : "+jArray.toString());
+		return jArray.toString();
 	}
 	
 }

@@ -8,6 +8,7 @@ import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.PageVO;
 import busker.scan.vo.VideoLikeVO;
+import busker.scan.vo.VideoReplyVO;
 import busker.scan.vo.VideoVO;
 
 public interface VideoService {
@@ -65,6 +66,10 @@ public interface VideoService {
 
 	// 내가 쓴글 비디오 영상 리스트 가져오기
 	List<VideoVO> myPageVideoList(PageVO pageVO, String memEmail) throws Exception;
+
+	public int insertReply(VideoReplyVO vo);
+
+	public List<VideoReplyVO> selectReply(VideoReplyVO vo);
 	
 	
 }

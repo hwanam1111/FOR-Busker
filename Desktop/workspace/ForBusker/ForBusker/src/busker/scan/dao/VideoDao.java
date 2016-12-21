@@ -7,6 +7,7 @@ import busker.scan.vo.BackedVO;
 import busker.scan.vo.BestVideoVO;
 import busker.scan.vo.MemberVO;
 import busker.scan.vo.VideoLikeVO;
+import busker.scan.vo.VideoReplyVO;
 import busker.scan.vo.VideoVO;
 
 public interface VideoDao {
@@ -70,4 +71,8 @@ public interface VideoDao {
 
 	// 내가 쓴글 비디오 영상 리스트 가져오기
 	public List<VideoVO> myPagebackedList(int curPage, String memEmail);
+
+	public int insertReply(VideoReplyVO vo);
+
+	public List<VideoReplyVO> selectReply(VideoReplyVO vo);
 }
