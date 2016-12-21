@@ -289,7 +289,6 @@ position:relative;
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-				</div>
 			</div>
 		<% } %>
 		<!--################################################################################################################# -->
@@ -320,13 +319,13 @@ position:relative;
    							 <div class="col-xs-4 marginTop50">
    								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							 </div>
+							</div>
 						<!-- 마지막이 한개인 경우 -->  
-    					</div>
-    					<%} else if(videoList.size()%3 == 1){%>
     						<%for(int i=0;i<2;i++){ %>
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
+						</div>
 		    
     					<%} %>
     			<%} %>	
@@ -359,23 +358,17 @@ position:relative;
 		<% } %>
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
-		<!--###########################################   리스트     ######################################################## -->
+		<!--##############################################   리스트   ########################################################### -->
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
 		<% if(cate.equals("toList")) {  %>
-		 
 			<div id="JoinList" class="tab_content">
 			<% for(TogetherVO tvo:toList){ %>
-					<div class="col-xs-4" style="margin-bottom: 60px;">
+					<div class="col-xs-4" style="margin-bottom: 60px; border-style: solid; border-color: blue" >
 						<a href="togetherView.do?toNo=<%=tvo.getToNo()%>">
-
-							<img class='videothumb' id="videothumb"
-							style="width: 296.66px; height: 222.48px;"
-							src="/ForBusker/upload/<%=tvo.getToPhoto()%>"
-							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
+							<img class='videothumb' id="videothumb" style="width: 296.66px; height: 222.48px;" src="/ForBusker/upload/<%=tvo.getToPhoto()%>" onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 						<br />
-
-							<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
+						<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
 						</a>
 						<p>TeamLeader : <%=tvo.getToTeamLeader() %></p>
 						<p>Date : <%=tvo.getToStartDate() %> ~ <%=tvo.getToEndDate() %></p>
@@ -383,42 +376,39 @@ position:relative;
 					</div>
 				<%} %>
 						<%if(toList.size()%3 == 2){ %>
-   							 <div class="col-xs-4 marginTop50">
-   								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
+   							 <div class="col-xs-4 "style="margin-bottom: 60px; border-style: solid; border-color: blue">
+   								<div style="height:358px; width:300px; "></div>
 							 </div>
 						<!-- 마지막이 한개인 경우 -->  
-    					</div>
     					<%} else if(toList.size()%3 == 1){%>
     						<%for(int i=0;i<2;i++){ %>
-		   					 <div class="col-xs-4 marginTop50">
-	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
-							</div>
-		    
+		   					 <div class="col-xs-4" style="margin-bottom: 60px; border-style: solid; border-color: blue">
+	   							<div style="height:358px; width:300px; "></div>
+							</div>   
     					<%} %>
     			<%} %>	
 			
 		<!-- #######################################################################################################  -->
 		<!-- #####################################  페 이 징  ########################################################### -->
 		<!-- #######################################################################################################  -->	
-				  <div align="center">
-				  <ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
+				 <div style="padding-left :420px; border-style: solid; border-color: red"">
+				  <ul class="pagination pagination-lg" style="border-style: solid; border-color: blue" >
 				    <li class="page-item">
-				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+				      <a class="page-link" href="mypageTogetherList.do?cate=toList&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				        <span class="sr-only">Previous</span>
 				      </a>
 				    </li>
 				    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=i %>"><%=i %></a></li>
+				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?cate=toList&page=<%=i %>"><%=i %></a></li>
 				    <%} %>
 				    <li class="page-item">
-				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getNextPage()%>" aria-label="Next">
+				      <a class="page-link" href="mypageTogetherList.do?cate=toList&page=<%=pVO.getNextPage()%>" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				        <span class="sr-only">Next</span>
 				      </a>
 				    </li>
 				  </ul>
-			</div>
 			</div>
 		<% } %>
 		</div>

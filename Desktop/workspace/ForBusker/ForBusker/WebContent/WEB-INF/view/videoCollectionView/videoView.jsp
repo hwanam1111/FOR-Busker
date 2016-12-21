@@ -107,9 +107,6 @@ window.onload = function() {
 </head>
 
 
-
-
-
 <!-- #############  header nav부분 include  ############# -->
 <%if(session.getAttribute("login") == null) { %>
 <jsp:include page="/WEB-INF/view/includeFile/header.jsp" />
@@ -130,6 +127,21 @@ window.onload = function() {
 		})
 		</script>
 		<% } %>
+		<%if(nvo.getMemEmail().equals("help@busker.com")) { %>
+		<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+		
+			$("#delete").click(function(){	
+				var result = confirm("게시글을 삭제하시겠습니까?");
+					if(result){
+						location.href="togetherDel.do?toNo=<%=vvo.getVideoNo()%>";
+					}
+				});
+		})
+	</script>
+<% } %>		
+		
 <% } %>
 <!-- ################################################### -->
 
@@ -149,7 +161,9 @@ window.onload = function() {
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-
+	<div id="adminBtn" style="margin-left:540px; display:none; margin-bottom: 10px;">
+		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+	</div>
 <!-- ################################################### -->
 <!-- 오른쪽 메뉴 -->
 <div id="mySidenav" class="sidenav">
