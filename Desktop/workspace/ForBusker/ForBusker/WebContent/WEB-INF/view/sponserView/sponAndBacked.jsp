@@ -27,7 +27,7 @@
    if( cate.equals("spon")) sponList = (List)request.getAttribute("sponList");
    else if ( cate.equals("backed")){
 	   backedList = (List)request.getAttribute("backedList");
-	   System.out.println(backedList.get(0).getBackVideo());
+	   
 	   
    }
    //페이징 클래스 받아오기
