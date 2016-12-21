@@ -34,11 +34,13 @@ public class MessageDaoImpl implements MessageDao {
 		DB db = MongoClientFactory.getDB(); // DB 연결
 
 		DBCollection collection = db.getCollection(memberCollectionName); // collectionName
-		
+	
+		//보내는 사람용 insert
 		BasicDBObject documentSend = createDocumentSend(sms);
-		BasicDBObject documentRec = createDocumentRec(sms);
-		
 		collection.insert(documentSend);
+		
+		//받는 사람용 insert
+		BasicDBObject documentRec = createDocumentRec(sms);		
 		collection.insert(documentRec);
 		 	
 	}
@@ -54,40 +56,39 @@ public class MessageDaoImpl implements MessageDao {
 
 		DBCollection collection = db.getCollection(memberCollectionName);	// db.Message
 
-		DBCursor cursor = collection.find();					// 전체를 find()
-
-		ArrayList disListTo = (ArrayList) db.getCollection(memberCollectionName).distinct("smsTo");
+		ArrayList disListTo = (ArrayList) db.getCollection(memberCollectionName).distinct("smsTo");	
 		ArrayList disListType = (ArrayList) db.getCollection(memberCollectionName).distinct("smsType");
 
 		
-		List<SmsVO> selectList = new ArrayList();
+		List<SmsVO> selectList = new ArrayList();	// list 생성
 
-		for (int j= 0; j < disListType.size(); j++){
-			for (int i = 0; i < disListTo.size(); i++) { // disList.size() = 5일때
-														// (0)=help@busker.com 1
+		for (int j= 0; j < disListType.size(); j++){		//distint된 smsType값 만큼
+			for (int i = 0; i < disListTo.size(); i++) { 	//distint된 smsTo값 만큼
+														
 				// disListTo 에 본인이 아니고 vo.getSmsTo가 본인 일때.
 				if (!(disListTo.get(i).equals(Email))) {
 					
 					
-					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 }, {"smsReceiveEmail" : 보낸사람 },{"smsTo" : 나 } ] }
+					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 나 }, 
+					// 				{"smsReceiveEmail" : 보낸사람 },{"smsTo" : 나 } ] }
 					BasicDBObject andQuery1 = new BasicDBObject();
 					List<BasicDBObject> obj1 = new ArrayList<BasicDBObject>();
-					obj1.add(new BasicDBObject("smsType",disListType.get(j)));
-					obj1.add(new BasicDBObject("smsSendEmail", Email));
-					obj1.add(new BasicDBObject("smsReceiveEmail", disListTo.get(i)));
-					obj1.add(new BasicDBObject("smsTo", Email));			
+					obj1.add(new BasicDBObject("smsType",disListType.get(j)));	// {"smsType" : 후원하기/후원받기/함께해요 }
+					obj1.add(new BasicDBObject("smsSendEmail", Email));			// {"smsSendEmail" : 나 }
+					obj1.add(new BasicDBObject("smsReceiveEmail", disListTo.get(i)));	// {"smsReceiveEmail" : 보낸사람 }
+					obj1.add(new BasicDBObject("smsTo", Email));				// {"smsTo" : 나 }
 					andQuery1.put("$and", obj1);
 
 					// { "$and" : [ {"smsType" : 후원하기/후원받기/함께해요 }, {"smsSendEmail" : 보낸사람 }, {"smsReceiveEmail" : 나 },{"smsTo" : 나 } ] }
 					BasicDBObject andQuery2 = new BasicDBObject();
 					List<BasicDBObject> obj2 = new ArrayList<BasicDBObject>();
-					obj2.add(new BasicDBObject("smsType",disListType.get(j)));
-					obj2.add(new BasicDBObject("smsSendEmail", disListTo.get(i)));
-					obj2.add(new BasicDBObject("smsReceiveEmail", Email));
-					obj2.add(new BasicDBObject("smsTo", Email));
+					obj2.add(new BasicDBObject("smsType",disListType.get(j)));		// {"smsType" : 후원하기/후원받기/함께해요 }
+					obj2.add(new BasicDBObject("smsSendEmail", disListTo.get(i)));	// {"smsSendEmail" : 보낸사람 }
+					obj2.add(new BasicDBObject("smsReceiveEmail", Email));			// {"smsReceiveEmail" : 나 }
+					obj2.add(new BasicDBObject("smsTo", Email));					// {"smsTo" : 나 }
 					andQuery2.put("$and", obj2);
 					
-					// "$or" 안에 and문 다 넣기
+					// "$or" 안에 and문 추가
 					BasicDBObject orQuery = new BasicDBObject();
 					List<BasicDBObject> ResultQuery = new ArrayList<BasicDBObject>();
 					ResultQuery.add(andQuery1);
@@ -97,8 +98,8 @@ public class MessageDaoImpl implements MessageDao {
 					// 오프젝트에 or 쿼리문 넣기.
 					DBObject query = new BasicDBObject(orQuery);
 
-					//////////// 값 넣기//////////////
-					cursor = collection.find(query).limit(1).sort(new BasicDBObject("smsSendTime", -1));
+					//////////// 값 넣기 //////////////
+					DBCursor cursor = collection.find(query).limit(1).sort(new BasicDBObject("smsSendTime", -1));
 
 					while (cursor.hasNext()) {
 						DBObject doc = cursor.next();
@@ -340,7 +341,3 @@ public class MessageDaoImpl implements MessageDao {
 
 		
 }
-
-/*
- * map.put("smsSendEmail", Email); map.put("smsReceiveEmail", Email);
- */

@@ -105,7 +105,7 @@ function logout(){
 						</ul>
 					</li>
 					<li id="messageicon" style="display:none;"><a href="message.do?email=${sessionScope.login.memEmail}"><img style="width:33.66px; height:12px;" src="<%=projectName %>/resources/images/message_img/message.png"/></a></li>
-					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>	
+					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></li>	
 					<li><a href="noticeList.do">Notice</a></li>
 					<li id="liMyPage"> ${sessionScope.login.memEmail}
 						<ul> 
@@ -136,8 +136,7 @@ function logout(){
 		  		dataType: "text",
 				success : function(data){
 					if(data=="success"){
-							$("#nomeesage").hide();
-							$("#messageicon").show();
+						$("#nomeesage").text("쪽지함 new ");
 					}
 				}	
 				});

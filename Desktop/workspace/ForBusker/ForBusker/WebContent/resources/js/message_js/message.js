@@ -19,7 +19,8 @@ $(function(){
 		$("#smsSendEmail").val(receiveEmail.val())		// 로그인 아이디
 		$("#smsTo").val(receiveEmail.val());			// 보내는 사람 -고정-
 
-
+		// ajax 
+		// smsNo,smsType,smsReceiveEmail,smsSendEmail를 보내서 성공한 값을 화면에 출력
 		$.ajax({
 			url : 'chatView.do',
 			type : 'post',
@@ -54,12 +55,18 @@ $(function(){
 				}
 			},
 			error : function(data) {
-				alert("에러발생");
+				console.log("에러발생");
 			}
 		});
 		
 		event.preventDefault();
-		$("#popup").bPopup();
+		$("#popup").bPopup({
+			//창이 닫힐때 화면 다시 불러오기
+			onClose: function() { 
+				 location.href="message.do?email="+$("#loginsess").val();
+			 }
+		});
+		
 		});
 	});
 
@@ -71,6 +78,7 @@ $(function(){
 		}
 	});
 	
+	// 메시지 보낼 때 Enter
 	$("#inputText").keypress(function(event){
 	      if(event.which == 13 &&!($("#inputText").val()=='')){
 	    	  if($("#inputText").val()=="\n"){
@@ -81,9 +89,9 @@ $(function(){
 	      }
 	});
 	
+	// 글 삭제
 	$(".deleteMessage").each(function(){
 		$(this).click(function(){
-//			var smsNo= $(this).attr("name");		//글번호	smsNo
 			var start = $(this).parent().children().eq(0);
 			var smsNo = start.attr("name");
 			var smsType = start.next();			//글타입	smsType
@@ -94,6 +102,7 @@ $(function(){
 			var result = confirm("대화를 삭제하시겠습니까?");
 			
 			if(result){
+			// smsNo,smsType,smsReceiveEmail,smsSendEmail를 보내서 성공하면 화면 다시 불러오기
 				$.ajax({
 					url : 'deleteMessage.do',
 					type : 'post',
@@ -108,12 +117,11 @@ $(function(){
 						location.href="message.do?email="+$("#loginsess").val();
 					},
 					error : function(data) {
-						alert("에러발생");
+						console.log("에러발생");
 					}
 				});
-			
 			}else{
-				alert("실패");
+				console.log("실패");
 			}
 		});
 	});
@@ -150,20 +158,18 @@ $(function(){
 					//보낸 사람 표시
 					if(!(message[i].smsSendEmail==loginEmail.val())){
 					$("#chatLog").append(
-			"<tr><td><label class='youText'>"+message[i].smsSendEmail +"  " + time[2]+"</label><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");								
+					"<tr><td><label class='youText'>"+message[i].smsSendEmail +"  " + time[2]+"</label><div class='talk-yoububble tri-right left-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");								
 					}else{
 						//받는 사람 표시
 					$("#chatLog").append("<tr><td align='right'><div class='talk-mybubble tri-right right-in'><div class='talktext'>" + message[i].smsContent +"</div></div></td></tr>");	
 					}
-				
-				$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
 				}
 				$("#inputText").val('');
 				$("#chatDiv").scrollTop($("#chatDiv")[0].scrollHeight);
 				//location.href="message.do?email="+$("#loginsess").val();
 			},
 			error : function(data) {
-				alert("에러발생");
+				console.log("에러발생");
 			}
 		});
 		}
