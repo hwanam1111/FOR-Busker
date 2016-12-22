@@ -9,6 +9,8 @@
 <%@ page import="busker.scan.vo.*" %>     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% String projectName = "/ForBusker"; %>
+
+
 <!DOCTYPE html>
 <html>
 <head>

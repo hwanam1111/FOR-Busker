@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="busker.scan.vo.*" %>
 <% String projectName = "/ForBusker"; %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,16 +121,18 @@ window.onload = function() {
 		%>
 		<%System.out.println("세션 이메일 : " + nvo.getMemEmail()); /* 세션에 들어온 이메일 */ %>
 		<%System.out.println("VideoVO 이메일 : " + vvo.getMemEmail()); /* VideoVO 안에 있는 이메일 */%>
-		<%if(nvo.getMemEmail().equals(vvo.getMemEmail())) { %>
+		
+		<%if(nvo.getMemEmail().equals("help@busker.com") || nvo.getMemEmail().equals(vvo.getMemEmail()) ) { %>
 		<script type="text/javascript">
 		$(function() {
-			$('#footBtn').css('display', 'block');
-		})
-		</script>
-		<% } %>
-		<%if(nvo.getMemEmail().equals("help@busker.com")) { %>
-		<script type="text/javascript">
-		$(function() {
+			<%if(nvo.getMemEmail().equals(vvo.getMemEmail()) ){  %>
+			
+				$("#modify").css('display','block');
+				$("#modify").click(function(){	
+					location.href="videoFormUpdate.do?videoNo=${map.videoNo}";
+					
+				})
+			<%}%>
 			$('#adminBtn').css('display', 'block');
 		
 			$("#delete").click(function(){	
@@ -137,7 +140,9 @@ window.onload = function() {
 					if(result){
 						location.href="togetherDel.do?toNo=<%=vvo.getVideoNo()%>";
 					}
-				});
+			});
+				
+				
 		})
 	</script>
 <% } %>		
@@ -161,8 +166,9 @@ window.onload = function() {
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<div id="adminBtn" style="margin-left:540px; display:none; margin-bottom: 10px;">
-		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+	<div class="form-group" id="adminBtn" style="width:980px; display:none; float:right;">
+		<button id="modify" type="button" class="btn btn-info" style="width:100px; color:white; float: right; margin-left: 10px; display:none; ">게시글 수정</button>
+		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white; float: right; ">게시글 삭제</button>
 	</div>
 <!-- ################################################### -->
 <!-- 오른쪽 메뉴 -->
@@ -277,10 +283,7 @@ VideoList <img src="<%=projectName %>/resources/images/video_img/cursor.png"/>
 <button type="button" class="btn btn-info" style="width:200px; color:white;">목록보기</button>
 </a>
 </div>
-<div id="footBtn" style="margin-top:40px; margin-left:120px; display:none;">
-	<a href="videoFormUpdate.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 수정</button></a>
-	<a href="videoFormDelete.do?videoNo=${map.videoNo}"><button class="btn default" style="width:200px; color:white;">게시글 삭제</button></a>
-</div>
+
 <!-- ################################################### -->
 </div>
 
