@@ -122,7 +122,7 @@ position:relative;
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=shvo.getShVideo()%>/hqdefault.jpg"><br />
 						<br/>
-							<p style="height: 40px;">Title : <%=shvo.getShName()%></p>
+							<p class="pTagyo" style="height: 40px;">Title : <%=shvo.getShName()%></p>
 						</a>
 						<p>Date : <%=shvo.getShDate() %></p>
 						<input type="hidden" value="<%=shvo.getMemEmail() %>" name="memEmail">	
@@ -183,7 +183,7 @@ position:relative;
 							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
 							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 							<br />
-							<p style="height: 40px;">Title : <%=spvo.getSpName()%></p>
+							<p class="pTagyo" style="height: 40px;">Title : <%=spvo.getSpName()%></p>
 						</a>
 							<p>Date : <%=spvo.getSponDate() %></p>
 						<input type="hidden" value="<%=spvo.getMemEmail()%>" name="memEmail">
@@ -245,7 +245,7 @@ position:relative;
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=bkvo.getBackVideo()%>/hqdefault.jpg"><br />
 							<br />
-								<p style="height: 40px;">Title : <%=bkvo.getBackName()%></p>
+								<p class="pTagyo" style="height: 40px;">Title : <%=bkvo.getBackName()%></p>
 						</a>
 						<p>Date : <%=bkvo.getBackDate() %></p>
 						<input type="hidden" value="<%=bkvo.getMemEmail()%>" name="memEmail">
@@ -305,7 +305,7 @@ position:relative;
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=vvo.getVideoSomenale()%>/hqdefault.jpg"><br />
 						<br />
-							<p style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
+							<p class="pTagyo" style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
 						</a>
 						<p>Date : <%=vvo.getVideoDate() %></p>
 						<input type="hidden" value="<%=vvo.getMemEmail() %>" name="memEmail">
@@ -370,7 +370,7 @@ position:relative;
 							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 						<br />
 
-						<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
+						<p class="pTagyo" style="height: 40px;">Title : <%=tvo.getToName() %></p>
 						</a>
 								<!-- ########### 이곳 다시 해야함. -->
 						<p>Date : <%=tvo.getToStartDate() %> ~ <%=tvo.getToEndDate() %></p>
