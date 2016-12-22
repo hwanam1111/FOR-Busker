@@ -31,9 +31,10 @@ public class TogetherDaoImpl {
 	}
 	
 	//전체 로우 갯수 가져오기 (count)
-	public int togeListCount(){
-		
-		int result=ss.selectOne("together.togeListCount");
+	public int togeListCount(String memEmail){
+		HashMap hash=new HashMap<>();
+		hash.put("memEmail", memEmail);
+		int result=ss.selectOne("together.togeListCount",hash);
 		return result;
 		
 	}

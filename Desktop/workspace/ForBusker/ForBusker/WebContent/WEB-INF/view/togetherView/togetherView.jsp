@@ -46,22 +46,21 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
+<script type="text/javascript">
+$(function(){
+if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
+	$(".delete").css("display","block");
+}	
 
-<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
-	<script type="text/javascript">
-		$(function() {
-			$('#adminBtn').css('display', 'block');
-		
-			$("#delete").click(function(){	
-				var result = confirm("게시글을 삭제하시겠습니까?");
-					if(result){
-						location.href="togetherDel.do?toNo=<%=tVO.getToNo()%>";
-					}
-				});
-		})
-	</script>
-<% } %>		
+$(".delete").click(function(){	
+	var result = confirm("대화를 삭제하시겠습니까?");
+		if(result){
+			location.href="SponserDelete.do?num=<%=tVO.getToNo()%>";
+		}
+	});
+});
 
+</script>
 
 
 <%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
@@ -79,20 +78,22 @@
 <% } %>
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-<div id="adminBtn" style="margin-left:760px; display:none;">
-	<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
-</div>
-
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
 	<tr>
 		<td>
 	<div class="MDBtn" style="display:none;">
 		<a class="ModifyBtn">
-			<button type="button" class="btn btn-info mdBtn"><input type="hidden" value="${tovo.toNo}">게시글 수정</button>
+			<button type="button" class="btn btn-info mdBtn">
+				<input type="hidden" value="${tovo.toNo}">
+				수정
+			</button>
 		</a>
 		<a class="deleteBtn">
-		<button type="button" class="btn btn-info dlBtn"><input type="hidden" value="${tovo.toNo}">게시글 삭제</button>
+		<button type="button" class="btn btn-danger dlBtn">
+			<input type="hidden" value="${tovo.toNo}">
+			삭제
+		</button>
 		</a>
 	</div>
 		</td>
@@ -100,7 +101,7 @@
 	<tr> <!-- 제목 들어가는 부분 -->
 	<td style="width:650px;">
 	
-	<div style="width:650px;"><h1><img src="<%=projectName %>/resources/images/together_img/idea.png" >TITLE : ${tovo.toName}</h1></div>
+	<div style="width:650px;"><h1>TITLE : ${tovo.toName}</h1></div>
 	
 	</td>
 	</tr>
@@ -126,8 +127,7 @@
 	<td>
 	<div>
 	
-	<h4><img src="<%=projectName %>/resources/images/together_img/star.png">
-	
+	<h4>
 	모집 포지션 : ${tovo.toNeed}</h4>
 	</div>
 	</td>
@@ -136,7 +136,6 @@
 	<tr> <!-- 모집기간 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
 	모집기간 : ${tovo.toStartDate} ~ ${tovo.toEndDate}
 	</div>
 	</td>
@@ -145,7 +144,6 @@
 	<tr> <!-- 담당자명 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
 	담당자명 : ${tovo.toTeamLeader}
 	</div>
 	</td>
@@ -154,7 +152,6 @@
 	<tr> <!-- 연락처 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
 	연락처: ${tovo.toTel}
 	</div>
 	</td>
@@ -163,7 +160,6 @@
 	<tr><!-- 상세설명 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
 	상세설명 : <br/> <br/><pre>${tovo.toDetail}</pre>
 	</div>
 	</td>
@@ -174,13 +170,14 @@
 	<div align="center">
 	<c:choose>
 	<c:when test="${sessionScope.login ne null}">
-	<button type="button" class="btn btn-info" id="togetherJoin">쪽지 보내기</button>
+	<button type="button" class="btn btn-primary" id="togetherJoin">쪽지 보내기</button>
 	</c:when>
 	<c:otherwise>
 	<label>로그인 후 문의해주세요.</label>
 	</c:otherwise>
 	</c:choose>
-	<a href="togetherList.do"><button type="button" class="btn btn-info">목록보기</button></a>
+	<a href="togetherList.do"><button type="button" class="btn btn-primary">목록보기</button></a>
+	<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
 	</div>
 	</td>
 	</tr>
