@@ -4,6 +4,16 @@
 
 $(function(){
 	$(".areaname").css("border","1px solid blue");
+	var img = new Image(); 
+	img.src='http://192.168.1.70:8080/?action=stream'; 
+	 
+	img.onload=function(){
+		$("#streamingBtn").text("Online");
+	}
+	img.onerror=function(){
+		$("#streamingBtn").attr("disabled","disabled");
+		$("#streamingBtn").text("Offline");
+	}	 
 	
 	$("area").click(function(e){ //main화면 내의 지도area를 클릭했을때
 		$("#kk").hide(); //소제목 지움
@@ -36,3 +46,7 @@ $(function(){
 		}); // ajax end
 	});
 });
+function streamingFunc(){
+	 window.open("streamingWindow.do",'streamingWindow','height=580px, width=1000px');
+
+}

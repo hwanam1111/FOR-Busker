@@ -166,6 +166,9 @@ function logout(){
 				거리공연의 즐거움을 만나보세요.
 			</p>
 			<p class="font-x1 uppercase bold">For Busker</p>
+			<p>
+			<button type="button" id="streamingBtn" onclick="streamingFunc()" style="color:#fff; position:relative; background:none; border:1px solid #fff; width:70px; height:25px; left:330px">Offline</button>
+			</p>
 			<!-- ################################################################################################ -->
 			</article>
 		</div>

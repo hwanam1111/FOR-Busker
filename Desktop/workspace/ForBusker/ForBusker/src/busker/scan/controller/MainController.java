@@ -147,5 +147,8 @@ public class MainController {
 		return jArray.toString(); //넘김
 	}
 
-	
+	@RequestMapping(value="streamingWindow")
+	public String streamingWindow(){
+		return "mainView/streamingWindow";
+	}
 }
