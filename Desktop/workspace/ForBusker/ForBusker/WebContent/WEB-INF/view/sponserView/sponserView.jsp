@@ -50,7 +50,7 @@
 %>
 
 
-<%if(mVO.getMemEmail().equals("help@busker.com")|| mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
+<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
 	<script type="text/javascript">
 		$(function() {
 			$('#adminBtn').css('display', 'block');
@@ -58,7 +58,21 @@
 			$("#delete").click(function(){	
 				var result = confirm("대화를 삭제하시겠습니까?");
 					if(result){
-						location.href="sponDelete.do?num=${selectSpon.spNo}";
+						location.href="sponDelete.do?num=${selectSpon.spNo}&param=${param.param}";
+					}
+			});
+		})
+	</script>
+<% } %>		
+
+<%if(mVO.getMemEmail().equals(sVO.getMemEmail())) { %>
+	<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+			$("#delete").click(function(){	
+				var result = confirm("대화를 삭제하시겠습니까?");
+					if(result){
+						location.href="sponDelete.do?num=${selectSpon.spNo}&param=${param.param}";							
 					}
 			});
 			<%if(mVO.getMemEmail().equals(sVO.getMemEmail())){%>
@@ -70,7 +84,6 @@
 		})
 	</script>
 <% } %>		
-
 
 <% } %>
 <!-- ################################################### -->

@@ -54,10 +54,13 @@ public class SupPortController {
 
 	//후원View로 이동
 	@RequestMapping(value="sponserView.do")
-	public String sponserView(int num,Model m) throws Exception {
+	public String sponserView(int num,Model m,String param) throws Exception {
 
+		if(param!=null){
+			m.addAttribute("param",param);
+			System.out.println("param값이 있다요  :  " + param);
+		}
 		SponserVO sVO = service.selectSpon(num);
-
 		System.out.println("ponserView로 이동 : "+num);
 
 		m.addAttribute("selectSpon",sVO);
@@ -89,7 +92,7 @@ public class SupPortController {
 
 	//후원하기 삭제
 	@RequestMapping(value="sponDelete.do")
-	public String sponDelete(String num,Model m) throws Exception{
+	public String sponDelete(String num,Model m,String param,RedirectAttributes redirectAttributes) throws Exception{
 		int sponNo = Integer.parseInt(num);
 		int result = service.deleteSpon(sponNo);
 		String message="삭제성공";
@@ -97,8 +100,17 @@ public class SupPortController {
 			message="삭제 실패 ㅡㅡ";
 		}
 		m.addAttribute("message",message);
+		
+		String nextPage = "";
+		
+		if(param.equals("")){
+			nextPage = "sponserView/sponserDeleteOk";
+		}else{
+			nextPage = "redirect:mypageSponserList.do?cate=sponser&page=1";
+		}
 
-		return "sponserView/sponserDeleteOk";
+		System.out.println("nextPage : " + nextPage);
+		return nextPage;
 	}
 
 	//후원하기 수정폼
@@ -165,9 +177,13 @@ public class SupPortController {
 
 	//후원받기View로 이동
 	@RequestMapping(value="backedView.do")
-	public String backedView(int num, Model m) throws Exception{
+	public String backedView(int num, Model m,String param) throws Exception{
 		System.out.println("backedView로 이동");
-
+		
+		if(param!=null){
+			m.addAttribute("param",param);
+			System.out.println("param값이 있다요  :  " + param);
+		}
 		BackedVO bVO = service.selectBacked(num);
 		m.addAttribute("selectBacked",bVO);
 		return "backedView/backedView";
@@ -190,11 +206,9 @@ public class SupPortController {
 			m.addAttribute("message",message);
 		}
 
-
-
-
 		return "backedView/backedForm";
 	}
+	
 
 	//후원받기 insert페이지
 	@RequestMapping(value="backedInsert.do")
@@ -213,7 +227,7 @@ public class SupPortController {
 
 	//후원해주세요 삭제
 	@RequestMapping(value="backedDelete.do")
-	public String backedDelete(String num,Model m) throws Exception{
+	public String backedDelete(String num,Model m,String param,RedirectAttributes redirectAttributes) throws Exception{
 		int backedNo = Integer.parseInt(num);
 		int result = service.deleteBacked(backedNo);
 		String message="삭제성공";
@@ -222,7 +236,16 @@ public class SupPortController {
 		}
 		m.addAttribute("message",message);
 
-		return "sponserView/sponserDeleteOk";
+		String nextPage = "";
+		
+		if(param.equals("")){
+			nextPage = "sponserView/sponserDeleteOk";
+		}else{
+			nextPage = "redirect:mypageBackedList.do?cate=backed&page=1";
+		}
+		
+		
+		return nextPage;
 	}
 
 	//후원해주세요 수정폼

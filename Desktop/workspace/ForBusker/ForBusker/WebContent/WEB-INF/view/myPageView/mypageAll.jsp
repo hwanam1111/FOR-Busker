@@ -174,7 +174,7 @@ position:relative;
 				<% for(SponserVO spvo:sponList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a
-							href="sponserView.do?num=<%=spvo.getSpNo() %>">
+							href="sponserView.do?num=<%=spvo.getSpNo()%>&param=fromMypageAll">
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
@@ -203,8 +203,8 @@ position:relative;
 		<!-- #####################################  페 이 징  ########################################################### -->
 			<div align="center">
 					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
-						<li class="page-item"><a class="page-link"
-							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
+						<li class="page-item">
+						<a class="page-link" href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								<span class="sr-only">Previous</span>
 						</a></li>
@@ -235,8 +235,7 @@ position:relative;
 
 				<% for(BackedVO bkvo:backedList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a
-							href="backedView.do?num=<%=bkvo.getBackNo()%>">
+						<a href="backedView.do?num=<%=bkvo.getBackNo()%>&param=fromMypageAll">
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=bkvo.getBackVideo()%>/hqdefault.jpg"><br />

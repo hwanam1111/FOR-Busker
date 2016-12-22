@@ -50,7 +50,7 @@
 
 
 
-<%if(mVO.getMemEmail().equals("help@busker.com") || mVO.getMemEmail().equals(mVO.getMemEmail())) { %>
+<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
 	<script type="text/javascript">
 		$(function() {
 			$('#adminBtn').css('display', 'block');
@@ -58,7 +58,21 @@
 			$("#delete").click(function(){
 				var result = confirm("게시글을 삭제하시겠습니까?");
 				if(result){
-					location.href="backedDelete.do?num=${selectBacked.backNo}";
+					location.href="backedDelete.do?num=${selectBacked.backNo}&param=${param.param}";
+				}
+			});
+		});
+	</script>
+<% } %>		
+<%if(mVO.getMemEmail().equals(mVO.getMemEmail())) { %>
+	<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+			
+			$("#delete").click(function(){
+				var result = confirm("게시글을 삭제하시겠습니까?");
+				if(result){
+					location.href="backedDelete.do?num=${selectBacked.backNo}&param=${param.param}";
 				}
 			});
 			<%if(mVO.getMemEmail().equals(mVO.getMemEmail())) { %>

@@ -31,7 +31,6 @@ public class MyPageController {
 
 	@Autowired
 	private MemberServiceImpl service;
-	
 	@Autowired
 	private VideoServiceImpl videoService;
 	@Autowired
