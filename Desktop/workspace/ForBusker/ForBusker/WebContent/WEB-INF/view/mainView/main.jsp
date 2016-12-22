@@ -45,6 +45,7 @@ function logout(){
 <!-- ################################################# -->
 <style type="text/css" rel="stylesheet">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 	body, input, textarea, select{font-family: 'Jeju Gothic', serif;}
 	h1, h2, h3, h4, h5, h6, .heading{font-family: 'Jeju Gothic', serif;}
 

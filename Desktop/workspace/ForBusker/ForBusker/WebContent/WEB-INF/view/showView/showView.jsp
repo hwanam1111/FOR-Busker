@@ -72,7 +72,7 @@ $(function(){
 	<tr> <!-- 제목 들어가는 부분 -->
 	<td style="width:650px;">
 	
-	<div style="width:650px;"><h1><img src="<%=projectName %>/resources/images/together_img/idea.png">TITLE : ${show.shName}</h1></div>
+	<div style="width:650px;"><h1>TITLE : ${show.shName}</h1></div>
 	
 	</td>
 	</tr>
@@ -90,7 +90,7 @@ $(function(){
 	<td>
 	<div>
 	
-	<h4><img src="<%=projectName %>/resources/images/together_img/star.png">
+	<h4>
 	
 	TeamName : ${show.shTeamName}</h4>
 	</div>
@@ -101,7 +101,7 @@ $(function(){
 	<td>
 	<div>
 	
-	<h4><img src="<%=projectName %>/resources/images/together_img/star.png">
+	<h4>
 	
 	TeamType : ${show.shType}</h4>
 	</div>
@@ -111,7 +111,7 @@ $(function(){
 	<tr> <!-- 주소 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
+	
 	주소 : ${show.shMapAddr}
 	</div>
 	</td>
@@ -120,7 +120,7 @@ $(function(){
 	<tr> <!-- 상세주소 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
+	
 	상세주소 : ${show.shMapDetail}
 	</div>
 	</td>
@@ -130,7 +130,7 @@ $(function(){
 	<tr> <!-- 날짜 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
+	
 	날짜: ${show.shDate}
 	</div>
 	</td>
@@ -139,7 +139,7 @@ $(function(){
 	<tr> <!-- 시간 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
+	
 	시간: ${show.shTime}
 	</div>
 	</td>
@@ -148,7 +148,7 @@ $(function(){
 	<tr><!-- 상세설명 -->
 	<td>
 	<div>
-	<img src="<%=projectName %>/resources/images/together_img/star.png">
+
 	상세설명 : <br/> <br/><pre>${show.shDetail}</pre>
 	</div>
 	</td>

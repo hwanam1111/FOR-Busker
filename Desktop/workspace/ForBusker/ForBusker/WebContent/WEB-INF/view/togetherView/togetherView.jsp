@@ -46,22 +46,21 @@
 	if(obj!=null) mVO = (MemberVO)obj;
 %>
 
-<script type="text/javascript">
-$(function(){
-if('<%=mVO.getMemEmail()%>'=='help@busker.com'){
-	$(".delete").css("display","block");
-}	
 
-$(".delete").click(function(){	
-	var result = confirm("대화를 삭제하시겠습니까?");
-		if(result){
-			location.href="SponserDelete.do?num=<%=tVO.getToNo()%>";
-		}
-	});
-});
-
-</script>
-
+<%if(mVO.getMemEmail().equals("help@busker.com")) { %>
+   <script type="text/javascript">
+      $(function() {
+         $('#adminBtn').css('display', 'block');
+      
+         $(".dlBtn").click(function(){   
+            var result = confirm("게시글을 삭제하시겠습니까?");
+               if(result){
+                  location.href="togetherDel.do?toNo=<%=tVO.getToNo()%>";
+               }
+            });
+      })
+   </script>
+<% } %>      
 
 <%if(mVO.getMemEmail().equals(tVO.getToId())) { %>
 <script type="text/javascript">
@@ -78,6 +77,9 @@ $(".delete").click(function(){
 <% } %>
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
+<div id="adminBtn" style="margin-left:760px; display:none;">
+   <button class="dlBtn" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+</div>
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
 	<tr>
@@ -182,7 +184,7 @@ $(".delete").click(function(){
 	</td>
 	</tr>
 	</table>
-	
+	<input type="hidden" value="${param.param}" id="param"/>
 	<div id="popup" class="popup-div popup-style">
 		<div class="content">
 		<form id="pform" action="sponserMessage.do" method="post">

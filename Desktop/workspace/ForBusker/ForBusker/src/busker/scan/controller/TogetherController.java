@@ -60,11 +60,14 @@ public class TogetherController {
 
 	// 함께하기 View 이동
 	@RequestMapping(value="togetherView")
-	public String togetherView(TogetherVO tovo,Model m){
+	public String togetherView(TogetherVO tovo,Model m,String param){
 		try {
 			System.out.println("tovo num : "+tovo.getToNo());
 			TogetherVO vo=service.selectTogetherByNum(tovo);
 			m.addAttribute("tovo",vo);
+			if(param!=null){
+				m.addAttribute("param",param);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,13 +109,21 @@ public class TogetherController {
 	}
 	//함께하기 글 지우기
 	@RequestMapping(value="togetherDel")
-	public String togetherDel(TogetherVO tovo,Model m){
+	public String togetherDel(TogetherVO tovo,Model m,String param){
 		String nextpage="";
 		int result2=0;
-		
 		//페이징 부분 
 		PageVO pageVO = new PageVO();
 		pageVO.setCurPage(1);				//page값 1로 지정	
+		
+		System.out.println("param :"+param);
+		//param값이 있다면 mypageTogetherList로
+		if(param==null){
+			nextpage="togetherView/togetherList";
+			
+		}else{
+			nextpage="redirect:mypageTogetherList.do?cate=toList&page=1";
+		}//else 끝
 		
 		try {
 			//System.out.println("삭제할 글번호: "+tovo.getToNo());
@@ -123,16 +134,17 @@ public class TogetherController {
 				m.addAttribute("list",list);
 				m.addAttribute("page",pageVO);
 				m.addAttribute("result2",1);
-				nextpage="togetherView/togetherList";
+				
 			}else{
 				m.addAttribute("result2",2);
-				nextpage="togetherView/togetherList";
+				
 			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return nextpage;
 	}
 	//함께하기 수정하기

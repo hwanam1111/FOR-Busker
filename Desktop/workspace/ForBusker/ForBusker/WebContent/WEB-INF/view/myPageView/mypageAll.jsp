@@ -57,15 +57,15 @@
 
 $(function(){
 	if( '<%=cate%>' == 'show'  ){
-    	$(".tabs li").children().eq(0).addClass("changeColor");
+    	$(".tabs li").children().eq(0).addClass("changeColor")
     }else if('<%=cate%>' == 'sponser' ){
-    	$(".tabs li").children().eq(1).addClass("changeColor");
+    	$(".tabs li").children().eq(1).addClass("changeColor")
     }else if('<%=cate%>' == 'backed' ){
-    	$(".tabs li").children().eq(2).addClass("changeColor");
+    	$(".tabs li").children().eq(2).addClass("changeColor")
     }else if('<%=cate%>' == 'video' ){
-    	$(".tabs li").children().eq(3).addClass("changeColor");
-    }else if('<%=cate%>' == 'toList' ){
-    	$(".tabs li").children().eq(4).addClass("changeColor");
+    	$(".tabs li").children().eq(3).addClass("changeColor")
+    }else if('<%=cate%>' == 'join' ){
+    	$(".tabs li a").eq(4).addClass("changeColor")
     }
 });
 
@@ -111,16 +111,21 @@ position:relative;
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
 		<% if(cate.equals("show")) {  %>
+	
 			<div id="ShowList" class="tab_content">
 				<% for(ShowVO shvo:showList){ %>	
+				
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a href="selectShowByNum2.do?shNo=<%=shvo.getShNo()%>">
+
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=shvo.getShVideo()%>/hqdefault.jpg"><br />
 						<br/>
-							<p class="pTagyo" style="height: 40px;">Title : <%=shvo.getShName()%></p>
+
+							<p style="height: 40px;">Title : <%=shvo.getShName()%></p>
 						</a>
+						<p>TeamName : <%=shvo.getShTeamName()%></p>
 						<p>Date : <%=shvo.getShDate() %></p>
 						<input type="hidden" value="<%=shvo.getMemEmail() %>" name="memEmail">	
 						</div>
@@ -136,12 +141,12 @@ position:relative;
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-		 			   </div>
+		    
     					<%} %>
     			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
 				<div align="center">
-				  <ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
+				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
 				      <a class="page-link" href="mypageAll.do?cate=show&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
@@ -174,15 +179,15 @@ position:relative;
 				<% for(SponserVO spvo:sponList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a
-							href="sponserView.do?num=<%=spvo.getSpNo()%>&param=fromMypageAll">
+							href="sponserView.do?num=<%=spvo.getSpNo() %>&param=fromMypageAll">
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
 							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
-							<br/>
-							<p class="pTagyo" style="height: 40px;">Title : <%=spvo.getSpName()%></p>
+							<br />
+
+							<p style="height: 40px;">Title : <%=spvo.getSpName()%></p>
 						</a>
-							<p>Date : <%=spvo.getSponDate() %></p>
 						<input type="hidden" value="<%=spvo.getMemEmail()%>" name="memEmail">
 					</div>
 				<%} %>
@@ -197,14 +202,14 @@ position:relative;
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-						</div>
+		    
     					<%} %>
     			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
 			<div align="center">
-					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
-						<li class="page-item">
-						<a class="page-link" href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
+					<ul class="pagination pagination-lg">
+						<li class="page-item"><a class="page-link"
+							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								<span class="sr-only">Previous</span>
 						</a></li>
@@ -216,15 +221,16 @@ position:relative;
 						<%
 							}
 						%>
-						<li class="page-item"><a class="page-link"	href="mypageSponserList.do?cate=sponser&page=<%=pVO.getNextPage()%>" aria-label="Next"> 
-						<span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
+						<li class="page-item"><a class="page-link"
+							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getNextPage()%>"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-		    	</div>
-		     </div>
-		    </div>
+</div>
+			</div>
+
 		<% } %>
-		
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
 		<!--###########################################  후원하기 리스트     ######################################################## -->
@@ -235,14 +241,13 @@ position:relative;
 
 				<% for(BackedVO bkvo:backedList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="backedView.do?num=<%=bkvo.getBackNo()%>&param=fromMypageAll"> 
+						<a href="backedView.do?num=<%=bkvo.getBackNo()%>&param=fromMypageAll">
+
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=bkvo.getBackVideo()%>/hqdefault.jpg"><br />
 							<br />
-								<p class="pTagyo" style="height: 40px;">Title : <%=bkvo.getBackName()%></p>
 						</a>
-						<p>Date : <%=bkvo.getBackDate() %></p>
 						<input type="hidden" value="<%=bkvo.getMemEmail()%>" name="memEmail">
 					</div>
 				<%} %>
@@ -257,13 +262,13 @@ position:relative;
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-		   			 </div>
+		    
     					<%} %>
     			<%} %>	
 				
 		<!-- #####################################  페 이 징  ########################################################### -->
 			<div align="center">
-					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
+					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageBackedList.do?cate=backed&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -283,6 +288,7 @@ position:relative;
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
+				</div>
 			</div>
 		<% } %>
 		<!--################################################################################################################# -->
@@ -295,13 +301,17 @@ position:relative;
 		   
 		   	<% for(VideoVO vvo:videoList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="videoLikeSearch.do?videoNo=<%=vvo.getVideoNo()%>&memEmail=<%=vvo.getMemEmail() %>&myId=${sessionScope.login.memEmail}&imgpath=<%=vvo.getVideoUrl()%>">
+						<a href="videoLikeSearch.do?videoNo=<%=vvo.getVideoNo()%>&memEmail=<%=vvo.getMemEmail() %>
+						&myId=${sessionScope.login.memEmail}&imgpath=<%=vvo.getVideoUrl()%>&param=fromMypageAll">
+
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=vvo.getVideoSomenale()%>/hqdefault.jpg"><br />
 						<br />
-							<p class="pTagyo" style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
+
+							<p style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
 						</a>
+						<p>TeamName : <%=vvo.getMemTeamName() %></p>
 						<p>Date : <%=vvo.getVideoDate() %></p>
 						<input type="hidden" value="<%=vvo.getMemEmail() %>" name="memEmail">
 					</div>
@@ -310,21 +320,20 @@ position:relative;
    							 <div class="col-xs-4 marginTop50">
    								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							 </div>
-							</div>
 						<!-- 마지막이 한개인 경우 -->  
-    					<%}else if(videoList.size()%3 == 1){ %>
+    					</div>
+    					<%} else if(videoList.size()%3 == 1){%>
     						<%for(int i=0;i<2;i++){ %>
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-						</div>
 		    
     					<%} %>
     			<%} %>	
 		
 		<!-- #####################################  페 이 징  ########################################################### -->
-			<div align="center">
-					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
+					<div align="center">
+					<ul class="pagination pagination-lg">
 						<li class="page-item"><a class="page-link"
 							href="mypageVideoList.do?cate=video&page=<%=pVO.getPreviPage()%>"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
@@ -345,6 +354,7 @@ position:relative;
 						</a></li>
 					</ul>
 		   </div>
+		   </div>
 		 
 		<% } %>
 		<!--################################################################################################################# -->
@@ -352,73 +362,64 @@ position:relative;
 		<!--###########################################   리스트     ######################################################## -->
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
-			<% if(cate.equals("toList")) {  %>
+		<% if(cate.equals("toList")) {  %>
+		 
 			<div id="JoinList" class="tab_content">
-		
-		<!--######################################################################################################  -->
-	<% for(TogetherVO tvo: toList){ %>
-		<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="togetherView.do?toNo=<%=tvo.getToNo()%>">
+			<% for(TogetherVO tvo:toList){ %>
+					<div class="col-xs-4" style="margin-bottom: 60px;">
+						<a href="togetherView.do?toNo=<%=tvo.getToNo()%>&param=fromMypageAll">
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="/ForBusker/upload/<%=tvo.getToPhoto()%>"
 							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 						<br />
-
-						<p class="pTagyo" style="height: 40px;">Title : <%=tvo.getToName() %></p>
+							<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
 						</a>
-								<!-- ########### 이곳 다시 해야함. -->
+						<%-- <p>TeamLeader : <%=tvo.getToTeamLeader() %></p> --%>
 						<p>Date : <%=tvo.getToStartDate() %> ~ <%=tvo.getToEndDate() %></p>
-								<!-- ########### 이곳 다시 해야함. -->
-  						<input type="hidden" value="<%=tvo.getToId() %>" name="memEmail">
+						<input type="hidden" value="<%=tvo.getToId() %>" name="memEmail">
 					</div>
-				<%} %>		
-				
-					<%if(toList.size()%3 == 2){ %>
+				<%} %>
+						<%if(toList.size()%3 == 2){ %>
    							 <div class="col-xs-4 marginTop50">
    								<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							 </div>
-							</div>
-						<%}else if(toList.size()%3 ==1){ %>
 						<!-- 마지막이 한개인 경우 -->  
+    					
+    					<%} else if(toList.size()%3 == 1){%>
     						<%for(int i=0;i<2;i++){ %>
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-						</div>
 		    
     					<%} %>
-    			<%} %>					
-		<!-- #####################################  페 이 징  ########################################################### -->
-			<div align="center">
-					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
-						<li class="page-item"><a class="page-link"
-							href="mypageTogetherList.do?cate=toList&page=<%=pVO.getPreviPage()%>"
-							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								<span class="sr-only">Previous</span>
-						</a></li>
-						<%
-							for (int i = pVO.getStartPage(); i <= pVO.getEndPage(); i++) {
-						%>
-						<li class="page-item"><a class="page-link"
-							href="mypageTogetherList.do?cate=toList&page=<%=i%>"><%=i%></a></li>
-						<%
-							}
-						%>
-						<li class="page-item"><a class="page-link"
-							href="mypageTogetherList.do?cate=toList&page=<%=pVO.getNextPage()%>"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
-						</a></li>
-					</ul>
-				</div>
+    			<%} %>	
 			</div>
-		</div>	
-		<!--######################################################################################################  -->
-		
-						
-		
+		<!-- #######################################################################################################  -->
+		<!-- #####################################  페 이 징  ########################################################### -->
+		<!-- #######################################################################################################  -->	
+				  <div align="center">
+				  <ul class="pagination pagination-lg">
+				    <li class="page-item">
+				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				        <span class="sr-only">Previous</span>
+				      </a>
+				    </li>
+				    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
+				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=i %>"><%=i %></a></li>
+				    <%} %>
+				    <li class="page-item">
+				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getNextPage()%>" aria-label="Next">
+				        <span aria-hidden="true">&raquo;</span>
+				        <span class="sr-only">Next</span>
+				      </a>
+				    </li>
+				  </ul>
+			</div>
+			</div>
 		<% } %>
+		</div>
 
 	<!-- 코딩 종료 -->
 

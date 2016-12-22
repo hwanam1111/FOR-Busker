@@ -12,7 +12,7 @@ $(function() {
 		if (returnValue) {
 			// 삭제 확인
 			var toNo = $(this).children().val();
-			$('.deleteBtn').attr("href", "togetherDel.do?toNo=" + toNo);
+			$('.deleteBtn').attr("href", "togetherDel.do?toNo=" + toNo+"&param="+$('#param').val());
 			console.log("컨트롤러 넘어감");
 
 		} else {

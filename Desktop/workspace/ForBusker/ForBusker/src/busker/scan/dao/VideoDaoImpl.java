@@ -53,7 +53,8 @@ public class VideoDaoImpl implements VideoDao {
 //	비디오 삭제
 	@Override
 	public VideoVO videoDelete(HashMap map){
-		
+		ss.delete("video.videoLikeDelete", map); //좋아요 삭제
+		ss.delete("video.deleteReply", map);//댓글 삭제
 		return ss.selectOne("video.videoDelete", map);
 		
 	}
@@ -118,7 +119,9 @@ public class VideoDaoImpl implements VideoDao {
 	// 좋아요 삭제
 	@Override
 	public int videoLikeDelete(VideoLikeVO vlo) {
-		return ss.delete("video.videoLikeDelete",vlo);
+		HashMap map=new HashMap<>();
+		map.put("videoNo",vlo.getVideoNo());
+		return ss.delete("video.videoLikeDelete",map);
 	}
 
 	// 좋아요 수 업데이트 -1

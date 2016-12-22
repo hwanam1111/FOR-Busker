@@ -248,7 +248,8 @@ public class VideoListController {
 	
 //	글삭제
 	@RequestMapping(value="videoFormDelete.do")
-	public String noticeFormDelete(String videoNo, Model m) throws Exception{
+	public String noticeFormDelete(String videoNo, Model m,String param) throws Exception{
+		String nextpage="";
 		System.out.println("videoFormDelete.jsp로 이동");
 		System.out.println("글삭제 : " + videoNo);
 		HashMap hashmap = new HashMap();
@@ -259,7 +260,12 @@ public class VideoListController {
 		VideoVO videoDelete = service.videoDelete(hashmap);
 		
 		// 좋아요페이지 delete
-	
+	    if(param==null){
+	    	nextpage="redirect:mypageVideoList.do?cate=video&page=1";
+	    }else{
+	    	nextpage="videoCollectionView/videoFormDelete";
+	    }
+	    
 		if(videoDelete==null && videoLikeParentDelete==null){
 			System.out.println("성공에 들어옴");
 			m.addAttribute("state", "yes");
@@ -270,7 +276,7 @@ public class VideoListController {
 			m.addAttribute("message", "실패");
 		}
 		
-		return "videoCollectionView/videoFormDelete";
+		return nextpage;
 	}
 	
 //	글 수정 폼

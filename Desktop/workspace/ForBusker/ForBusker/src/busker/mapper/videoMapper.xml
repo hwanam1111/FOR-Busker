@@ -135,7 +135,7 @@ order by videono desc
 	</select>
 
 	<!-- 좋아요 Delete -->
-	<delete id="videoLikeDelete" parameterType="busker.scan.vo.VideoLikeVO">
+	<delete id="videoLikeDelete" parameterType="hashmap">
 		delete from VideoLike
 		where videoNo =#{videoNo}
 	</delete>
@@ -229,6 +229,11 @@ AND rownum <=3
 	<select id="selectReply" resultType="busker.scan.vo.VideoReplyVO" parameterType="busker.scan.vo.VideoReplyVO"> 
 	SELECT * FROM videoReply WHERE videoNo=#{videoNo} ORDER BY replDate DESC
 	</select>
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="hashmap">
+	delete from VideoReply
+	where videoNo =#{videoNo}
+	</delete>
 	
 	
 </mapper>
