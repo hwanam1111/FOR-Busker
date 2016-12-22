@@ -111,13 +111,10 @@ position:relative;
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
 		<% if(cate.equals("show")) {  %>
-	
 			<div id="ShowList" class="tab_content">
 				<% for(ShowVO shvo:showList){ %>	
-				
 					<div class="col-xs-4" style="margin-bottom: 60px;">
 						<a href="selectShowByNum2.do?shNo=<%=shvo.getShNo()%>">
-
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=shvo.getShVideo()%>/hqdefault.jpg"><br />
@@ -139,7 +136,7 @@ position:relative;
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-		    
+		 			   </div>
     					<%} %>
     			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
@@ -182,7 +179,7 @@ position:relative;
 							style="width: 296.66px; height: 222.48px;"
 							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
 							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
-							<br />
+							<br/>
 							<p style="height: 40px;">Title : <%=spvo.getSpName()%></p>
 						</a>
 							<p>Date : <%=spvo.getSponDate() %></p>
@@ -200,7 +197,7 @@ position:relative;
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-		    
+						</div>
     					<%} %>
     			<%} %>	
 		<!-- #####################################  페 이 징  ########################################################### -->
@@ -219,16 +216,15 @@ position:relative;
 						<%
 							}
 						%>
-						<li class="page-item"><a class="page-link"
-							href="mypageSponserList.do?cate=sponser&page=<%=pVO.getNextPage()%>"
-							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-								class="sr-only">Next</span>
+						<li class="page-item"><a class="page-link"	href="mypageSponserList.do?cate=sponser&page=<%=pVO.getNextPage()%>" aria-label="Next"> 
+						<span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
 						</a></li>
 					</ul>
-</div>
-			</div>
-
+		    	</div>
+		     </div>
+		         </div>
 		<% } %>
+		
 		<!--################################################################################################################# -->
 		<!--################################################################################################################# -->
 		<!--###########################################  후원하기 리스트     ######################################################## -->
@@ -262,7 +258,7 @@ position:relative;
 		   					 <div class="col-xs-4 marginTop50">
 	   							<div style="height:358px; width:300px; margin-bottom: 60px;"></div>
 							</div>
-		    
+		   			 </div>
     					<%} %>
     			<%} %>	
 				
@@ -328,7 +324,7 @@ position:relative;
     			<%} %>	
 		
 		<!-- #####################################  페 이 징  ########################################################### -->
-					<div align="center">
+			<div align="center">
 					<ul class="pagination pagination-lg" style="padding-left :220px; margin-right: 200px; ">
 						<li class="page-item"><a class="page-link"
 							href="mypageVideoList.do?cate=video&page=<%=pVO.getPreviPage()%>"
@@ -417,7 +413,6 @@ position:relative;
 						</a></li>
 					</ul>
 				</div>
-			</div>
 		<!--######################################################################################################  -->
 		
 						
