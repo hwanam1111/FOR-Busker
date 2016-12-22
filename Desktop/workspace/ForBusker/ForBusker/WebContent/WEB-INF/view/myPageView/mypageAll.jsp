@@ -235,7 +235,7 @@ position:relative;
 
 				<% for(BackedVO bkvo:backedList){ %>
 					<div class="col-xs-4" style="margin-bottom: 60px;">
-						<a href="backedView.do?num=<%=bkvo.getBackNo()%>&param=fromMypageAll">
+						<a href="backedView.do?num=<%=bkvo.getBackNo()%>&param=fromMypageAll"> 
 							<img class='videothumb' id="videothumb"
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=bkvo.getBackVideo()%>/hqdefault.jpg"><br />
