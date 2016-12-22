@@ -157,16 +157,16 @@ window.onload = function() {
 <!-- ################################################### -->
 <input type="hidden" value="${map.memEmail}" name="memEmail">
 
-<!-- 좋아요 -->
+<!-- 좋아요 --> 
 <!-- ################################################### -->
 <input type="hidden" value="${sessionScope.login.memEmail}" name="memLoginEmail">
 <input type="hidden" value="${map.videoNo}" name="videoNo">
 
-
+ 
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<div class="form-group" id="adminBtn" style="width:980px; display:none; float:right;">
+	<div class="form-group" id="adminBtn" style="width:980px; display:none; float:right; margin-right:100px;">
 		<button id="modify" type="button" class="btn btn-info" style="width:100px; color:white; float: right; margin-left: 10px; display:none; ">게시글 수정</button>
 		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white; float: right; ">게시글 삭제</button>
 	</div>
