@@ -39,7 +39,7 @@
 <table>
 <!-- 어떤 입력폼인가 -->
 <tr>
-<h1>Together Mod Form</h1>
+<h1 style="font-size:30px">함께해요 수정폼</h1>
 <br/>
 <br/>
 

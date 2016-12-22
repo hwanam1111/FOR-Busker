@@ -11,19 +11,23 @@ INSERT INTO together VALUES(seq_together.nextval,#{toId},#{toVideo},#{toPhoto},#
 <select id="selectAllTogether" parameterType="hashmap" resultType="busker.scan.vo.TogetherVO">
 SELECT *
 FROM(SELECT rownum as rnum,toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate,toEndDate, toTel, toTeamLeader,toDate 
-      FROM (SELECT toNo, toId, toVideo ,toPhoto ,toName, toNeed, toDetail, toStartDate,toEndDate, toTel, toTeamLeader ,toDate
+      FROM (SELECT *
             FROM together
             WHERE toenddate <![CDATA[>]]> to_char(sysdate,'yyyy-mm-dd')
+            <if test="memEmail neq null">
+				AND toId=#{memEmail}
+			</if>
             ORDER BY tono DESC, todate ASC))
 WHERE rnum BETWEEN  ((#{curPage}-1)*9)+1  AND #{curPage}*9 
-<if test="memEmail neq null">
-AND toId=#{memEmail}
-</if>
+
 </select>
 
 <select id="togeListCount" resultType="int">
 SELECT count(toNo) 
 FROM together
+<if test="memEmail neq null">
+WHERE toId=#{memEmail}
+</if>
 </select> 
 
 <select id="selectTogetherByNum" resultType="busker.scan.vo.TogetherVO" parameterType="busker.scan.vo.TogetherVO">

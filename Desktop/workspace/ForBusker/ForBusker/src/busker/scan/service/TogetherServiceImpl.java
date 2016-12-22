@@ -1,5 +1,6 @@
 package busker.scan.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class TogetherServiceImpl{
 	public List<TogetherVO> selectAllTogether(PageVO pageVO,String memEmail) throws Exception {
 		List<TogetherVO> toList=null;
 		
-		int togeCount = togetherPageCount();
+		int togeCount = togetherPageCount(memEmail);
+		System.out.println("몇개냐 몇개냐"+togeCount);
 		pageVO.setCount(togeCount);				//together 테이블에서 가져온 값 pageVO에 Count에 set해주기
 		PageVO pVO = pagingMaster(pageVO);
 		int curPage = pVO.getCurPage();
@@ -29,9 +31,9 @@ public class TogetherServiceImpl{
 	}
 	
 	//전체 로우 갯수 가져오기 (count)
-	public int togetherPageCount(){
+	public int togetherPageCount(String memEmail){
 		
-		int togeCount=dao.togeListCount();
+		int togeCount=dao.togeListCount(memEmail);
 		return togeCount;
 	}
 	
@@ -94,7 +96,6 @@ public class TogetherServiceImpl{
 	public int togetherMod(TogetherVO tovo) throws Exception{
 		return dao.modifyTogether(tovo);
 	}
-	
 	public List<TogetherVO> selectBySearchVal(String searchVal,PageVO pageVO) throws Exception {
 		List<TogetherVO> toList=null;
 		int togeCount = toSearchCount(searchVal);
