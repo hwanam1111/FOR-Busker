@@ -94,6 +94,7 @@ public class TogetherServiceImpl{
 	public int togetherMod(TogetherVO tovo) throws Exception{
 		return dao.modifyTogether(tovo);
 	}
+	
 	public List<TogetherVO> selectBySearchVal(String searchVal,PageVO pageVO) throws Exception {
 		List<TogetherVO> toList=null;
 		int togeCount = toSearchCount(searchVal);
