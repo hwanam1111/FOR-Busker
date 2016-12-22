@@ -243,8 +243,8 @@ VideoList <img src="<%=projectName %>/resources/images/video_img/cursor.png"/>
       <h1> Comments </h1>
       <!-- 답글 입력창 -->
 	  <div class="form-group">	
-	  		     <textarea class="form-control" rows="2" id="comment" style="width:600px;" name="reContent" id="reContent"></textarea>
-  			     <button type="button" class="btn btn-info form-control" id="replyRegBtn">확인</button>
+	  		     <textarea class="form-control" rows="2" id="comment" style="width:570px;" name="reContent" id="reContent"></textarea>
+  			     <button type="button" class="btn btn-info form-control" id="replyRegBtn" style="height:53.6px; margin-left: 10px;">확인</button>
   				 <input type="hidden" value="${sessionScope.login.memEmail}" id="memEmail" name="memEmail"/>
      			 <input type="hidden" value="${map.videoNo}" id="videoNo"name="videoNo"/>     
       </div>
