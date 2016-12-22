@@ -162,7 +162,7 @@ window.onload = function() {
 <input type="hidden" value="${sessionScope.login.memEmail}" name="memLoginEmail">
 <input type="hidden" value="${map.videoNo}" name="videoNo">
 
-
+ 
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
