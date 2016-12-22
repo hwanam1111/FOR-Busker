@@ -73,7 +73,7 @@ function readURL(input) {
 <div class="hoc">
 	<!-- ################################################### -->
 	<!-- ################################################### -->
-	<h1 id="update_title" style="font-size:30px;">좋아요 목록</h1>
+	<h1 id="update_title" style="font-size:30px;">정보 수정</h1>
 	<!-- simpleJoin Form -->
 	<form id="updateForm" action="updateBusker.do">
 		<!-- #################################################### -->
