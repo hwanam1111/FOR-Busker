@@ -150,11 +150,9 @@
 		resultType="backvo">
 		SELECT *
 		FROM (SELECT rownum as rnum,backNo,
-		backName,backContent,backVideo,backTel,memEmail
+		backName,backContent,backVideo,backTel,memEmail,backDate
 		FROM (SELECT
-		memEmail,backNo, backName,backContent,substr(backvideo, -11)
-		as
-		backVideo,backTel
+		memEmail,backNo, backName,backContent,substr(backvideo, -11) as backVideo,backTel,backDate
 		FROM backed ORDER BY backNo DESC,backDate ASC))
 		WHERE rnum BETWEEN
 		((#{curPage}-1)*9)+1 AND #{curPage}*9
@@ -166,8 +164,8 @@
 	<select id="myPageSponList" parameterType="hashmap"	resultType="busker.scan.vo.SponserVO">
 		SELECT *
 		FROM (select rownum as rnum , memEmail,spNo,
-		spName,spCond,spPhoto,spTel
-		FROM (select rownum as rnum , memEmail,spNo, spName,spCond,spPhoto,spTel
+		spName,spCond,spPhoto,spTel,sponDate
+		FROM (select rownum as rnum , memEmail,spNo, spName,spCond,spPhoto,spTel,sponDate
 		FROM sponser
 		WHERE memEmail = #{memEmail}
 		ORDER BY spNo DESC,spondate ASC) subQuery

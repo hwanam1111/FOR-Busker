@@ -10,6 +10,7 @@ public class BackedVO {
 	private String backContent;
 	private String backNeeds;
 	private String backTel;
+	private String backDate;
 
 	
 	public int getBackNo() {
@@ -54,6 +55,12 @@ public class BackedVO {
 	}
 	public void setBackTel(String backTel) {
 		this.backTel = backTel;
+	}
+	public String getBackDate() {
+		return backDate;
+	}
+	public void setBackDate(String backDate) {
+		this.backDate = backDate;
 	}
 
 }

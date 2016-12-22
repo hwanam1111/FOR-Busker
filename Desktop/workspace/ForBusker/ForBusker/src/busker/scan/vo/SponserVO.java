@@ -19,6 +19,7 @@ public class SponserVO {
 	private String spContent;
 	private String spCond;
 	private String spTel;
+	private String sponDate;
 	
 	MultipartFile file;
 	
@@ -123,5 +124,11 @@ public class SponserVO {
 		}
 		System.out.println(file.getName());
 		return file.getName();	//file.getAbsolutePath();
+	}
+	public String getSponDate() {
+		return sponDate;
+	}
+	public void setSponDate(String sponDate) {
+		this.sponDate = sponDate;
 	}
 }
