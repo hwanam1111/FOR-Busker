@@ -122,7 +122,21 @@ window.onload = function() {
 		<%System.out.println("세션 이메일 : " + nvo.getMemEmail()); /* 세션에 들어온 이메일 */ %>
 		<%System.out.println("VideoVO 이메일 : " + vvo.getMemEmail()); /* VideoVO 안에 있는 이메일 */%>
 		
-		<%if(nvo.getMemEmail().equals("help@busker.com") || nvo.getMemEmail().equals(vvo.getMemEmail()) ) { %>
+		<%if(nvo.getMemEmail().equals("help@busker.com")) { %>
+		<script type="text/javascript">
+		$(function() {
+			$('#adminBtn').css('display', 'block');
+		
+			$("#delete").click(function(){	
+				var result = confirm("게시글을 삭제하시겠습니까?");
+					if(result){
+						location.href="togetherDel.do?toNo=<%=vvo.getVideoNo()%>";
+					}
+			});
+		})
+	</script>
+<% } %>	
+	<%if(nvo.getMemEmail().equals(vvo.getMemEmail()) ) { %>
 		<script type="text/javascript">
 		$(function() {
 			<%if(nvo.getMemEmail().equals(vvo.getMemEmail()) ){  %>
@@ -141,8 +155,6 @@ window.onload = function() {
 						location.href="togetherDel.do?toNo=<%=vvo.getVideoNo()%>";
 					}
 			});
-				
-				
 		})
 	</script>
 <% } %>		

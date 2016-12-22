@@ -57,7 +57,7 @@ function onKeyDown()
 		<form role="form" id="log_form" action="loginOK.do">
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="log_label">Email address</label>
-				<input style=" font-family: kiwi; font-size:14px; font-weight:bold" type="email" class="form-control" id="exampleInputEmail1" name="memEmail" placeholder="이메일을 입력하세요">
+				<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="email" class="form-control" id="exampleInputEmail1" name="memEmail" placeholder="이메일을 입력하세요">
 			</div>
 			<!-- ################################################### -->
 			<!-- ################################################### -->
