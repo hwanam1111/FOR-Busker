@@ -17,6 +17,8 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/login_css/login.css?<?=filemtime('<%=projectName %>/resources/css/login_css/login.css')?>" rel="stylesheet" type="text/css" media="all">
+
+
 <!-- login enter -->
 <script type="text/javascript">
 function onKeyDown()
@@ -27,6 +29,12 @@ function onKeyDown()
      }
 }
 </script>
+<style>
+@font-face {
+  font-family: 'kiwi';
+  src:url('fonts/kiwibananaB.ttf') format('truetype');
+}
+   </style>
 </head>
 
 <body id="top">
@@ -49,13 +57,13 @@ function onKeyDown()
 		<form role="form" id="log_form" action="loginOK.do">
 			<div class="form-group">
 				<label for="exampleInputEmail1" class="log_label">Email address</label>
-				<input type="email" class="form-control" id="exampleInputEmail1" name="memEmail" placeholder="이메일을 입력하세요">
+				<input style=" font-family: kiwi; font-size:14px; font-weight:bold" type="email" class="form-control" id="exampleInputEmail1" name="memEmail" placeholder="이메일을 입력하세요">
 			</div>
 			<!-- ################################################### -->
 			<!-- ################################################### -->
 			<div class="form-group">
-				<label for="exampleInputPassword1" class="log_label">Password</label>
-				<input type="password" class="form-control" id="exampleInputPassword1" name="memPw" placeholder="비밀번호를 입력하세요" onKeyDown="onKeyDown();">
+				<label for="exampleInputPassword1" class="log_label" >Password</label>
+				<input  style=" font-family: kiwi; font-size:13px;font-weight:bold" type="password" class="form-control" id="exampleInputPassword1" name="memPw" placeholder="비밀번호를 입력하세요" onKeyDown="onKeyDown();">
 			</div>
 			<!-- ################################################### -->
 			<!-- ################################################### -->
