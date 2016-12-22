@@ -157,7 +157,7 @@ window.onload = function() {
 <!-- ################################################### -->
 <input type="hidden" value="${map.memEmail}" name="memEmail">
 
-<!-- 좋아요 -->
+<!-- 좋아요 --> 
 <!-- ################################################### -->
 <input type="hidden" value="${sessionScope.login.memEmail}" name="memLoginEmail">
 <input type="hidden" value="${map.videoNo}" name="videoNo">
