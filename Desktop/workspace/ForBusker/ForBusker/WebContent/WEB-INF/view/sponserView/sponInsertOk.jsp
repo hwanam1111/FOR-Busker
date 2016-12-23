@@ -32,7 +32,7 @@
 
 <!-- 이부분 부터 코딩 시작 -->
 <script type="text/javascript">
-alert("${message}");
+//alert("${message}");
 location.href="sponAndBacked.do"	//후원하기 페이지로 이동
 </script>
 

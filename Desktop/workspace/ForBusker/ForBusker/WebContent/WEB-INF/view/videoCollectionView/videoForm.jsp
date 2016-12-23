@@ -35,8 +35,8 @@
 <input type="hidden" value="${sessionScope.login.memTeamName}" id="hiddenTeamName">
 <!-- ################################################### -->
 <div class="hoc">
-<form style="margin-left:140px;" id="videoForm">
-<table>
+<form style="margin-left:140px; " id="videoForm">
+<table style="margin-bottom: 80px;">
 <!-- 어떤 입력폼인가 -->
 <tr>
 <h1>Video Regist</h1>

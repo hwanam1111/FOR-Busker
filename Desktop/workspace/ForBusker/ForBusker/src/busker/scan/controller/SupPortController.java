@@ -82,10 +82,10 @@ public class SupPortController {
 		int result=0;
 		result = service.insertSpon(sponserVO);
 		if(result==1){
-			m.addAttribute("message","입력성공@.@");
+			m.addAttribute("message","글이 등록되었습니다.");
 
 		}else{
-			m.addAttribute("message","입력실패-.-");
+			m.addAttribute("message","입력 실패");
 		}
 		return "sponserView/sponInsertOk";
 	}
@@ -97,7 +97,7 @@ public class SupPortController {
 		int result = service.deleteSpon(sponNo);
 		String message="삭제성공";
 		if(result != 1){
-			message="삭제 실패 ㅡㅡ";
+			message="삭제 실패 ";
 		}
 		m.addAttribute("message",message);
 		
@@ -131,9 +131,9 @@ public class SupPortController {
 	public String sponUpdateOk(SponserVO sponserVO, Model m) throws Exception{
 
 		int result = service.sponUpdate(sponserVO);
-		String message="수정 성공!!!";
+		String message="수정 성공";
 		if(result!=1){
-			message = "수정 실패!!!";
+			message = "수정 실패";
 		}
 		m.addAttribute("message",message);
 		m.addAttribute("num",sponserVO.getSpNo());
@@ -217,9 +217,9 @@ public class SupPortController {
 		int result=0;
 		result=service.insertBacked(backedVO);
 		if(result==1){
-			m.addAttribute("message","입력성공@.@");
+			m.addAttribute("message","입력성공");
 		}else{
-			m.addAttribute("message","입력실패-.-");
+			m.addAttribute("message","입력실패");
 		}
 
 		return "backedView/backedInsertOk";

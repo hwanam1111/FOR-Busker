@@ -34,7 +34,6 @@
 $(function() {
 	$('#videoLike').click(function(event) {
 		// 로그인 체크
-		alert($('#likeImg').attr( 'src'))
 		if("${sessionScope.login.memEmail}" == ""){
 			alert("로그인 후 이용해 주세요");
 			location.href="login.do";

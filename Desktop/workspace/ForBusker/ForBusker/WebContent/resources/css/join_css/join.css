@@ -4,4 +4,4 @@
 #join_temp .join_img{width:140px; height: 140px; margin-left:130px;}
 #join_temp .join_img:hover{opacity: 0.6; filter: alpha(opacity=60);}
 #join_temp>p{font-weight: bold; font-family:inherit; font-size:15px; margin-top:20px; margin-bottom:10px; padding-left:158px;}
-#join_temp>p>span#temp_span{margin-right:192px;}
+#join_temp>p>span#temp_span{margin-right:175px;}

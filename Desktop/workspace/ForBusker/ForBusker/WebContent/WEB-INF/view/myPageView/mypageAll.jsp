@@ -399,16 +399,16 @@ position:relative;
 				  <div align="center">
 				  <ul class="pagination pagination-lg">
 				    <li class="page-item">
-				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
+				      <a class="page-link" href="mypageTogetherList.do?cate=toList&page=<%=pVO.getPreviPage()%>" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
 				        <span class="sr-only">Previous</span>
 				      </a>
 				    </li>
 				    <%for(int i=pVO.getStartPage(); i <= pVO.getEndPage() ; i++) {%>
-				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=i %>"><%=i %></a></li>
+				   	 	<li class="page-item"><a class="page-link" href="mypageTogetherList.do?cate=toList&page=<%=i %>"><%=i %></a></li>
 				    <%} %>
 				    <li class="page-item">
-				      <a class="page-link" href="mypageTogetherList.do?cate=join&page=<%=pVO.getNextPage()%>" aria-label="Next">
+				      <a class="page-link" href="mypageTogetherList.do?cate=toList&page=<%=pVO.getNextPage()%>" aria-label="Next">
 				        <span aria-hidden="true">&raquo;</span>
 				        <span class="sr-only">Next</span>
 				      </a>
