@@ -19,6 +19,12 @@
 <link href="<%=projectName %>/resources/css/join_css/buskerJoin.css?<?=filemtime('<%=projectName %>/resources/css/join_css/buskerJoin.css)?>" rel="stylesheet" type="text/css" media="all">
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/join_js/buskerJoin.js?<?=filemtime('<%=projectName %>/resources/js/join_js/buskerJoin.js')?>"></script>
+<style>
+@font-face {
+  font-family: 'kiwi';
+  src:url('fonts/kiwibananaB.ttf') format('truetype');
+}
+</style>
 </head>
 
 <body id="top">
@@ -44,7 +50,7 @@
 		<div class="form-group">
    			<label for="buskerEmail">이메일 주소</label>
     		<div>
-	    		<input type="email" class="form-control" id="buskerEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
+	    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="email" class="form-control" id="buskerEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
 	    		<button type="button" id="emailCheckBtn" class="btn btn-info" disabled="disabled">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
@@ -61,24 +67,24 @@
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="buskerPassword">비밀번호</label>
-    		<input type="password" class="form-control" id="buskerPassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="buskerPassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="buskerPasswordOk">비밀번호확인</label>
-    		<input type="password" class="form-control" id="buskerPasswordOk" name="buskerPasswordOk" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="buskerPasswordOk" name="buskerPasswordOk" placeholder="암호를 입력하세요" maxlength="20">
     		<div id="pwCheck" style="display: none;"></div>
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
  		    <label for="buskerTel">전화번호</label>
-    		<input type="tel" class="form-control" id="buskerTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="tel" class="form-control" id="buskerTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
   		<div class="form-group">
  		    <label for="buskerTeamName">팀 이름</label>
-    		<input type="text" class="form-control" id="buskerTeamName"name="memTeamName" placeholder="팀명을 입력하세요" maxlength="13">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="text" class="form-control" id="buskerTeamName"name="memTeamName" placeholder="팀명을 입력하세요" maxlength="13">
   		</div>
   		<!-- ################################################### -->
   		<!-- ##################### CheckBox #################### -->
@@ -113,7 +119,7 @@
 		<!-- ################################################### -->
   		<div class="form-group">
  		    <br/><label for="buskerVideo">팀 홍보 영상</label>
-    		<input type="text" class="form-control" id="buskerVideo" name="memVideo" placeholder="영상URL을 입력하세요" maxlength="120">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="text" class="form-control" id="buskerVideo" name="memVideo" placeholder="영상URL을 입력하세요" maxlength="120">
   		</div>
   		<!-- ################################################### -->
 		<!-- ################################################### -->

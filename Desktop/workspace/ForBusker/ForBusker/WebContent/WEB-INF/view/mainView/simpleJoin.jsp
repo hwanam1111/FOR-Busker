@@ -19,6 +19,13 @@
 <link href="<%=projectName %>/resources/css/join_css/simpleJoin.css?<?=filemtime('<%=projectName %>/resources/css/join_css/simpleJoin.css)?>" rel="stylesheet" type="text/css" media="all">
 <!-- include js -->
 <script type="text/javascript" src="<%=projectName %>/resources/js/join_js/simpleJoin.js?<?=filemtime('<%=projectName %>/resources/js/join_js/simpleJoin.js')?>"></script>
+<style>
+@font-face {
+  font-family: 'kiwi';
+  src:url('fonts/kiwibananaB.ttf') format('truetype');
+}
+</style>
+
 </head>
 
 <body id="top">
@@ -44,7 +51,7 @@
 		<div class="form-group">
    			<label for="simpleEmail">이메일 주소</label>
     		<div>
-	    		<input type="email" class="form-control" id="simpleEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
+	    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="email" class="form-control" id="simpleEmail" name="memEmail" placeholder="이메일을 입력하세요" maxlength="50">
 	    		<button type="button" id="emailCheckBtn" class="btn btn-info" disabled="disabled">이메일인증</button>
     		</div>
     		<div id="emailCheck" style="display: none;"></div>
@@ -61,26 +68,26 @@
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="simplePassword">비밀번호</label>
-    		<input type="password" class="form-control" id="simplePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="simplePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="simplePasswordOk">비밀번호확인</label>
-    		<input type="password" class="form-control" id="simplePasswordOk" name="simplePasswordOk" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="simplePasswordOk" name="simplePasswordOk" placeholder="암호를 입력하세요" maxlength="20">
     		<div id="pwCheck" style="display: none;"></div>
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
  		   <label for="simpleNickname">닉네임</label>
-    		<input type="text" class="form-control" id="simpleNickname"name="memNick" placeholder="닉네임을 입력하세요" maxlength="12">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="text" class="form-control" id="simpleNickname"name="memNick" placeholder="닉네임을 입력하세요" maxlength="12">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
  		    <label for="simpleTel">전화번호</label>
-    		<input type="tel" class="form-control" id="simpleTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="tel" class="form-control" id="simpleTel"name="memPhone" placeholder="전화번호를 입력하세요" maxlength="13">
   		</div>
   		
   		<input type="hidden" name="memStatus" value="1">
