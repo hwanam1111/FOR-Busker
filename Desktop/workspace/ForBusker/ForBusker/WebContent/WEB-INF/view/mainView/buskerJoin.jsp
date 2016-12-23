@@ -121,8 +121,8 @@
 		<textarea class="form-control" rows="5" name="memDetail" id="buskerDetail"></textarea>
 		<!-- ################################################### -->
 		<!-- ################################################### -->
-		<input type="hidden" name="memStatus" value="2">
-		<input type="hidden" name="memType" value="1">
+		<input type="hidden" name="memStatus" value="1">
+		<input type="hidden" name="memType" value="2">
 		<!-- submit button -->
   		<button type="button" class="btn btn-info" id="submitBtn">회원가입</button>
   		<button type="reset" class="btn btn-info" id="resetBtn">다시작성</button>

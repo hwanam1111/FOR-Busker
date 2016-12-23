@@ -29,11 +29,11 @@ UPDATE member SET memStatus='0' WHERE memEmail=#{memEmail} AND memPw=ENCRYPTION_
 </update>
 
 <select id="simpleIdSearch" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO">
-SELECT *FROM member WHERE memPhone=#{memPhone} AND memStatus='1'
+SELECT *FROM member WHERE memPhone=#{memPhone} AND memType='1' AND memStatus ='1'
 </select>
 
 <select id="buskerIdSearch" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO">
-SELECT * FROM member WHERE memPhone=#{memPhone} AND memTeamName=#{memTeamName} AND memStatus='2'
+SELECT * FROM member WHERE memPhone=#{memPhone} AND memTeamName=#{memTeamName} AND memType='2' AND memStatus='1'
 </select>
 
 <select id="searchPw" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO">
