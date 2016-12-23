@@ -49,6 +49,12 @@ $(function(){
 					$('.comments-list').append("<div class='media'><p class='pull-right'><small>"+data[i].replDate+"</small></p><div class='media-body'>"                
 		                 +"<h6 class='media-heading user_name' style='font-size:13px;'>"+data[i].memEmail+"</h6><h6 style='font-size:20px;'>"+data[i].reContent+"<h6></div><hr/></div>");      
 				}
+				if(data.length>3){
+					console.log("답변3개이상");
+					$('#more').empty();
+					$('#more').append("<hr/><h4>더보기▽</h4><hr/>");
+				}
+				
 			},
 			error:function(param){
 				console.log("답변 찍기 에러발생 "+eval("("+param+")"));
