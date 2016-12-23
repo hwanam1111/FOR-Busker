@@ -64,12 +64,13 @@
 	<div class="col-xs-2">
 	 <a id="nextPage"><button type="button" class="btn btn-info" style="position: relative; right:20px; color:#fff"id="searchBtn">검색</button></a>
 	</div>
-	
+	<c:if test="${null ne sessionScope.login && '2' eq sessionScope.login.memType}">
 	<div class="col-xs-6 ">
 		<a href="togetherForm.do">
 			<button type="button" class="btn btn-info marginRight" id="moveToFormBtn" style="color:#fff;">등록하기</button>
 		</a>
 	</div>
+	</c:if>
 	</div>
 	
 	
