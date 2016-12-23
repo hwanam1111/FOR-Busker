@@ -210,7 +210,7 @@ window.onload = function() {
 <img src="<%=projectName %>/resources/images/video_img/thumbs-up32.png" id="likeImg" name="videoLike"/>
 </button>
 <div  style="float: right; margin-top:10px;">
-	좋아요수 : &nbsp; <input type="text"  id="videoCount" value="${map.videoLike }" style="width:20px; float: right; margin-bottom:20px; border:none;">
+	좋아요수 : &nbsp; <input type="text"  id="videoCount" value="${map.videoLike }" style="width:20px; float: right; margin-bottom:20px; border:none;" readonly="readonly">
 	<input type="hidden" value="1" id="hiddenCount">
 </div>
 </div>
