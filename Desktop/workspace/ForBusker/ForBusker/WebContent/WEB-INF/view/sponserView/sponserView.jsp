@@ -81,6 +81,8 @@
 					location.href="sponUpdateForm.do?spNo=${selectSpon.spNo}";
 				})
 			<%}%>
+			
+		$("#insertMessage").attr("disabled","disabled");
 		})
 	</script>
 <% } %>		

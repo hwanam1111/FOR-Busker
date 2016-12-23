@@ -273,7 +273,7 @@ public class MessageDaoImpl implements MessageDao {
 		BasicDBObject doc = new BasicDBObject();
 		Date date = new Date();
 		SimpleDateFormat smsSendTime = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
-		doc.put("smsNo", sms.getSmsNo());					//글 내용
+		doc.put("smsNo", sms.getSmsNo());					//글 번호
 		doc.put("smsSendEmail", sms.getSmsSendEmail());		//보내는 이메일
 		doc.put("smsContent", sms.getSmsContent());			//보내는 내용
 		doc.put("smsReceiveEmail", sms.getSmsReceiveEmail());	//받는 이메일
@@ -289,7 +289,7 @@ public class MessageDaoImpl implements MessageDao {
 		BasicDBObject doc = new BasicDBObject();
 		Date date = new Date();
 		SimpleDateFormat smsSendTime = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
-		doc.put("smsNo", sms.getSmsNo());					//글 내용
+		doc.put("smsNo", sms.getSmsNo());					//글 번호
 		doc.put("smsSendEmail", sms.getSmsSendEmail());		//보내는 이메일
 		doc.put("smsContent", sms.getSmsContent());			//보내는 내용
 		doc.put("smsReceiveEmail", sms.getSmsReceiveEmail());	//받는 이메일

@@ -126,7 +126,6 @@ public class MemberController {
 			vo.setMemPhone(memPhone); 
 			vo.setMemTeamName(memTeamName);
 			MemberVO memvo=service.buskerIdSearch(vo);
-			System.out.println("memvo.getMemEmail() :"+memvo.getMemEmail());
 			return memvo.getMemEmail();
 		}
 		//회원 비밀번호 찾기
