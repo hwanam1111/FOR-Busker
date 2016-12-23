@@ -79,7 +79,7 @@ public class SponserVO {
 				System.out.println(file.getOriginalFilename());
 //				this.spPhoto =  save("C:\\Users\\user\\git\\FOR-Busker1\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
 //						 file.getInputStream());
-//				this.spPhoto =  save("C:\\FinalProject\\finalworkspace\\ForBusker\\WebContent\\upload",
+//				this.spPhoto =  save("C:\\Users\\user\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload",
 //						 file.getInputStream());			
 				this.spPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
 						 file.getInputStream());
