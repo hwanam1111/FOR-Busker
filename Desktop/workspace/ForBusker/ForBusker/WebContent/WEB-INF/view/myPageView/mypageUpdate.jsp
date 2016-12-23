@@ -56,6 +56,12 @@ function readURL(input) {
 
 
 </script>
+<style>
+@font-face {
+  font-family: 'kiwi';
+  src:url('fonts/kiwibananaB.ttf') format('truetype');
+}
+</style>
 </head>
 
 <body id="top">
@@ -73,7 +79,7 @@ function readURL(input) {
 <div class="hoc">
 	<!-- ################################################### -->
 	<!-- ################################################### -->
-	<h1 id="update_title" style="font-size:30px;">정보 수정</h1>
+	<h1 style="font-size:30px;">정보 수정</h1>
 	<!-- simpleJoin Form -->
 	<form id="updateForm" action="updateBusker.do">
 		<!-- #################################################### -->
@@ -88,13 +94,13 @@ function readURL(input) {
     	<!-- #################################################### -->
   		<div class="form-group">
     		<label for="updatePassword">비밀번호</label>
-    		<input type="password" class="form-control" id="updatePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="updatePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
   		<div class="form-group">
     		<label for="updatePasswordOk">비밀번호확인</label>
-    		<input type="password" class="form-control" id="updatePasswordOk" name="updatePasswordOk" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="updatePasswordOk" name="updatePasswordOk" placeholder="암호를 입력하세요" maxlength="20">
     		<div id="pwCheck" style="display: none;"></div>
   		</div>
   		<!-- #################################################### -->

@@ -17,6 +17,12 @@
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/mypage_css/mypageLeave.css?<?=filemtime('<%=projectName %>/resources/css/mypage_css/mypageLeave.css)?>" rel="stylesheet" type="text/css" media="all">
+<style>
+@font-face {
+  font-family: 'kiwi';
+  src:url('fonts/kiwibananaB.ttf') format('truetype');
+}
+</style>
 </head>
 
 <body id="top">
@@ -34,7 +40,7 @@
 <div class="hoc">
 	<!-- ################################################### -->
 	<!-- ################################################### -->
-	<h1 id="leave_title" style="font-size:30px;">회원탈퇴</h1>
+	<h1  style="font-size:30px;">회원탈퇴</h1>
 	<!-- simpleJoin Form -->
 	<form id="leaveForm" action="myPageLeaveConfig.do" method="post">
 		<!-- #################################################### -->
@@ -49,7 +55,7 @@
     	<!-- #################################################### -->
   		<div class="form-group">
     		<label for="leavePassword">비밀번호</label>
-    		<input type="password" class="form-control" id="leavePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
+    		<input style=" font-family: kiwi; font-size:13px; font-weight:bold" type="password" class="form-control" id="leavePassword" name="memPw" placeholder="암호를 입력하세요" maxlength="20">
   		</div>
   		<!-- #################################################### -->
   		<!-- #################################################### -->
