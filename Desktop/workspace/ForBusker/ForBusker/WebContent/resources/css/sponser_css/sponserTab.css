@@ -90,3 +90,35 @@ ul.tabs li.kkk {
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical
 }
+
+.sponTitle{
+	display: inline-block;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: normal;
+    line-height: 1.2;
+    height: 22.4px;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical
+}
+
+.sponCon{
+	display: inline-block;
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: normal;
+    line-height: 1.2;
+    height: 3.6em;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical
+}
