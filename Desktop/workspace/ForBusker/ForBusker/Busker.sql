@@ -1,98 +1,147 @@
-
-CREATE TABLE Member(
-memEmail varchar2(255) PRIMARY KEY,  -- P_MEMBER 공연자회원 기본키
-memName varchar2(255),
-memPw varchar2(255),
-memNick varchar2(255),
-memPhone varchar2(255),
-memTeamtype varchar2(255),
-memTeamphoto varchar2(255), 
-memTeamname varchar2(255),
-memLeader varchar2(255),
-memVideo varchar2(255),
-memDetail varchar2(2000),
-memStatus varchar2(255),
-memType varchar2(255)
+CREATE TABLE MEMBER(
+MEMEMAIL   VARCHAR2(255 BYTE) PRIMARY KEY,  -- P_MEMBER 공연자회원 기본키
+MEMNAME   VARCHAR2(255 BYTE),
+MEMPW   VARCHAR2(255 BYTE),
+MEMNICK   VARCHAR2(255 BYTE),
+MEMPHONE   VARCHAR2(255 BYTE),
+MEMTEAMTYPE   VARCHAR2(255 BYTE),
+MEMTEAMPHOTO   VARCHAR2(255 BYTE),
+MEMTEAMNAME   VARCHAR2(255 BYTE),
+MEMLEADER   VARCHAR2(255 BYTE),
+MEMVIDEO   VARCHAR2(255 BYTE),
+MEMDETAIL   VARCHAR2(2000 BYTE),
+MEMSTATUS   VARCHAR2(255 BYTE),
+MEMTYPE   VARCHAR2(255 BYTE)
 );
 
 
-CREATE TABLE show(
-shNo number PRIMARY KEY, -- show 공연 기본키
-memEmail varchar2(255),
-shTeamname varchar2(255),
-shVideo varchar2(255),
-shName varchar2(255),
-shMapLati varchar2(255),
-shMapLongi varchar2(255),
-shMapCoords varchar2(255),
-shMapAddr varchar2(255),
-shMapDetail varchar2(255),
-shDate varchar2(255),
-shTime varchar2(255),
-shType varchar2(255),
-shDetail varchar2(255),
-CONSTRAINT FK_show_MemEmail FOREIGN KEY (memEmail) references Member (memEmail)  -- show 공연,공연자회원 외래키
+CREATE TABLE SHOW(
+SHNO   NUMBER PRIMARY KEY, -- show 공연 기본키
+MEMEMAIL   VARCHAR2(255 BYTE),
+SHTEAMNAME   VARCHAR2(255 BYTE),
+SHVIDEO   VARCHAR2(255 BYTE),
+SHNAME   VARCHAR2(255 BYTE),
+SHMAPLATI   VARCHAR2(255 BYTE),
+SHMAPLONGI   VARCHAR2(255 BYTE),
+SHMAPCOORDS   VARCHAR2(255 BYTE),
+SHMAPADDR   VARCHAR2(255 BYTE),
+SHMAPDETAIL   VARCHAR2(255 BYTE),
+SHDATE   VARCHAR2(255 BYTE),
+SHTIME   VARCHAR2(255 BYTE),
+SHTYPE   VARCHAR2(255 BYTE),
+SHDETAIL   VARCHAR2(255 BYTE),
+CONSTRAINT FK_show_MemEmail FOREIGN KEY (MEMEMAIL) references Member (MEMEMAIL)  -- show 공연,공연자회원 외래키
 );
 
-CREATE TABLE video(
-videoNo number PRIMARY KEY, -- video 기본키
-memEmail varchar2(255),
-videoUrl varchar2(255),
-videoName varchar2(255),
-videoDetail varchar2(255),
-videoCount varchar2(255),
-videoLike varchar2(255),
-videoDate varchar2(255),
-memTeamName varchar2(255)
+CREATE TABLE VIDEO(
+VIDEONO   NUMBER PRIMARY KEY,
+MEMEMAIL   VARCHAR2(255 BYTE),
+VIDEOURL   VARCHAR2(255 BYTE),
+VIDEONAME   VARCHAR2(255 BYTE),
+VIDEODETAIL   VARCHAR2(3000 BYTE),
+VIDEOCOUNT   VARCHAR2(255 BYTE),
+VIDEOLIKE   VARCHAR2(255 BYTE),
+VIDEODATE   DATE,
+MEMTEAMNAME   VARCHAR2(255 BYTE),
 CONSTRAINT FK_video_memEmail FOREIGN KEY (memEmail) references Member (memEmail) -- video 영상 ,공연자회원 외래키
 );
 
-CREATE TABLE VideoReply(
-reNo number PRIMARY KEY, --VideoReply 영상 댓글 기본키
-videoNo number,
-memEmail varchar2(255),
-reContent varchar2(2000),
+CREATE TABLE VIDEOREPLY(
+RENO   NUMBER PRIMARY KEY,
+VIDEONO   NUMBER,
+MEMEMAIL   VARCHAR2(255 BYTE),
+RECONTENT   VARCHAR2(2000 BYTE),
+REPLDATE   DATE,
 CONSTRAINT FK_VideoReply_videoNo FOREIGN KEY (videoNo) references video (videoNo), -- 비디오영상번호 외래키
 CONSTRAINT FK_VideoReply_memEmail FOREIGN KEY (memEmail) references member (memEmail) --  전체회원 외래키
 );
 
-
-
-CREATE TABLE sponser(
-spNo number PRIMARY KEY, --스폰서 기본키
-memEmail varchar2(255), 
-spName varchar2(255),
-spPhoto varchar2(255),
-spContent varchar2(255),
-spCond varchar2(255),
-spTel varchar2(255),
-CONSTRAINT FK_sponser_memEmail FOREIGN KEY (memEmail) references Member (memEmail)  --전체회원 외래키
+CREATE TABLE VIDEO(
+VIDEONO   NUMBER PRIMARY KEY,
+MEMEMAIL   VARCHAR2(255 BYTE),
+VIDEOURL   VARCHAR2(255 BYTE),
+VIDEONAME   VARCHAR2(255 BYTE),
+VIDEODETAIL   VARCHAR2(3000 BYTE),
+VIDEOCOUNT   VARCHAR2(255 BYTE),
+VIDEOLIKE   VARCHAR2(255 BYTE),
+VIDEODATE   DATE,
+MEMTEAMNAME   VARCHAR2(255 BYTE),
+CONSTRAINT FK_Video_memEmail FOREIGN KEY (MEMEMAIL) references member (MEMEMAIL) --  전체회원 외래키
 );
 
-CREATE TABLE backed(
-backNo number PRIMARY KEY, --후원받는사람 기본키
-memEmail varchar2(255),
-backName varchar2(255),
-backVideo varchar2(255),
-backContent varchar2(255),
-backNeeds varchar2(255),
-backTel varchar2(255),
-CONSTRAINT FK_backed_memEmail FOREIGN KEY (memEmail) references Member (memEmail) -- 전체회원 외래키
+CREATE TABLE VIDEOLIKE(
+LIKENO   NUMBER PRIMARY KEY,
+MEMLOGINEMAIL   VARCHAR2(255 BYTE),
+VIDEONO   NUMBER,
+CONSTRAINT FK_VIDEOLIKE_VIDEONO FOREIGN KEY (VIDEONO) references video (VIDEONO) --  전체회원 외래키
 );
 
-CREATE TABLE videoLike(
-likeNo number PRIMARY KEY,
-memEmail varchar2(255),
-videoNo number,
-CONSTRAINT FK_videoLike_videoNo FOREIGN KEY (videoNo) references video (videoNo) -- 전체회원 외래키
+
+CREATE TABLE SPONSER(
+SPNO   NUMBER PRIMARY KEY, --스폰서 기본키
+MEMEMAIL   VARCHAR2(255 BYTE),
+SPNAME   VARCHAR2(255 BYTE),
+SPPHOTO   VARCHAR2(255 BYTE),
+SPCONTENT   VARCHAR2(2550 BYTE),
+SPCOND   VARCHAR2(255 BYTE),
+SPTEL   VARCHAR2(255 BYTE),
+SPONDATE   DATE,
+CONSTRAINT FK_sponser_memEmail FOREIGN KEY (MEMEMAIL) references Member (MEMEMAIL)  --전체회원 외래키
+);
+
+CREATE TABLE BACKED(
+BACKNO   NUMBER   PRIMARY KEY,
+MEMEMAIL   VARCHAR2(255 BYTE)
+BACKNAME   VARCHAR2(255 BYTE)
+BACKVIDEO   VARCHAR2(255 BYTE)
+BACKCONTENT   VARCHAR2(2550 BYTE)
+BACKNEEDS   VARCHAR2(255 BYTE)
+BACKTEL   VARCHAR2(255 BYTE)
+BACKDATE   VARCHAR2(255 BYTE)
+CONSTRAINT FK_backed_memEmail FOREIGN KEY (MEMEMAIL) references Member (MEMEMAIL) -- 전체회원 외래키
+);
+
+
+CREATE TABLE NOTICE(
+NOTICENO   NUMBER PRIMARY KEY,
+NOTICETITLE   VARCHAR2(255 BYTE),
+NOTICECONTENT   VARCHAR2(4000 BYTE),
+NOTICEDATE   DATE
+);
+
+CREATE TABLE TOGETHER(
+TONO   NUMBER   PRIMARY KEY,
+TOID   VARCHAR2(255 BYTE),
+TOVIDEO   VARCHAR2(255 BYTE),
+TOPHOTO   VARCHAR2(255 BYTE),
+TONAME   VARCHAR2(255 BYTE),
+TONEED   VARCHAR2(255 BYTE),
+TODETAIL   VARCHAR2(2000 BYTE),
+TOSTARTDATE   VARCHAR2(255 BYTE),
+TOENDDATE   VARCHAR2(255 BYTE),
+TOTEL   VARCHAR2(255 BYTE),
+TOTEAMLEADER   VARCHAR2(255 BYTE),
+TODATE   VARCHAR2(255 BYTE)
 );
 
 --테이블 별 시퀀스 생성 --
-CREATE SEQUENCE seq_backed;
-CREATE SEQUENCE seq_show;
-CREATE SEQUENCE seq_sms;
-CREATE SEQUENCE seq_sponser;
-CREATE SEQUENCE seq_video;
-CREATE SEQUENCE seq_together;
-CREATE SEQUENCE seq_videoreply;
-CREATE SEQUENCE seq_videoLike;
+CREATE SEQUENCE SEQ_NOTICE;
+CREATE SEQUENCE SEQ_BACKED;
+CREATE SEQUENCE SEQ_SHOW;
+CREATE SEQUENCE SEQ_SPONSER;
+CREATE SEQUENCE SEQ_VIDEO;
+CREATE SEQUENCE SEQ_TOGETHER;
+CREATE SEQUENCE SEQ_VIDEOREPLY;
+CREATE SEQUENCE SEQ_VIDEOLIKE;
+
+{
+      smsNo : 글 번호
+      smsSendEmail : 보내는 이메일
+      smsContent : 보내는 내용
+      smsReceiveEmail : 받는 이메일
+      smsSendTime : 보내는 시간
+      smsStatus : 읽음 상태
+      smsType : 글 타입
+      smsTo : 보내는 이메일 
+      smsDeleteStatus : 삭제여부
+}

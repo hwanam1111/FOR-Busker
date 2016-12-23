@@ -78,7 +78,7 @@
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
 <div id="adminBtn" style="margin-left:760px; display:none;">
-   <button class="dlBtn" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+   <button type="button" class="btn btn-info dlBtn" style="width:100px; color:white;">게시글 삭제</button>
 </div>
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
@@ -86,16 +86,10 @@
 		<td>
 	<div class="MDBtn" style="display:none;">
 		<a class="ModifyBtn">
-			<button type="button" class="btn btn-info mdBtn">
-				<input type="hidden" value="${tovo.toNo}">
-				수정
-			</button>
+			<button type="button" class="btn btn-info mdBtn"><input type="hidden" value="${tovo.toNo}">게시글 수정</button>
 		</a>
 		<a class="deleteBtn">
-		<button type="button" class="btn btn-danger dlBtn">
-			<input type="hidden" value="${tovo.toNo}">
-			삭제
-		</button>
+		<button type="button" class="btn btn-info dlBtn"><input type="hidden" value="${tovo.toNo}">게시글 삭제</button>
 		</a>
 	</div>
 		</td>
@@ -172,14 +166,13 @@
 	<div align="center">
 	<c:choose>
 	<c:when test="${sessionScope.login ne null}">
-	<button type="button" class="btn btn-primary" id="togetherJoin">쪽지 보내기</button>
+	<button type="button" class="btn btn-info" id="togetherJoin">쪽지 보내기</button>
 	</c:when>
 	<c:otherwise>
 	<label>로그인 후 문의해주세요.</label>
 	</c:otherwise>
 	</c:choose>
-	<a href="togetherList.do"><button type="button" class="btn btn-primary">목록보기</button></a>
-	<button type="button" class='btn btn-primary delete' style="display: none;">삭제</button>
+	<a href="togetherList.do"><button type="button" class="btn btn-info">목록보기</button></a>
 	</div>
 	</td>
 	</tr>

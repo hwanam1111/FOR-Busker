@@ -166,7 +166,7 @@ window.onload = function() {
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
-	<div class="form-group" id="adminBtn" style="width:980px; display:none; float:right; margin-right:100px;">
+	<div class="form-group" id="adminBtn" style="width:700px; display:none; float:right; margin-right:340px;">
 		<button id="modify" type="button" class="btn btn-info" style="width:100px; color:white; float: right; margin-left: 10px; display:none; ">게시글 수정</button>
 		<button id="delete" type="button" class="btn btn-info" style="width:100px; color:white; float: right; ">게시글 삭제</button>
 	</div>

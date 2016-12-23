@@ -18,6 +18,8 @@
 <script type="text/javascript" src="<%=projectName %>/resources/js/popup_js/jquery.bpopup.js"></script>
 <!-- include css -->
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
+<!-- include css -->
+<link href="<%=projectName %>/resources/css/show_css/showView.css?<?=filemtime('<%=projectName %>/resources/css/show_css/showView.css')?>" rel="stylesheet" type="text/css" media="all">
 <!-- showView js -->
 <%-- <script src="<%=projectName %>/resources/js/show_js/showView.js?<?=filemtime('<%=projectName %>/resources/js/show_js/showView.js')?>"></script> --%>
 <script type="text/javascript">
@@ -49,22 +51,19 @@ $(function(){
 
 <!-- 이부분 부터 코딩 시작 -->
 <div class="hoc">
+<div id="adminBtn" style="margin-left:760px; display:none;">
+   <button class="dlBtn" type="button" class="btn btn-info" style="width:100px; color:white;">게시글 삭제</button>
+</div>
 	<table id="tableTdmargin" style="margin:0 auto; width:750px;">
 	<!-- 수정 삭제버튼 -->
 	<tr>
 		<td>
 	<div class="MDBtn">
 		<a class="ModifyBtn">
-			<button type="button" class="btn btn-info mdBtn" id="mdBtn">
-				<input type="hidden" value="${show.shNo}">
-				수정
-			</button>
+			<button type="button" class="btn btn-info mdBtn" id="mdBtn"><input type="hidden" value="${show.shNo}">게시글 수정</button>
 		</a>
 		<a class="deleteBtn">
-		<button type="button" class="btn btn-danger dlBtn" id="deBtn">
-			<input type="hidden" value="${show.shNo}">
-			삭제
-		</button>
+		<button type="button" class="btn btn-info dlBtn" id="deBtn"><input type="hidden" value="${show.shNo}">게시글 삭제</button>
 		</a>
 	</div>
 		</td>
