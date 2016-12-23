@@ -136,8 +136,8 @@ $(function(){
 			</div>
 		
 			<div class="detail">
-			<div class="sponTitle"><strong><%=svo.getSpName() %></strong></div> <!-- 제목 들어가는 부분 -->
-			<div class="sponCon"><strong><%=svo.getSpCond() %></strong></div> <!-- 조건 들어가는 부분 -->
+			<div style="margin-top:10px; margin-bottom:5px;" class="sponTitle"><strong>TITLE: <%=svo.getSpName() %></strong></div> <!-- 제목 들어가는 부분 -->
+			<div class="sponCon"><strong>Cond: <%=svo.getSpCond() %></strong></div> <!-- 조건 들어가는 부분 -->
 			</div>
 			
 		</div>

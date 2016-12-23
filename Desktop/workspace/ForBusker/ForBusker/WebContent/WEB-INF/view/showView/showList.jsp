@@ -123,11 +123,11 @@ $("input[name=date_submit]").val('<%=date%>');
 			<option value="2">지역</option>
 		</select>
 		<%if(value != null){ %>
-		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" value=<%=value %> >
+		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:310px; margin-left:25px;" value=<%=value %> >
 		<%} else{%>
-		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:280px; margin-left:25px;" />
+		<input class="form-control" type="text" placeholder="" name="val" id="example-text-input" style="width:310px; margin-left:25px;" />
 		<%} %>
-		<select class='form-control' name="cate" id="exampleSelect2" style="width:280px; margin-left:25px;">
+		<select class='form-control' name="cate" id="exampleSelect2" style="width:310px; margin-left:25px;">
 			<option value=''>선택하세요</option>
 			<option value='노래'>노래</option>
 			<option value='댄스'>댄스</option>
