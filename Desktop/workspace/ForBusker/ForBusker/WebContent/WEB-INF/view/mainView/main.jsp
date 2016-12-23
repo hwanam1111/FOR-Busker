@@ -249,10 +249,10 @@ function logout(){
 	
 			<h3 class="heading" style="font-size:30px">오늘의 공연</h3>
 			<p class="btmspace-30" id="kk">지역을 선택해주세요</p>
-			<ul class="fa-ul" id="mainlist" style="font-size:25px">
+			<ul class="fa-ul" id="mainlist" style="font-size:20px">
 				<li><i class="fa-li fa fa-check-circle"></i></li>
 				<li><i class="fa-li fa fa-check-circle"></i></li>
-				<li><i class="fa-li fa fa-check-circle"></i></li>
+				
 			</ul>
 			<!-- ################################################################################################ -->
 			</section>

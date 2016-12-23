@@ -21,7 +21,7 @@ ul.tabs li {
 	margin-bottom: -1px; /*--Pull the list item down 1px--*/
 	overflow: hidden;
 	position: relative;
-	background: #c8c8c8;
+	background: #d2d2d2;
 }
 ul.tabs li a {
 	text-decoration: none;
@@ -50,7 +50,7 @@ b_container {
 }
 
 .changeColor{
-	background-color:#FF4646;
+	background-color:#FF7878;
 }
 
 .pTagyo{

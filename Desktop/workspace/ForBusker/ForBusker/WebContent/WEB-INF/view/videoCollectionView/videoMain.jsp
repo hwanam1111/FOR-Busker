@@ -66,11 +66,10 @@ $(function() {
 <div class="hoc">
 	<h1 style="font-size:30px;">영상모음</h1>
 	<div class="container-fluid">
-	<div id="movieBtn" style="display:none;">
+	<div id="movieBtn" style="display:none;width:300px;" >
 		<a href="videoUpload.do">영상등록하는방법확인</a> &nbsp;&nbsp;
 		<a href="videoForm.do"><button type="button" class="btn btn-info">영상등록</button></a>
 	</div>
-  <p>Resize the browser window to see the Video.</p>
   <div class="row" style="margin-top:40px;">
   
  <!-- ################################################ --> 

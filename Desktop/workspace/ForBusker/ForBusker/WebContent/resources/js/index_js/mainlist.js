@@ -33,9 +33,8 @@ $(function(){
 			}else{
 				$("#mainlist").empty();//click할때마다 li 리셋
 				for(var i=0;i<data.length;i++){	 //li의 값에 받아온 data(jsonArray)값 내의 각 namevalue에 접근하여 값 추출
-					 $("#mainlist").append("<a href='showList.do?shno="+data[i].shno+"'><li>"+data[i].name+"</li></a>");
-					 $("#mainlist").append("<li>"+data[i].date+"</li>");
-					 $("#mainlist").append("<li>"+data[i].time+"</li>");
+					 $("#mainlist").append("<a href='showList.do?shno="+data[i].shno+"'><li> ⊙"+data[i].name+"</li></a>");
+					 $("#mainlist").append("<li>"+data[i].date+" / "+data[i].time+"</li>");
 			    }
 
 			  }
