@@ -64,7 +64,7 @@
 		});
 	</script>
 <% } %>		
-<%if(mVO.getMemEmail().equals(mVO.getMemEmail())) { %>
+<%if(mVO.getMemEmail().equals(bVO.getMemEmail())) { %>
 	<script type="text/javascript">
 		$(function() {
 			$('#adminBtn').css('display', 'block');
