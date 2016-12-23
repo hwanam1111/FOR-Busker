@@ -81,6 +81,8 @@
 					location.href="backedUpdateForm.do?backNo=${selectBacked.backNo}";
 				})
 			<%}%>
+			
+			$("#insertMessage").attr("disabled","disabled");
 		});
 	</script>
 <% } %>		
