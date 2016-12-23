@@ -53,7 +53,7 @@ function logout(){
 					</li>
 					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>
 					<li><a href="noticeList.do">Notice</a></li>
-					<li id="liMyPage"> ${sessionScope.login.memEmail}
+					<li id="liMyPage" style="width:200px;"> ${sessionScope.login.memEmail}
 						<ul> 
 							<li class="ul_li_List"><a href="mypageUpdate.do?memType=${sessionScope.login.memType}">내 정보 수정</a></li>							
 							<%if(mvo.getMemType().equals("2")){ %>

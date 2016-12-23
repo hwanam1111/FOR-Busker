@@ -56,7 +56,7 @@ function logout(){
 
 #messageimg{
 	position: relative;
- 	left: 580px; 
+ 	left: 520px; 
 	top:-80px;
 	width: 25px;
 	heght: 25px;
@@ -104,7 +104,7 @@ function logout(){
 			<!-- ################################################# -->
 			<!-- ################################################# -->
 			<!-- 오른쪽 nav메뉴 -->
-			<img id="messageimg" src="<%=projectName %>/resources/images/message_img/messageimg.png"/>
+			<img id="messageimg" src="<%=projectName %>/resources/images/message_img/messageimg.png"/ >
 			<nav id="mainav" class="fl_right">
 				<ul class="clear">
 					<li onclick="logout()" id="liLogout" style="cursor: pointer">로그아웃</li>
@@ -118,7 +118,7 @@ function logout(){
 					</li>
 					<li id="nomeesage"><a  href="message.do?email=${sessionScope.login.memEmail}">쪽지함</a></li>	
 					<li><a href="noticeList.do">Notice</a></li>
-					<li id="liMyPage"> ${sessionScope.login.memEmail}
+					<li id="liMyPage" style="width:200px;"> ${sessionScope.login.memEmail}
 						<ul> 
 							<li class="ul_li_List"><a href="mypageUpdate.do?memType=${sessionScope.login.memType}">내 정보 수정</a></li>							<%if(mvo.getMemType().equals("2")){ %>
 							<li class="ul_li_List"><a  href="mypageAll.do?email=${sessionScope.login.memEmail}">내가 쓴 글</a></li>	

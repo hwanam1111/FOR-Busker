@@ -48,7 +48,7 @@ if(obj!=null) list = (List<SmsVO>)obj;
 <!-- ################################################### -->
 <!-- ################################################### -->
 <!--  테이블 시작  -->
-<div id="messageTable" class="table-responsive">
+<div id="messageTable" class="table-responsive" style="height:300px;">
 <table class="table">
 <tr align="center">
 <td>구분</td>
