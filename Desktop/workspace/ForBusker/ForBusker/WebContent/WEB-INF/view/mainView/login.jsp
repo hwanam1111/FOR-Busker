@@ -18,7 +18,12 @@
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <link href="<%=projectName %>/resources/css/login_css/login.css?<?=filemtime('<%=projectName %>/resources/css/login_css/login.css')?>" rel="stylesheet" type="text/css" media="all">
 
-
+<style>
+@font-face {
+  font-family: 'kiwi';
+  src:url('fonts/kiwibananaB.ttf') format('truetype');
+}
+   </style>
 <!-- login enter -->
 <script type="text/javascript">
 function onKeyDown()
@@ -29,12 +34,7 @@ function onKeyDown()
      }
 }
 </script>
-<style>
-@font-face {
-  font-family: 'kiwi';
-  src:url('fonts/kiwibananaB.ttf') format('truetype');
-}
-   </style>
+
 </head>
 
 <body id="top">
