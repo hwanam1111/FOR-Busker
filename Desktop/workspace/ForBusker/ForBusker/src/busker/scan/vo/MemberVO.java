@@ -121,7 +121,6 @@ public class MemberVO {
 
 				this.memTeamPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
 						 file.getInputStream());
-				
 				/*this.memTeamPhoto =  save("C:\\Users\\user\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload",
 						 file.getInputStream());
 */			} catch (IllegalStateException e) {				
