@@ -153,7 +153,7 @@ order by videono desc
 		SELECT *
 		FROM (SELECT rownum as rnum , 
 		m.memEmail memEmail,
-		m.memTeamName memTeamName, 
+		v.memTeamName memTeamName, 
 		vLike.LikeNo LikeNo, 
 		v.videoNo videoNo,
 		v.videoname	videoName,

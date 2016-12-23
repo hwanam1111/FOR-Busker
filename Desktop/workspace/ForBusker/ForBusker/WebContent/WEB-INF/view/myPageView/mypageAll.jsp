@@ -64,7 +64,7 @@ $(function(){
     	$(".tabs li").children().eq(2).addClass("changeColor")
     }else if('<%=cate%>' == 'video' ){
     	$(".tabs li").children().eq(3).addClass("changeColor")
-    }else if('<%=cate%>' == 'join' ){
+    }else if('<%=cate%>' == 'toList' ){
     	$(".tabs li a").eq(4).addClass("changeColor")
     }
 });
@@ -125,7 +125,6 @@ position:relative;
 
 							<p style="height: 40px;">Title : <%=shvo.getShName()%></p>
 						</a>
-						<p>TeamName : <%=shvo.getShTeamName()%></p>
 						<p>Date : <%=shvo.getShDate() %></p>
 						<input type="hidden" value="<%=shvo.getMemEmail() %>" name="memEmail">	
 						</div>
@@ -185,9 +184,9 @@ position:relative;
 							src="<%=projectName%>/upload/<%=spvo.getSpPhoto()%>"
 							onerror="this.onerror=null;this.src='<%=projectName %>/resources/images/error_img/errorImg2.jpg';"><br />
 							<br />
-
 							<p style="height: 40px;">Title : <%=spvo.getSpName()%></p>
 						</a>
+							<p>Date : <%=spvo.getSponDate() %></p>
 						<input type="hidden" value="<%=spvo.getMemEmail()%>" name="memEmail">
 					</div>
 				<%} %>
@@ -247,7 +246,9 @@ position:relative;
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=bkvo.getBackVideo()%>/hqdefault.jpg"><br />
 							<br />
+						<p style="height: 40px;">Title : <%=bkvo.getBackName()%></p>
 						</a>
+						<p>Date : <%=bkvo.getBackDate() %></p>
 						<input type="hidden" value="<%=bkvo.getMemEmail()%>" name="memEmail">
 					</div>
 				<%} %>
@@ -308,10 +309,8 @@ position:relative;
 							style="width: 296.66px; height: 222.48px;"
 							src="https://img.youtube.com/vi/<%=vvo.getVideoSomenale()%>/hqdefault.jpg"><br />
 						<br />
-
-							<p style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
+						<p style="height: 40px;">Title : <%=vvo.getVideoName() %></p>
 						</a>
-						<p>TeamName : <%=vvo.getMemTeamName() %></p>
 						<p>Date : <%=vvo.getVideoDate() %></p>
 						<input type="hidden" value="<%=vvo.getMemEmail() %>" name="memEmail">
 					</div>
@@ -375,7 +374,6 @@ position:relative;
 						<br />
 							<p style="height: 40px;">Title : <%=tvo.getToName() %></p>
 						</a>
-						<%-- <p>TeamLeader : <%=tvo.getToTeamLeader() %></p> --%>
 						<p>Date : <%=tvo.getToStartDate() %> ~ <%=tvo.getToEndDate() %></p>
 						<input type="hidden" value="<%=tvo.getToId() %>" name="memEmail">
 					</div>
