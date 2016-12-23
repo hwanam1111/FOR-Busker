@@ -117,7 +117,7 @@ $("input[name=date_submit]").val('<%=date%>');
 	 <%}else{ %>	
 			<input id="input_01" type="text" class="datepicker form-control" name="date"  placeholder="오늘의 공연" style=" position: relative; right:20px;">
 	 <%} %>		
-		<select class="form-control" id="exampleSelect1" style="width:200px;  position: relative; right:5px;">
+		<select class="form-control" id="exampleSelect1" style="width:180px;  position: relative; right:5px;">
 			<option value="0">팀명</option>
 			<option value="1">카테고리</option>
 			<option value="2">지역</option>
