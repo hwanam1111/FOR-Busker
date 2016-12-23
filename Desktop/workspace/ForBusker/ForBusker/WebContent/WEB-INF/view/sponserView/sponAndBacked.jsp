@@ -221,7 +221,7 @@ $(function(){
 			</div>
 		 
 			<div class="detail">
-			<div style="margin-top:10px; margin-bottom:5px;"><strong>TITLE : <%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
+			<div style="margin-top:10px; margin-bottom:5px;" class="backTitle"><strong>TITLE : <%=bvo.getBackName() %></strong></div> <!-- 제목 들어가는 부분 -->
 			<div class="backCon">CONTENT : <%=bvo.getBackContent() %></div> <!-- 조건 들어가는 부분 -->
 			</div>
 			
