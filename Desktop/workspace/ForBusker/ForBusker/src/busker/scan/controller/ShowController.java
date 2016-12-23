@@ -33,7 +33,10 @@ public class ShowController {
 		}else{
 			System.out.println("공연등록실패");
 		}
-		m.addAttribute("showvo",showVO);
+		ShowVO vo = service.selectList(showVO.getMemEmail(),showVO.getShVideo(),showVO.getShMapCoords());
+		System.out.println("아아아아아아아아슛발!!!"+vo.getShNo());
+		
+		m.addAttribute("vo",vo.getShNo());
 		
 		return "showView/showRegistCompleteForm";
 	}

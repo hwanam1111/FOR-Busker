@@ -140,6 +140,16 @@ public class ShowDaoImpl implements ShowDao {
 		int result = ss.delete("show.deleteShow",shNo);
 		return result;
 	}
+	
+	@Override
+	public ShowVO selectShow(String email, String videoURL, String coords) {
+		HashMap map = new HashMap();
+		map.put("email", email);
+		map.put("videoURL", videoURL);
+		map.put("coords", coords);
+		ShowVO vo = ss.selectOne("show.selectShow4",map);
+		return vo;
+	}
 
 
 }

@@ -10,6 +10,7 @@ public interface ShowDao {
 	public int insertShow(ShowVO shvo) throws Exception;
 	public List selectShow(List list) throws Exception;
 	public List selectShow(String loc,int curPage) throws Exception;
+	public ShowVO selectShow(String email, String videoURL, String coords);
 	//loc들어왔을 때 row 갯수 가져오기
 	public int showLocCount(String loc);
 

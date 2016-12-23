@@ -18,8 +18,8 @@
 <link href="<%=projectName %>/resources/css/index_css/include.css?<?=filemtime('<%=projectName %>/resources/css/index_css/include.css')?>" rel="stylesheet" type="text/css" media="all">
 <script type="text/javascript">
 $(function(){
-	alert("${showvo.shTeamName}팀 등록");	
-	location.href="main.do"
+	alert("${vo}");
+	location.href="showList.do?shno=${vo}";
 });
 </script>
 </head>

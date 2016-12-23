@@ -122,5 +122,11 @@ WHERE shno = #{shNo}
 DELETE FROM show
 WHERE shno=#{shNo}
 </delete>
+<!-- 공연등록하고 공연리스트로 넘어갈때 값 가져오기 -->
+<select id="selectShow4" parameterType="hashmap" resultType="busker.scan.vo.ShowVO">
+SELECT * 
+FROM SHOW
+WHERE mememail=#{email} and shvideo=#{videoURL} and shmapcoords=#{coords}
+</select>
 
 </mapper>

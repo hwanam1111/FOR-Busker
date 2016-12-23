@@ -153,6 +153,13 @@ public class ShowServiceImpl implements ShowService {
 	public int deleteShow(int shNo){
 		int result = dao.deleteShow(shNo);
 		return result;
+	}
+
+	public ShowVO selectList(String email, String videoURL, String coords) {
+		// TODO Auto-generated method stub
+		ShowVO vo = dao.selectShow(email,videoURL,coords);
+		return vo;
 	} 		
+
 	
 }
