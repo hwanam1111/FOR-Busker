@@ -118,12 +118,11 @@ public class MemberVO {
 			
 			try {
 				System.out.println(file.getOriginalFilename());
- 
-				this.memTeamPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
+/*				this.memTeamPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
+						 file.getInputStream());*/
+				this.memTeamPhoto =  save("C:\\Users\\user\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload",
 						 file.getInputStream());
-				/*this.memTeamPhoto =  save("C:\\Users\\user\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload",
-						 file.getInputStream());
-*/			} catch (IllegalStateException e) {				
+			} catch (IllegalStateException e) {				
 				e.printStackTrace();
 			} catch (IOException e) {
 				

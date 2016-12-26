@@ -82,8 +82,8 @@ $(function() {
   		
   		<img class='videothumb' id="videothumb" style="width:296.66px; height:222.48px;" 
   		src="https://img.youtube.com/vi/${video.videoSomenale}/hqdefault.jpg"><br/><br/>
-    	
-    	<p class="videoTitle" style="height: 33px;">Title : ${video.videoName}</p></a>
+    	</a>
+    	<p class="videoTitle" style="height: 33px;">Title : ${video.videoName}</p>
     	<p>TeamName : ${video.memTeamName}</p>
     	<p>Date : ${video.videoDate}</p>
     	<input type="hidden" value="${video.memEmail}" name="memEmail">

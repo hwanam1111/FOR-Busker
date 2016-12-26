@@ -181,7 +181,7 @@ $("input[name=date_submit]").val('<%=date%>');
 <input type="hidden" value="" id="loc">
 <!-- 페이징 부분 -->
 	<%if(shno == 0 && value==null) {%>
-	<nav align="center">
+	<nav id="paging" align="center">
 	  <ul class="pagination pagination-lg">
 	    <li class="page-item">
 	      <a class="page-link" href="showList.do?page=<%=pVO.getPreviPage()%>&loc=<%=mapo %>&shno=0" aria-label="Previous">

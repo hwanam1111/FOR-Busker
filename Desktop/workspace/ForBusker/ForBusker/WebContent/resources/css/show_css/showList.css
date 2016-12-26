@@ -25,7 +25,7 @@
     position: absolute; /* Stay in place */
     z-index: 1; /* Stay on top */
 /*     top: 282px; 맥 */
-	top:260px; /*윈도우*/
+	top:263px; /*윈도우*/
     left: 0;
     background-color: #FFF; /* Black*/
     overflow-y: auto; /* Disable horizontal scroll */

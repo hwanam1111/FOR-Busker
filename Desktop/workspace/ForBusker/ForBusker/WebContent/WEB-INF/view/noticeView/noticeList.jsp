@@ -52,7 +52,7 @@
 	<% } %>
 <!-- ################################################### -->
 <!-- 이부분 부터 코딩 시작 -->
-<div class="hoc">  <!-- NoticeList -->
+<div class="hoc" style="height:420px;">  <!-- NoticeList -->
 	<ul>
 	<li><h1 style="font-size:30px;"><img src="<%=projectName %>/resources/images/notice_img/notepad.png">공지사항</h1></li>
 	<li>
