@@ -2,5 +2,3 @@
 	pageEncoding="UTF-8"%>
 <% String projectName = "/ForBusker"; %>
 <% response.sendRedirect("main.do");%>    
-
-
