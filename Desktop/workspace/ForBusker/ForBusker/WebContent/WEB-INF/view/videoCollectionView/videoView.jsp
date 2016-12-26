@@ -265,13 +265,15 @@ VideoList <img src="<%=projectName %>/resources/images/video_img/cursor.png"/>
 		 
 	</div>
 	<!-- 더보기 -->
-	<c:if test="${fn:length(replyList)>3}">
+	
 	<div align="center" id="more" style="cursor:pointer;">
+	<c:if test="${fn:length(replyList)>3}">
 		<hr/>
 		<h4>더보기▽</h4>
 		<hr/>
+	</c:if>  
 	</div>
-	</c:if>   
+	 
 </div> <!-- end reply div -->
 
   

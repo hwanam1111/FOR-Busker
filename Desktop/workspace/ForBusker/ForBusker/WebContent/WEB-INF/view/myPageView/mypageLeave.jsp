@@ -42,7 +42,7 @@
 	<!-- ################################################### -->
 	<h1  style="font-size:30px;">회원탈퇴</h1>
 	<!-- simpleJoin Form -->
-	<form id="leaveForm" action="myPageLeaveConfig.do" method="post">
+	<form id="leaveForm" action="myPageLeaveConfig.do" method="post" style="height:310px; margin-top:70px;">
 		<!-- #################################################### -->
 		<!-- #################################################### -->
 		<div class="form-group">

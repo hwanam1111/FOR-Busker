@@ -77,12 +77,10 @@ public class SponserVO {
 			
 			try {
 				System.out.println(file.getOriginalFilename());
-//				this.spPhoto =  save("C:\\Users\\user\\git\\FOR-Busker1\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
-//						 file.getInputStream());
-//				this.spPhoto =  save("C:\\Users\\user\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload",
-//						 file.getInputStream()); 			
-				this.spPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
-						 file.getInputStream());
+				this.spPhoto =  save("C:\\Users\\user\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload",
+						 file.getInputStream());			
+				/*this.spPhoto =  save("C:\\Users\\kosta\\git\\FOR-Busker\\Desktop\\workspace\\ForBusker\\ForBusker\\WebContent\\upload\\",
+						 file.getInputStream());*/
 				
 			} catch (IllegalStateException e) {				
 				e.printStackTrace();
