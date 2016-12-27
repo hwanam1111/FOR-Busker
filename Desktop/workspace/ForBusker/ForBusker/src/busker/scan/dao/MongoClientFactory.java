@@ -13,8 +13,8 @@ public class MongoClientFactory {
 	
 	private MongoClientFactory(){
 		try {
-			//mongoClient = new MongoClient("localhost");
-			mongoClient = new MongoClient("192.168.0.108:27017"); // default : localhost , 27017 
+			mongoClient = new MongoClient("192.168.1.178");
+			//mongoClient = new MongoClient("192.168.0.108:27017"); // default : localhost , 27017 
 			// mongoClient = new MongoClient("localhost");	// default : 27017
 			 //mongoClient = new MongoClient("localhost" , 27017);
 			
