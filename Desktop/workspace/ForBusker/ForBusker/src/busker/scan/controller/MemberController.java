@@ -24,8 +24,6 @@ public class MemberController {
 	@RequestMapping(value="loginOK")
 	public String loginOK(MemberVO memberVO, Model m, HttpSession session) throws Exception{
 		System.out.println("loginOK.jsp로 이동");
-		System.out.println(memberVO.getMemEmail());
-		System.out.println(memberVO.getMemPw());
 		MemberVO ok = null;
 		ok= service.selectMember(memberVO);
 		String result="";	
