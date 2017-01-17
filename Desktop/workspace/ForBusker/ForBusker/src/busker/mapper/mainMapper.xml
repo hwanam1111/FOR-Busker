@@ -4,7 +4,8 @@
 <mapper namespace="main">
 
 <select id="idCheck" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO"> 
-	select * from member where memEmail=#{memEmail} AND memPw= ENCRYPTION_AES.ENC_AES(#{memPw}) AND memStatus!='0'
+<!-- 	select * from member where memEmail=#{memEmail} AND memPw= ENCRYPTION_AES.ENC_AES(#{memPw}) AND memStatus!='0' -->
+	select * from member where memEmail=#{memEmail} AND memPw= #{memPw} AND memStatus!='0'
 </select>
 
 <select id="idchecked" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO"> 
@@ -15,7 +16,8 @@
 
 <!-- simplejoin -->
 	 	<if test="memTeamName eq null">
-		INSERT INTO member(mememail, mempw, memnick, memphone, memstatus, memtype) VALUES(#{memEmail}, ENCRYPTION_AES.ENC_AES(#{memPw}), #{memNick}, #{memPhone}, #{memStatus}, #{memType})
+<!-- 		INSERT INTO member(mememail, mempw, memnick, memphone, memstatus, memtype) VALUES(#{memEmail}, ENCRYPTION_AES.ENC_AES(#{memPw}), #{memNick}, #{memPhone}, #{memStatus}, #{memType}) -->
+		INSERT INTO member(mememail, mempw, memnick, memphone, memstatus, memtype) VALUES(#{memEmail}, #{memPw}, #{memNick}, #{memPhone}, #{memStatus}, #{memType})
 	</if>
 	<!-- 파일업로드 회원가입 -->
 	<if test="memTeamName neq null">
@@ -37,7 +39,7 @@ SELECT * FROM member WHERE memPhone=#{memPhone} AND memTeamName=#{memTeamName} A
 </select>
 
 <select id="searchPw" parameterType="busker.scan.vo.MemberVO" resultType="busker.scan.vo.MemberVO">
-SELECT ENCRYPTION_AES.DEC_AES(mempw) memPw FROM member WHERE memPhone=#{memPhone} AND memEmail=#{memEmail}
+<!-- SELECT ENCRYPTION_AES.DEC_AES(mempw) memPw FROM member WHERE memPhone=#{memPhone} AND memEmail=#{memEmail} -->
 </select>
 
 <update id="updateSimple" parameterType="busker.scan.vo.MemberVO">
