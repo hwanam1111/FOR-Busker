@@ -21,8 +21,10 @@
 	</if>
 	<!-- 파일업로드 회원가입 -->
 	<if test="memTeamName neq null">
-		INSERT INTO member(mememail, mempw, memphone, memteamtype, memteamname, memvideo, memdetail, memstatus, memtype, memteamphoto) 
-		VALUES(#{memEmail}, ENCRYPTION_AES.ENC_AES(#{memPw}), #{memPhone},'${memTeamType}', #{memTeamName}, #{memVideo}, #{memDetail}, #{memStatus}, #{memType}, #{memTeamPhoto})
+<!-- 		INSERT INTO member(mememail, mempw, memphone, memteamtype, memteamname, memvideo, memdetail, memstatus, memtype, memteamphoto)  -->
+<!-- 		VALUES(#{memEmail}, ENCRYPTION_AES.ENC_AES(#{memPw}), #{memPhone},'${memTeamType}', #{memTeamName}, #{memVideo}, #{memDetail}, #{memStatus}, #{memType}, #{memTeamPhoto}) -->
+	INSERT INTO member(mememail, mempw, memphone, memteamtype, memteamname, memvideo, memdetail, memstatus, memtype, memteamphoto) 
+		VALUES(#{memEmail}, #{memPw}, #{memPhone},'${memTeamType}', #{memTeamName}, #{memVideo}, #{memDetail}, #{memStatus}, #{memType}, #{memTeamPhoto})
 	</if>
 </insert>
 
